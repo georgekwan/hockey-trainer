@@ -1,32 +1,22 @@
 
 # Hockey Trainer
 
-This app assists hockey players in improving their shot accuracy through the use of various drills.
+This is a React Native application that assists hockey players in improving their shot accuracy through the use of various drills. The app was built with [Expo](https://expo.io/).
 
 
-## How To Use
 
-Clone the project
+## Getting Started
+To get started with the app, follow these steps:
 
-```bash
-  git clone https://github.com/georgekwan/hockey-trainer.git
-```
+1. Install the Expo client app on your [iOS](https://apps.apple.com/us/app/expo-go/id982107779) or [Android](https://play.google.com/store/apps/details?id=host.exp.exponent&gl=US) phone
+2. Clone the project: ```bash git clone https://github.com/georgekwan/hockey-trainer.git ```
+3. Go to the project directory: ```bash cd harpia-hockey ```
+4. Install dependencies ```bash npm install ```
+5. Start the server ```bash expo start ```
 
-Go to the project directory
+The app will now be running on your phone.
 
-```bash
-  cd harpia-hockey
-```
-
-Install dependencies
-
-```bash
-  npm install
-```
-
-Start the server
-
-```bash
-  expo start
-```
-
+## Built With
+* [React Native](https://reactnative.dev/) - The mobile framework used
+* [Expo](https://expo.io/) - The toolchain used to develop and build the app
+* [NPM](https://www.npmjs.com/) - Dependency management
