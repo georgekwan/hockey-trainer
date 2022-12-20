@@ -5,7 +5,7 @@ This is a React Native application that assists hockey players in improving thei
 
 ## Prerequisites
 * [Node.js](https://nodejs.org/)
-* [Expo CLI](Expo CLI)
+* [Expo CLI](https://docs.expo.io/versions/latest/workflow/expo-cli/)
 * [NPM](https://www.npmjs.com/)
 
 ## Getting Started
