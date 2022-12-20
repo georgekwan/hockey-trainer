@@ -17,6 +17,9 @@ To get started with the app, follow these steps:
 4. Install dependencies ``` npm install ```
 5. Start the server ``` expo start ```
 
+## Test Your App
+In the Expo DevTools window, you can choose to run your app in a simulator or on a physical device. You can also use the "Scan QR Code" option to open your app on your phone by scanning the QR code displayed in the terminal window.
+
 The app will now be running on your phone.
 
 ## Built With
