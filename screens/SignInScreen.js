@@ -79,7 +79,7 @@ const SignInScreen = () => {
 
       <Pressable
         style={styles.tabs}
-        onPress={() => navigation.navigate('SignUp')}
+        onPress={() => navigation.navigate('SignUpScreen')}
       >
         <Text style={[styles.login1, styles.login1Typo, styles.login1Position]}>
           Login
