@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import SignInScreen from './screens/SignInScreen';
-// import { SignUpScreen } from './screens/SignUpScreen';
+import SignUpScreen from './screens/SignUpScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,12 +24,17 @@ const App = () => {
     <>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="Login"
+          initialRouteName="SignInScreen"
           screenOptions={{ headerShown: false }}
         >
           <Stack.Screen
             name="SignInScreen"
             component={SignInScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="SignUpScreen"
+            component={SignUpScreen}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>
