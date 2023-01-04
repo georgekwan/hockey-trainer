@@ -21,7 +21,7 @@ const SignInScreen = () => {
         <Image
           style={styles.background}
           resizeMode="cover"
-          source={require('../assets/hockeyBg-01.png')}
+          source={require('../assets/background2.png')}
         />
         <Text style={[styles.loginGreeting, styles.generalFont]}>
           Welcome back
@@ -144,7 +144,8 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   background: {
-    flex: 1,
+    width: 375,
+    height: 384,
     left: 0,
     top: 0,
     position: 'absolute',
