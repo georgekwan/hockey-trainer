@@ -147,11 +147,12 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   background: {
-    width: 375,
+    width: '100%',
     height: 384,
     left: 0,
     top: 0,
     position: 'absolute',
+    // resizeMode: 'scale',
   },
   signUpInstruction: {
     marginBlockStart: 0,

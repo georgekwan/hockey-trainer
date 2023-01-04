@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {
   Image,
   StyleSheet,
@@ -8,6 +8,7 @@ import {
   TextInput,
   KeyboardAvoidingView,
   Platform,
+  useWindowDimensions,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import GlobalStyles from '../GlobalStyles';
@@ -17,9 +18,9 @@ const SignInScreen = () => {
 
   return (
     <View style={[styles.login, styles.loginLayout]}>
-      <View style={styles.background}>
+      <View>
         <Image
-          style={styles.background}
+          style={[styles.background]}
           resizeMode="cover"
           source={require('../assets/background2.png')}
         />
@@ -54,12 +55,13 @@ const SignInScreen = () => {
       <View style={styles.inputs}>
         <Pressable
           style={styles.forgotPassword}
-          onPress={() => navigation.navigate('ForgotPassword')}
+          onPress={() => navigation.navigate('ForgotPasswordScreen')}
         >
           <Text style={[styles.forgotPassword1, styles.login1Typo]}>
             Forgot Password
           </Text>
         </Pressable>
+
         <View style={[styles.password, styles.emailLayout]}>
           <TextInput
             placeholder="Password"
@@ -144,11 +146,12 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   background: {
-    width: 375,
+    width: '100%',
     height: 384,
     left: 0,
     top: 0,
     position: 'absolute',
+    // resizeMode: 'scale',
   },
   generalFont: {
     fontFamily: GlobalStyles.FontFamily.roboto,
