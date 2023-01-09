@@ -1,0 +1,114 @@
+{
+  "drillPatterns": [
+    {
+      "id": "1001",
+      "name": "aroundTheWorld",
+
+      "difficulty": [
+        {
+          "levelId": "101",
+          "levelName": "beginner",
+          "sequence": [
+            "topLeft",
+            "topRight",
+            "bottomRight",
+            "bottomCenter",
+            "bottomLeft"
+          ]
+        },
+        {
+          "levelId": "102",
+          "levelName": "intermediate",
+          "sequence": [
+            "topLeft",
+            "topRight",
+            "bottomRight",
+            "bottomCenter",
+            "bottomLeft",
+            "topLeft",
+            "topRight",
+            "bottomRight",
+            "bottomCenter",
+            "bottomLeft"
+          ]
+        },
+        {
+          "levelId": "103",
+          "levelName": "advanced",
+          "sequence": [
+            "topLeft",
+            "topRight",
+            "bottomRight",
+            "bottomCenter",
+            "bottomLeft",
+            "topLeft",
+            "topRight",
+            "bottomRight",
+            "bottomCenter",
+            "bottomLeft",
+            "topLeft",
+            "topRight",
+            "bottomRight",
+            "bottomCenter",
+            "bottomLeft"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1002",
+      "name": "aroundTheWorldReverse",
+
+      "difficulty": [
+        {
+          "levelId": "101",
+          "levelName": "beginner",
+          "sequence": [
+            "bottomLeft",
+            "bottomCenter",
+            "bottomRight",
+            "topRight",
+            "topLeft"
+          ]
+        },
+        {
+          "levelId": "102",
+          "levelName": "intermediate",
+          "sequence": [
+            "bottomLeft",
+            "bottomCenter",
+            "bottomRight",
+            "topRight",
+            "topLeft",
+            "bottomLeft",
+            "bottomCenter",
+            "bottomRight",
+            "topRight",
+            "topLeft"
+          ]
+        },
+        {
+          "levelId": "103",
+          "levelName": "advanced",
+          "sequence": [
+            "bottomLeft",
+            "bottomCenter",
+            "bottomRight",
+            "topRight",
+            "topLeft",
+            "bottomLeft",
+            "bottomCenter",
+            "bottomRight",
+            "topRight",
+            "topLeft",
+            "bottomLeft",
+            "bottomCenter",
+            "bottomRight",
+            "topRight",
+            "topLeft"
+          ]
+        }
+      ]
+    }
+  ]
+}
