@@ -1,16 +1,16 @@
-import React, { useContext, useState } from 'react'
-import { TouchableOpacity, StyleSheet, View } from 'react-native'
-import { Text } from 'react-native-paper'
-import Background from '../components/Background'
-import Logo from '../components/Logo'
-import Header from '../components/Header'
-import Button from '../components/Button'
-import TextInput from '../components/TextInput'
-import BackButton from '../components/BackButton'
-import { theme } from '../core/theme'
-import { emailValidator } from '../helpers/emailValidator'
-import { passwordValidator } from '../helpers/passwordValidator'
-import { AuthContext } from '../providers/AuthProvider.js'
+import React, { useContext, useState } from 'react';
+import { TouchableOpacity, StyleSheet, View } from 'react-native';
+import { Text } from 'react-native-paper';
+import Background from '../components/Background';
+import Logo from '../components/Logo';
+import Header from '../components/Header';
+import Button from '../components/Button';
+import TextInput from '../components/TextInput';
+import BackButton from '../components/BackButton';
+import { theme } from '../core/theme';
+import { emailValidator } from '../helpers/emailValidator';
+import { passwordValidator } from '../helpers/passwordValidator';
+import { AuthContext } from '../providers/AuthProvider.js';
 
 export default function LoginScreen({ navigation }) {
   // const [email, setEmail] = useState({ value: '', error: '' })
@@ -30,30 +30,31 @@ export default function LoginScreen({ navigation }) {
   // })
   // }
 
-  const { login, authErrorMessages } = useContext(AuthContext)
+  const { login, authErrorMessages } = useContext(AuthContext);
 
-  const [email, setEmail] = useState('') // input field value cannot be null
-  const [password, setPassword] = useState('') // input field value cannot be null
+  const [email, setEmail] = useState(''); // input field value cannot be null
+  const [password, setPassword] = useState(''); // input field value cannot be null
 
-  const [loginRunning, setLoginRunning] = useState(false)
-  const [errorMessage, setErrorMessage] = useState()
-  const [showRegisterForm, setShowRegisterForm] = useState(false)
+  const [loginRunning, setLoginRunning] = useState(false);
+  const [errorMessage, setErrorMessage] = useState();
+  const [showRegisterForm, setShowRegisterForm] = useState(false);
 
   const handleButtonClick = async () => {
-    setLoginRunning(true)
-    console.log('email is ', email)
-    let success = await login(email, password)
+    setLoginRunning(true);
+    console.log('email is ', email);
+    let success = await login(email, password);
 
-    setLoginRunning(false)
+    setLoginRunning(false);
     if (!success) {
-      setErrorMessage('Registration failed!')
+      setErrorMessage('Registration failed!');
     } else {
       navigation.reset({
         index: 0,
-        routes: [{ name: 'Dashboard' }],
-      })
+        // routes: [{ name: 'Dashboard' }],
+        routes: [{ name: 'HomeScreen' }],
+      });
     }
-  }
+  };
 
   return (
     <Background>
@@ -66,8 +67,8 @@ export default function LoginScreen({ navigation }) {
         value={email}
         // onChangeText={(text) => setEmail({ value: text, error: '' })}
         onChangeText={(e) => {
-          console.log('e is', e)
-          setEmail(e)
+          console.log('e is', e);
+          setEmail(e);
         }}
         // error={!!email.error}
         // errorText={email.error}
@@ -103,7 +104,7 @@ export default function LoginScreen({ navigation }) {
         </TouchableOpacity>
       </View>
     </Background>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -124,4 +125,4 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: theme.colors.primary,
   },
-})
+});

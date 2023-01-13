@@ -1,17 +1,17 @@
-import React, { useContext, useState } from 'react'
-import { View, StyleSheet, TouchableOpacity } from 'react-native'
-import { Text } from 'react-native-paper'
-import Background from '../components/Background'
-import Logo from '../components/Logo'
-import Header from '../components/Header'
-import Button from '../components/Button'
-import TextInput from '../components/TextInput'
-import BackButton from '../components/BackButton'
-import { theme } from '../core/theme'
-import { emailValidator } from '../helpers/emailValidator'
-import { passwordValidator } from '../helpers/passwordValidator'
-import { nameValidator } from '../helpers/nameValidator'
-import { AuthContext } from '../providers/AuthProvider.js'
+import React, { useContext, useState } from 'react';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text } from 'react-native-paper';
+import Background from '../components/Background';
+import Logo from '../components/Logo';
+import Header from '../components/Header';
+import Button from '../components/Button';
+import TextInput from '../components/TextInput';
+import BackButton from '../components/BackButton';
+import { theme } from '../core/theme';
+import { emailValidator } from '../helpers/emailValidator';
+import { passwordValidator } from '../helpers/passwordValidator';
+import { nameValidator } from '../helpers/nameValidator';
+import { AuthContext } from '../providers/AuthProvider.js';
 
 export default function RegisterScreen({ navigation }) {
   // const [name, setName] = useState({ value: '', error: '' })
@@ -33,34 +33,35 @@ export default function RegisterScreen({ navigation }) {
   //   routes: [{ name: 'Dashboard' }],
   // })
   // }
-  const { register, authErrorMessages } = useContext(AuthContext)
+  const { register, authErrorMessages } = useContext(AuthContext);
 
-  const [name, setName] = useState('') // input field value cannot be null
-  const [email, setEmail] = useState('') // input field value cannot be null
-  const [password, setPassword] = useState('') // input field value cannot be null
+  const [name, setName] = useState(''); // input field value cannot be null
+  const [email, setEmail] = useState(''); // input field value cannot be null
+  const [password, setPassword] = useState(''); // input field value cannot be null
 
-  const [registrationRunning, setRegistrationRunning] = useState(false)
-  const [errorMessage, setErrorMessage] = useState()
+  const [registrationRunning, setRegistrationRunning] = useState(false);
+  const [errorMessage, setErrorMessage] = useState();
 
   const handleButtonClick = async () => {
-    setRegistrationRunning(true)
+    setRegistrationRunning(true);
 
-    let thename = name
+    let thename = name;
     if (thename?.length <= 0) {
-      thename = 'NO DISPLAY NAME PROVIDED 😟'
+      thename = 'NO DISPLAY NAME PROVIDED 😟';
     }
 
-    let success = await register(email, password, thename)
-    setRegistrationRunning(false)
+    let success = await register(email, password, thename);
+    setRegistrationRunning(false);
     if (!success) {
-      setErrorMessage('Registration failed!')
+      setErrorMessage('Registration failed!');
     } else {
       navigation.reset({
         index: 0,
-        routes: [{ name: 'Dashboard' }],
-      })
+        // routes: [{ name: 'Dashboard' }],
+        routes: [{ name: 'HomeScreen' }],
+      });
     }
-  }
+  };
 
   return (
     <Background>
@@ -113,7 +114,7 @@ export default function RegisterScreen({ navigation }) {
         </TouchableOpacity>
       </View>
     </Background>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -125,4 +126,4 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: theme.colors.primary,
   },
-})
+});
