@@ -1,28 +1,29 @@
 import * as React from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
-import { Avatar, Card, Text } from 'react-native-paper';
+import { Avatar, Card, Text, List } from 'react-native-paper';
+import { theme } from '../core/theme';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
 const HomeScreen = () => (
-  <View>
-    <Card>
+  <View style={styles.container}>
+    <Card style={styles.card}>
       <Card.Content>
         <View>
           <Text
             style={{
-              fontSize: WIDTH * 0.012,
+              fontSize: WIDTH * 0.08,
               fontWeight: 'bold',
               paddingLeft: 5,
-              paddingVertical: WIDTH * 0.005,
+              paddingVertical: WIDTH * 0.02,
             }}
           >
             Welcome, Josh!
           </Text>
         </View>
         <View style={{ flexDirection: 'row' }}>
-          <Avatar.Icon size={50} icon="face-man-shimmer" />
+          <Avatar.Icon size={100} icon="face-man-shimmer" />
           <View
             style={{
               paddingLeft: 10,
@@ -30,7 +31,7 @@ const HomeScreen = () => (
           >
             <Text
               style={{
-                fontSize: WIDTH * 0.015,
+                fontSize: WIDTH * 0.08,
                 fontWeight: '800',
                 paddingLeft: 5,
               }}
@@ -39,9 +40,10 @@ const HomeScreen = () => (
             </Text>
             <Text
               style={{
-                fontSize: WIDTH * 0.01,
+                fontSize: WIDTH * 0.05,
                 fontWeight: '500',
                 paddingLeft: 5,
+                paddingVertical: WIDTH * 0.02,
               }}
             >
               Mom's cookies pattern
@@ -57,32 +59,34 @@ const HomeScreen = () => (
         >
           <Text
             style={{
-              fontSize: WIDTH * 0.015,
+              fontSize: WIDTH * 0.08,
               fontWeight: '800',
               paddingLeft: 5,
-              paddingVertical: WIDTH * 0.0005,
+              paddingVertical: WIDTH * 0.02,
             }}
           >
             OVERALL STATS
           </Text>
           <Text
             style={{
-              fontSize: WIDTH * 0.01,
+              fontSize: WIDTH * 0.05,
               fontWeight: '500',
               paddingLeft: 5,
-              paddingVertical: WIDTH * 0.0005,
+              paddingVertical: WIDTH * 0.001,
             }}
           >
+            <List.Icon icon="bullseye-arrow" color={theme.colors.primary} />
             Average accuracy: 88%
           </Text>
           <Text
             style={{
-              fontSize: WIDTH * 0.01,
+              fontSize: WIDTH * 0.05,
               fontWeight: '500',
               paddingLeft: 5,
-              paddingVertical: WIDTH * 0.005,
+              paddingVertical: WIDTH * 0.001,
             }}
           >
+            <List.Icon icon="target" color={theme.colors.primary} />
             Total shots taken: 165
           </Text>
         </View>
@@ -95,20 +99,20 @@ const HomeScreen = () => (
         >
           <Text
             style={{
-              fontSize: WIDTH * 0.01,
+              fontSize: WIDTH * 0.05,
               fontWeight: '800',
               // paddingLeft: 5,
-              // paddingVertical: WIDTH * 0.0005,
+              paddingVertical: WIDTH * 0.02,
             }}
           >
             RECOMMENDED PATTERN:
           </Text>
           <Text
             style={{
-              fontSize: WIDTH * 0.008,
+              fontSize: WIDTH * 0.05,
               fontWeight: '500',
               // paddingLeft: 5,
-              // paddingVertical: WIDTH * 0.0005,
+              paddingVertical: WIDTH * 0.001,
             }}
           >
             Top-Left
@@ -120,3 +124,12 @@ const HomeScreen = () => (
 );
 
 export default HomeScreen;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  card: { width: '100%', height: '50%', borderColor: 'red', borderWidth: 5 },
+});
