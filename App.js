@@ -35,7 +35,16 @@ export default function App() {
                                 name='Dashboard'
                                 component={Dashboard}
                             /> */}
-              <Stack.Screen name="HomeScreen" component={HomeScreen} />
+              <Stack.Screen
+                name="HomeScreen"
+                component={HomeScreen}
+                navigationKey="HomeScreen"
+              />
+              <Stack.Screen
+                name="DrillSelectionScreen"
+                component={DrillSelectionScreen}
+                navigationKey="DrillSelectionScreen"
+              />
               <Stack.Screen
                 name="ResetPasswordScreen"
                 component={ResetPasswordScreen}
