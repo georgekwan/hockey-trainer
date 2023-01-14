@@ -87,7 +87,7 @@ const HomeScreen = () => (
                 paddingVertical: WIDTH * 0.001,
               }}
             >
-              <List.Icon icon="target" color={theme.colors.primary} />
+              <List.Icon icon="puck" color={theme.colors.primary} />
               Total shots taken: 165
             </Text>
           </View>
