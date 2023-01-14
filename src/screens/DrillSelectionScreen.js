@@ -33,27 +33,36 @@ const DrillSelectionScreen = () => {
       </View>
 
       <View
-        style={
-          ({ flexDirection: 'row' },
+        style={[
+          { flexDirection: 'row' },
+          { alignItems: 'center' },
+          { justifyContent: 'space-between' },
           { margin: WIDTH * 0.005 },
-          { paddingVertical: WIDTH * 0.001 })
-        }
+        ]}
       >
-        <View>
-          <Button mode="contained" onPress={() => console.log('Pressed')}>
-            3 SEC
-          </Button>
-        </View>
-        <View>
-          <Button mode="contained" onPress={() => console.log('Pressed')}>
-            5 SEC
-          </Button>
-        </View>
-        <View>
-          <Button mode="contained" onPress={() => console.log('Pressed')}>
-            7 SEC
-          </Button>
-        </View>
+        <Button
+          mode="contained"
+          onPress={() => console.log('Pressed')}
+          style={[{ width: WIDTH * 0.3 }, { borderRadius: 10 }]}
+        >
+          3 SEC
+        </Button>
+
+        <Button
+          mode="contained"
+          onPress={() => console.log('Pressed')}
+          style={[{ width: WIDTH * 0.3 }, { borderRadius: 10 }]}
+        >
+          5 SEC
+        </Button>
+
+        <Button
+          mode="contained"
+          onPress={() => console.log('Pressed')}
+          style={[{ width: WIDTH * 0.3 }, { borderRadius: 10 }]}
+        >
+          7 SEC
+        </Button>
       </View>
       <View style={{ margin: WIDTH * 0.025 }}>
         <Button
