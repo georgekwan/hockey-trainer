@@ -31,7 +31,14 @@ const DrillSelectionScreen = () => {
           SELECT PATTERN
         </Text>
       </View>
-      <View>
+      <View
+        style={[
+          { flexDirection: 'row' },
+          { alignItems: 'center' },
+          { justifyContent: 'space-between' },
+          { margin: WIDTH * 0.015 },
+        ]}
+      >
         <Button
           mode="contained"
           onPress={() => console.log('Pressed')}
@@ -41,6 +48,8 @@ const DrillSelectionScreen = () => {
             { alignItems: 'center' },
             { justifyContent: 'center' },
             { borderRadius: 10 },
+            { padding: 5 },
+            { margin: 5 },
           ]}
         >
           Around the World
@@ -54,6 +63,8 @@ const DrillSelectionScreen = () => {
             { alignItems: 'center' },
             { justifyContent: 'center' },
             { borderRadius: 10 },
+            { padding: 5 },
+            { margin: 5 },
           ]}
         >
           Pick’n Corners
@@ -67,6 +78,8 @@ const DrillSelectionScreen = () => {
             { alignItems: 'center' },
             { justifyContent: 'center' },
             { borderRadius: 10 },
+            { padding: 5 },
+            { margin: 5 },
           ]}
         >
           Up Down
@@ -80,6 +93,8 @@ const DrillSelectionScreen = () => {
             { alignItems: 'center' },
             { justifyContent: 'center' },
             { borderRadius: 10 },
+            { padding: 5 },
+            { margin: 5 },
           ]}
         >
           Downtown
@@ -93,6 +108,8 @@ const DrillSelectionScreen = () => {
             { alignItems: 'center' },
             { justifyContent: 'center' },
             { borderRadius: 10 },
+            { padding: 5 },
+            { margin: 5 },
           ]}
         >
           Crash and Bang
@@ -106,6 +123,8 @@ const DrillSelectionScreen = () => {
             { alignItems: 'center' },
             { justifyContent: 'center' },
             { borderRadius: 10 },
+            { padding: 5 },
+            { margin: 5 },
           ]}
         >
           Titanic
@@ -119,6 +138,8 @@ const DrillSelectionScreen = () => {
             { alignItems: 'center' },
             { justifyContent: 'center' },
             { borderRadius: 10 },
+            { padding: 5 },
+            { margin: 5 },
           ]}
         >
           Mom’s Cookies
@@ -132,6 +153,8 @@ const DrillSelectionScreen = () => {
             { alignItems: 'center' },
             { justifyContent: 'center' },
             { borderRadius: 10 },
+            { padding: 5 },
+            { margin: 5 },
           ]}
         >
           Riding Pine
@@ -145,6 +168,8 @@ const DrillSelectionScreen = () => {
             { alignItems: 'center' },
             { justifyContent: 'center' },
             { borderRadius: 10 },
+            { padding: 5 },
+            { margin: 5 },
           ]}
         >
           Dump and Chase
@@ -158,6 +183,8 @@ const DrillSelectionScreen = () => {
             { alignItems: 'center' },
             { justifyContent: 'center' },
             { borderRadius: 10 },
+            { padding: 5 },
+            { margin: 5 },
           ]}
         >
           The Frustrating One
@@ -200,6 +227,8 @@ const DrillSelectionScreen = () => {
             { alignItems: 'center' },
             { justifyContent: 'center' },
             { borderRadius: 10 },
+            { padding: 5 },
+            { margin: 5 },
           ]}
         >
           3 SEC
@@ -214,6 +243,8 @@ const DrillSelectionScreen = () => {
             { alignItems: 'center' },
             { justifyContent: 'center' },
             { borderRadius: 10 },
+            { padding: 5 },
+            { margin: 5 },
           ]}
         >
           5 SEC
@@ -228,6 +259,8 @@ const DrillSelectionScreen = () => {
             { alignItems: 'center' },
             { justifyContent: 'center' },
             { borderRadius: 10 },
+            { padding: 5 },
+            { margin: 5 },
           ]}
         >
           7 SEC
