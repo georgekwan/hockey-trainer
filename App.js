@@ -10,6 +10,7 @@ import {
   ResetPasswordScreen,
   Dashboard,
   HomeScreen,
+  DrillSelectionScreen,
 } from './src/screens';
 import { FirebaseProvider } from './src/providers/FirebaseProvider.js';
 import { AuthProvider } from './src/providers/AuthProvider.js';
@@ -35,7 +36,16 @@ export default function App() {
                                 name='Dashboard'
                                 component={Dashboard}
                             /> */}
-              <Stack.Screen name="HomeScreen" component={HomeScreen} />
+              <Stack.Screen
+                name="HomeScreen"
+                component={HomeScreen}
+                navigationKey="HomeScreen"
+              />
+              {/* <Stack.Screen
+                name="DrillSelectionScreen"
+                component={DrillSelectionScreen}
+                navigationKey="DrillSelectionScreen"
+              /> */}
               <Stack.Screen
                 name="ResetPasswordScreen"
                 component={ResetPasswordScreen}
