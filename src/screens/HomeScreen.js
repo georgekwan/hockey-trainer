@@ -1,10 +1,10 @@
-import * as React from 'react';
-import { Dimensions, StyleSheet, View } from 'react-native';
-import { Avatar, Card, Text, List } from 'react-native-paper';
-import { theme } from '../core/theme';
+import * as React from "react";
+import { Dimensions, StyleSheet, View } from "react-native";
+import { Avatar, Card, Text, List } from "react-native-paper";
+import { theme } from "../core/theme";
 
-const WIDTH = Dimensions.get('screen').width;
-const HEIGHT = Dimensions.get('screen').height;
+const WIDTH = Dimensions.get("screen").width;
+const HEIGHT = Dimensions.get("screen").height;
 
 const HomeScreen = () => (
   <View style={styles.container}>
@@ -15,7 +15,7 @@ const HomeScreen = () => (
             <Text
               style={{
                 fontSize: WIDTH * 0.08,
-                fontWeight: 'bold',
+                fontWeight: "bold",
                 paddingLeft: 5,
                 paddingVertical: WIDTH * 0.02,
               }}
@@ -23,7 +23,7 @@ const HomeScreen = () => (
               Welcome, Josh!
             </Text>
           </View>
-          <View style={{ flexDirection: 'row' }}>
+          <View style={{ flexDirection: "row" }}>
             <Avatar.Icon size={100} icon="face-man-shimmer" />
             <View
               style={{
@@ -33,7 +33,7 @@ const HomeScreen = () => (
               <Text
                 style={{
                   fontSize: WIDTH * 0.08,
-                  fontWeight: '800',
+                  fontWeight: "800",
                   paddingLeft: 5,
                 }}
               >
@@ -42,7 +42,7 @@ const HomeScreen = () => (
               <Text
                 style={{
                   fontSize: WIDTH * 0.05,
-                  fontWeight: '500',
+                  fontWeight: "500",
                   paddingLeft: 5,
                   paddingVertical: WIDTH * 0.02,
                 }}
@@ -53,15 +53,15 @@ const HomeScreen = () => (
           </View>
           <View
             style={
-              ({ flexDirection: 'column' },
-              { justifyContent: 'space-around' },
+              ({ flexDirection: "column" },
+              { justifyContent: "space-around" },
               { margin: WIDTH * 0.005 })
             }
           >
             <Text
               style={{
                 fontSize: WIDTH * 0.08,
-                fontWeight: '800',
+                fontWeight: "800",
                 paddingLeft: 5,
                 paddingVertical: WIDTH * 0.02,
               }}
@@ -71,7 +71,7 @@ const HomeScreen = () => (
             <Text
               style={{
                 fontSize: WIDTH * 0.05,
-                fontWeight: '500',
+                fontWeight: "500",
                 paddingLeft: 5,
                 paddingVertical: WIDTH * 0.001,
               }}
@@ -82,7 +82,7 @@ const HomeScreen = () => (
             <Text
               style={{
                 fontSize: WIDTH * 0.05,
-                fontWeight: '500',
+                fontWeight: "500",
                 paddingLeft: 5,
                 paddingVertical: WIDTH * 0.001,
               }}
@@ -93,15 +93,15 @@ const HomeScreen = () => (
           </View>
           <View
             style={
-              ({ flexDirection: 'column' },
-              { justifyContent: 'space-around' },
+              ({ flexDirection: "column" },
+              { justifyContent: "space-around" },
               { margin: WIDTH * 0.005 })
             }
           >
             <Text
               style={{
                 fontSize: WIDTH * 0.05,
-                fontWeight: '800',
+                fontWeight: "800",
                 // paddingLeft: 5,
                 paddingVertical: WIDTH * 0.02,
               }}
@@ -111,7 +111,7 @@ const HomeScreen = () => (
             <Text
               style={{
                 fontSize: WIDTH * 0.05,
-                fontWeight: '500',
+                fontWeight: "500",
                 // paddingLeft: 5,
                 paddingVertical: WIDTH * 0.001,
               }}
@@ -130,8 +130,8 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
-  card: { width: '100%', height: '50%', borderColor: 'red', borderWidth: 5 },
+  card: { width: "100%", height: "50%", borderColor: "red", borderWidth: 5 },
 });

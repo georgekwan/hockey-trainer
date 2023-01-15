@@ -1,113 +1,462 @@
 {
   "drillPatterns": [
     {
-      "id": "1001",
-      "name": "aroundTheWorld",
+      "id": "5-01",
+      "name": "Around The World",
+      "targetType": "5 Hole",
 
-      "difficulty": [
-        {
-          "levelId": "101",
-          "levelName": "beginner",
-          "sequence": [
-            "topLeft",
-            "topRight",
-            "bottomRight",
-            "bottomCenter",
-            "bottomLeft"
-          ]
-        },
-        {
-          "levelId": "102",
-          "levelName": "intermediate",
-          "sequence": [
-            "topLeft",
-            "topRight",
-            "bottomRight",
-            "bottomCenter",
-            "bottomLeft",
-            "topLeft",
-            "topRight",
-            "bottomRight",
-            "bottomCenter",
-            "bottomLeft"
-          ]
-        },
-        {
-          "levelId": "103",
-          "levelName": "advanced",
-          "sequence": [
-            "topLeft",
-            "topRight",
-            "bottomRight",
-            "bottomCenter",
-            "bottomLeft",
-            "topLeft",
-            "topRight",
-            "bottomRight",
-            "bottomCenter",
-            "bottomLeft",
-            "topLeft",
-            "topRight",
-            "bottomRight",
-            "bottomCenter",
-            "bottomLeft"
-          ]
-        }
+      "sequence": [
+        "topLeft",
+        "topRight",
+        "bottomRight",
+        "bottomLeft",
+        "fiveHole",
+        "fiveHole",
+        "bottomLeft",
+        "bottomRight",
+        "topRight",
+        "topLeft",
+        "topLeft",
+        "topRight",
+        "bottomRight",
+        "bottomLeft",
+        "fiveHole"
       ]
     },
     {
-      "id": "1002",
-      "name": "aroundTheWorldReverse",
+      "id": "11-01",
+      "name": "Around The World",
+      "targetType": "11 Hole",
 
-      "difficulty": [
-        {
-          "levelId": "101",
-          "levelName": "beginner",
-          "sequence": [
-            "bottomLeft",
-            "bottomCenter",
-            "bottomRight",
-            "topRight",
-            "topLeft"
-          ]
-        },
-        {
-          "levelId": "102",
-          "levelName": "intermediate",
-          "sequence": [
-            "bottomLeft",
-            "bottomCenter",
-            "bottomRight",
-            "topRight",
-            "topLeft",
-            "bottomLeft",
-            "bottomCenter",
-            "bottomRight",
-            "topRight",
-            "topLeft"
-          ]
-        },
-        {
-          "levelId": "103",
-          "levelName": "advanced",
-          "sequence": [
-            "bottomLeft",
-            "bottomCenter",
-            "bottomRight",
-            "topRight",
-            "topLeft",
-            "bottomLeft",
-            "bottomCenter",
-            "bottomRight",
-            "topRight",
-            "topLeft",
-            "bottomLeft",
-            "bottomCenter",
-            "bottomRight",
-            "topRight",
-            "topLeft"
-          ]
-        }
+      "sequence": [
+        "topLeft",
+        "leftShoulder",
+        "rightShoulder",
+        "topRight",
+        "middleRight",
+        "bottomRight",
+        "underGlove",
+        "fiveHole",
+        "underBlocker",
+        "bottomLeft",
+        "middleLeft",
+        "topLeft",
+        "topRight",
+        "bottomRight",
+        "fiveHole"
+      ]
+    },
+
+    {
+      "id": "5-02",
+      "name": "Pick N Corners",
+      "targetType": "5 Hole",
+
+      "sequence": [
+        "topLeft",
+        "topLeft",
+        "bottomLeft",
+        "topRight",
+        "topLeft",
+        "bottomRight",
+        "bottomLeft",
+        "fiveHole",
+        "topRight",
+        "bottomRight",
+        "topRight",
+        "bottomLeft",
+        "bottomRight",
+        "topRight",
+        "topRight"
+      ]
+    },
+    {
+      "id": "11-02",
+      "name": "Pick N Corners",
+      "targetType": "11 Hole",
+
+      "sequence": [
+        "topLeft",
+        "bottomRight",
+        "topRight",
+        "bottomLeft",
+        "rightShoulder",
+        "middleLeft",
+        "leftShoulder",
+        "middleRight",
+        "fiveHole",
+        "topLeft",
+        "topRight",
+        "topLeft",
+        "bottomRight",
+        "topRight",
+        "bottomLeft"
+      ]
+    },
+    {
+      "id": "5-03",
+      "name": "Up Down",
+      "targetType": "5 Hole",
+
+      "sequence": [
+        "topLeft",
+        "bottomLeft",
+        "topRight",
+        "bottomRight",
+        "topLeft",
+        "bottomRight",
+        "topRight",
+        "bottomLeft",
+        "topLeft",
+        "bottomLeft",
+        "topRight",
+        "bottomRight",
+        "topRight",
+        "bottomLeft",
+        "fiveHole"
+      ]
+    },
+    {
+      "id": "11-03",
+      "name": "Up Down",
+      "targetType": "11 Hole",
+      "sequence": [
+        "rightShoulder",
+        "bottomRight",
+        "leftShoulder",
+        "bottomRight",
+        "topRight",
+        "bottomLeft",
+        "topLeft",
+        "bottomLeft",
+        "topLeft",
+        "bottomRight",
+        "rightShoulder",
+        "bottomRight",
+        "leftShoulder",
+        "bottomLeft",
+        "topRight"
+      ]
+    },
+    {
+      "id": "5-04",
+      "name": "Downtown",
+      "targetType": "5 Hole",
+
+      "sequence": [
+        "bottomRight",
+        "topRight",
+        "bottomLeft",
+        "topLeft",
+        "bottomLeft",
+        "topLeft",
+        "BottomRight",
+        "topLeft",
+        "bottomRight",
+        "topRight",
+        "bottomLeft",
+        "topRight",
+        "bottomLeft",
+        "topLeft",
+        "bottomLeft"
+      ]
+    },
+    {
+      "id": "11-04",
+      "name": "Downtown",
+      "targetType": "11 Hole",
+      "sequence": [
+        "bottomRight",
+        "bottomLeft",
+        "middleLeft",
+        "middleLeft",
+        "fiveHole",
+        "middleRight",
+        "middleRight",
+        "bottomLeft",
+        "bottomRight",
+        "underGlove",
+        "fiveHole",
+        "middleLeft",
+        "middleRight",
+        "fiveHole",
+        "underBlocker"
+      ]
+    },
+    {
+      "id": "5-05",
+      "name": "Crash and Bang",
+      "targetType": "5 Hole",
+
+      "sequence": [
+        "fiveHole",
+        "fiveHole",
+        "bottomLeft",
+        "bottomRight",
+        "bottomLeft",
+        "fiveHole",
+        "topLeft",
+        "topRight",
+        "fiveHole",
+        "bottomRight",
+        "fiveHole",
+        "bottomRight",
+        "bottomRight",
+        "fiveHole",
+        "topLeft"
+      ]
+    },
+    {
+      "id": "11-05",
+      "name": "Crash and Bang",
+      "targetType": "11 Hole",
+
+      "sequence": [
+        "fiveHole",
+        "fiveHole",
+        "bottomLeft",
+        "bottomRight",
+        "bottomLeft",
+        "underGlove",
+        "topLeft",
+        "topRight",
+        "underBlocker",
+        "bottomRight",
+        "fiveHole",
+        "rightShoulder",
+        "bottomRight",
+        "fiveHole",
+        "topLeft"
+      ]
+    },
+    {
+      "id": "5-06",
+      "name": "Titanic",
+      "targetType": "5 Hole",
+
+      "sequence": [
+        "bottomLeft",
+        "bottomLeft",
+        "bottomRight",
+        "bottomLeft",
+        "fiveHole",
+        "topRight",
+        "bottomLeft",
+        "bottomRight",
+        "fiveHole",
+        "fiveHole",
+        "bottomLeft",
+        "topLeft",
+        "fiveHole",
+        "bottomRight",
+        "BottomRight"
+      ]
+    },
+    {
+      "id": "11-06",
+      "name": "Titanic",
+      "targetType": "11 Hole",
+
+      "sequence": [
+        "bottomLeft",
+        "bottomRight",
+        "underBlocker",
+        "middleRight",
+        "underGlove",
+        "middleLeft",
+        "fiveHole",
+        "fiveHole",
+        "bottomLeft",
+        "middleLeft",
+        "middleRight",
+        "underGlove",
+        "middleLeft",
+        "bottomRight",
+        "bottomLeft"
+      ]
+    },
+    {
+      "id": "5-07",
+      "name": "Mom's Cookies",
+      "targetType": "5 Hole",
+
+      "sequence": [
+        "topLeft",
+        "topRight",
+        "topRight",
+        "topRight",
+        "topLeft",
+        "topRight",
+        "fiveHole",
+        "topLeft",
+        "topLeft",
+        "bottomRight",
+        "topRight",
+        "topLeft",
+        "topLeft",
+        "bottomLeft",
+        "topRight"
+      ]
+    },
+    {
+      "id": "11-07",
+      "name": "Mom's Cookies",
+      "targetType": "11 Hole",
+
+      "sequence": [
+        "topLeft",
+        "topRight",
+        "topRight",
+        "leftShoulder",
+        "topLeft",
+        "middleRight",
+        "middleLeft",
+        "rightShoulder",
+        "leftShoulder",
+        "topRight",
+        "underBlocker",
+        "topLeft",
+        "middleLeft",
+        "middleRight",
+        "underBlocker"
+      ]
+    },
+    {
+      "id": "5-08",
+      "name": "Riding Pine",
+      "targetType": "5 Hole",
+
+      "sequence": [
+        "bottomLeft",
+        "fiveHole",
+        "topRight",
+        "topRight",
+        "bottomRight",
+        "fiveHole",
+        "topRight",
+        "topLeft",
+        "bottomRight",
+        "bottomLeft",
+        "topLeft",
+        "fiveHole",
+        "bottomLeft",
+        "topRight",
+        "topRight"
+      ]
+    },
+    {
+      "id": "11-08",
+      "name": "Riding Pine",
+      "targetType": "11 Hole",
+
+      "sequence": [
+        "fiveHole",
+        "bottomLeft",
+        "middleRight",
+        "topLeft",
+        "middleLeft",
+        "bottomRight",
+        "rightShoulder",
+        "underBlocker",
+        "underBlocker",
+        "middleLeft",
+        "fiveHole",
+        "middleRight",
+        "bottomLeft",
+        "topRight",
+        "topLeft"
+      ]
+    },
+    {
+      "id": "5-09",
+      "name": "Dump and Chase",
+      "targetType": "5 Hole",
+
+      "sequence": [
+        "bottomLeft",
+        "bottomLeft",
+        "fiveHole",
+        "bottomRight",
+        "bottomRight",
+        "fiveHole",
+        "topLeft",
+        "bottomRight",
+        "topLeft",
+        "bottomRight",
+        "topRight",
+        "fiveHole",
+        "bottomLeft",
+        "bottomLeft",
+        "topLeft"
+      ]
+    },
+    {
+      "id": "11-09",
+      "name": "Dump and Chase",
+      "targetType": "11 Hole",
+
+      "sequence": [
+        "bottomLeft",
+        "bottomLeft",
+        "fiveHole",
+        "bottomRight",
+        "underBlocker",
+        "underGlove",
+        "middleRight",
+        "underBlocker",
+        "topLeft",
+        "rightShoulder",
+        "leftShoulder",
+        "middleLeft",
+        "underGlove",
+        "bottomLeft",
+        "fiveHole"
+      ]
+    },
+    {
+      "id": "5-10",
+      "name": "The Frustrating One",
+      "targetType": "5 Hole",
+
+      "sequence": [
+        "fiveHole",
+        "fiveHole",
+        "fiveHole",
+        "fiveHole",
+        "fiveHole",
+        "topLeft",
+        "fiveHole",
+        "fiveHole",
+        "topRight",
+        "bottomLeft",
+        "fiveHole",
+        "fiveHole",
+        "bottomRight",
+        "fiveHole",
+        "bottomRight"
+      ]
+    },
+    {
+      "id": "11-10",
+      "name": "The Frustrating One",
+      "targetType": "11 Hole",
+
+      "sequence": [
+        "fiveHole",
+        "fiveHole",
+        "fiveHole",
+        "fiveHole",
+        "fiveHole",
+        "topLeft",
+        "fiveHole",
+        "underGlove",
+        "fiveHole",
+        "fiveHole",
+        "underBlocker",
+        "fiveHole",
+        "topRight",
+        "fiveHole",
+        "fiveHole"
       ]
     }
   ]
