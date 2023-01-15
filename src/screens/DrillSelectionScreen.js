@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { Dimensions, StyleSheet, Text, View } from 'react-native';
+import {
+  Dimensions,
+  Image,
+  StyleSheet,
+  ScrollView,
+  Text,
+  View,
+} from 'react-native';
 import { Avatar, Button, List } from 'react-native-paper';
 
 const WIDTH = Dimensions.get('screen').width;
@@ -7,9 +14,22 @@ const HEIGHT = Dimensions.get('screen').height;
 
 const DrillSelectionScreen = () => {
   return (
-    <View style={[{ flex: 1 }, { backgroundColor: 'white' }]}>
+    <View style={({ flex: 1 }, { backgroundColor: 'white' })}>
       <View style={[{ alignItems: 'center' }, { justifyContent: 'center' }]}>
         <Avatar.Icon size={150} icon="hockey-sticks" />
+      </View>
+
+      <View
+        style={[
+          { alignItems: 'center' },
+          { justifyContent: 'center' },
+          { marginTop: HEIGHT * 0.05 },
+        ]}
+      >
+        <Image
+          source={require('../assets/harpia-logo.png')}
+          style={{ resizeMode: 'contain', height: HEIGHT * 0.085 }}
+        />
       </View>
 
       <View
@@ -23,7 +43,7 @@ const DrillSelectionScreen = () => {
           style={{
             fontSize: WIDTH * 0.08,
             fontWeight: '800',
-
+            textAlign: 'center',
             paddingVertical: WIDTH * 0.02,
           }}
         >
@@ -31,85 +51,93 @@ const DrillSelectionScreen = () => {
           SELECT PATTERN
         </Text>
       </View>
-      <View
+      <ScrollView
         style={[
-          { flexDirection: 'row' },
-          { alignItems: 'center' },
-          { justifyContent: 'spacing-between' },
-          { margin: WIDTH * 0.015 },
+          { marginHorizontal: 5 },
+          { borderColor: 'red' },
+          { borderWidth: 5 },
         ]}
       >
-        <Button
-          mode="contained"
-          onPress={() => console.log('Pressed')}
-          style={styles.patternButton}
+        <View
+          style={[
+            { flexDirection: 'row' },
+            { alignItems: 'center' },
+            { justifyContent: 'spacing-between' },
+            { margin: WIDTH * 0.015 },
+          ]}
         >
-          Around the World
-        </Button>
-        <Button
-          mode="contained"
-          onPress={() => console.log('Pressed')}
-          style={styles.patternButton}
-        >
-          Pick’n Corners
-        </Button>
-        <Button
-          mode="contained"
-          onPress={() => console.log('Pressed')}
-          style={styles.patternButton}
-        >
-          Up Down
-        </Button>
-        <Button
-          mode="contained"
-          onPress={() => console.log('Pressed')}
-          style={styles.patternButton}
-        >
-          Downtown
-        </Button>
-        <Button
-          mode="contained"
-          onPress={() => console.log('Pressed')}
-          style={styles.patternButton}
-        >
-          Crash and Bang
-        </Button>
-        <Button
-          mode="contained"
-          onPress={() => console.log('Pressed')}
-          style={styles.patternButton}
-        >
-          Titanic
-        </Button>
-        <Button
-          mode="contained"
-          onPress={() => console.log('Pressed')}
-          style={styles.patternButton}
-        >
-          Mom’s Cookies
-        </Button>
-        <Button
-          mode="contained"
-          onPress={() => console.log('Pressed')}
-          style={styles.patternButton}
-        >
-          Riding Pine
-        </Button>
-        <Button
-          mode="contained"
-          onPress={() => console.log('Pressed')}
-          style={styles.patternButton}
-        >
-          Dump and Chase
-        </Button>
-        <Button
-          mode="contained"
-          onPress={() => console.log('Pressed')}
-          style={styles.patternButton}
-        >
-          The Frustrating One
-        </Button>
-      </View>
+          <Button
+            mode="contained"
+            onPress={() => console.log('Around the World')}
+            style={styles.patternButton}
+          >
+            Around the World
+          </Button>
+          <Button
+            mode="contained"
+            onPress={() => console.log('Pick’n Corners')}
+            style={styles.patternButton}
+          >
+            Pick’n Corners
+          </Button>
+          <Button
+            mode="contained"
+            onPress={() => console.log('Up Down')}
+            style={styles.patternButton}
+          >
+            Up Down
+          </Button>
+          <Button
+            mode="contained"
+            onPress={() => console.log('Downtown')}
+            style={styles.patternButton}
+          >
+            Downtown
+          </Button>
+          <Button
+            mode="contained"
+            onPress={() => console.log('Crash and Bang')}
+            style={styles.patternButton}
+          >
+            Crash and Bang
+          </Button>
+          <Button
+            mode="contained"
+            onPress={() => console.log('Titanic')}
+            style={styles.patternButton}
+          >
+            Titanic
+          </Button>
+          <Button
+            mode="contained"
+            onPress={() => console.log('Mom’s Cookies')}
+            style={styles.patternButton}
+          >
+            Mom’s Cookies
+          </Button>
+          <Button
+            mode="contained"
+            onPress={() => console.log('Riding Pine')}
+            style={styles.patternButton}
+          >
+            Riding Pine
+          </Button>
+          <Button
+            mode="contained"
+            onPress={() => console.log('Dump and Chase')}
+            style={styles.patternButton}
+          >
+            Dump and Chase
+          </Button>
+          <Button
+            mode="contained"
+            onPress={() => console.log('The Frustrating One')}
+            style={styles.patternButton}
+          >
+            The Frustrating One
+          </Button>
+        </View>
+      </ScrollView>
       <View
         style={[
           { flexDirection: 'row' },
@@ -121,7 +149,7 @@ const DrillSelectionScreen = () => {
           style={{
             fontSize: WIDTH * 0.08,
             fontWeight: '800',
-
+            textAlign: 'center',
             paddingVertical: WIDTH * 0.02,
           }}
         >
@@ -136,11 +164,13 @@ const DrillSelectionScreen = () => {
           { alignItems: 'center' },
           { justifyContent: 'space-between' },
           { margin: WIDTH * 0.015 },
+          { borderColor: 'red' },
+          { borderWidth: 5 },
         ]}
       >
         <Button
           mode="contained"
-          onPress={() => console.log('Pressed')}
+          onPress={() => console.log('3 SEC')}
           style={[
             { width: WIDTH * 0.3 },
             { height: HEIGHT * 0.08 },
@@ -156,7 +186,7 @@ const DrillSelectionScreen = () => {
 
         <Button
           mode="contained"
-          onPress={() => console.log('Pressed')}
+          onPress={() => console.log('5 SEC')}
           style={[
             { width: WIDTH * 0.3 },
             { height: HEIGHT * 0.08 },
@@ -172,7 +202,7 @@ const DrillSelectionScreen = () => {
 
         <Button
           mode="contained"
-          onPress={() => console.log('Pressed')}
+          onPress={() => console.log('7 SEC')}
           style={[
             { width: WIDTH * 0.3 },
             { height: HEIGHT * 0.08 },
@@ -196,7 +226,7 @@ const DrillSelectionScreen = () => {
         >
           <Button
             mode="contained"
-            onPress={() => console.log('Pressed')}
+            onPress={() => console.log('TRAIN NOW')}
             style={[
               { width: WIDTH * 0.8 },
               { height: HEIGHT * 0.06 },
@@ -232,5 +262,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 5,
     margin: 5,
+    buttonColor: 'blue',
   },
 });
