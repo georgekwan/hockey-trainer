@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Dimensions, StyleSheet, Text, View } from 'react-native';
-import { Button, List } from 'react-native-paper';
+import { Avatar, Button, List } from 'react-native-paper';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
@@ -8,8 +8,28 @@ const HEIGHT = Dimensions.get('screen').height;
 const DrillSelectionScreen = () => {
   return (
     <View>
-      <View>
-        <Text>DrillSelectionScreen</Text>
+      <View style={[{ alignItems: 'center' }, { justifyContent: 'center' }]}>
+        <Avatar.Icon size={150} icon="hockey-sticks" />
+      </View>
+
+      <View
+        style={[
+          { flexDirection: 'row' },
+          { alignItems: 'center' },
+          { justifyContent: 'center' },
+        ]}
+      >
+        <Text
+          style={{
+            fontSize: WIDTH * 0.08,
+            fontWeight: '800',
+
+            paddingVertical: WIDTH * 0.02,
+          }}
+        >
+          <List.Icon icon="hockey-puck" color="blue" />
+          SELECT PATTERN
+        </Text>
       </View>
       <View>
         <View>
@@ -47,7 +67,7 @@ const DrillSelectionScreen = () => {
           }}
         >
           <List.Icon icon="timer" color="blue" />
-          SELECT PATTERN
+          SELECT TIMEOUT
         </Text>
       </View>
 
