@@ -7,7 +7,7 @@ const HEIGHT = Dimensions.get('screen').height;
 
 const DrillSelectionScreen = () => {
   return (
-    <View>
+    <View style={[{ flex: 1 }, { backgroundColor: 'white' }]}>
       <View style={[{ alignItems: 'center' }, { justifyContent: 'center' }]}>
         <Avatar.Icon size={150} icon="hockey-sticks" />
       </View>
