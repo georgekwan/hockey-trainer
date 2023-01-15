@@ -35,157 +35,77 @@ const DrillSelectionScreen = () => {
         style={[
           { flexDirection: 'row' },
           { alignItems: 'center' },
-          { justifyContent: 'space-between' },
+          { justifyContent: 'spacing-between' },
           { margin: WIDTH * 0.015 },
         ]}
       >
         <Button
           mode="contained"
           onPress={() => console.log('Pressed')}
-          style={[
-            { width: WIDTH * 0.3 },
-            { height: WIDTH * 0.3 },
-            { alignItems: 'center' },
-            { justifyContent: 'center' },
-            { borderRadius: 10 },
-            { padding: 5 },
-            { margin: 5 },
-          ]}
+          style={styles.patternButton}
         >
           Around the World
         </Button>
         <Button
           mode="contained"
           onPress={() => console.log('Pressed')}
-          style={[
-            { width: WIDTH * 0.3 },
-            { height: WIDTH * 0.3 },
-            { alignItems: 'center' },
-            { justifyContent: 'center' },
-            { borderRadius: 10 },
-            { padding: 5 },
-            { margin: 5 },
-          ]}
+          style={styles.patternButton}
         >
           Pick’n Corners
         </Button>
         <Button
           mode="contained"
           onPress={() => console.log('Pressed')}
-          style={[
-            { width: WIDTH * 0.3 },
-            { height: WIDTH * 0.3 },
-            { alignItems: 'center' },
-            { justifyContent: 'center' },
-            { borderRadius: 10 },
-            { padding: 5 },
-            { margin: 5 },
-          ]}
+          style={styles.patternButton}
         >
           Up Down
         </Button>
         <Button
           mode="contained"
           onPress={() => console.log('Pressed')}
-          style={[
-            { width: WIDTH * 0.3 },
-            { height: WIDTH * 0.3 },
-            { alignItems: 'center' },
-            { justifyContent: 'center' },
-            { borderRadius: 10 },
-            { padding: 5 },
-            { margin: 5 },
-          ]}
+          style={styles.patternButton}
         >
           Downtown
         </Button>
         <Button
           mode="contained"
           onPress={() => console.log('Pressed')}
-          style={[
-            { width: WIDTH * 0.3 },
-            { height: WIDTH * 0.3 },
-            { alignItems: 'center' },
-            { justifyContent: 'center' },
-            { borderRadius: 10 },
-            { padding: 5 },
-            { margin: 5 },
-          ]}
+          style={styles.patternButton}
         >
           Crash and Bang
         </Button>
         <Button
           mode="contained"
           onPress={() => console.log('Pressed')}
-          style={[
-            { width: WIDTH * 0.3 },
-            { height: WIDTH * 0.3 },
-            { alignItems: 'center' },
-            { justifyContent: 'center' },
-            { borderRadius: 10 },
-            { padding: 5 },
-            { margin: 5 },
-          ]}
+          style={styles.patternButton}
         >
           Titanic
         </Button>
         <Button
           mode="contained"
           onPress={() => console.log('Pressed')}
-          style={[
-            { width: WIDTH * 0.3 },
-            { height: WIDTH * 0.3 },
-            { alignItems: 'center' },
-            { justifyContent: 'center' },
-            { borderRadius: 10 },
-            { padding: 5 },
-            { margin: 5 },
-          ]}
+          style={styles.patternButton}
         >
           Mom’s Cookies
         </Button>
         <Button
           mode="contained"
           onPress={() => console.log('Pressed')}
-          style={[
-            { width: WIDTH * 0.3 },
-            { height: WIDTH * 0.3 },
-            { alignItems: 'center' },
-            { justifyContent: 'center' },
-            { borderRadius: 10 },
-            { padding: 5 },
-            { margin: 5 },
-          ]}
+          style={styles.patternButton}
         >
           Riding Pine
         </Button>
         <Button
           mode="contained"
           onPress={() => console.log('Pressed')}
-          style={[
-            { width: WIDTH * 0.3 },
-            { height: WIDTH * 0.3 },
-            { alignItems: 'center' },
-            { justifyContent: 'center' },
-            { borderRadius: 10 },
-            { padding: 5 },
-            { margin: 5 },
-          ]}
+          style={styles.patternButton}
         >
           Dump and Chase
         </Button>
         <Button
           mode="contained"
           onPress={() => console.log('Pressed')}
-          style={[
-            { width: WIDTH * 0.3 },
-            { height: WIDTH * 0.3 },
-            { alignItems: 'center' },
-            { justifyContent: 'center' },
-            { borderRadius: 10 },
-            { padding: 5 },
-            { margin: 5 },
-          ]}
+          style={styles.patternButton}
         >
           The Frustrating One
         </Button>
@@ -303,5 +223,14 @@ const styles = StyleSheet.create({
   fontStyles: {
     fontWeight: '800',
     fontSize: 24,
+  },
+  patternButton: {
+    width: WIDTH * 0.3,
+    height: WIDTH * 0.3,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 10,
+    padding: 5,
+    margin: 5,
   },
 });
