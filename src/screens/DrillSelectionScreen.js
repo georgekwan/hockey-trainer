@@ -32,24 +32,136 @@ const DrillSelectionScreen = () => {
         </Text>
       </View>
       <View>
-        <View>
-          <Text>Drill One</Text>
-        </View>
-        <View>
-          <Text>Drill Two</Text>
-        </View>
-        <View>
-          <Text>Drill Three</Text>
-        </View>
-        <View>
-          <Text>Drill Four</Text>
-        </View>
-        <View>
-          <Text>Drill Fire</Text>
-        </View>
-        <View>
-          <Text>Drill Six</Text>
-        </View>
+        <Button
+          mode="contained"
+          onPress={() => console.log('Pressed')}
+          style={[
+            { width: WIDTH * 0.3 },
+            { height: WIDTH * 0.3 },
+            { alignItems: 'center' },
+            { justifyContent: 'center' },
+            { borderRadius: 10 },
+          ]}
+        >
+          Around the World
+        </Button>
+        <Button
+          mode="contained"
+          onPress={() => console.log('Pressed')}
+          style={[
+            { width: WIDTH * 0.3 },
+            { height: WIDTH * 0.3 },
+            { alignItems: 'center' },
+            { justifyContent: 'center' },
+            { borderRadius: 10 },
+          ]}
+        >
+          Pick’n Corners
+        </Button>
+        <Button
+          mode="contained"
+          onPress={() => console.log('Pressed')}
+          style={[
+            { width: WIDTH * 0.3 },
+            { height: WIDTH * 0.3 },
+            { alignItems: 'center' },
+            { justifyContent: 'center' },
+            { borderRadius: 10 },
+          ]}
+        >
+          Up Down
+        </Button>
+        <Button
+          mode="contained"
+          onPress={() => console.log('Pressed')}
+          style={[
+            { width: WIDTH * 0.3 },
+            { height: WIDTH * 0.3 },
+            { alignItems: 'center' },
+            { justifyContent: 'center' },
+            { borderRadius: 10 },
+          ]}
+        >
+          Downtown
+        </Button>
+        <Button
+          mode="contained"
+          onPress={() => console.log('Pressed')}
+          style={[
+            { width: WIDTH * 0.3 },
+            { height: WIDTH * 0.3 },
+            { alignItems: 'center' },
+            { justifyContent: 'center' },
+            { borderRadius: 10 },
+          ]}
+        >
+          Crash and Bang
+        </Button>
+        <Button
+          mode="contained"
+          onPress={() => console.log('Pressed')}
+          style={[
+            { width: WIDTH * 0.3 },
+            { height: WIDTH * 0.3 },
+            { alignItems: 'center' },
+            { justifyContent: 'center' },
+            { borderRadius: 10 },
+          ]}
+        >
+          Titanic
+        </Button>
+        <Button
+          mode="contained"
+          onPress={() => console.log('Pressed')}
+          style={[
+            { width: WIDTH * 0.3 },
+            { height: WIDTH * 0.3 },
+            { alignItems: 'center' },
+            { justifyContent: 'center' },
+            { borderRadius: 10 },
+          ]}
+        >
+          Mom’s Cookies
+        </Button>
+        <Button
+          mode="contained"
+          onPress={() => console.log('Pressed')}
+          style={[
+            { width: WIDTH * 0.3 },
+            { height: WIDTH * 0.3 },
+            { alignItems: 'center' },
+            { justifyContent: 'center' },
+            { borderRadius: 10 },
+          ]}
+        >
+          Riding Pine
+        </Button>
+        <Button
+          mode="contained"
+          onPress={() => console.log('Pressed')}
+          style={[
+            { width: WIDTH * 0.3 },
+            { height: WIDTH * 0.3 },
+            { alignItems: 'center' },
+            { justifyContent: 'center' },
+            { borderRadius: 10 },
+          ]}
+        >
+          Dump and Chase
+        </Button>
+        <Button
+          mode="contained"
+          onPress={() => console.log('Pressed')}
+          style={[
+            { width: WIDTH * 0.3 },
+            { height: WIDTH * 0.3 },
+            { alignItems: 'center' },
+            { justifyContent: 'center' },
+            { borderRadius: 10 },
+          ]}
+        >
+          The Frustrating One
+        </Button>
       </View>
       <View
         style={[
