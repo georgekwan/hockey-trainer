@@ -23,24 +23,16 @@ export default function App() {
             <AuthProvider>
                 <Provider theme={theme}>
                     <NavigationContainer>
-                        {/* TODO - revert code to the commented out code below */}
                         <Stack.Navigator
-                            initialRouteName='UserProfile'
+                            initialRouteName='StartScreen'
                             screenOptions={{
                                 headerShown: false,
                             }}
                         >
                             <Stack.Screen
-                                name='UserProfile'
-                                component={UserProfile}
+                                name='StartScreen'
+                                component={StartScreen}
                             />
-                            {/* <Stack.Navigator
-              initialRouteName="StartScreen"
-              screenOptions={{
-                headerShown: false,
-              }}
-            >
-              <Stack.Screen name="StartScreen" component={StartScreen} /> */}
                             <Stack.Screen
                                 name='LoginScreen'
                                 component={LoginScreen}
