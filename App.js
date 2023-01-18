@@ -14,25 +14,35 @@ import {
 } from './src/screens';
 import { FirebaseProvider } from './src/providers/FirebaseProvider.js';
 import { AuthProvider } from './src/providers/AuthProvider.js';
+import { UserProfile } from './src/screens/UserProfile.js';
 
 const Stack = createStackNavigator();
 
 export default function App() {
-  return (
-    <FirebaseProvider>
-      <AuthProvider>
-        <Provider theme={theme}>
-          <NavigationContainer>
-            <Stack.Navigator
-              initialRouteName="StartScreen"
-              screenOptions={{
-                headerShown: false,
-              }}
-            >
-              <Stack.Screen name="StartScreen" component={StartScreen} />
-              <Stack.Screen name="LoginScreen" component={LoginScreen} />
-              <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
-              {/* <Stack.Screen
+    return (
+        <FirebaseProvider>
+            <AuthProvider>
+                <Provider theme={theme}>
+                    <NavigationContainer>
+                        <Stack.Navigator
+                            initialRouteName='StartScreen'
+                            screenOptions={{
+                                headerShown: false,
+                            }}
+                        >
+                            <Stack.Screen
+                                name='StartScreen'
+                                component={StartScreen}
+                            />
+                            <Stack.Screen
+                                name='LoginScreen'
+                                component={LoginScreen}
+                            />
+                            <Stack.Screen
+                                name='RegisterScreen'
+                                component={RegisterScreen}
+                            />
+                            {/* <Stack.Screen
                                 name='Dashboard'
                                 component={Dashboard}
                             /> */}
