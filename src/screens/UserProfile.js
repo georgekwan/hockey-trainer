@@ -8,8 +8,6 @@ import Button from '../components/Button.js';
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
-const optionsPerPage = [2, 3, 4];
-
 export const UserProfile = () => {
     return (
         <>
@@ -25,8 +23,8 @@ export const UserProfile = () => {
             <View
                 style={{
                     flexDirection: 'row',
-                    borderColor: 'red',
-                    borderWidth: 3,
+                    // borderColor: 'red',
+                    // borderWidth: 3,
                     marginTop: HEIGHT * 0.02,
                     marginHorizontal: WIDTH * 0.02,
                     justifyContent: 'space-between',
@@ -35,28 +33,79 @@ export const UserProfile = () => {
                 <Avatar.Icon size={90} icon='face-man-shimmer' />
                 <View
                     style={{
-                        // paddingLeft: 30,
-                        borderColor: 'red',
-                        borderWidth: 3,
+                        // borderColor: 'red',
+                        // borderWidth: 3,
+                        width: WIDTH * 0.63,
+                        flexDirection: 'column',
+                        justifyContent: 'space-around',
                     }}
                 >
-                    <Text
+                    <View
                         style={{
-                            fontSize: 15,
-                            fontWeight: '800',
-                            // paddingLeft: 5,
+                            justifyContent: 'space-between',
+                            flexDirection: 'row',
                         }}
                     >
-                        LAST TRAINING
-                    </Text>
-                    <Text
+                        <Text
+                            style={{
+                                fontSize: 20,
+                                fontWeight: '800',
+                            }}
+                        >
+                            NAME:
+                        </Text>
+                        <Text
+                            style={{
+                                fontSize: 20,
+                            }}
+                        >
+                            Josh Doe
+                        </Text>
+                    </View>
+                    <View
                         style={{
-                            fontSize: 15,
-                            // paddingLeft: 5,
+                            justifyContent: 'space-between',
+                            flexDirection: 'row',
                         }}
                     >
-                        Mom's cookies patterhlkjhjkn
-                    </Text>
+                        <Text
+                            style={{
+                                fontSize: 20,
+                                fontWeight: '800',
+                            }}
+                        >
+                            AGE:
+                        </Text>
+                        <Text
+                            style={{
+                                fontSize: 20,
+                            }}
+                        >
+                            14
+                        </Text>
+                    </View>
+                    <View
+                        style={{
+                            justifyContent: 'space-between',
+                            flexDirection: 'row',
+                        }}
+                    >
+                        <Text
+                            style={{
+                                fontSize: 20,
+                                fontWeight: '800',
+                            }}
+                        >
+                            CLAN:
+                        </Text>
+                        <Text
+                            style={{
+                                fontSize: 20,
+                            }}
+                        >
+                            The Fire Pucks
+                        </Text>
+                    </View>
                 </View>
             </View>
             <View
@@ -214,5 +263,3 @@ export const UserProfile = () => {
 };
 
 export default UserProfile;
-
-const styles = StyleSheet.create({});
