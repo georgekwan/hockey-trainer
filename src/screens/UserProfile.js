@@ -1,7 +1,9 @@
 import { Dimensions, ScrollView, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
-import { DataTable, IconButton } from 'react-native-paper';
+import { Avatar, DataTable, IconButton } from 'react-native-paper';
 import { theme } from '../core/theme.js';
+import FullLogo from '../components/FullLogo.js';
+import Button from '../components/Button.js';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
@@ -13,12 +15,74 @@ export const UserProfile = () => {
         <>
             <View
                 style={{
+                    marginTop: HEIGHT * 0.06,
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                }}
+            >
+                <FullLogo />
+            </View>
+            <View
+                style={{
+                    flexDirection: 'row',
+                    borderColor: 'red',
+                    borderWidth: 3,
+                    marginTop: HEIGHT * 0.02,
+                    marginHorizontal: WIDTH * 0.02,
+                    justifyContent: 'space-between',
+                }}
+            >
+                <Avatar.Icon size={90} icon='face-man-shimmer' />
+                <View
+                    style={{
+                        // paddingLeft: 30,
+                        borderColor: 'red',
+                        borderWidth: 3,
+                    }}
+                >
+                    <Text
+                        style={{
+                            fontSize: 15,
+                            fontWeight: '800',
+                            // paddingLeft: 5,
+                        }}
+                    >
+                        LAST TRAINING
+                    </Text>
+                    <Text
+                        style={{
+                            fontSize: 15,
+                            // paddingLeft: 5,
+                        }}
+                    >
+                        Mom's cookies patterhlkjhjkn
+                    </Text>
+                </View>
+            </View>
+            <View
+                style={{
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    marginTop: WIDTH * 0.02,
+                }}
+            >
+                <Button
+                    style={{ width: WIDTH * 0.8 }}
+                    icon='pencil'
+                    mode='contained'
+                    onPress={() => console.log('Pressed')}
+                >
+                    EDIT PROFILE / HISTORY
+                </Button>
+            </View>
+            <View
+                style={{
                     flexDirection: 'row',
                     justifyContent: 'space-between',
                     // borderColor: 'red',
                     // borderWidth: 3,
                     height: HEIGHT * 0.1,
-                    marginTop: HEIGHT * 0.3,
+                    // marginTop: HEIGHT * 0.3,
                     alignItems: 'center',
                     paddingHorizontal: WIDTH * 0.03,
                 }}
@@ -58,10 +122,19 @@ export const UserProfile = () => {
                     />
                 </View>
             </View>
-            <ScrollView style={{ paddingBottom: WIDTH * 0.8 }}>
+            <ScrollView
+                style={{
+                    marginBottom: WIDTH * 0.2,
+                    // borderColor: 'red',
+                    // borderWidth: 3,
+                    // height: HEIGHT * 0.9,
+                }}
+            >
                 <DataTable
                     style={{
                         // paddingTop: WIDTH * 0.05,
+                        // borderColor: 'red',
+                        // borderWidth: 3,
                         paddingTop: WIDTH * 0.005,
                         paddingHorizontal: WIDTH * 0.005,
                     }}
