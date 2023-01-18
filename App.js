@@ -13,7 +13,7 @@ import {
 } from './src/screens';
 import { FirebaseProvider } from './src/providers/FirebaseProvider.js';
 import { AuthProvider } from './src/providers/AuthProvider.js';
-import UserProfile from './src/screens/UserProfile.js';
+import { UserProfile } from './src/screens/UserProfile.js';
 
 const Stack = createStackNavigator();
 
@@ -23,7 +23,7 @@ export default function App() {
             <AuthProvider>
                 <Provider theme={theme}>
                     <NavigationContainer>
-                      //TODO - revert code to the commented out code below
+                        {/* TODO - revert code to the commented out code below */}
                         <Stack.Navigator
                             initialRouteName='UserProfile'
                             screenOptions={{
