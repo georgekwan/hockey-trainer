@@ -14,7 +14,6 @@ import {
 } from "./src/screens";
 import { FirebaseProvider } from "./src/providers/FirebaseProvider.js";
 import { AuthProvider } from "./src/providers/AuthProvider.js";
-import LoggedInScreen from "./src/screens/LoggedInScreen";
 
 const Stack = createStackNavigator();
 
@@ -38,9 +37,9 @@ export default function App() {
                                 component={Dashboard}
                             /> */}
               <Stack.Screen
-                name="LoggedInScreen"
-                component={LoggedInScreen}
-                navigationKey="LoggedInScreen"
+                name="NavBarContainer"
+                component={NavBarContainer}
+                navigationKey="NavBarContainer"
               />
               {/* <Stack.Screen
                 name="DrillSelectionScreen"
