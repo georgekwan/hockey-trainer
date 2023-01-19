@@ -14,7 +14,12 @@ import {
 } from './src/screens';
 import { FirebaseProvider } from './src/providers/FirebaseProvider.js';
 import { AuthProvider } from './src/providers/AuthProvider.js';
+
+import { UserProfileScreen } from './src/screens/UserProfileScreen.js';
+import { InDrillScreen } from './src/screens/InDrillScreen.js';
+
 import { NavBarContainer } from './src/components/NavBarContainer.js';
+
 
 const Stack = createStackNavigator();
 
@@ -25,15 +30,25 @@ export default function App() {
                 <Provider theme={theme}>
                     <NavigationContainer>
                         <Stack.Navigator
-                            initialRouteName='StartScreen'
+                            initialRouteName='InDrillScreen'
                             screenOptions={{
                                 headerShown: false,
                             }}
                         >
                             <Stack.Screen
+                                name='InDrillScreen'
+                                component={InDrillScreen}
+                            />
+                            {/* <Stack.Navigator
+                            initialRouteName='StartScreen'
+                            screenOptions={{
+                                headerShown: false,
+                            }}
+                        > */}
+                            {/* <Stack.Screen
                                 name='StartScreen'
                                 component={StartScreen}
-                            />
+                            /> */}
                             <Stack.Screen
                                 name='LoginScreen'
                                 component={LoginScreen}
@@ -47,9 +62,11 @@ export default function App() {
                                 component={Dashboard}
                             /> */}
                             <Stack.Screen
+
                                 name='NavBarContainer'
                                 component={NavBarContainer}
                                 navigationKey='NavBarContainer'
+
                             />
                             {/* <Stack.Screen
                 name="DrillSelectionScreen"
