@@ -86,7 +86,8 @@ const styles = StyleSheet.create({
         borderColor: 'green',
         borderWidth: 5,
         height: HEIGHT * 0.25,
-        width: WIDTH * 0.88,
+        // width: WIDTH * 0.88,
+        marginHorizontal: WIDTH * 0.02,
     },
     netTargetText: {
         borderColor: 'red',
