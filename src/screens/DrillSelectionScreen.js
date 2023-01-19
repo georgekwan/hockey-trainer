@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 import {
   Dimensions,
   Image,
@@ -6,151 +6,213 @@ import {
   ScrollView,
   Text,
   View,
-} from "react-native";
-import { Avatar, Button, List } from "react-native-paper";
+} from 'react-native';
+import { Button, List } from 'react-native-paper';
 
-const WIDTH = Dimensions.get("screen").width;
-const HEIGHT = Dimensions.get("screen").height;
+const WIDTH = Dimensions.get('screen').width;
+const HEIGHT = Dimensions.get('screen').height;
 
 const DrillSelectionScreen = () => {
-  return <Text>Hello</Text>;
   return (
-    <View style={({ flex: 1 }, { backgroundColor: "white" })}>
-      <View style={[{ alignItems: "center" }, { justifyContent: "center" }]}>
-        <Avatar.Icon size={150} icon="hockey-sticks" />
+    <View style={{ flex: 1, backgroundColor: 'white' }}>
+      <View
+        style={{
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginTop: HEIGHT * 0.05,
+        }}
+      >
+        <Image
+          source={require('./assets/harpia-logo.png')}
+          style={{ resizeMode: 'contain', height: HEIGHT * 0.085 }}
+        />
       </View>
 
       <View
-        style={[
-          { alignItems: "center" },
-          { justifyContent: "center" },
-          { marginTop: HEIGHT * 0.05 },
-        ]}
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: WIDTH * 0.95,
+        }}
       >
-        {/* <Image
-          source={require("../assets/harpia-logo.png")}
-          style={{ resizeMode: "contain", height: HEIGHT * 0.085 }}
-        /> */}
-      </View>
-
-      <View
-        style={[
-          { flexDirection: "row" },
-          { alignItems: "center" },
-          { justifyContent: "center" },
-        ]}
-      >
+        <List.Icon icon="hockey-puck" color="blue" />
         <Text
           style={{
             fontSize: WIDTH * 0.08,
-            fontWeight: "800",
-            textAlign: "center",
+            fontWeight: '800',
+            textAlign: 'center',
             paddingVertical: WIDTH * 0.02,
           }}
         >
-          <List.Icon icon="hockey-puck" color="blue" />
           SELECT PATTERN
         </Text>
       </View>
+
       <ScrollView
-        style={[
-          { marginHorizontal: 5 },
-          { borderColor: "red" },
-          { borderWidth: 5 },
-        ]}
+        persistentScrollbar={false}
+        style={{
+          marginHorizontal: 5,
+          height: HEIGHT * 0.3,
+          borderColor: 'red',
+          borderWidth: 5,
+        }}
       >
         <View
-          style={[
-            { flexDirection: "row" },
-            { alignItems: "center" },
-            { justifyContent: "spacing-between" },
-            { margin: WIDTH * 0.015 },
-          ]}
+          style={{
+            flex: 1,
+            flexDirection: 'row',
+            flexWrap: true,
+            alignItems: 'center',
+            justifyContent: 'spacing-around',
+          }}
         >
           <Button
             mode="contained"
-            onPress={() => console.log("Around the World")}
+            onPress={() => console.log('Around the World')}
             style={styles.patternButton}
           >
-            Around the World
+            <View>
+              <Text
+                style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}
+              >
+                {'Around the World'}
+              </Text>
+            </View>
           </Button>
           <Button
             mode="contained"
-            onPress={() => console.log("Pick’n Corners")}
+            onPress={() => console.log("Pick'n Corners")}
             style={styles.patternButton}
           >
-            Pick’n Corners
+            <View>
+              <Text
+                style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}
+              >
+                {"Pick'n Corners"}
+              </Text>
+            </View>
           </Button>
           <Button
             mode="contained"
-            onPress={() => console.log("Up Down")}
+            onPress={() => console.log('Up Down')}
             style={styles.patternButton}
           >
-            Up Down
+            <View>
+              <Text
+                style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}
+              >
+                {'Up Down'}
+              </Text>
+            </View>
+          </Button>
+          <Button
+            // mode="contained"
+            onPress={() => console.log('Downtown')}
+            style={styles.patternButton}
+          >
+            <View>
+              <Text
+                style={{ fontWeights: 'bold', fontSize: 14, color: 'white' }}
+              >
+                {'Downtown'}
+              </Text>
+            </View>
           </Button>
           <Button
             mode="contained"
-            onPress={() => console.log("Downtown")}
+            onPress={() => console.log('Crash and Bang')}
             style={styles.patternButton}
           >
-            Downtown
+            <View>
+              <Text
+                style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}
+              >
+                {'Crash and Bang'}
+              </Text>
+            </View>
           </Button>
           <Button
             mode="contained"
-            onPress={() => console.log("Crash and Bang")}
+            onPress={() => console.log('Titanic')}
             style={styles.patternButton}
           >
-            Crash and Bang
+            <View>
+              <Text
+                style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}
+              >
+                {'Titanic'}
+              </Text>
+            </View>
           </Button>
           <Button
             mode="contained"
-            onPress={() => console.log("Titanic")}
+            onPress={() => console.log("Mom's Cookies")}
             style={styles.patternButton}
           >
-            Titanic
+            <View>
+              <Text
+                style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}
+              >
+                {"Mom's Cookies"}
+              </Text>
+            </View>
           </Button>
           <Button
             mode="contained"
-            onPress={() => console.log("Mom’s Cookies")}
+            onPress={() => console.log('Riding Pine')}
             style={styles.patternButton}
           >
-            Mom’s Cookies
+            <View>
+              <Text
+                style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}
+              >
+                {'Riding Pine'}
+              </Text>
+            </View>
           </Button>
           <Button
             mode="contained"
-            onPress={() => console.log("Riding Pine")}
+            onPress={() => console.log('Dump and Chase')}
             style={styles.patternButton}
           >
-            Riding Pine
+            <View>
+              <Text
+                style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}
+              >
+                {'Dump and Chase'}
+              </Text>
+            </View>
           </Button>
           <Button
             mode="contained"
-            onPress={() => console.log("Dump and Chase")}
+            onPress={() => console.log('The Frustrating One')}
             style={styles.patternButton}
           >
-            Dump and Chase
-          </Button>
-          <Button
-            mode="contained"
-            onPress={() => console.log("The Frustrating One")}
-            style={styles.patternButton}
-          >
-            The Frustrating One
+            <View>
+              <Text
+                style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}
+              >
+                {'The Frustrating One'}
+              </Text>
+            </View>
           </Button>
         </View>
       </ScrollView>
+
       <View
-        style={[
-          { flexDirection: "row" },
-          { alignItems: "center" },
-          { justifyContent: "center" },
-        ]}
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginTop: HEIGHT * 0.05,
+        }}
       >
         <Text
           style={{
             fontSize: WIDTH * 0.08,
-            fontWeight: "800",
-            textAlign: "center",
+            fontWeight: '800',
+            textAlign: 'center',
             paddingVertical: WIDTH * 0.02,
           }}
         >
@@ -160,84 +222,81 @@ const DrillSelectionScreen = () => {
       </View>
 
       <View
-        style={[
-          { flexDirection: "row" },
-          { alignItems: "center" },
-          { justifyContent: "space-between" },
-          { margin: WIDTH * 0.015 },
-          { borderColor: "red" },
-          { borderWidth: 5 },
-        ]}
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'center',
+          borderColor: 'orange',
+          borderWidth: 5,
+        }}
       >
         <Button
           mode="contained"
-          onPress={() => console.log("3 SEC")}
-          style={[
-            { width: WIDTH * 0.3 },
-            { height: HEIGHT * 0.08 },
-            { alignItems: "center" },
-            { justifyContent: "center" },
-            { borderRadius: 10 },
-            { padding: 5 },
-            { margin: 5 },
-          ]}
+          onPress={() => console.log('3 SEC')}
+          style={{
+            width: WIDTH * 0.3,
+            height: HEIGHT * 0.08,
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderRadius: 10,
+            padding: 5,
+            margin: 5,
+          }}
         >
-          3 SEC
+          {'3 SEC'}
+        </Button>
+        <Button
+          mode="contained"
+          onPress={() => console.log('5 SEC')}
+          style={{
+            width: WIDTH * 0.3,
+            height: HEIGHT * 0.08,
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderRadius: 10,
+            padding: 5,
+            margin: 5,
+          }}
+        >
+          {'5 SEC'}
         </Button>
 
         <Button
           mode="contained"
-          onPress={() => console.log("5 SEC")}
-          style={[
-            { width: WIDTH * 0.3 },
-            { height: HEIGHT * 0.08 },
-            { alignItems: "center" },
-            { justifyContent: "center" },
-            { borderRadius: 10 },
-            { padding: 5 },
-            { margin: 5 },
-          ]}
+          onPress={() => console.log('7 SEC')}
+          style={{
+            width: WIDTH * 0.3,
+            height: HEIGHT * 0.08,
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderRadius: 10,
+            padding: 5,
+            margin: 5,
+          }}
         >
-          5 SEC
-        </Button>
-
-        <Button
-          mode="contained"
-          onPress={() => console.log("7 SEC")}
-          style={[
-            { width: WIDTH * 0.3 },
-            { height: HEIGHT * 0.08 },
-            { alignItems: "center" },
-            { justifyContent: "center" },
-            { borderRadius: 10 },
-            { padding: 5 },
-            { margin: 5 },
-          ]}
-        >
-          7 SEC
+          {'7 SEC'}
         </Button>
       </View>
+
       <View style={{ margin: WIDTH * 0.025 }}>
         <View
-          style={[
-            { flexDirection: "row" },
-            { alignItems: "center" },
-            { justifyContent: "center" },
-          ]}
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
         >
           <Button
             mode="contained"
-            onPress={() => console.log("TRAIN NOW")}
-            style={[
-              { width: WIDTH * 0.8 },
-              { height: HEIGHT * 0.06 },
-              { alignItems: "center" },
-              { justifyContent: "center" },
-              { borderRadius: 25 },
-            ]}
+            onPress={() => console.log('TRAIN NOW')}
+            style={{
+              width: WIDTH * 0.8,
+              height: HEIGHT * 0.06,
+              borderRadius: 25,
+            }}
             labelStyle={[styles.fontStyles, styles.md3FontStyles]}
           >
-            TRAIN NOW
+            {'TRAIN NOW'}
           </Button>
         </View>
       </View>
@@ -252,17 +311,19 @@ const styles = StyleSheet.create({
     lineHeight: 32,
   },
   fontStyles: {
-    fontWeight: "800",
+    fontWeight: '800',
     fontSize: 24,
   },
   patternButton: {
-    width: WIDTH * 0.3,
-    height: WIDTH * 0.3,
-    alignItems: "center",
-    justifyContent: "center",
+    width: WIDTH * 0.29,
+    height: WIDTH * 0.29,
+    alignItems: 'center',
+    justifyContent: 'center',
     borderRadius: 10,
     padding: 5,
     margin: 5,
-    buttonColor: "blue",
+    backgroundColor: 'pink',
+    borderWidth: 2,
+    borderColor: 'green',
   },
 });
