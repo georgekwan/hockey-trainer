@@ -2,12 +2,14 @@ import * as React from 'react';
 import {
   Dimensions,
   Image,
+  Pressable,
   StyleSheet,
   ScrollView,
   Text,
   View,
 } from 'react-native';
 import { Button, List } from 'react-native-paper';
+import { theme } from '../core/theme';
 import { ResultInputScreen } from './ResultInputScreen';
 
 const WIDTH = Dimensions.get('screen').width;
@@ -61,28 +63,30 @@ const DrillSelectionScreen = () => {
       >
         <View
           style={{
-            flex: 1,
             flexDirection: 'row',
-            flexWrap: true,
-            alignItems: 'center',
-            justifyContent: 'spacing-around',
+            flexWrap: 'wrap',
+            alignItems: 'flex-start',
+            justifyContent: 'space-between',
+            alignContent: 'space-between',
           }}
         >
           <Button
-            mode="contained"
+            mode="elevated"
+            // buttonColor={theme.colors.primary}
             onPress={() => console.log('Around the World')}
             style={styles.patternButton}
           >
             <View>
               <Text
-                style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}
+                style={{ fontWeights: 'bold', fontSize: 20, color: 'black' }}
               >
                 {'Around the World'}
               </Text>
             </View>
           </Button>
           <Button
-            mode="contained"
+            mode="elevated"
+            buttonColor={theme.colors.primary}
             onPress={() => console.log("Pick'n Corners")}
             style={styles.patternButton}
           >
@@ -95,7 +99,8 @@ const DrillSelectionScreen = () => {
             </View>
           </Button>
           <Button
-            mode="contained"
+            mode="elevated"
+            buttonColor={theme.colors.primary}
             onPress={() => console.log('Up Down')}
             style={styles.patternButton}
           >
@@ -108,7 +113,8 @@ const DrillSelectionScreen = () => {
             </View>
           </Button>
           <Button
-            // mode="contained"
+            mode="elevated"
+            buttonColor={theme.colors.primary}
             onPress={() => console.log('Downtown')}
             style={styles.patternButton}
           >
@@ -121,7 +127,8 @@ const DrillSelectionScreen = () => {
             </View>
           </Button>
           <Button
-            mode="contained"
+            mode="elevated"
+            buttonColor={theme.colors.primary}
             onPress={() => console.log('Crash and Bang')}
             style={styles.patternButton}
           >
@@ -134,7 +141,8 @@ const DrillSelectionScreen = () => {
             </View>
           </Button>
           <Button
-            mode="contained"
+            mode="elevated"
+            buttonColor={theme.colors.primary}
             onPress={() => console.log('Titanic')}
             style={styles.patternButton}
           >
@@ -147,7 +155,8 @@ const DrillSelectionScreen = () => {
             </View>
           </Button>
           <Button
-            mode="contained"
+            mode="elevated"
+            buttonColor={theme.colors.primary}
             onPress={() => console.log("Mom's Cookies")}
             style={styles.patternButton}
           >
@@ -160,7 +169,8 @@ const DrillSelectionScreen = () => {
             </View>
           </Button>
           <Button
-            mode="contained"
+            mode="elevated"
+            buttonColor={theme.colors.primary}
             onPress={() => console.log('Riding Pine')}
             style={styles.patternButton}
           >
@@ -173,7 +183,8 @@ const DrillSelectionScreen = () => {
             </View>
           </Button>
           <Button
-            mode="contained"
+            mode="elevated"
+            buttonColor={theme.colors.primary}
             onPress={() => console.log('Dump and Chase')}
             style={styles.patternButton}
           >
@@ -186,7 +197,8 @@ const DrillSelectionScreen = () => {
             </View>
           </Button>
           <Button
-            mode="contained"
+            mode="elevated"
+            buttonColor={theme.colors.primary}
             onPress={() => console.log('The Frustrating One')}
             style={styles.patternButton}
           >
@@ -232,7 +244,7 @@ const DrillSelectionScreen = () => {
         }}
       >
         <Button
-          mode="contained"
+          mode="elevated"
           onPress={() => console.log('3 SEC')}
           style={{
             width: WIDTH * 0.3,
@@ -247,7 +259,7 @@ const DrillSelectionScreen = () => {
           {'3 SEC'}
         </Button>
         <Button
-          mode="contained"
+          mode="elevated"
           onPress={() => console.log('5 SEC')}
           style={{
             width: WIDTH * 0.3,
@@ -263,7 +275,7 @@ const DrillSelectionScreen = () => {
         </Button>
 
         <Button
-          mode="contained"
+          mode="elevated"
           onPress={() => console.log('7 SEC')}
           style={{
             width: WIDTH * 0.3,
@@ -288,7 +300,7 @@ const DrillSelectionScreen = () => {
           }}
         >
           <Button
-            mode="contained"
+            mode="elevated"
             onPress={() => console.log('TRAIN NOW')}
             style={{
               width: WIDTH * 0.8,
@@ -323,8 +335,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 5,
     margin: 5,
-    backgroundColor: 'pink',
-    borderWidth: 2,
-    borderColor: 'green',
+    // backgroundColor: 'pink',
+    // borderWidth: 2,
+    // borderColor: 'green',
   },
 });
