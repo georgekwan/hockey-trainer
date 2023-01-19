@@ -143,5 +143,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  card: { width: '100%', height: '50%', borderColor: 'red', borderWidth: 5 },
+  card: { width: '100%', height: '55%', borderColor: 'red', borderWidth: 5 },
 });
