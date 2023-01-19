@@ -4,13 +4,13 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { theme } from './src/core/theme';
 import {
-    StartScreen,
-    LoginScreen,
-    RegisterScreen,
-    ResetPasswordScreen,
-    Dashboard,
-    HomeScreen,
-    DrillSelectionScreen,
+  StartScreen,
+  LoginScreen,
+  RegisterScreen,
+  ResetPasswordScreen,
+  Dashboard,
+  HomeScreen,
+  DrillSelectionScreen,
 } from './src/screens';
 import { FirebaseProvider } from './src/providers/FirebaseProvider.js';
 import { AuthProvider } from './src/providers/AuthProvider.js';
@@ -20,67 +20,58 @@ import { InDrillScreen } from './src/screens/InDrillScreen.js';
 
 import { NavBarContainer } from './src/components/NavBarContainer.js';
 
-
 const Stack = createStackNavigator();
 
 export default function App() {
-    return (
-        <FirebaseProvider>
-            <AuthProvider>
-                <Provider theme={theme}>
-                    <NavigationContainer>
-                        <Stack.Navigator
-                            initialRouteName='InDrillScreen'
-                            screenOptions={{
-                                headerShown: false,
-                            }}
-                        >
-                            <Stack.Screen
+  return (
+    <FirebaseProvider>
+      <AuthProvider>
+        <Provider theme={theme}>
+          <NavigationContainer>
+            <Stack.Navigator
+              initialRouteName="LoginScreen"
+              screenOptions={{
+                headerShown: false,
+              }}
+            >
+              {/* <Stack.Screen
                                 name='InDrillScreen'
                                 component={InDrillScreen}
-                            />
-                            {/* <Stack.Navigator
+                            /> */}
+              {/* <Stack.Navigator
                             initialRouteName='StartScreen'
                             screenOptions={{
                                 headerShown: false,
                             }}
                         > */}
-                            {/* <Stack.Screen
+              {/* <Stack.Screen
                                 name='StartScreen'
                                 component={StartScreen}
                             /> */}
-                            <Stack.Screen
-                                name='LoginScreen'
-                                component={LoginScreen}
-                            />
-                            <Stack.Screen
-                                name='RegisterScreen'
-                                component={RegisterScreen}
-                            />
-                            {/* <Stack.Screen
+              <Stack.Screen name="LoginScreen" component={LoginScreen} />
+              <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
+              {/* <Stack.Screen
                                 name='Dashboard'
                                 component={Dashboard}
                             /> */}
-                            <Stack.Screen
-
-                                name='NavBarContainer'
-                                component={NavBarContainer}
-                                navigationKey='NavBarContainer'
-
-                            />
-                            {/* <Stack.Screen
+              <Stack.Screen
+                name="NavBarContainer"
+                component={NavBarContainer}
+                navigationKey="NavBarContainer"
+              />
+              {/* <Stack.Screen
                 name="DrillSelectionScreen"
                 component={DrillSelectionScreen}
                 navigationKey="DrillSelectionScreen"
               /> */}
-                            <Stack.Screen
-                                name='ResetPasswordScreen'
-                                component={ResetPasswordScreen}
-                            />
-                        </Stack.Navigator>
-                    </NavigationContainer>
-                </Provider>
-            </AuthProvider>
-        </FirebaseProvider>
-    );
+              <Stack.Screen
+                name="ResetPasswordScreen"
+                component={ResetPasswordScreen}
+              />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </Provider>
+      </AuthProvider>
+    </FirebaseProvider>
+  );
 }
