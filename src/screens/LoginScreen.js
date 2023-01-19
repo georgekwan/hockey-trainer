@@ -1,16 +1,16 @@
-import React, { useContext, useState } from 'react';
-import { TouchableOpacity, StyleSheet, View } from 'react-native';
-import { Text } from 'react-native-paper';
-import Background from '../components/Background';
-import Logo from '../components/Logo';
-import Header from '../components/Header';
-import Button from '../components/Button';
-import TextInput from '../components/TextInput';
-import BackButton from '../components/BackButton';
-import { theme } from '../core/theme';
-import { emailValidator } from '../helpers/emailValidator';
-import { passwordValidator } from '../helpers/passwordValidator';
-import { AuthContext } from '../providers/AuthProvider.js';
+import React, { useContext, useState } from "react";
+import { TouchableOpacity, StyleSheet, View } from "react-native";
+import { Text } from "react-native-paper";
+import Background from "../components/Background";
+import Logo from "../components/Logo";
+import Header from "../components/Header";
+import Button from "../components/Button";
+import TextInput from "../components/TextInput";
+import BackButton from "../components/BackButton";
+import { theme } from "../core/theme";
+import { emailValidator } from "../helpers/emailValidator";
+import { passwordValidator } from "../helpers/passwordValidator";
+import { AuthContext } from "../providers/AuthProvider.js";
 
 export default function LoginScreen({ navigation }) {
   // const [email, setEmail] = useState({ value: '', error: '' })
@@ -32,8 +32,8 @@ export default function LoginScreen({ navigation }) {
 
   const { login, authErrorMessages } = useContext(AuthContext);
 
-  const [email, setEmail] = useState(''); // input field value cannot be null
-  const [password, setPassword] = useState(''); // input field value cannot be null
+  const [email, setEmail] = useState(""); // input field value cannot be null
+  const [password, setPassword] = useState(""); // input field value cannot be null
 
   const [loginRunning, setLoginRunning] = useState(false);
   const [errorMessage, setErrorMessage] = useState();
@@ -41,17 +41,17 @@ export default function LoginScreen({ navigation }) {
 
   const handleButtonClick = async () => {
     setLoginRunning(true);
-    console.log('email is ', email);
+    console.log("email is ", email);
     let success = await login(email, password);
 
     setLoginRunning(false);
     if (!success) {
-      setErrorMessage('Registration failed!');
+      setErrorMessage("Registration failed!");
     } else {
       navigation.reset({
         index: 0,
         // routes: [{ name: 'Dashboard' }],
-        routes: [{ name: 'HomeScreen' }],
+        routes: [{ name: "LoggedInScreen" }],
       });
     }
   };
@@ -67,7 +67,7 @@ export default function LoginScreen({ navigation }) {
         value={email}
         // onChangeText={(text) => setEmail({ value: text, error: '' })}
         onChangeText={(e) => {
-          console.log('e is', e);
+          console.log("e is", e);
           setEmail(e);
         }}
         // error={!!email.error}
@@ -89,7 +89,7 @@ export default function LoginScreen({ navigation }) {
       />
       <View style={styles.forgotPassword}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('ResetPasswordScreen')}
+          onPress={() => navigation.navigate("ResetPasswordScreen")}
         >
           <Text style={styles.forgot}>Forgot your password?</Text>
         </TouchableOpacity>
@@ -99,7 +99,7 @@ export default function LoginScreen({ navigation }) {
       </Button>
       <View style={styles.row}>
         <Text>Don’t have an account? </Text>
-        <TouchableOpacity onPress={() => navigation.replace('RegisterScreen')}>
+        <TouchableOpacity onPress={() => navigation.replace("RegisterScreen")}>
           <Text style={styles.link}>Sign up</Text>
         </TouchableOpacity>
       </View>
@@ -109,12 +109,12 @@ export default function LoginScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   forgotPassword: {
-    width: '100%',
-    alignItems: 'flex-end',
+    width: "100%",
+    alignItems: "flex-end",
     marginBottom: 24,
   },
   row: {
-    flexDirection: 'row',
+    flexDirection: "row",
     marginTop: 4,
   },
   forgot: {
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     color: theme.colors.secondary,
   },
   link: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     color: theme.colors.primary,
   },
 });

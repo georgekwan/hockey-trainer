@@ -1,8 +1,8 @@
-import React from 'react';
-import { Provider } from 'react-native-paper';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { theme } from './src/core/theme';
+import React from "react";
+import { Provider } from "react-native-paper";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { theme } from "./src/core/theme";
 import {
   StartScreen,
   LoginScreen,
@@ -11,9 +11,10 @@ import {
   Dashboard,
   HomeScreen,
   DrillSelectionScreen,
-} from './src/screens';
-import { FirebaseProvider } from './src/providers/FirebaseProvider.js';
-import { AuthProvider } from './src/providers/AuthProvider.js';
+} from "./src/screens";
+import { FirebaseProvider } from "./src/providers/FirebaseProvider.js";
+import { AuthProvider } from "./src/providers/AuthProvider.js";
+import LoggedInScreen from "./src/screens/LoggedInScreen";
 
 const Stack = createStackNavigator();
 
@@ -37,9 +38,9 @@ export default function App() {
                                 component={Dashboard}
                             /> */}
               <Stack.Screen
-                name="HomeScreen"
-                component={HomeScreen}
-                navigationKey="HomeScreen"
+                name="LoggedInScreen"
+                component={LoggedInScreen}
+                navigationKey="LoggedInScreen"
               />
               {/* <Stack.Screen
                 name="DrillSelectionScreen"
