@@ -23,7 +23,7 @@ const DrillSelectionScreen = () => {
         }}
       >
         <Image
-          source={require('./assets/harpia-logo.png')}
+          source={require('../../assets/harpia-logo.png')}
           style={{ resizeMode: 'contain', height: HEIGHT * 0.085 }}
         />
       </View>
