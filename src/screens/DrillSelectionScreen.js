@@ -8,6 +8,7 @@ import {
   View,
 } from 'react-native';
 import { Button, List } from 'react-native-paper';
+import { ResultInputScreen } from './ResultInputScreen';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
