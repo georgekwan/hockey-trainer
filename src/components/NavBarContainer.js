@@ -5,9 +5,13 @@ import {
   Text,
 } from "react-native-paper";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { DrillSelectionScreen, HomeScreen, UserProfileScreen } from ".";
+import {
+  DrillSelectionScreen,
+  HomeScreen,
+  UserProfileScreen,
+} from "../screens";
 
-function LoggedInScreen() {
+function NavBarContainer() {
   const [index, setIndex] = React.useState(0);
   const handleIndexChange = (newIndex) => setIndex(newIndex);
 
@@ -47,4 +51,4 @@ function LoggedInScreen() {
   );
 }
 
-export default LoggedInScreen;
+export default NavBarContainer;
