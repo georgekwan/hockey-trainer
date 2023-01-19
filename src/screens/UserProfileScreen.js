@@ -8,7 +8,7 @@ import Button from '../components/Button.js';
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
-export const UserProfile = () => {
+export const UserProfileScreen = () => {
     return (
         <>
             <View
@@ -261,5 +261,3 @@ export const UserProfile = () => {
         </>
     );
 };
-
-export default UserProfile;

@@ -14,8 +14,12 @@ import {
 } from './src/screens';
 import { FirebaseProvider } from './src/providers/FirebaseProvider.js';
 import { AuthProvider } from './src/providers/AuthProvider.js';
-import { UserProfile } from './src/screens/UserProfile.js';
+
+import { UserProfileScreen } from './src/screens/UserProfileScreen.js';
 import { InDrillScreen } from './src/screens/InDrillScreen.js';
+
+import { NavBarContainer } from './src/components/NavBarContainer.js';
+
 
 const Stack = createStackNavigator();
 
@@ -58,9 +62,11 @@ export default function App() {
                                 component={Dashboard}
                             /> */}
                             <Stack.Screen
-                                name='HomeScreen'
-                                component={HomeScreen}
-                                navigationKey='HomeScreen'
+
+                                name='NavBarContainer'
+                                component={NavBarContainer}
+                                navigationKey='NavBarContainer'
+
                             />
                             {/* <Stack.Screen
                 name="DrillSelectionScreen"
