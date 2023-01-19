@@ -104,7 +104,11 @@ const ResultInputScreen = () => {
               height: HEIGHT * 0.06,
               borderRadius: 25,
             }}
-            labelStyle={(styles.fontStyles, styles.md3FontStyles)}
+            labelStyle={{
+              fontSize: 30,
+              fontWeight: 'bold',
+              lineHeight: 30,
+            }}
           >
             INPUT
           </Button>
