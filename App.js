@@ -4,17 +4,18 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { theme } from './src/core/theme';
 import {
-  StartScreen,
-  LoginScreen,
-  RegisterScreen,
-  ResetPasswordScreen,
-  Dashboard,
-  HomeScreen,
-  DrillSelectionScreen,
+    StartScreen,
+    LoginScreen,
+    RegisterScreen,
+    ResetPasswordScreen,
+    Dashboard,
+    HomeScreen,
+    DrillSelectionScreen,
 } from './src/screens';
 import { FirebaseProvider } from './src/providers/FirebaseProvider.js';
 import { AuthProvider } from './src/providers/AuthProvider.js';
 import { UserProfile } from './src/screens/UserProfile.js';
+import { InDrillScreen } from './src/screens/InDrillScreen.js';
 
 const Stack = createStackNavigator();
 
@@ -25,15 +26,25 @@ export default function App() {
                 <Provider theme={theme}>
                     <NavigationContainer>
                         <Stack.Navigator
-                            initialRouteName='StartScreen'
+                            initialRouteName='InDrillScreen'
                             screenOptions={{
                                 headerShown: false,
                             }}
                         >
                             <Stack.Screen
+                                name='InDrillScreen'
+                                component={InDrillScreen}
+                            />
+                            {/* <Stack.Navigator
+                            initialRouteName='StartScreen'
+                            screenOptions={{
+                                headerShown: false,
+                            }}
+                        > */}
+                            {/* <Stack.Screen
                                 name='StartScreen'
                                 component={StartScreen}
-                            />
+                            /> */}
                             <Stack.Screen
                                 name='LoginScreen'
                                 component={LoginScreen}
@@ -46,24 +57,24 @@ export default function App() {
                                 name='Dashboard'
                                 component={Dashboard}
                             /> */}
-              <Stack.Screen
-                name="HomeScreen"
-                component={HomeScreen}
-                navigationKey="HomeScreen"
-              />
-              {/* <Stack.Screen
+                            <Stack.Screen
+                                name='HomeScreen'
+                                component={HomeScreen}
+                                navigationKey='HomeScreen'
+                            />
+                            {/* <Stack.Screen
                 name="DrillSelectionScreen"
                 component={DrillSelectionScreen}
                 navigationKey="DrillSelectionScreen"
               /> */}
-              <Stack.Screen
-                name="ResetPasswordScreen"
-                component={ResetPasswordScreen}
-              />
-            </Stack.Navigator>
-          </NavigationContainer>
-        </Provider>
-      </AuthProvider>
-    </FirebaseProvider>
-  );
+                            <Stack.Screen
+                                name='ResetPasswordScreen'
+                                component={ResetPasswordScreen}
+                            />
+                        </Stack.Navigator>
+                    </NavigationContainer>
+                </Provider>
+            </AuthProvider>
+        </FirebaseProvider>
+    );
 }
