@@ -13,8 +13,7 @@ const HomeScreen = () => (
         alignItems: 'center',
         justifyContent: 'space-evenly',
         paddingBottom: HEIGHT * 0.05,
-      }}
-    >
+      }}>
       <Image
         source={require('../../assets/harpia-logo.png')}
         style={{ resizeMode: 'contain', height: HEIGHT * 0.085 }}
@@ -29,8 +28,7 @@ const HomeScreen = () => (
               fontWeight: 'bold',
               paddingLeft: 5,
               paddingVertical: WIDTH * 0.02,
-            }}
-          >
+            }}>
             Welcome, Josh!
           </Text>
         </View>
@@ -39,15 +37,13 @@ const HomeScreen = () => (
           <View
             style={{
               paddingLeft: 10,
-            }}
-          >
+            }}>
             <Text
               style={{
                 fontSize: WIDTH * 0.08,
                 fontWeight: '800',
                 paddingLeft: 5,
-              }}
-            >
+              }}>
               LAST TRAINING
             </Text>
             <Text
@@ -56,8 +52,7 @@ const HomeScreen = () => (
                 fontWeight: '500',
                 paddingLeft: 5,
                 paddingVertical: WIDTH * 0.02,
-              }}
-            >
+              }}>
               Mom's cookies pattern
             </Text>
           </View>
@@ -67,16 +62,14 @@ const HomeScreen = () => (
             ({ flexDirection: 'column' },
             { justifyContent: 'space-around' },
             { margin: WIDTH * 0.005 })
-          }
-        >
+          }>
           <Text
             style={{
               fontSize: WIDTH * 0.08,
               fontWeight: '800',
               paddingLeft: 5,
               paddingVertical: WIDTH * 0.02,
-            }}
-          >
+            }}>
             OVERALL STATS
           </Text>
           <Text
@@ -85,8 +78,7 @@ const HomeScreen = () => (
               fontWeight: '500',
               paddingLeft: 5,
               paddingVertical: WIDTH * 0.001,
-            }}
-          >
+            }}>
             <List.Icon icon="bullseye-arrow" color="blue" />
             Average accuracy: 88%
           </Text>
@@ -96,8 +88,7 @@ const HomeScreen = () => (
               fontWeight: '500',
               paddingLeft: 5,
               paddingVertical: WIDTH * 0.001,
-            }}
-          >
+            }}>
             <List.Icon icon="target" color="blue" />
             Total shots taken: 165
           </Text>
@@ -107,16 +98,14 @@ const HomeScreen = () => (
             ({ flexDirection: 'column' },
             { justifyContent: 'space-around' },
             { margin: WIDTH * 0.005 })
-          }
-        >
+          }>
           <Text
             style={{
               fontSize: WIDTH * 0.05,
               fontWeight: '800',
               // paddingLeft: 5,
               paddingVertical: WIDTH * 0.02,
-            }}
-          >
+            }}>
             RECOMMENDED PATTERN:
           </Text>
           <Text
@@ -125,8 +114,7 @@ const HomeScreen = () => (
               fontWeight: '500',
               // paddingLeft: 5,
               paddingVertical: WIDTH * 0.001,
-            }}
-          >
+            }}>
             Top-Left
           </Text>
         </View>
