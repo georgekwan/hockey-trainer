@@ -23,6 +23,6 @@ export default function StartScreen({ navigation }) {
             >
                 Sign Up
             </Button>
-        </Background>
+    </Background>
     );
 }

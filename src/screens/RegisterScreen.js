@@ -1,17 +1,17 @@
-import React, { useContext, useState } from "react";
-import { View, StyleSheet, TouchableOpacity } from "react-native";
-import { Text } from "react-native-paper";
-import Background from "../components/Background";
-import Logo from "../components/Logo";
-import Header from "../components/Header";
-import Button from "../components/Button";
-import TextInput from "../components/TextInput";
-import BackButton from "../components/BackButton";
-import { theme } from "../core/theme";
-import { emailValidator } from "../helpers/emailValidator";
-import { passwordValidator } from "../helpers/passwordValidator";
-import { nameValidator } from "../helpers/nameValidator";
-import { AuthContext } from "../providers/AuthProvider.js";
+import React, { useContext, useState } from 'react';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text } from 'react-native-paper';
+import Background from '../components/Background';
+import Logo from '../components/Logo';
+import Header from '../components/Header';
+import Button from '../components/Button';
+import TextInput from '../components/TextInput';
+import BackButton from '../components/BackButton';
+import { theme } from '../core/theme';
+import { emailValidator } from '../helpers/emailValidator';
+import { passwordValidator } from '../helpers/passwordValidator';
+import { nameValidator } from '../helpers/nameValidator';
+import { AuthContext } from '../providers/AuthProvider.js';
 
 export default function RegisterScreen({ navigation }) {
   // const [name, setName] = useState({ value: '', error: '' })
@@ -35,9 +35,9 @@ export default function RegisterScreen({ navigation }) {
   // }
   const { register, authErrorMessages } = useContext(AuthContext);
 
-  const [name, setName] = useState(""); // input field value cannot be null
-  const [email, setEmail] = useState(""); // input field value cannot be null
-  const [password, setPassword] = useState(""); // input field value cannot be null
+  const [name, setName] = useState(''); // input field value cannot be null
+  const [email, setEmail] = useState(''); // input field value cannot be null
+  const [password, setPassword] = useState(''); // input field value cannot be null
 
   const [registrationRunning, setRegistrationRunning] = useState(false);
   const [errorMessage, setErrorMessage] = useState();
@@ -47,18 +47,18 @@ export default function RegisterScreen({ navigation }) {
 
     let thename = name;
     if (thename?.length <= 0) {
-      thename = "NO DISPLAY NAME PROVIDED 😟";
+      thename = 'NO DISPLAY NAME PROVIDED 😟';
     }
 
     let success = await register(email, password, thename);
     setRegistrationRunning(false);
     if (!success) {
-      setErrorMessage("Registration failed!");
+      setErrorMessage('Registration failed!');
     } else {
       navigation.reset({
         index: 0,
         // routes: [{ name: 'Dashboard' }],
-        routes: [{ name: "LoggedInScreen" }],
+        routes: [{ name: 'LoggedInScreen' }],
       });
     }
   };
@@ -100,16 +100,12 @@ export default function RegisterScreen({ navigation }) {
         // errorText={password.error}
         secureTextEntry
       />
-      <Button
-        mode="contained"
-        onPress={handleButtonClick}
-        style={{ marginTop: 24 }}
-      >
+      <Button mode="contained" onPress={handleButtonClick} style={{ marginTop: 24 }}>
         Sign Up
       </Button>
       <View style={styles.row}>
         <Text>Already have an account? </Text>
-        <TouchableOpacity onPress={() => navigation.replace("LoginScreen")}>
+        <TouchableOpacity onPress={() => navigation.replace('LoginScreen')}>
           <Text style={styles.link}>Login</Text>
         </TouchableOpacity>
       </View>
@@ -119,11 +115,11 @@ export default function RegisterScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   row: {
-    flexDirection: "row",
+    flexDirection: 'row',
     marginTop: 4,
   },
   link: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
     color: theme.colors.primary,
   },
 });
