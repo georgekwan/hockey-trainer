@@ -1,13 +1,5 @@
 import * as React from 'react';
-import {
-  Dimensions,
-  Image,
-  Pressable,
-  StyleSheet,
-  ScrollView,
-  Text,
-  View,
-} from 'react-native';
+import { Dimensions, Image, Pressable, StyleSheet, ScrollView, Text, View } from 'react-native';
 import { Button, List } from 'react-native-paper';
 import { theme } from '../core/theme';
 import { ResultInputScreen } from './ResultInputScreen';
@@ -15,7 +7,7 @@ import { ResultInputScreen } from './ResultInputScreen';
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
-const DrillSelectionScreen = () => {
+const DrillSelectionScreen = ({ navigation }) => {
   return (
     <View style={{ flex: 1, backgroundColor: 'white' }}>
       <View
@@ -23,8 +15,7 @@ const DrillSelectionScreen = () => {
           alignItems: 'center',
           justifyContent: 'center',
           marginTop: HEIGHT * 0.05,
-        }}
-      >
+        }}>
         <Image
           source={require('../../assets/harpia-logo.png')}
           style={{ resizeMode: 'contain', height: HEIGHT * 0.085 }}
@@ -37,8 +28,7 @@ const DrillSelectionScreen = () => {
           alignItems: 'center',
           justifyContent: 'center',
           width: WIDTH * 0.95,
-        }}
-      >
+        }}>
         <List.Icon icon="hockey-puck" color="blue" />
         <Text
           style={{
@@ -46,8 +36,7 @@ const DrillSelectionScreen = () => {
             fontWeight: '800',
             textAlign: 'center',
             paddingVertical: WIDTH * 0.02,
-          }}
-        >
+          }}>
           SELECT PATTERN
         </Text>
       </View>
@@ -59,8 +48,7 @@ const DrillSelectionScreen = () => {
           height: HEIGHT * 0.3,
           borderColor: 'red',
           borderWidth: 5,
-        }}
-      >
+        }}>
         <View
           style={{
             flexDirection: 'row',
@@ -68,18 +56,14 @@ const DrillSelectionScreen = () => {
             alignItems: 'flex-start',
             justifyContent: 'space-between',
             alignContent: 'space-between',
-          }}
-        >
+          }}>
           <Button
             mode="elevated"
             // buttonColor={theme.colors.primary}
             onPress={() => console.log('Around the World')}
-            style={styles.patternButton}
-          >
+            style={styles.patternButton}>
             <View>
-              <Text
-                style={{ fontWeights: 'bold', fontSize: 20, color: 'black' }}
-              >
+              <Text style={{ fontWeights: 'bold', fontSize: 20, color: 'black' }}>
                 {'Around the World'}
               </Text>
             </View>
@@ -88,12 +72,9 @@ const DrillSelectionScreen = () => {
             mode="elevated"
             buttonColor={theme.colors.primary}
             onPress={() => console.log("Pick'n Corners")}
-            style={styles.patternButton}
-          >
+            style={styles.patternButton}>
             <View>
-              <Text
-                style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}
-              >
+              <Text style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}>
                 {"Pick'n Corners"}
               </Text>
             </View>
@@ -102,26 +83,18 @@ const DrillSelectionScreen = () => {
             mode="elevated"
             buttonColor={theme.colors.primary}
             onPress={() => console.log('Up Down')}
-            style={styles.patternButton}
-          >
+            style={styles.patternButton}>
             <View>
-              <Text
-                style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}
-              >
-                {'Up Down'}
-              </Text>
+              <Text style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}>{'Up Down'}</Text>
             </View>
           </Button>
           <Button
             mode="elevated"
             buttonColor={theme.colors.primary}
             onPress={() => console.log('Downtown')}
-            style={styles.patternButton}
-          >
+            style={styles.patternButton}>
             <View>
-              <Text
-                style={{ fontWeights: 'bold', fontSize: 14, color: 'white' }}
-              >
+              <Text style={{ fontWeights: 'bold', fontSize: 14, color: 'white' }}>
                 {'Downtown'}
               </Text>
             </View>
@@ -130,12 +103,9 @@ const DrillSelectionScreen = () => {
             mode="elevated"
             buttonColor={theme.colors.primary}
             onPress={() => console.log('Crash and Bang')}
-            style={styles.patternButton}
-          >
+            style={styles.patternButton}>
             <View>
-              <Text
-                style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}
-              >
+              <Text style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}>
                 {'Crash and Bang'}
               </Text>
             </View>
@@ -144,26 +114,18 @@ const DrillSelectionScreen = () => {
             mode="elevated"
             buttonColor={theme.colors.primary}
             onPress={() => console.log('Titanic')}
-            style={styles.patternButton}
-          >
+            style={styles.patternButton}>
             <View>
-              <Text
-                style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}
-              >
-                {'Titanic'}
-              </Text>
+              <Text style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}>{'Titanic'}</Text>
             </View>
           </Button>
           <Button
             mode="elevated"
             buttonColor={theme.colors.primary}
             onPress={() => console.log("Mom's Cookies")}
-            style={styles.patternButton}
-          >
+            style={styles.patternButton}>
             <View>
-              <Text
-                style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}
-              >
+              <Text style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}>
                 {"Mom's Cookies"}
               </Text>
             </View>
@@ -172,12 +134,9 @@ const DrillSelectionScreen = () => {
             mode="elevated"
             buttonColor={theme.colors.primary}
             onPress={() => console.log('Riding Pine')}
-            style={styles.patternButton}
-          >
+            style={styles.patternButton}>
             <View>
-              <Text
-                style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}
-              >
+              <Text style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}>
                 {'Riding Pine'}
               </Text>
             </View>
@@ -186,12 +145,9 @@ const DrillSelectionScreen = () => {
             mode="elevated"
             buttonColor={theme.colors.primary}
             onPress={() => console.log('Dump and Chase')}
-            style={styles.patternButton}
-          >
+            style={styles.patternButton}>
             <View>
-              <Text
-                style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}
-              >
+              <Text style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}>
                 {'Dump and Chase'}
               </Text>
             </View>
@@ -200,12 +156,9 @@ const DrillSelectionScreen = () => {
             mode="elevated"
             buttonColor={theme.colors.primary}
             onPress={() => console.log('The Frustrating One')}
-            style={styles.patternButton}
-          >
+            style={styles.patternButton}>
             <View>
-              <Text
-                style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}
-              >
+              <Text style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}>
                 {'The Frustrating One'}
               </Text>
             </View>
@@ -219,16 +172,14 @@ const DrillSelectionScreen = () => {
           alignItems: 'center',
           justifyContent: 'center',
           marginTop: HEIGHT * 0.05,
-        }}
-      >
+        }}>
         <Text
           style={{
             fontSize: WIDTH * 0.08,
             fontWeight: '800',
             textAlign: 'center',
             paddingVertical: WIDTH * 0.02,
-          }}
-        >
+          }}>
           <List.Icon icon="timer" color="blue" />
           SELECT TIMEOUT
         </Text>
@@ -241,8 +192,7 @@ const DrillSelectionScreen = () => {
           justifyContent: 'center',
           borderColor: 'orange',
           borderWidth: 5,
-        }}
-      >
+        }}>
         <Button
           mode="elevated"
           onPress={() => console.log('3 SEC')}
@@ -254,8 +204,7 @@ const DrillSelectionScreen = () => {
             borderRadius: 10,
             padding: 5,
             margin: 5,
-          }}
-        >
+          }}>
           {'3 SEC'}
         </Button>
         <Button
@@ -269,8 +218,7 @@ const DrillSelectionScreen = () => {
             borderRadius: 10,
             padding: 5,
             margin: 5,
-          }}
-        >
+          }}>
           {'5 SEC'}
         </Button>
 
@@ -285,8 +233,7 @@ const DrillSelectionScreen = () => {
             borderRadius: 10,
             padding: 5,
             margin: 5,
-          }}
-        >
+          }}>
           {'7 SEC'}
         </Button>
       </View>
@@ -297,18 +244,17 @@ const DrillSelectionScreen = () => {
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'center',
-          }}
-        >
+          }}>
           <Button
             mode="elevated"
-            onPress={() => console.log('TRAIN NOW')}
+            onPress={() => navigation.navigate('InDrillScreen')}
+            // onPress={() => console.log('TRAIN NOW')}
             style={{
               width: WIDTH * 0.8,
               height: HEIGHT * 0.06,
               borderRadius: 25,
             }}
-            labelStyle={[styles.fontStyles, styles.md3FontStyles]}
-          >
+            labelStyle={[styles.fontStyles, styles.md3FontStyles]}>
             {'TRAIN NOW'}
           </Button>
         </View>

@@ -29,25 +29,20 @@ export default function App() {
         <Provider theme={theme}>
           <NavigationContainer>
             <Stack.Navigator
-              initialRouteName="LoginScreen"
+              initialRouteName="StartScreen"
+              name="StartScreen"
+              component={StartScreen}
               screenOptions={{
                 headerShown: false,
-              }}
-            >
-              {/* <Stack.Screen
-                                name='InDrillScreen'
-                                component={InDrillScreen}
-                            /> */}
+              }}>
+              <Stack.Screen name="InDrillScreen" component={InDrillScreen} />
               {/* <Stack.Navigator
                             initialRouteName='StartScreen'
                             screenOptions={{
                                 headerShown: false,
                             }}
                         > */}
-              {/* <Stack.Screen
-                                name='StartScreen'
-                                component={StartScreen}
-                            /> */}
+              {/* <Stack.Screen name="StartScreen" component={StartScreen} /> */}
               <Stack.Screen name="LoginScreen" component={LoginScreen} />
               <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
               {/* <Stack.Screen
@@ -60,14 +55,11 @@ export default function App() {
                 navigationKey="NavBarContainer"
               />
               {/* <Stack.Screen
-                name="DrillSelectionScreen"
-                component={DrillSelectionScreen}
-                navigationKey="DrillSelectionScreen"
+                name="InDrillScreen"
+                component={InDrillScreen}
+                navigationKey="InDrillScreen"
               /> */}
-              <Stack.Screen
-                name="ResetPasswordScreen"
-                component={ResetPasswordScreen}
-              />
+              <Stack.Screen name="ResetPasswordScreen" component={ResetPasswordScreen} />
             </Stack.Navigator>
           </NavigationContainer>
         </Provider>
