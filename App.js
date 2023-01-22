@@ -8,15 +8,14 @@ import {
   LoginScreen,
   RegisterScreen,
   ResetPasswordScreen,
+  InDrillScreen,
   Dashboard,
   HomeScreen,
   DrillSelectionScreen,
+  UserProfileScreen,
 } from './src/screens';
 import { FirebaseProvider } from './src/providers/FirebaseProvider.js';
 import { AuthProvider } from './src/providers/AuthProvider.js';
-
-import { UserProfileScreen } from './src/screens/UserProfileScreen.js';
-import { InDrillScreen } from './src/screens/InDrillScreen.js';
 
 import { NavBarContainer } from './src/components/NavBarContainer.js';
 
@@ -29,15 +28,11 @@ export default function App() {
         <Provider theme={theme}>
           <NavigationContainer>
             <Stack.Navigator
-              initialRouteName="LoginScreen"
+              initialRouteName="NavBarContainer"
               screenOptions={{
                 headerShown: false,
-              }}
-            >
-              {/* <Stack.Screen
-                                name='InDrillScreen'
-                                component={InDrillScreen}
-                            /> */}
+              }}>
+              {/* <Stack.Screen name="InDrillScreen" component={InDrillScreen} /> */}
               {/* <Stack.Navigator
                             initialRouteName='StartScreen'
                             screenOptions={{
@@ -59,15 +54,7 @@ export default function App() {
                 component={NavBarContainer}
                 navigationKey="NavBarContainer"
               />
-              {/* <Stack.Screen
-                name="DrillSelectionScreen"
-                component={DrillSelectionScreen}
-                navigationKey="DrillSelectionScreen"
-              /> */}
-              <Stack.Screen
-                name="ResetPasswordScreen"
-                component={ResetPasswordScreen}
-              />
+              <Stack.Screen name="ResetPasswordScreen" component={ResetPasswordScreen} />
             </Stack.Navigator>
           </NavigationContainer>
         </Provider>
