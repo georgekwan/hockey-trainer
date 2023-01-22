@@ -19,6 +19,7 @@ import { UserProfileScreen } from './src/screens/UserProfileScreen.js';
 import { InDrillScreen } from './src/screens/InDrillScreen.js';
 
 import { NavBarContainer } from './src/components/NavBarContainer.js';
+import InDrillScreenTEST from './tester/InDrillScreenTEST.js';
 
 const Stack = createStackNavigator();
 
@@ -35,7 +36,7 @@ export default function App() {
               screenOptions={{
                 headerShown: false,
               }}>
-              <Stack.Screen name="InDrillScreen" component={InDrillScreen} />
+              <Stack.Screen name="InDrillScreenTEST" component={InDrillScreenTEST} />
               {/* <Stack.Navigator
                             initialRouteName='StartScreen'
                             screenOptions={{
