@@ -5,6 +5,7 @@ import { Audio } from 'expo-av';
 import Timer from 'react-native-timer';
 import * as patterns from '../../temp/drill_patterns.json';
 import { fileName } from '../helpers/MP3fileName.js';
+import { imageFileName } from '../helpers/imageFileName.js';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
@@ -59,10 +60,7 @@ export const InDrillScreen = () => {
         <Text style={styles.netTargetText}>{currentString}</Text>
       </View>
       <View style={styles.row}>
-        <Image
-          style={styles.image}
-          source={require('../../assets/hockeynet/targets/top-left.png')}
-        />
+        <Image style={styles.image} source={imageFileName(currentString)} />
       </View>
       <View style={styles.row}>
         <Text style={styles.shotsLeft}>Shots left:</Text>
