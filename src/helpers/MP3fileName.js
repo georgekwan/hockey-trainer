@@ -1,27 +1,27 @@
 export const fileName = (string) => {
-  return string === 'topLeft'
+  return string === 'TOP LEFT'
     ? require('../../assets/audio/topLeft.mp3')
-    : string === 'topRight'
+    : string === 'TOP RIGHT'
     ? require('../../assets/audio/topRight.mp3')
-    : string === 'bottomLeft'
+    : string === 'BOTTOM LEFT'
     ? require('../../assets/audio/bottomLeft.mp3')
-    : string === 'bottomRight'
+    : string === 'BOTTOM RIGHT'
     ? require('../../assets/audio/bottomRight.mp3')
-    : string === 'fiveHole'
+    : string === 'FIVE HOLE'
     ? require('../../assets/audio/fiveHole.mp3')
-    : string === 'rightShoulder'
+    : string === 'RIGHT SHOULDER'
     ? require('../../assets/audio/rightShoulder.mp3')
-    : string === 'leftShoulder'
+    : string === 'LEFT SHOULDER'
     ? require('../../assets/audio/leftShoulder.mp3')
-    : string === 'underBlocker'
+    : string === 'UNDER BLOCKER'
     ? require('../../assets/audio/underBlocker.mp3')
-    : string === 'underGlove'
+    : string === 'UNDER GLOVE'
     ? require('../../assets/audio/underGlove.mp3')
-    : string === 'middleLeft'
+    : string === 'MIDDLE LEFT'
     ? require('../../assets/audio/middleLeft.mp3')
-    : string === 'middleReft'
+    : string === 'MIDDLE RIGHT'
     ? require('../../assets/audio/middleRight.mp3')
-    : string === 'getReady'
+    : string === 'Get Ready!'
     ? require('../../assets/audio/getReady.mp3')
     : null;
 };

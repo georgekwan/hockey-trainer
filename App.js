@@ -36,7 +36,7 @@ export default function App() {
               screenOptions={{
                 headerShown: false,
               }}>
-              <Stack.Screen name="InDrillScreenTEST" component={InDrillScreenTEST} />
+              <Stack.Screen name="InDrillScreen" component={InDrillScreen} />
               {/* <Stack.Navigator
                             initialRouteName='StartScreen'
                             screenOptions={{

@@ -1,88 +1,49 @@
 import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '../components/Button.js';
 import { Audio } from 'expo-av';
 import Timer from 'react-native-timer';
 import * as patterns from '../../temp/drill_patterns.json';
+import { fileName } from '../helpers/MP3fileName.js';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
 export const InDrillScreen = () => {
-  {
-    /*
-    const [currentString, setCurrentString] = useState(patterns.drillPatterns[0].sequence[0]);
-  const sound = new AV.Sound();
-
-  sound.setOnPlaybackStatusUpdate((status) => {
-    if (!status.isPlaying) {
-      setCurrentString(
-        patterns[patterns.drillPatterns[0].sequence.indexOf(currentString) + 1] || patterns[0]
-      );
-      sound.unloadAsync();
-      sound.loadAsync(currentString.audio);
-      sound.playAsync();
-    }
-  });
-
-  Timer.setInterval(
-    'stringTimer',
-    () => {
-      sound.stopAsync();
-    },
-    5000
-  );*/
-  }
-
-  const sounds = [
-    require('../../assets/audio/topLeft.mp3'),
-    require('../../assets/audio/topRight.mp3'),
-    require('../../assets/audio/bottomLeft.mp3'),
-    require('../../assets/audio/bottomRight.mp3'),
-  ];
+  const [sound, setSound] = useState();
+  const [currentStringIndex, setCurrentStringIndex] = useState(1);
   const [currentString, setCurrentString] = useState(patterns.drillPatterns[0].sequence[0]);
-  console.log(currentString);
-
-  const [sound, setSound] = React.useState();
-  const [currentSoundIndex, setCurrentSoundIndex] = useState(0);
 
   async function playSound() {
     console.log('Loading Sound');
-    {
-      /*const { sound } = await Audio.Sound.createAsync(require('../../assets/audio/topLeft.mp3'));*/
-    }
-    const { sound } = await Audio.Sound.createAsync(sounds[currentSoundIndex]);
+    const { sound } = await Audio.Sound.createAsync(fileName(currentString));
     setSound(sound);
 
     console.log('Playing Sound');
     await sound.playAsync();
   }
 
-  React.useEffect(() => {
-    return sound
-      ? () => {
-          console.log('Unloading Sound');
-          sound.unloadAsync();
-        }
-      : undefined;
-  }, [sound]);
-
-  {
-    /*React.useEffect(() => {
+  useEffect(() => {
     Timer.setInterval(
       'soundTimer',
       async () => {
         console.log('Unloading Sound');
+        setCurrentStringIndex((curVal) => {
+          let newVal = (curVal + 1) % patterns.drillPatterns[0].sequence.length;
+          setCurrentString(patterns.drillPatterns[0].sequence[newVal]);
+          return newVal;
+        });
+        console.log(currentStringIndex);
         sound.unloadAsync();
-        setCurrentSoundIndex((currentSoundIndex + 1) % patterns.drillPatterns[0].sequence.length);
-        playSound();
       },
-      5000
+      3000
     );
     return () => Timer.clearInterval('soundTimer');
-  }, []);*/
-  }
+  }, [sound]);
 
+  useEffect(() => {
+    playSound();
+  }, [currentStringIndex]);
   return (
     <>
       <View style={styles.drillInfo}>
@@ -95,7 +56,7 @@ export const InDrillScreen = () => {
         </View>
       </View>
       <View style={styles.targetTextContainer}>
-        <Text style={styles.netTargetText}>TOP LEFT</Text>
+        <Text style={styles.netTargetText}>{currentString}</Text>
       </View>
       <View style={styles.row}>
         <Image
@@ -113,13 +74,12 @@ export const InDrillScreen = () => {
             width: WIDTH * 0.8,
           }}
           mode="contained"
-          onPress={playSound}
           labelStyle={{
             fontSize: 30,
             fontWeight: 'bold',
             lineHeight: 30,
           }}>
-          PLAY SOUND
+          CANCEL
         </Button>
       </View>
     </>
