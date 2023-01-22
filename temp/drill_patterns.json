@@ -6,6 +6,7 @@
       "targetType": "5 Hole",
 
       "sequence": [
+        "getReady",
         "topLeft",
         "topRight",
         "bottomRight",
