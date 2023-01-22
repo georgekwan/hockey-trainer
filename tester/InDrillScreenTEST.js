@@ -5,17 +5,9 @@ import { StyleSheet, Text } from 'react-native';
 import * as patterns from '../temp/drill_patterns.json';
 import { fileName } from '../src/helpers/MP3fileName.js';
 
-const sounds = [
-  require('../assets/audio/topLeft.mp3'),
-  require('../assets/audio/topRight.mp3'),
-  require('../assets/audio/bottomLeft.mp3'),
-  require('../assets/audio/bottomRight.mp3'),
-];
-const strings = ['top left', 'top right', 'bottom left', 'bottom right'];
-
 export default function InDrillScreenTEST() {
   const [sound, setSound] = useState();
-  const [currentStringIndex, setCurrentStringIndex] = useState(0);
+  const [currentStringIndex, setCurrentStringIndex] = useState(1);
   const [currentString, setCurrentString] = useState(patterns.drillPatterns[0].sequence[0]);
 
   async function playSound() {
@@ -32,15 +24,22 @@ export default function InDrillScreenTEST() {
       'soundTimer',
       async () => {
         console.log('Unloading Sound');
-        setCurrentStringIndex((currentStringIndex + 1) % patterns.drillPatterns[0].sequence.length);
-        setCurrentString(patterns.drillPatterns[0].sequence[currentStringIndex]);
-        playSound();
+        setCurrentStringIndex((curVal) => {
+          let newVal = (curVal + 1) % patterns.drillPatterns[0].sequence.length;
+          setCurrentString(patterns.drillPatterns[0].sequence[newVal]);
+          return newVal;
+        });
+        console.log(currentStringIndex);
         sound.unloadAsync();
       },
       3000
     );
     return () => Timer.clearInterval('soundTimer');
   }, [sound]);
+
+  useEffect(() => {
+    playSound();
+  }, [currentStringIndex]);
 
   return <Text style={styles.text}>{currentString}</Text>;
 }
