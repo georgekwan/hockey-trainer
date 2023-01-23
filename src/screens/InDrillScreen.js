@@ -154,10 +154,11 @@ const styles = StyleSheet.create({
     width: WIDTH * 0.97,
     resizeMode: 'contain',
     height: HEIGHT * 0.3,
-    marginTop: HEIGHT * 0.025,
+    marginTop: HEIGHT * 0.045,
+    marginBottom: HEIGHT * 0.028,
   },
   shotsLeft: {
     fontSize: 30,
-    // fontWeight: '600',
+    marginBottom: HEIGHT * 0.015,
   },
 });

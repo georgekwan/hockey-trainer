@@ -76,7 +76,7 @@ const DrillSelectionScreen = () => {
           <Button
             mode="elevated"
             buttonColor={theme.colors.primary}
-            onPress={() => console.log("Pick'n Corners")}
+            onPress={() => setPatternName("Pick'n Corners")}
             style={styles.patternButton}>
             <View>
               <Text style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}>
@@ -87,7 +87,7 @@ const DrillSelectionScreen = () => {
           <Button
             mode="elevated"
             buttonColor={theme.colors.primary}
-            onPress={() => console.log('Up Down')}
+            onPress={() => setPatternName('Up Down')}
             style={styles.patternButton}>
             <View>
               <Text style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}>{'Up Down'}</Text>
@@ -96,7 +96,7 @@ const DrillSelectionScreen = () => {
           <Button
             mode="elevated"
             buttonColor={theme.colors.primary}
-            onPress={() => console.log('Downtown')}
+            onPress={() => setPatternName('Downtown')}
             style={styles.patternButton}>
             <View>
               <Text style={{ fontWeights: 'bold', fontSize: 14, color: 'white' }}>
@@ -107,7 +107,7 @@ const DrillSelectionScreen = () => {
           <Button
             mode="elevated"
             buttonColor={theme.colors.primary}
-            onPress={() => console.log('Crash and Bang')}
+            onPress={() => setPatternName('Crash and Bang')}
             style={styles.patternButton}>
             <View>
               <Text style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}>
@@ -118,7 +118,7 @@ const DrillSelectionScreen = () => {
           <Button
             mode="elevated"
             buttonColor={theme.colors.primary}
-            onPress={() => console.log('Titanic')}
+            onPress={() => setPatternName('Titanic')}
             style={styles.patternButton}>
             <View>
               <Text style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}>{'Titanic'}</Text>
@@ -127,7 +127,7 @@ const DrillSelectionScreen = () => {
           <Button
             mode="elevated"
             buttonColor={theme.colors.primary}
-            onPress={() => console.log("Mom's Cookies")}
+            onPress={() => setPatternName("Mom's Cookies")}
             style={styles.patternButton}>
             <View>
               <Text style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}>
@@ -138,7 +138,7 @@ const DrillSelectionScreen = () => {
           <Button
             mode="elevated"
             buttonColor={theme.colors.primary}
-            onPress={() => console.log('Riding Pine')}
+            onPress={() => setPatternName('Riding Pine')}
             style={styles.patternButton}>
             <View>
               <Text style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}>
@@ -149,7 +149,7 @@ const DrillSelectionScreen = () => {
           <Button
             mode="elevated"
             buttonColor={theme.colors.primary}
-            onPress={() => console.log('Dump and Chase')}
+            onPress={() => setPatternName('Dump and Chase')}
             style={styles.patternButton}>
             <View>
               <Text style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}>
@@ -160,7 +160,7 @@ const DrillSelectionScreen = () => {
           <Button
             mode="elevated"
             buttonColor={theme.colors.primary}
-            onPress={() => console.log('The Frustrating One')}
+            onPress={() => setPatternName('The Frustrating One')}
             style={styles.patternButton}>
             <View>
               <Text style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}>
