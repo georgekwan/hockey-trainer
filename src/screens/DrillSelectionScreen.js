@@ -5,6 +5,7 @@ import { theme } from '../core/theme';
 import { ResultInputScreen } from './ResultInputScreen';
 import * as patterns from '../../temp/drill_patterns.json';
 import { useNavigation } from '@react-navigation/native';
+import FullLogo from '../components/FullLogo.js';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
@@ -20,22 +21,20 @@ const DrillSelectionScreen = () => {
         style={{
           alignItems: 'center',
           justifyContent: 'center',
-          marginTop: HEIGHT * 0.05,
+          marginTop: HEIGHT * 0.06,
         }}>
-        <Image
-          source={require('../../assets/harpia-logo.png')}
-          style={{ resizeMode: 'contain', height: HEIGHT * 0.085 }}
-        />
+        <FullLogo />
       </View>
 
       <View
         style={{
           flexDirection: 'row',
           alignItems: 'center',
-          justifyContent: 'center',
-          width: WIDTH * 0.95,
+          justifyContent: 'space-around',
+          marginHorizontal: WIDTH * 0.05,
+          marginTop: HEIGHT * 0.02,
         }}>
-        <List.Icon icon="hockey-puck" color="blue" />
+        <List.Icon icon="hockey-puck" color={theme.colors.primary} />
         <Text
           style={{
             fontSize: WIDTH * 0.08,
@@ -46,138 +45,210 @@ const DrillSelectionScreen = () => {
           SELECT PATTERN
         </Text>
       </View>
-      <ScrollView
-        persistentScrollbar={false}
-        style={{
-          marginHorizontal: 5,
-          height: HEIGHT * 0.3,
-          borderColor: 'red',
-          borderWidth: 5,
-        }}>
-        <View
+
+      <View style={{ height: HEIGHT * 0.25 }}>
+        <ScrollView
+          persistentScrollbar={false}
           style={{
-            flexDirection: 'row',
-            flexWrap: 'wrap',
-            alignItems: 'flex-start',
-            justifyContent: 'space-between',
-            alignContent: 'space-between',
+            marginHorizontal: 5,
+            height: HEIGHT * 0.2,
+            borderColor: 'red',
+            borderWidth: 5,
           }}>
-          <Button
-            mode="elevated"
-            // buttonColor={theme.colors.primary}
-            onPress={() => setPatternName('Around the World')}
-            style={styles.patternButton}>
-            <View>
-              <Text style={{ fontWeights: 'bold', fontSize: 20, color: 'black' }}>
-                {'Around the World'}
-              </Text>
-            </View>
-          </Button>
-          <Button
-            mode="elevated"
-            buttonColor={theme.colors.primary}
-            onPress={() => setPatternName("Pick'n Corners")}
-            style={styles.patternButton}>
-            <View>
-              <Text style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}>
-                {"Pick'n Corners"}
-              </Text>
-            </View>
-          </Button>
-          <Button
-            mode="elevated"
-            buttonColor={theme.colors.primary}
-            onPress={() => setPatternName('Up Down')}
-            style={styles.patternButton}>
-            <View>
-              <Text style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}>{'Up Down'}</Text>
-            </View>
-          </Button>
-          <Button
-            mode="elevated"
-            buttonColor={theme.colors.primary}
-            onPress={() => setPatternName('Downtown')}
-            style={styles.patternButton}>
-            <View>
-              <Text style={{ fontWeights: 'bold', fontSize: 14, color: 'white' }}>
-                {'Downtown'}
-              </Text>
-            </View>
-          </Button>
-          <Button
-            mode="elevated"
-            buttonColor={theme.colors.primary}
-            onPress={() => setPatternName('Crash and Bang')}
-            style={styles.patternButton}>
-            <View>
-              <Text style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}>
-                {'Crash and Bang'}
-              </Text>
-            </View>
-          </Button>
-          <Button
-            mode="elevated"
-            buttonColor={theme.colors.primary}
-            onPress={() => setPatternName('Titanic')}
-            style={styles.patternButton}>
-            <View>
-              <Text style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}>{'Titanic'}</Text>
-            </View>
-          </Button>
-          <Button
-            mode="elevated"
-            buttonColor={theme.colors.primary}
-            onPress={() => setPatternName("Mom's Cookies")}
-            style={styles.patternButton}>
-            <View>
-              <Text style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}>
-                {"Mom's Cookies"}
-              </Text>
-            </View>
-          </Button>
-          <Button
-            mode="elevated"
-            buttonColor={theme.colors.primary}
-            onPress={() => setPatternName('Riding Pine')}
-            style={styles.patternButton}>
-            <View>
-              <Text style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}>
-                {'Riding Pine'}
-              </Text>
-            </View>
-          </Button>
-          <Button
-            mode="elevated"
-            buttonColor={theme.colors.primary}
-            onPress={() => setPatternName('Dump and Chase')}
-            style={styles.patternButton}>
-            <View>
-              <Text style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}>
-                {'Dump and Chase'}
-              </Text>
-            </View>
-          </Button>
-          <Button
-            mode="elevated"
-            buttonColor={theme.colors.primary}
-            onPress={() => setPatternName('The Frustrating One')}
-            style={styles.patternButton}>
-            <View>
-              <Text style={{ fontWeights: 'bold', fontSize: 20, color: 'white' }}>
-                {'The Frustrating One'}
-              </Text>
-            </View>
-          </Button>
-        </View>
-      </ScrollView>
+          <View
+            style={{
+              flexDirection: 'row',
+              flexWrap: 'wrap',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              alignContent: 'center',
+              // height: HEIGHT * 0.2,
+            }}>
+            <Button
+              mode="elevated"
+              // buttonColor={theme.colors.primary}
+              onPress={() => setPatternName('Around the World')}
+              style={styles.patternButton}>
+              <View>
+                <Text
+                  style={{
+                    fontWeights: 'bold',
+                    textAlign: 'center',
+                    fontSize: 18,
+                    color: 'black',
+                  }}>
+                  {'Around the World'}
+                </Text>
+              </View>
+            </Button>
+            <Button
+              mode="elevated"
+              buttonColor={theme.colors.primary}
+              onPress={() => setPatternName("Pick'n Corners")}
+              style={styles.patternButton}>
+              <View>
+                <Text
+                  style={{
+                    fontWeights: 'bold',
+                    textAlign: 'center',
+                    fontSize: 18,
+                    color: 'white',
+                  }}>
+                  {"Pick'n Corners"}
+                </Text>
+              </View>
+            </Button>
+            <Button
+              mode="elevated"
+              buttonColor={theme.colors.primary}
+              onPress={() => setPatternName('Up Down')}
+              style={styles.patternButton}>
+              <View>
+                <Text
+                  style={{
+                    fontWeights: 'bold',
+                    textAlign: 'center',
+                    fontSize: 18,
+                    color: 'white',
+                  }}>
+                  {'Up Down'}
+                </Text>
+              </View>
+            </Button>
+            <Button
+              mode="elevated"
+              buttonColor={theme.colors.primary}
+              onPress={() => setPatternName('Downtown')}
+              style={styles.patternButton}>
+              <View>
+                <Text
+                  style={{
+                    fontWeights: 'bold',
+                    textAlign: 'center',
+                    fontSize: 18,
+                    color: 'white',
+                  }}>
+                  {'Downtown'}
+                </Text>
+              </View>
+            </Button>
+            <Button
+              mode="elevated"
+              buttonColor={theme.colors.primary}
+              onPress={() => setPatternName('Crash and Bang')}
+              style={styles.patternButton}>
+              <View>
+                <Text
+                  style={{
+                    fontWeights: 'bold',
+                    textAlign: 'center',
+                    fontSize: 18,
+                    color: 'white',
+                  }}>
+                  {'Crash and Bang'}
+                </Text>
+              </View>
+            </Button>
+            <Button
+              mode="elevated"
+              buttonColor={theme.colors.primary}
+              onPress={() => setPatternName('Titanic')}
+              style={styles.patternButton}>
+              <View>
+                <Text
+                  style={{
+                    fontWeights: 'bold',
+                    textAlign: 'center',
+                    fontSize: 18,
+                    color: 'white',
+                  }}>
+                  {'Titanic'}
+                </Text>
+              </View>
+            </Button>
+            <Button
+              mode="elevated"
+              buttonColor={theme.colors.primary}
+              onPress={() => setPatternName("Mom's Cookies")}
+              style={styles.patternButton}>
+              <View>
+                <Text
+                  style={{
+                    fontWeights: 'bold',
+                    textAlign: 'center',
+                    fontSize: 18,
+                    color: 'white',
+                  }}>
+                  {"Mom's Cookies"}
+                </Text>
+              </View>
+            </Button>
+            <Button
+              mode="elevated"
+              buttonColor={theme.colors.primary}
+              onPress={() => setPatternName('Riding Pine')}
+              style={styles.patternButton}>
+              <View>
+                <Text
+                  style={{
+                    fontWeights: 'bold',
+                    textAlign: 'center',
+                    alignItems: 'center',
+                    fontSize: 18,
+                    color: 'white',
+                  }}>
+                  {'Riding Pine'}
+                </Text>
+              </View>
+            </Button>
+            <Button
+              mode="elevated"
+              buttonColor={theme.colors.primary}
+              onPress={() => setPatternName('Dump and Chase')}
+              style={styles.patternButton}>
+              <View>
+                <Text
+                  style={{
+                    fontWeights: 'bold',
+                    textAlign: 'center',
+                    fontSize: 18,
+                    color: 'white',
+                  }}>
+                  {'Dump and Chase'}
+                </Text>
+              </View>
+            </Button>
+            <Button
+              mode="elevated"
+              buttonColor={theme.colors.primary}
+              onPress={() => setPatternName('The Frustrating One')}
+              style={styles.patternButton}>
+              <View>
+                <Text
+                  style={{
+                    fontWeights: 'bold',
+                    textAlign: 'center',
+                    fontSize: 18,
+                    color: 'white',
+                  }}>
+                  {'The Frustrating One'}
+                </Text>
+              </View>
+            </Button>
+          </View>
+        </ScrollView>
+      </View>
 
       <View
         style={{
           flexDirection: 'row',
           alignItems: 'center',
-          justifyContent: 'center',
+          justifyContent: 'space-around',
+          marginHorizontal: WIDTH * 0.05,
           marginTop: HEIGHT * 0.05,
+          alignContent: 'center',
         }}>
+        <List.Icon icon="timer" color={theme.colors.primary} />
         <Text
           style={{
             fontSize: WIDTH * 0.08,
@@ -185,7 +256,6 @@ const DrillSelectionScreen = () => {
             textAlign: 'center',
             paddingVertical: WIDTH * 0.02,
           }}>
-          <List.Icon icon="timer" color="blue" />
           SELECT TIMEOUT
         </Text>
       </View>
@@ -279,15 +349,13 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
   patternButton: {
-    width: WIDTH * 0.29,
+    width: WIDTH * 0.435,
     height: WIDTH * 0.29,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 10,
-    padding: 5,
+    padding: 0,
     margin: 5,
-    // backgroundColor: 'pink',
-    // borderWidth: 2,
-    // borderColor: 'green',
+    alignContent: 'center',
   },
 });
