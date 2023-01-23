@@ -6,11 +6,19 @@ import Timer from 'react-native-timer';
 import * as patterns from '../../temp/drill_patterns.json';
 import { fileName } from '../helpers/MP3fileName.js';
 import { imageFileName } from '../helpers/imageFileName.js';
+import { useNavigation } from '@react-navigation/native';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
-export const InDrillScreen = () => {
+const timeoutConverter = (timeout) => {
+  return timeout === 3000 ? '3 seconds' : timeout === 5000 ? '5 seconds' : '7 seconds';
+};
+
+export const InDrillScreen = ({ route }) => {
+  const navigation = useNavigation();
+  const { patternName, timeout } = route.params;
+
   const [sound, setSound] = useState();
   const [currentStringIndex, setCurrentStringIndex] = useState(1);
   const [currentString, setCurrentString] = useState(patterns.drillPatterns[0].sequence[0]);
@@ -37,7 +45,7 @@ export const InDrillScreen = () => {
         console.log(currentStringIndex);
         sound.unloadAsync();
       },
-      3000
+      timeout
     );
     return () => Timer.clearInterval('soundTimer');
   }, [sound]);
@@ -49,11 +57,11 @@ export const InDrillScreen = () => {
     <>
       <View style={styles.drillInfo}>
         <View style={styles.row}>
-          <Text style={styles.drillTitle}>Riding Pine</Text>
+          <Text style={styles.drillTitle}>{patternName}</Text>
         </View>
         <View style={styles.drillSubtitle}>
-          <Text>5 hole</Text>
-          <Text>7 seconds</Text>
+          <Text>{patterns.drillPatterns[1].targetType}</Text>
+          <Text>{timeoutConverter(timeout)}</Text>
         </View>
       </View>
       <View style={styles.targetTextContainer}>
@@ -68,6 +76,7 @@ export const InDrillScreen = () => {
       </View>
       <View style={styles.row}>
         <Button
+          onPress={() => navigation.navigate('ResultInputScreen')}
           style={{
             width: WIDTH * 0.8,
           }}

@@ -1,13 +1,19 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Dimensions, Image, Pressable, StyleSheet, ScrollView, Text, View } from 'react-native';
 import { Button, List } from 'react-native-paper';
 import { theme } from '../core/theme';
 import { ResultInputScreen } from './ResultInputScreen';
+import * as patterns from '../../temp/drill_patterns.json';
+import { useNavigation } from '@react-navigation/native';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
-const DrillSelectionScreen = ({ navigation }) => {
+const DrillSelectionScreen = () => {
+  const navigation = useNavigation();
+  const [patternName, setPatternName] = useState();
+  const [timeout, setTimeout] = useState(0);
+
   return (
     <View style={{ flex: 1, backgroundColor: 'white' }}>
       <View
@@ -40,7 +46,6 @@ const DrillSelectionScreen = ({ navigation }) => {
           SELECT PATTERN
         </Text>
       </View>
-
       <ScrollView
         persistentScrollbar={false}
         style={{
@@ -60,7 +65,7 @@ const DrillSelectionScreen = ({ navigation }) => {
           <Button
             mode="elevated"
             // buttonColor={theme.colors.primary}
-            onPress={() => console.log('Around the World')}
+            onPress={() => setPatternName('Around the World')}
             style={styles.patternButton}>
             <View>
               <Text style={{ fontWeights: 'bold', fontSize: 20, color: 'black' }}>
@@ -195,7 +200,7 @@ const DrillSelectionScreen = ({ navigation }) => {
         }}>
         <Button
           mode="elevated"
-          onPress={() => console.log('3 SEC')}
+          onPress={() => setTimeout(3000)}
           style={{
             width: WIDTH * 0.3,
             height: HEIGHT * 0.08,
@@ -209,7 +214,7 @@ const DrillSelectionScreen = ({ navigation }) => {
         </Button>
         <Button
           mode="elevated"
-          onPress={() => console.log('5 SEC')}
+          onPress={() => setTimeout(5000)}
           style={{
             width: WIDTH * 0.3,
             height: HEIGHT * 0.08,
@@ -224,7 +229,7 @@ const DrillSelectionScreen = ({ navigation }) => {
 
         <Button
           mode="elevated"
-          onPress={() => console.log('7 SEC')}
+          onPress={() => setTimeout(7000)}
           style={{
             width: WIDTH * 0.3,
             height: HEIGHT * 0.08,
@@ -247,7 +252,7 @@ const DrillSelectionScreen = ({ navigation }) => {
           }}>
           <Button
             mode="elevated"
-            onPress={() => navigation.navigate('InDrillScreen')}
+            onPress={() => navigation.navigate('InDrillScreen', { patternName, timeout })}
             // onPress={() => console.log('TRAIN NOW')}
             style={{
               width: WIDTH * 0.8,
