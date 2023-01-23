@@ -1,12 +1,13 @@
-import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import Button from '../components/Button.js';
 import { Audio } from 'expo-av';
+import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
 import Timer from 'react-native-timer';
+
 import * as patterns from '../../temp/drill_patterns.json';
 import { fileName } from '../helpers/MP3fileName.js';
 import { imageFileName } from '../helpers/imageFileName.js';
-import { useNavigation } from '@react-navigation/native';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
@@ -15,7 +16,7 @@ const timeoutConverter = (timeout) => {
   return timeout === 3000 ? '3 seconds' : timeout === 5000 ? '5 seconds' : '7 seconds';
 };
 
-export const InDrillScreen = ({ route }) => {
+const InDrillScreen = ({ route }) => {
   const navigation = useNavigation();
   const { patternName, timeout } = route.params;
 
@@ -72,7 +73,9 @@ export const InDrillScreen = ({ route }) => {
       </View>
       <View style={styles.row}>
         <Text style={styles.shotsLeft}>Shots left:</Text>
-        <Text style={styles.shotsLeft}>5</Text>
+        <Text style={styles.shotsLeft}>
+          {patterns.drillPatterns[0].sequence.length - currentStringIndex}
+        </Text>
       </View>
       <View style={styles.row}>
         <Button
@@ -92,6 +95,8 @@ export const InDrillScreen = ({ route }) => {
     </>
   );
 };
+
+export default InDrillScreen;
 
 const styles = StyleSheet.create({
   row: {
