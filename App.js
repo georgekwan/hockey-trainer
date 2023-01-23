@@ -8,8 +8,6 @@ import {
   LoginScreen,
   RegisterScreen,
   ResetPasswordScreen,
-  InDrillScreen,
-  Dashboard,
   HomeScreen,
   DrillSelectionScreen,
   UserProfileScreen,
@@ -18,6 +16,8 @@ import { FirebaseProvider } from './src/providers/FirebaseProvider.js';
 import { AuthProvider } from './src/providers/AuthProvider.js';
 
 import { NavBarContainer } from './src/components/NavBarContainer.js';
+import InDrillScreen from './tester/InDrillScreen.js';
+import ResultInputScreen from './src/screens/ResultInputScreen.js';
 
 const Stack = createStackNavigator();
 
@@ -28,32 +28,18 @@ export default function App() {
         <Provider theme={theme}>
           <NavigationContainer>
             <Stack.Navigator
-              initialRouteName="NavBarContainer"
+              initialRouteName="StartScreen"
+              name="StartScreen"
+              component={StartScreen}
               screenOptions={{
                 headerShown: false,
               }}>
-              {/* <Stack.Screen name="InDrillScreen" component={InDrillScreen} /> */}
-              {/* <Stack.Navigator
-                            initialRouteName='StartScreen'
-                            screenOptions={{
-                                headerShown: false,
-                            }}
-                        > */}
-              {/* <Stack.Screen
-                                name='StartScreen'
-                                component={StartScreen}
-                            /> */}
+              <Stack.Screen name="StartScreen" component={StartScreen} />
               <Stack.Screen name="LoginScreen" component={LoginScreen} />
               <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
-              {/* <Stack.Screen
-                                name='Dashboard'
-                                component={Dashboard}
-                            /> */}
-              <Stack.Screen
-                name="NavBarContainer"
-                component={NavBarContainer}
-                navigationKey="NavBarContainer"
-              />
+              <Stack.Screen name="NavBarContainer" component={NavBarContainer} />
+              <Stack.Screen name="InDrillScreen" component={InDrillScreen} />
+              <Stack.Screen name="ResultInputScreen" component={ResultInputScreen} />
               <Stack.Screen name="ResetPasswordScreen" component={ResetPasswordScreen} />
             </Stack.Navigator>
           </NavigationContainer>
