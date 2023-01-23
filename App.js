@@ -11,12 +11,13 @@ import {
   HomeScreen,
   DrillSelectionScreen,
   UserProfileScreen,
+  InDrillScreen,
 } from './src/screens';
 import { FirebaseProvider } from './src/providers/FirebaseProvider.js';
 import { AuthProvider } from './src/providers/AuthProvider.js';
 
 import { NavBarContainer } from './src/components/NavBarContainer.js';
-import InDrillScreen from './tester/InDrillScreen.js';
+// import InDrillScreen from './src/screens/InDrillScreen.js';
 import ResultInputScreen from './src/screens/ResultInputScreen.js';
 
 const Stack = createStackNavigator();
