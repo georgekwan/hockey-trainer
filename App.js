@@ -10,15 +10,13 @@ import {
   ResetPasswordScreen,
   HomeScreen,
   DrillSelectionScreen,
+  UserProfileScreen,
 } from './src/screens';
 import { FirebaseProvider } from './src/providers/FirebaseProvider.js';
 import { AuthProvider } from './src/providers/AuthProvider.js';
 
-import { UserProfileScreen } from './src/screens/UserProfileScreen.js';
-import { InDrillScreen } from './src/screens/InDrillScreen.js';
-
 import { NavBarContainer } from './src/components/NavBarContainer.js';
-import InDrillScreenTEST from './tester/InDrillScreenTEST.js';
+import InDrillScreen from './tester/InDrillScreen.js';
 import ResultInputScreen from './src/screens/ResultInputScreen.js';
 
 const Stack = createStackNavigator();
