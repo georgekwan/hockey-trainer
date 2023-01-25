@@ -14,6 +14,7 @@ const DrillSelectionScreen = () => {
   const navigation = useNavigation();
   const [patternName, setPatternName] = useState();
   const [timeout, setTimeout] = useState(0);
+  const [tutor, setTutor] = useState();
   const [selected, setSelected] = React.useState(false);
 
   return (
@@ -68,6 +69,7 @@ const DrillSelectionScreen = () => {
               onPress={() => {
                 setSelected(!selected);
                 setPatternName('Around the World');
+                console.log('selected Around the World pattern');
               }}
               style={{
                 width: WIDTH * 0.435,
@@ -94,7 +96,10 @@ const DrillSelectionScreen = () => {
             <Button
               mode="elevated"
               buttonColor={theme.colors.primary}
-              onPress={() => setPatternName("Pick'n Corners")}
+              onPress={() => {
+                setPatternName("Pick'n Corners");
+                console.log('selected Pick n Corners pattern');
+              }}
               style={styles.patternButton}>
               <View>
                 <Text
@@ -113,7 +118,8 @@ const DrillSelectionScreen = () => {
               buttonColor={theme.colors.primary}
               onPress={() => {
                 setSelected(!selected);
-                setPatternName('Around the World');
+                setPatternName('Up Down');
+                console.log('selected Up Down pattern');
               }}
               style={[
                 { backgroundColor: selected ? theme.colors.primary : '#696969' },
@@ -134,7 +140,10 @@ const DrillSelectionScreen = () => {
             <Button
               mode="elevated"
               buttonColor={theme.colors.primary}
-              onPress={() => setPatternName('Downtown')}
+              onPress={() => {
+                setPatternName('Downtown');
+                console.log('selected Downtown pattern');
+              }}
               style={styles.patternButton}>
               <View>
                 <Text
@@ -151,7 +160,10 @@ const DrillSelectionScreen = () => {
             <Button
               mode="elevated"
               buttonColor={theme.colors.primary}
-              onPress={() => setPatternName('Crash and Bang')}
+              onPress={() => {
+                setPatternName('Crash and Bang');
+                console.log('selected Crash and Bang pattern');
+              }}
               style={styles.patternButton}>
               <View>
                 <Text
@@ -168,7 +180,10 @@ const DrillSelectionScreen = () => {
             <Button
               mode="elevated"
               buttonColor={theme.colors.primary}
-              onPress={() => setPatternName('Titanic')}
+              onPress={() => {
+                setPatternName('Titanic');
+                console.log('selected Titanic pattern');
+              }}
               style={styles.patternButton}>
               <View>
                 <Text
@@ -185,7 +200,10 @@ const DrillSelectionScreen = () => {
             <Button
               mode="elevated"
               buttonColor={theme.colors.primary}
-              onPress={() => setPatternName("Mom's Cookies")}
+              onPress={() => {
+                setPatternName("Mom's Cookies");
+                console.log("selected Mom's Cookies pattern");
+              }}
               style={styles.patternButton}>
               <View>
                 <Text
@@ -202,7 +220,10 @@ const DrillSelectionScreen = () => {
             <Button
               mode="elevated"
               buttonColor={theme.colors.primary}
-              onPress={() => setPatternName('Riding Pine')}
+              onPress={() => {
+                setPatternName('Riding Pine');
+                console.log('selected Riding Pine pattern');
+              }}
               style={styles.patternButton}>
               <View>
                 <Text
@@ -220,7 +241,10 @@ const DrillSelectionScreen = () => {
             <Button
               mode="elevated"
               buttonColor={theme.colors.primary}
-              onPress={() => setPatternName('Dump and Chase')}
+              onPress={() => {
+                setPatternName('Dump and Chase');
+                console.log('selected Dump and Chase pattern');
+              }}
               style={styles.patternButton}>
               <View>
                 <Text
@@ -237,7 +261,10 @@ const DrillSelectionScreen = () => {
             <Button
               mode="elevated"
               buttonColor={theme.colors.primary}
-              onPress={() => setPatternName('The Frustrating One')}
+              onPress={() => {
+                setPatternName('The Frustrating One');
+                console.log('selected The Frustrating One pattern');
+              }}
               style={styles.patternButton}>
               <View>
                 <Text
@@ -284,7 +311,10 @@ const DrillSelectionScreen = () => {
         }}>
         <Button
           mode="elevated"
-          onPress={() => setTimeout(3000)}
+          onPress={() => {
+            setTimeout(3000);
+            console.log('selected 3 sec timeout');
+          }}
           buttonColor={theme.colors.primary}
           style={{
             width: WIDTH * 0.3,
@@ -311,7 +341,10 @@ const DrillSelectionScreen = () => {
         <Button
           mode="elevated"
           buttonColor={theme.colors.primary}
-          onPress={() => setTimeout(5000)}
+          onPress={() => {
+            setTimeout(5000);
+            console.log('selected 5 sec timeout');
+          }}
           style={{
             width: WIDTH * 0.3,
             height: HEIGHT * 0.05,
@@ -337,7 +370,10 @@ const DrillSelectionScreen = () => {
         <Button
           mode="elevated"
           buttonColor={theme.colors.primary}
-          onPress={() => setTimeout(7000)}
+          onPress={() => {
+            setTimeout(7000);
+            console.log('selected 7 sec timeout');
+          }}
           style={{
             width: WIDTH * 0.3,
             height: HEIGHT * 0.05,
@@ -391,7 +427,10 @@ const DrillSelectionScreen = () => {
         <Button
           mode="elevated"
           buttonColor={theme.colors.primary}
-          onPress={() => setTimeout(5000)}
+          onPress={() => {
+            setTutor(5);
+            console.log('selected 5 hole tutor');
+          }}
           style={{
             width: WIDTH * 0.45,
             height: HEIGHT * 0.05,
@@ -417,7 +456,10 @@ const DrillSelectionScreen = () => {
         <Button
           mode="elevated"
           buttonColor={theme.colors.primary}
-          onPress={() => setTimeout(7000)}
+          onPress={() => {
+            setTutor(11);
+            console.log('selected 11 hole tutor');
+          }}
           style={{
             width: WIDTH * 0.45,
             height: HEIGHT * 0.05,
@@ -452,7 +494,7 @@ const DrillSelectionScreen = () => {
           <Button
             mode="elevated"
             buttonColor={'#DCDCDC'}
-            onPress={() => navigation.navigate('InDrillScreen', { patternName, timeout })}
+            onPress={() => navigation.navigate('InDrillScreen', { patternName, timeout, tutor })}
             style={{
               width: WIDTH * 0.8,
               height: HEIGHT * 0.07,
@@ -496,6 +538,5 @@ const styles = StyleSheet.create({
     padding: 0,
     margin: 5,
     alignContent: 'center',
-    // backgroundColor: selected ? theme.colors.primary : 'white',
   },
 });

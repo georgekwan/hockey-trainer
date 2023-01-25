@@ -4,10 +4,10 @@ import Button from '../components/Button.js';
 import { Audio } from 'expo-av';
 import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
 import Timer from 'react-native-timer';
-
 import * as patterns from '../../temp/drill_patterns.json';
 import { fileName } from '../helpers/MP3fileName.js';
 import { imageFileName } from '../helpers/imageFileName.js';
+import { patternSelector } from '../helpers/patternSelector.js';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
@@ -18,11 +18,16 @@ const timeoutConverter = (timeout) => {
 
 const InDrillScreen = ({ route }) => {
   const navigation = useNavigation();
-  const { patternName, timeout } = route.params;
+  const { patternName, timeout, tutor } = route.params;
 
   const [sound, setSound] = useState();
   const [currentStringIndex, setCurrentStringIndex] = useState(1);
-  const [currentString, setCurrentString] = useState(patterns.drillPatterns[0].sequence[0]);
+  const [currentString, setCurrentString] = useState(
+    patternSelector(tutor, patternName).sequence[0]
+  );
+
+  //   patternSelector(tutor, patternName);
+  //   console.log(patternSelector(tutor, patternName));
 
   async function playSound() {
     console.log('Loading Sound');
@@ -39,8 +44,8 @@ const InDrillScreen = ({ route }) => {
       async () => {
         console.log('Unloading Sound');
         setCurrentStringIndex((curVal) => {
-          let newVal = (curVal + 1) % patterns.drillPatterns[0].sequence.length;
-          setCurrentString(patterns.drillPatterns[0].sequence[newVal]);
+          let newVal = (curVal + 1) % patternSelector(tutor, patternName).sequence.length;
+          setCurrentString(patternSelector(tutor, patternName).sequence[newVal]);
           return newVal;
         });
         console.log(currentStringIndex);
@@ -79,7 +84,7 @@ const InDrillScreen = ({ route }) => {
       </View>
       <View style={styles.row}>
         <Button
-          onPress={() => navigation.navigate('ResultInputScreen')}
+          onPress={() => navigation.goBack()}
           style={{
             width: WIDTH * 0.8,
           }}
