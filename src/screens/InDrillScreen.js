@@ -66,7 +66,7 @@ const InDrillScreen = ({ route }) => {
           <Text style={styles.drillTitle}>{patternName}</Text>
         </View>
         <View style={styles.drillSubtitle}>
-          <Text>{patterns.drillPatterns[1].targetType}</Text>
+          <Text>{tutor}</Text>
           <Text>{timeoutConverter(timeout)}</Text>
         </View>
       </View>

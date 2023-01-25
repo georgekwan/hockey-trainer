@@ -428,7 +428,7 @@ const DrillSelectionScreen = () => {
           mode="elevated"
           buttonColor={theme.colors.primary}
           onPress={() => {
-            setTutor(5);
+            setTutor('5 hole');
             console.log('selected 5 hole tutor');
           }}
           style={{
@@ -457,7 +457,7 @@ const DrillSelectionScreen = () => {
           mode="elevated"
           buttonColor={theme.colors.primary}
           onPress={() => {
-            setTutor(11);
+            setTutor('11 hole');
             console.log('selected 11 hole tutor');
           }}
           style={{
