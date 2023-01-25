@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Dimensions, Image, StyleSheet, View } from 'react-native';
 import { Avatar, Card, Text, List } from 'react-native-paper';
+import FullLogo from '../components/FullLogo.js';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
@@ -9,15 +10,11 @@ const HomeScreen = () => (
   <View style={styles.container}>
     <View
       style={{
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'space-evenly',
-        paddingBottom: HEIGHT * 0.05,
+        marginTop: HEIGHT * 0.06,
+        flexDirection: 'row',
+        justifyContent: 'center',
       }}>
-      <Image
-        source={require('../../assets/harpia-logo.png')}
-        style={{ resizeMode: 'contain', height: HEIGHT * 0.085 }}
-      />
+      <FullLogo />
     </View>
     <Card style={styles.card}>
       <Card.Content>

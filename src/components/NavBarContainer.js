@@ -1,8 +1,9 @@
 // eslint-disable-next-line import/order
 import * as React from 'react';
 
-import { BottomNavigation as PaperBottomNavigation } from 'react-native-paper';
+import { BottomNavigation, BottomNavigationAction } from 'react-native-paper';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { theme } from '../core/theme.js';
 
 import {
   DrillSelectionScreen,
@@ -24,7 +25,7 @@ export function NavBarContainer() {
     },
     {
       key: 'patternScreen',
-      title: 'Pattern Selection',
+      title: 'Patterns',
       focusedIcon: 'hockey-sticks',
       unfocusedIcon: 'hockey-puck',
     },
@@ -33,19 +34,23 @@ export function NavBarContainer() {
       title: 'User Details',
       focusedIcon: 'account-circle',
       unfocusedIcon: 'account-circle-outline',
+      color: theme.colors.primary,
     },
   ]);
-  const renderScene = PaperBottomNavigation.SceneMap({
+  const renderScene = BottomNavigation.SceneMap({
     home: HomeScreen,
     patternScreen: DrillSelectionScreen,
     user: UserProfileScreen,
   });
   return (
     <SafeAreaProvider>
-      <PaperBottomNavigation
+      <BottomNavigation
+        label={{ color: 'white' }}
         navigationState={{ index, routes }}
         onIndexChange={handleIndexChange}
         renderScene={renderScene}
+        barStyle={{ backgroundColor: '#E8E8E8', height: 90 }}
+        theme={{ colors: { secondaryContainer: 'white' } }}
       />
     </SafeAreaProvider>
   );
