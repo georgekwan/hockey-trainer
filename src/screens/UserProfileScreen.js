@@ -1,14 +1,45 @@
 import { Dimensions, ScrollView, StyleSheet, Text, View } from 'react-native';
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Avatar, DataTable, IconButton } from 'react-native-paper';
 import { theme } from '../core/theme.js';
 import FullLogo from '../components/FullLogo.js';
 import Button from '../components/Button.js';
+import GetUserInfo from '../components/GetUserInfo.js';
+import { doc, getDoc } from 'firebase/firestore';
+import { FirebaseContext } from '../providers/FirebaseProvider.js';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
-export const UserProfileScreen = () => {
+export const UserProfileScreen = ({ displayName }) => {
+  const [user, setUser] = useState();
+  const { myAuth, myDb } = useContext(FirebaseContext);
+  console.log('auth is', myAuth);
+
+  useEffect(() => {
+    async function getUserProfile() {
+      const userRef = doc(myDb, 'users', myAuth.currentUser.uid);
+
+      const docSnap = await getDoc(userRef);
+      console.log('docSnap', docSnap);
+      if (!docSnap.exists) {
+        console.log('No such document!');
+      } else {
+        const userData = docSnap.data();
+        setUser({
+          displayName: userData.displayName,
+          email: userData.email,
+          age: userData.age,
+        });
+      }
+    }
+    if (myAuth.currentUser) {
+      getUserProfile();
+    }
+  }, [myAuth]);
+  console.log('user auth!!!', myAuth);
+  console.log('user', user);
+
   return (
     <>
       <View
@@ -53,7 +84,7 @@ export const UserProfileScreen = () => {
               style={{
                 fontSize: 20,
               }}>
-              Josh Doe
+              {user?.displayName}
             </Text>
           </View>
           <View
@@ -72,7 +103,7 @@ export const UserProfileScreen = () => {
               style={{
                 fontSize: 20,
               }}>
-              14
+              {user?.age}
             </Text>
           </View>
           <View
