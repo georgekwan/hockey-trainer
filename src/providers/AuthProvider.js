@@ -23,34 +23,28 @@ export const AuthProvider = (props) => {
   const [authLoading, setAuthLoading] = useState(true);
   const [authErrorMessages, setAuthErrorMessages] = useState();
 
-  const { myAuth, myFS } = useContext(FirebaseContext);
+  const { myAuth, myDb } = useContext(FirebaseContext);
 
-  const registerFunction = async (email, password, displayName = '') => {
+  const registerFunction = async (email, password, displayName, age = '') => {
     let userCredential;
     try {
-      userCredential = await createUserWithEmailAndPassword(
-        myAuth,
-        email,
-        password
-      );
+      userCredential = await createUserWithEmailAndPassword(myAuth, email, password);
     } catch (ex) {
       console.error(`registerFunction() failed with: ${ex.message}`);
-      setAuthErrorMessages([
-        ex.message,
-        'Did you enable the Email Provider in Firebase Auth?',
-      ]);
+      setAuthErrorMessages([ex.message, 'Did you enable the Email Provider in Firebase Auth?']);
       return false;
     }
 
     try {
       let user = userCredential.user;
 
-      let userDocRef = doc(myFS, 'users', user.uid);
+      let userDocRef = doc(myDb, 'users', user.uid);
       let userDocData = {
         uid: user.uid,
         email: email,
         displayName: displayName,
         dateCreated: serverTimestamp(),
+        age: age,
       };
 
       await setDoc(userDocRef, userDocData);
@@ -67,11 +61,7 @@ export const AuthProvider = (props) => {
 
   const loginFunction = async (email, password) => {
     try {
-      let userCredential = await signInWithEmailAndPassword(
-        myAuth,
-        email,
-        password
-      );
+      let userCredential = await signInWithEmailAndPassword(myAuth, email, password);
 
       let user = userCredential.user;
       if (!user?.uid) {
@@ -126,16 +116,14 @@ export const AuthProvider = (props) => {
     let unsubscribe = null;
     const listenToUserDoc = async (uid) => {
       try {
-        let docRef = doc(myFS, PROFILE_COLLECTION, uid);
+        let docRef = doc(myDb, PROFILE_COLLECTION, uid);
         unsubscribe = await onSnapshot(
           docRef,
           (docSnap) => {
             let profileData = docSnap.data();
             // console.log('Got user profile:', profileData, docSnap)
             if (!profileData) {
-              setAuthErrorMessages([
-                `No profile doc found in Firestore at: ${docRef.path}`,
-              ]);
+              setAuthErrorMessages([`No profile doc found in Firestore at: ${docRef.path}`]);
             }
             setProfile(profileData);
           },
@@ -151,9 +139,7 @@ export const AuthProvider = (props) => {
           }
         );
       } catch (ex) {
-        console.error(
-          `useEffect() calling onSnapshot() failed with: ${ex.message}`
-        );
+        console.error(`useEffect() calling onSnapshot() failed with: ${ex.message}`);
         setAuthErrorMessages([ex.message]);
       }
     };
@@ -169,7 +155,7 @@ export const AuthProvider = (props) => {
       setProfile(null);
       setAuthErrorMessages(null);
     }
-  }, [user, setProfile, myFS]);
+  }, [user, setProfile, myDb]);
 
   if (authLoading) {
     return <Text>Loading</Text>;
@@ -185,7 +171,5 @@ export const AuthProvider = (props) => {
     register: registerFunction,
   };
 
-  return (
-    <AuthContext.Provider value={theValues}>{children}</AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={theValues}>{children}</AuthContext.Provider>;
 };

@@ -38,6 +38,7 @@ export default function RegisterScreen({ navigation }) {
   const [name, setName] = useState(''); // input field value cannot be null
   const [email, setEmail] = useState(''); // input field value cannot be null
   const [password, setPassword] = useState(''); // input field value cannot be null
+  const [age, setAge] = useState(''); // input field value cannot be null
 
   const [registrationRunning, setRegistrationRunning] = useState(false);
   const [errorMessage, setErrorMessage] = useState();
@@ -50,15 +51,14 @@ export default function RegisterScreen({ navigation }) {
       thename = 'NO DISPLAY NAME PROVIDED 😟';
     }
 
-    let success = await register(email, password, thename);
+    let success = await register(email, password, thename, age);
     setRegistrationRunning(false);
     if (!success) {
       setErrorMessage('Registration failed!');
     } else {
       navigation.reset({
         index: 0,
-        // routes: [{ name: 'Dashboard' }],
-        routes: [{ name: 'LoggedInScreen' }],
+        routes: [{ name: 'NavBarContainer' }],
       });
     }
   };
@@ -74,6 +74,16 @@ export default function RegisterScreen({ navigation }) {
         value={name}
         // onChangeText={(text) => setName({ value: text, error: '' })}
         onChangeText={(t) => setName(t)}
+        // error={!!name.error}
+        // errorText={name.error}
+      />
+      <TextInput
+        label="Age"
+        returnKeyType="next"
+        value={age}
+        keyboardType="numeric"
+        // onChangeText={(text) => setName({ value: text, error: '' })}
+        onChangeText={(t) => setAge(t)}
         // error={!!name.error}
         // errorText={name.error}
       />

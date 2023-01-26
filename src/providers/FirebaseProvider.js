@@ -26,7 +26,7 @@ export const FirebaseProvider = (props) => {
 
   const myApp = initializeApp(firebaseConfig);
   const myAuth = getAuth(myApp);
-  const myFS = getFirestore(myApp);
+  const myDb = getFirestore(myApp);
   const myStorage = getStorage(myApp);
 
   useEffect(() => {
@@ -39,7 +39,7 @@ export const FirebaseProvider = (props) => {
       let FS_PORT = 5002;
 
       if (FS_HOST && FS_PORT) {
-        connectFirestoreEmulator(myFS, FS_HOST, FS_PORT);
+        connectFirestoreEmulator(myDb, FS_HOST, FS_PORT);
         // console.log(`firestore().useEmulator(${FS_HOST}, ${FS_PORT})`)
         mapEmulators.FS_HOST = FS_HOST;
         mapEmulators.FS_PORT = FS_PORT;
@@ -78,7 +78,7 @@ export const FirebaseProvider = (props) => {
     }
 
     setFirebaseInitializing(false);
-  }, [myAuth, myFS, myStorage]);
+  }, [myAuth, myDb, myStorage]);
 
   if (firebaseInitializing) {
     return <Text>Loading</Text>;
@@ -89,13 +89,9 @@ export const FirebaseProvider = (props) => {
     emulatorsConfig,
     myApp,
     myAuth,
-    myFS,
+    myDb,
     myStorage,
   };
 
-  return (
-    <FirebaseContext.Provider value={theValues}>
-      {children}
-    </FirebaseContext.Provider>
-  );
+  return <FirebaseContext.Provider value={theValues}>{children}</FirebaseContext.Provider>;
 };
