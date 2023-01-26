@@ -1,11 +1,16 @@
-import * as React from 'react';
-import { Dimensions, Image, StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { ImageBackground, Dimensions, Image, StyleSheet, Text, View } from 'react-native';
 import { Button } from 'react-native-paper';
+
+import MissShotInput from '../components/MissShotInput';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
 const ResultInputScreen = () => {
+  const totalShots = 11;
+  const [numberOfShotsLeft, setNumberOfShotsLeft] = useState(totalShots);
+
   return (
     <View style={{ flex: 1, backgroundColor: 'white' }}>
       <View
@@ -13,8 +18,7 @@ const ResultInputScreen = () => {
           alignItems: 'center',
           justifyContent: 'center',
           marginTop: HEIGHT * 0.05,
-        }}
-      >
+        }}>
         <Image
           source={require('../../assets/harpia-logo.png')}
           style={{ resizeMode: 'contain', height: HEIGHT * 0.085 }}
@@ -26,16 +30,14 @@ const ResultInputScreen = () => {
           flexDirection: 'row',
           alignItems: 'center',
           justifyContent: 'center',
-        }}
-      >
+        }}>
         <Text
           style={{
             fontSize: WIDTH * 0.07,
             fontWeight: '800',
             textAlign: 'center',
             paddingVertical: WIDTH * 0.02,
-          }}
-        >
+          }}>
           INPUT PATTERN RESULTS
         </Text>
       </View>
@@ -44,16 +46,14 @@ const ResultInputScreen = () => {
           flexDirection: 'row',
           alignItems: 'center',
           justifyContent: 'center',
-        }}
-      >
+        }}>
         <Text
           style={{
             fontSize: WIDTH * 0.05,
             fontWeight: '800',
             textAlign: 'center',
             paddingVertical: WIDTH * 0.02,
-          }}
-        >
+          }}>
           Tap the dropdown button to select number of shots made
         </Text>
       </View>
@@ -61,30 +61,161 @@ const ResultInputScreen = () => {
       <View
         style={{
           position: 'relative',
-          borderColor: 'red',
-          borderWidth: 5,
+          // borderColor: 'red',
+          // borderWidth: 5,
           height: HEIGHT * 0.35,
-        }}
-      >
-        <View></View>
+        }}>
+        <ImageBackground
+          source={require('../../assets/hockeynet/hockeynet-basic.png')}
+          // source={{
+          //   uri: 'https://media-www.canadiantire.ca/product/playing/hockey/hockey-accessories/0835342/proform-hockey-net-72-with-1-5-posts-ed72068c-d993-49a6-8d96-cae351f07b52.png',
+          // }}
+          style={{
+            // height: '100%',
+            width: '100%',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+          resizeMode="contain">
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              // justifyContent: 'center',
+              position: 'relative',
+              zIndex: 3,
+              // paddingHorizontal: 255,
+              width: '100%',
+              height: '100%',
+              // borderColor: 'yellow',
+              // borderWidth: 5,
+            }}>
+            {console.log(`shots left is ${numberOfShotsLeft}`)}
+            <View
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                width: '100%',
+                paddingTop: 25,
+                paddingHorizontal: 10,
+              }}>
+              <MissShotInput
+                totalShots={totalShots}
+                numberOfShotsLeft={numberOfShotsLeft}
+                setNumberOfShotsLeft={setNumberOfShotsLeft}
+                // positionStyle={{ position: 'absolute', left: 15, top: 30 }}
+              />
+              <MissShotInput
+                totalShots={totalShots}
+                numberOfShotsLeft={numberOfShotsLeft}
+                setNumberOfShotsLeft={setNumberOfShotsLeft}
+                // positionStyle={{ position: 'absolute', left: 110, top: 30 }}
+              />
+              <MissShotInput
+                totalShots={totalShots}
+                numberOfShotsLeft={numberOfShotsLeft}
+                setNumberOfShotsLeft={setNumberOfShotsLeft}
+                // positionStyle={{ position: 'absolute', right: 110, top: 30 }}
+              />
+              <MissShotInput
+                totalShots={totalShots}
+                numberOfShotsLeft={numberOfShotsLeft}
+                setNumberOfShotsLeft={setNumberOfShotsLeft}
+                // positionStyle={{ position: 'absolute', right: 15, top: 30 }}
+              />
+            </View>
+            <View style={{ flex: 1 }}></View>
+            <View
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                width: '100%',
+                paddingHorizontal: 10,
+              }}>
+              <MissShotInput
+                totalShots={totalShots}
+                numberOfShotsLeft={numberOfShotsLeft}
+                setNumberOfShotsLeft={setNumberOfShotsLeft}
+                // positionStyle={{ position: 'absolute', left: 10, bottom: 100 }}
+              />
+              <MissShotInput
+                totalShots={totalShots}
+                numberOfShotsLeft={numberOfShotsLeft}
+                setNumberOfShotsLeft={setNumberOfShotsLeft}
+                // positionStyle={{ position: 'absolute', right: 10, bottom: 100 }}
+                style={{ marginTop: 20 }}
+              />
+              <MissShotInput
+                totalShots={totalShots}
+                numberOfShotsLeft={numberOfShotsLeft}
+                setNumberOfShotsLeft={setNumberOfShotsLeft}
+                // positionStyle={{ position: 'absolute', left: 100, bottom: 80 }}
+                style={{ marginTop: 20 }}
+              />
+              <MissShotInput
+                totalShots={totalShots}
+                numberOfShotsLeft={numberOfShotsLeft}
+                setNumberOfShotsLeft={setNumberOfShotsLeft}
+                // positionStyle={{ position: 'absolute', right: 100, bottom: 80 }}
+              />
+            </View>
+
+            <View
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                width: '100%',
+                paddingHorizontal: 10,
+                paddingBottom: 20,
+              }}>
+              <MissShotInput
+                totalShots={totalShots}
+                numberOfShotsLeft={numberOfShotsLeft}
+                setNumberOfShotsLeft={setNumberOfShotsLeft}
+                // positionStyle={{ position: 'absolute', left: 10, bottom: 5 }}
+                style={{ marginTop: 30 }}
+              />
+
+              <MissShotInput
+                totalShots={totalShots}
+                numberOfShotsLeft={numberOfShotsLeft}
+                setNumberOfShotsLeft={setNumberOfShotsLeft}
+                // positionStyle={{ position: 'absolute', left: 160, bottom: 30 }}
+              />
+              <MissShotInput
+                totalShots={totalShots}
+                numberOfShotsLeft={numberOfShotsLeft}
+                setNumberOfShotsLeft={setNumberOfShotsLeft}
+                // positionStyle={{ position: 'absolute', right: 10, bottom: 5 }}
+                style={{ marginTop: 30 }}
+              />
+            </View>
+          </View>
+        </ImageBackground>
         <View
           style={{
             flex: 1,
             flexDirection: 'row',
             alignItems: 'center',
-            borderColor: 'red',
-            borderWidth: 5,
-          }}
-        >
-          <Image
+            // borderColor: 'blue',
+            // borderWidth: 5,
+            zIndex: 0,
+            // position: 'absolute',
+            // top: 0,
+          }}>
+          {/* <Image
             source={require('../../assets/hockeynet/hockeynet-basic.png')}
             style={{
-              width: WIDTH * 0.95,
+              width: '100%',
               alignItems: 'center',
               justifyContent: 'center',
               resizeMode: 'contain',
             }}
-          />
+          /> */}
         </View>
       </View>
 
@@ -94,8 +225,7 @@ const ResultInputScreen = () => {
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'center',
-          }}
-        >
+          }}>
           <Button
             mode="contained"
             onPress={() => console.log('INPUT')}
@@ -108,8 +238,7 @@ const ResultInputScreen = () => {
               fontSize: 30,
               fontWeight: 'bold',
               lineHeight: 30,
-            }}
-          >
+            }}>
             INPUT
           </Button>
         </View>
