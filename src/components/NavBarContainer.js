@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/order
 import * as React from 'react';
 
 import { BottomNavigation, BottomNavigationAction } from 'react-native-paper';

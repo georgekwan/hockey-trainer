@@ -1,9 +1,9 @@
-import React from 'react'
-import { StyleSheet } from 'react-native'
-import { Text } from 'react-native-paper'
+import React from 'react';
+import { StyleSheet } from 'react-native';
+import { Text } from 'react-native-paper';
 
 export default function Paragraph(props) {
-  return <Text style={styles.text} {...props} />
+  return <Text style={styles.text} {...props} />;
 }
 
 const styles = StyleSheet.create({
@@ -13,4 +13,4 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 12,
   },
-})
+});

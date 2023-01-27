@@ -1,12 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { TouchableOpacity, StyleSheet, View } from 'react-native';
 import { Text } from 'react-native-paper';
-import Background from '../components/Background';
-import Logo from '../components/Logo';
-import Header from '../components/Header';
-import Button from '../components/Button';
-import TextInput from '../components/TextInput';
+
 import BackButton from '../components/BackButton';
+import Background from '../components/Background';
+import Button from '../components/Button';
+import Header from '../components/Header';
+import Logo from '../components/Logo';
+import TextInput from '../components/TextInput';
 import { theme } from '../core/theme';
 import { emailValidator } from '../helpers/emailValidator';
 import { passwordValidator } from '../helpers/passwordValidator';
@@ -42,7 +43,7 @@ export default function LoginScreen({ navigation }) {
   const handleButtonClick = async () => {
     setLoginRunning(true);
     console.log('email is ', email);
-    let success = await login(email, password);
+    const success = await login(email, password);
 
     setLoginRunning(false);
     if (!success) {
@@ -67,7 +68,7 @@ export default function LoginScreen({ navigation }) {
         value={email}
         // onChangeText={(text) => setEmail({ value: text, error: '' })}
         onChangeText={(e) => {
-          console.log('e is', e);
+          // console.log('e is', e);
           setEmail(e);
         }}
         // error={!!email.error}

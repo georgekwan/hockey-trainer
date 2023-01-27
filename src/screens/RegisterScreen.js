@@ -1,16 +1,17 @@
 import React, { useContext, useState } from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { Text } from 'react-native-paper';
-import Background from '../components/Background';
-import Logo from '../components/Logo';
-import Header from '../components/Header';
-import Button from '../components/Button';
-import TextInput from '../components/TextInput';
+
 import BackButton from '../components/BackButton';
+import Background from '../components/Background';
+import Button from '../components/Button';
+import Header from '../components/Header';
+import Logo from '../components/Logo';
+import TextInput from '../components/TextInput';
 import { theme } from '../core/theme';
 import { emailValidator } from '../helpers/emailValidator';
-import { passwordValidator } from '../helpers/passwordValidator';
 import { nameValidator } from '../helpers/nameValidator';
+import { passwordValidator } from '../helpers/passwordValidator';
 import { AuthContext } from '../providers/AuthProvider.js';
 
 export default function RegisterScreen({ navigation }) {

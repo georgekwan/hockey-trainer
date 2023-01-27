@@ -1,11 +1,12 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import { Dimensions, Image, Pressable, StyleSheet, ScrollView, Text, View } from 'react-native';
 import { Button, List } from 'react-native-paper';
-import { theme } from '../core/theme';
+
 import { ResultInputScreen } from './ResultInputScreen';
 import * as patterns from '../../temp/drill_patterns.json';
-import { useNavigation } from '@react-navigation/native';
 import FullLogo from '../components/FullLogo.js';
+import { theme } from '../core/theme';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;

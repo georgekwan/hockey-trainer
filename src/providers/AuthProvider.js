@@ -1,5 +1,3 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
-
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
@@ -7,9 +5,10 @@ import {
   signOut,
 } from 'firebase/auth';
 import { doc, onSnapshot, setDoc, serverTimestamp } from 'firebase/firestore';
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import { Text } from 'react-native';
 
 import { FirebaseContext } from './FirebaseProvider';
-import { Text } from 'react-native';
 
 export const AuthContext = createContext({});
 
@@ -36,13 +35,13 @@ export const AuthProvider = (props) => {
     }
 
     try {
-      let user = userCredential.user;
+      const user = userCredential.user;
 
       let userDocRef = doc(myDb, 'users', user.uid);
       let userDocData = {
         uid: user.uid,
-        email: email,
-        displayName: displayName,
+        email,
+        displayName,
         dateCreated: serverTimestamp(),
         age: age,
       };
@@ -63,9 +62,9 @@ export const AuthProvider = (props) => {
     try {
       let userCredential = await signInWithEmailAndPassword(myAuth, email, password);
 
-      let user = userCredential.user;
+      const user = userCredential.user;
       if (!user?.uid) {
-        let msg = `No UID found after signIn!`;
+        const msg = `No UID found after signIn!`;
         console.error(msg);
       }
       if (user) {
@@ -74,7 +73,7 @@ export const AuthProvider = (props) => {
       setUser(user);
       return true;
     } catch (ex) {
-      let msg = `Login failure for email(${email}: ${ex.message})`;
+      const msg = `Login failure for email(${email}: ${ex.message})`;
       console.error(msg);
       setAuthErrorMessages([ex.message]);
       return false;
@@ -97,7 +96,7 @@ export const AuthProvider = (props) => {
   // hook into Firebase Authentication
   useEffect(() => {
     if (myAuth) {
-      let unsubscribe = onAuthStateChanged(myAuth, (user) => {
+      const unsubscribe = onAuthStateChanged(myAuth, (user) => {
         // if user is null, then we force them to login
         // console.log('onAuthStateChanged(): got user', user)
         if (user) {
@@ -120,7 +119,7 @@ export const AuthProvider = (props) => {
         unsubscribe = await onSnapshot(
           docRef,
           (docSnap) => {
-            let profileData = docSnap.data();
+            const profileData = docSnap.data();
             // console.log('Got user profile:', profileData, docSnap)
             if (!profileData) {
               setAuthErrorMessages([`No profile doc found in Firestore at: ${docRef.path}`]);

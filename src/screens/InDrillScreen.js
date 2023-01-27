@@ -1,10 +1,10 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useEffect, useState } from 'react';
-import Button from '../components/Button.js';
 import { Audio } from 'expo-av';
+import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
 import Timer from 'react-native-timer';
 import * as patterns from '../../temp/drill_patterns.json';
+import Button from '../components/Button.js';
 import { fileName } from '../helpers/MP3fileName.js';
 import { imageFileName } from '../helpers/imageFileName.js';
 import { patternSelector } from '../helpers/patternSelector.js';

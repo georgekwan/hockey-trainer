@@ -1,9 +1,10 @@
 import React from 'react';
+
 import Background from '../components/Background';
-import Header from '../components/Header';
 import Button from '../components/Button';
-import Paragraph from '../components/Paragraph';
 import FullLogo from '../components/FullLogo.js';
+import Header from '../components/Header';
+import Paragraph from '../components/Paragraph';
 
 export default function StartScreen({ navigation }) {
   return (

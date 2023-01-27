@@ -1,8 +1,12 @@
-import React from 'react';
-import { Provider } from 'react-native-paper';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import React from 'react';
+import { Provider } from 'react-native-paper';
+
+import { NavBarContainer } from './src/components/NavBarContainer.js';
 import { theme } from './src/core/theme';
+import { AuthProvider } from './src/providers/AuthProvider.js';
+import { FirebaseProvider } from './src/providers/FirebaseProvider.js';
 import {
   StartScreen,
   LoginScreen,
@@ -13,10 +17,7 @@ import {
   UserProfileScreen,
   InDrillScreen,
 } from './src/screens';
-import { FirebaseProvider } from './src/providers/FirebaseProvider.js';
-import { AuthProvider } from './src/providers/AuthProvider.js';
 
-import { NavBarContainer } from './src/components/NavBarContainer.js';
 // import InDrillScreen from './src/screens/InDrillScreen.js';
 import ResultInputScreen from './src/screens/ResultInputScreen.js';
 
@@ -28,6 +29,13 @@ export default function App() {
       <AuthProvider>
         <Provider theme={theme}>
           <NavigationContainer>
+            {/* <Stack.Navigator
+              initialRouteName="ResultInputScreen"
+              name="ResultInputScreen"
+              component={ResultInputScreen}
+              screenOptions={{
+                headerShown: false,
+              }}> */}
             <Stack.Navigator
               initialRouteName="StartScreen"
               name="StartScreen"

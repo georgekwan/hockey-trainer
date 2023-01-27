@@ -1,9 +1,8 @@
-import React, { createContext, useEffect, useState } from 'react';
-
 import { initializeApp } from 'firebase/app';
 import { getAuth, connectAuthEmulator } from 'firebase/auth';
 import { getFirestore, connectFirestoreEmulator } from 'firebase/firestore';
 import { getStorage, connectStorageEmulator } from 'firebase/storage';
+import React, { createContext, useEffect, useState } from 'react';
 import { Text } from 'react-native';
 
 export const FirebaseContext = createContext({});
@@ -33,10 +32,10 @@ export const FirebaseProvider = (props) => {
     const shouldUseEmulator = false; // or true :)
 
     if (shouldUseEmulator) {
-      let mapEmulators = {};
+      const mapEmulators = {};
 
-      let FS_HOST = 'localhost';
-      let FS_PORT = 5002;
+      const FS_HOST = 'localhost';
+      const FS_PORT = 5002;
 
       if (FS_HOST && FS_PORT) {
         connectFirestoreEmulator(myDb, FS_HOST, FS_PORT);
@@ -45,10 +44,10 @@ export const FirebaseProvider = (props) => {
         mapEmulators.FS_PORT = FS_PORT;
       }
 
-      let AUTH_HOST = 'localhost';
-      let AUTH_PORT = 9099; // or whatever you set the port to in firebase.json
+      const AUTH_HOST = 'localhost';
+      const AUTH_PORT = 9099; // or whatever you set the port to in firebase.json
       if (AUTH_HOST && AUTH_PORT) {
-        let AUTH_URL = `http://${AUTH_HOST}:${AUTH_PORT}`;
+        const AUTH_URL = `http://${AUTH_HOST}:${AUTH_PORT}`;
         // console.log(`connectAuthEmulator(${AUTH_URL}, {disableWarnings: true})`)
         //    warns you not to use any real credentials -- we don't need that noise :)
         connectAuthEmulator(myAuth, AUTH_URL, { disableWarnings: true });
@@ -58,8 +57,8 @@ export const FirebaseProvider = (props) => {
         mapEmulators.AUTH_URL = AUTH_URL;
       }
 
-      let STORAGE_HOST = 'localhost';
-      let STORAGE_PORT = 5004; // or whatever you have it set to in firebase.json
+      const STORAGE_HOST = 'localhost';
+      const STORAGE_PORT = 5004; // or whatever you have it set to in firebase.json
       if (STORAGE_HOST && STORAGE_PORT) {
         // console.log(`connectStorageEmulator(${STORAGE_HOST}, ${STORAGE_PORT})`)
         connectStorageEmulator(myStorage, STORAGE_HOST, STORAGE_PORT);

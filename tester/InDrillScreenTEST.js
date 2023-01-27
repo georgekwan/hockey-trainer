@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
 import { Audio } from 'expo-av';
-import Timer from 'react-native-timer';
+import { useEffect, useState } from 'react';
 import { StyleSheet, Text } from 'react-native';
-import * as patterns from '../temp/drill_patterns.json';
+import Timer from 'react-native-timer';
+
 import { fileName } from '../src/helpers/MP3fileName.js';
+import * as patterns from '../temp/drill_patterns.json';
 
 export default function InDrillScreenTEST() {
   const [sound, setSound] = useState();
@@ -25,7 +26,7 @@ export default function InDrillScreenTEST() {
       async () => {
         console.log('Unloading Sound');
         setCurrentStringIndex((curVal) => {
-          let newVal = (curVal + 1) % patterns.drillPatterns[0].sequence.length;
+          const newVal = (curVal + 1) % patterns.drillPatterns[0].sequence.length;
           setCurrentString(patterns.drillPatterns[0].sequence[newVal]);
           return newVal;
         });

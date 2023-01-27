@@ -1,12 +1,13 @@
 import { Dimensions, ScrollView, StyleSheet, Text, View } from 'react-native';
 import React, { useContext, useEffect, useState } from 'react';
 import { Avatar, DataTable, IconButton } from 'react-native-paper';
-import { theme } from '../core/theme.js';
-import FullLogo from '../components/FullLogo.js';
+
 import Button from '../components/Button.js';
 import GetUserInfo from '../components/GetUserInfo.js';
 import { doc, getDoc } from 'firebase/firestore';
 import { FirebaseContext } from '../providers/FirebaseProvider.js';
+import FullLogo from '../components/FullLogo.js';
+import { theme } from '../core/theme';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
@@ -173,13 +174,13 @@ export const UserProfileScreen = ({ displayName }) => {
             default
             type="contained"
             icon="table"
-            iconColor={'black'}
+            iconColor="black"
             size={40}
             onPress={() => console.log('Pressed')}
           />
           <IconButton
             icon="chart-line"
-            iconColor={'black'}
+            iconColor="black"
             size={40}
             onPress={() => console.log('Pressed')}
           />
