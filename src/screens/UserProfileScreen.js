@@ -32,10 +32,12 @@ export const UserProfileScreen = ({ displayName }) => {
         console.log('No such document!');
       } else {
         const userData = docSnap.data();
+        // console.log('USER DATA:', userData);
         setUser({
           displayName: userData.displayName,
           email: userData.email,
           age: userData.age,
+          uid: userData.uid,
         });
       }
     }
@@ -44,7 +46,7 @@ export const UserProfileScreen = ({ displayName }) => {
     }
   }, [myAuth]);
   console.log('user auth!!!', myAuth);
-  console.log('user', user);
+  console.log('USER =>', myAuth.currentUser.uid);
 
   const visualizeData = (tableView) => {
     if (tableView) {

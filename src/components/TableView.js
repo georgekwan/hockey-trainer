@@ -1,11 +1,52 @@
 import { Dimensions, ScrollView, StyleSheet, Text, View } from 'react-native';
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { DataTable } from 'react-native-paper';
+import { FirebaseContext } from '../providers/FirebaseProvider.js';
+import {
+  collection,
+  doc,
+  Firestore,
+  getDoc,
+  getDocs,
+  getFirestore,
+  query,
+  QuerySnapshot,
+  where,
+} from 'firebase/firestore';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
 export const TableView = () => {
+  const { myAuth, myDb } = useContext(FirebaseContext);
+  // const [user, setUser] = useState();
+
+  useEffect(() => {
+    async function getPatternHistory() {
+      const userId = myAuth.currentUser.uid;
+
+      const q = query(collection(myDb, 'drillResults'), where('userId', '==', userId));
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        console.log('DOC ID===', doc.id, ' => ', doc.data());
+      });
+      // CHATGPT'S CODE:
+      // const userRef = Firestore.collection('drillResults').where('userId', '==', userId);
+      // const querySnapshot = await userRef.get();
+      // querySnapshot.forEach((doc) => {
+      //   console.log('LOGGING:', doc.data());
+      // });
+
+      // EMMANUEL'S CODE:
+      // userRef.get().then((querySnapshot) => {
+      //   QuerySnapshot.forEach((doc) => {
+      //     console.log(doc.data());
+      //   });
+      // });
+    }
+    getPatternHistory();
+  }, []);
+
   return (
     <ScrollView
       style={{
@@ -95,3 +136,47 @@ export const TableView = () => {
 };
 
 // const styles = StyleSheet.create({});
+
+// const queryy = {
+//   "_firestore": {
+//     "app": [FirebaseAppImpl],
+//     "databaseId": [$t],
+//     "settings": [ga]
+//     },
+//   "_snapshot": {
+//       "docChanges": [],
+//       "docs": {
+//         "comparator": [Function anonymous],
+//         "keyedMap": [je],
+//         "sortedSet": [je]
+//       },
+//       "excludesMetadataChanges": false,
+//       "fromCache": false,
+//       "hasCachedResults": true,
+//       "mutatedKeys": {
+//         "comparator": [Function comparator],
+//         "data": [je]},
+//         "oldDocs": {
+//           "comparator": [Function anonymous],
+//           "keyedMap": [je],
+//           "sortedSet": [je]
+//         },
+//           "query": {
+//             "_t": [nn],
+//             "collectionGroup": null,
+//             "dt": [Array],
+//             "endAt": null,
+//             "explicitOrderBy": [Array],
+//             "filters": [Array],
+//             "limit": null,
+//             "limitType": "F",
+//             "path": [ot],
+//             "startAt": null
+//           },
+//           "syncStateChanged": true
+//         },
+//         "_userDataWriter": {
+//           "firestore": [Object]
+//         },
+//         "metadata": {
+//           "fromCache": false, "hasPendingWrites": false}, "query": {"_query": {"_t": [nn], "collectionGroup": null, "dt": [Array], "endAt": null, "explicitOrderBy": [Array], "filters": [Array], "limit": null, "limitType": "F", "path": [ot], "startAt": null}, "converter": null, "firestore": [Object], "type": "query"}}
