@@ -55,97 +55,27 @@ export const UserProfileScreen = ({ displayName }) => {
   };
   return (
     <>
-      <View
-        style={{
-          marginTop: HEIGHT * 0.06,
-          flexDirection: 'row',
-          justifyContent: 'center',
-        }}>
+      <View style={styles.logo}>
         <FullLogo />
       </View>
-      <View
-        style={{
-          flexDirection: 'row',
-          // borderColor: 'red',
-          // borderWidth: 3,
-          marginTop: HEIGHT * 0.02,
-          marginHorizontal: WIDTH * 0.02,
-          justifyContent: 'space-between',
-        }}>
+      <View style={styles.userInfo}>
         <Avatar.Icon size={90} icon="face-man-shimmer" />
-        <View
-          style={{
-            // borderColor: 'red',
-            // borderWidth: 3,
-            width: WIDTH * 0.63,
-            flexDirection: 'column',
-            justifyContent: 'space-around',
-          }}>
-          <View
-            style={{
-              justifyContent: 'space-between',
-              flexDirection: 'row',
-            }}>
-            <Text
-              style={{
-                fontSize: 20,
-                fontWeight: '800',
-              }}>
-              NAME:
-            </Text>
-            <Text
-              style={{
-                fontSize: 20,
-              }}>
-              {user?.displayName}
-            </Text>
+        <View style={styles.nameAge}>
+          <View style={styles.spaceBetweenRow}>
+            <Text style={styles.boldText}>NAME:</Text>
+            <Text style={styles.normalText}>{user?.displayName}</Text>
           </View>
-          <View
-            style={{
-              justifyContent: 'space-between',
-              flexDirection: 'row',
-            }}>
-            <Text
-              style={{
-                fontSize: 20,
-                fontWeight: '800',
-              }}>
-              AGE:
-            </Text>
-            <Text
-              style={{
-                fontSize: 20,
-              }}>
-              {user?.age}
-            </Text>
+          <View style={styles.spaceBetweenRow}>
+            <Text style={styles.boldText}>AGE:</Text>
+            <Text style={styles.normalText}>{user?.age}</Text>
           </View>
-          <View
-            style={{
-              justifyContent: 'space-between',
-              flexDirection: 'row',
-            }}>
-            <Text
-              style={{
-                fontSize: 20,
-                fontWeight: '800',
-              }}>
-              CLAN:
-            </Text>
-            <Text
-              style={{
-                fontSize: 20,
-              }}>
-              The Fire Pucks
-            </Text>
+          <View style={styles.spaceBetweenRow}>
+            <Text style={styles.boldText}>CLAN:</Text>
+            <Text style={styles.normalText}>The Fire Pucks</Text>
           </View>
         </View>
       </View>
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'center',
-          marginTop: WIDTH * 0.02,
-        }}>
+      <View style={styles.button}>
         <Button
           style={{ width: WIDTH * 0.8 }}
           icon="pencil"
@@ -154,34 +84,9 @@ export const UserProfileScreen = ({ displayName }) => {
           EDIT PROFILE / HISTORY
         </Button>
       </View>
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          // borderColor: 'red',
-          // borderWidth: 3,
-          height: HEIGHT * 0.1,
-          // marginTop: HEIGHT * 0.3,
-          alignItems: 'center',
-          paddingHorizontal: WIDTH * 0.03,
-        }}>
-        <Text
-          style={{
-            // paddingTop: WIDTH * 0.8,
-            fontSize: 26,
-            fontWeight: '900',
-            // paddingLeft: WIDTH * 0.1,
-            color: theme.colors.primary,
-          }}>
-          HISTORY
-        </Text>
-        <View
-          style={{
-            flexDirection: 'row',
-            // borderColor: 'red',
-            // borderWidth: 3,
-            justifyContent: 'center',
-          }}>
+      <View style={styles.historyParent}>
+        <Text style={styles.historyText}>HISTORY</Text>
+        <View style={styles.viewButtonsParent}>
           <IconButton
             default
             type="contained"
@@ -205,8 +110,57 @@ export const UserProfileScreen = ({ displayName }) => {
         </View>
       </View>
       {visualizeData(tableView)}
-      {/* <TableView /> */}
-      {/* <ChartView /> */}
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  logo: {
+    marginTop: HEIGHT * 0.06,
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  userInfo: {
+    flexDirection: 'row',
+    marginTop: HEIGHT * 0.02,
+    marginHorizontal: WIDTH * 0.02,
+    justifyContent: 'space-between',
+  },
+  nameAge: {
+    width: WIDTH * 0.63,
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+  },
+  spaceBetweenRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  boldText: {
+    fontSize: 20,
+    fontWeight: '800',
+  },
+  normalText: {
+    fontSize: 20,
+  },
+  button: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: WIDTH * 0.02,
+  },
+  historyParent: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    height: HEIGHT * 0.1,
+    alignItems: 'center',
+    paddingHorizontal: WIDTH * 0.03,
+  },
+  historyText: {
+    fontSize: 26,
+    fontWeight: '900',
+    color: theme.colors.primary,
+  },
+  viewButtonsParent: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+});
