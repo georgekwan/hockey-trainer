@@ -37,6 +37,7 @@ export const UserProfileScreen = ({ displayName }) => {
           displayName: userData.displayName,
           email: userData.email,
           age: userData.age,
+          uid: userData.uid,
         });
       }
     }
@@ -45,7 +46,7 @@ export const UserProfileScreen = ({ displayName }) => {
     }
   }, [myAuth]);
   console.log('user auth!!!', myAuth);
-  console.log('USER =>', myAuth.currentUser);
+  console.log('USER ID=>', myAuth.currentUser.uid);
 
   const visualizeData = (tableView) => {
     if (tableView) {
