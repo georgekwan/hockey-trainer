@@ -13,53 +13,52 @@ import {
   QuerySnapshot,
   where,
 } from 'firebase/firestore';
+import { patternIDToText } from '../helpers/patternIDToText.js';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
 export const TableView = () => {
   const { myAuth, myDb } = useContext(FirebaseContext);
-  // const [user, setUser] = useState();
+  const [patternHistory, setPatternHistory] = useState();
 
   useEffect(() => {
     async function getPatternHistory() {
       const userId = myAuth.currentUser.uid;
-
       const q = query(collection(myDb, 'drillResults'), where('userId', '==', userId));
       const querySnapshot = await getDocs(q);
-      querySnapshot.forEach((doc) => {
-        console.log('DOC ID===', doc.id, ' => ', doc.data());
-      });
-      // CHATGPT'S CODE:
-      // const userRef = Firestore.collection('drillResults').where('userId', '==', userId);
-      // const querySnapshot = await userRef.get();
+      setPatternHistory(querySnapshot);
       // querySnapshot.forEach((doc) => {
-      //   console.log('LOGGING:', doc.data());
-      // });
-
-      // EMMANUEL'S CODE:
-      // userRef.get().then((querySnapshot) => {
-      //   QuerySnapshot.forEach((doc) => {
-      //     console.log(doc.data());
-      //   });
+      //   console.log('DOC ID===', doc.id, ' => ', doc.data());
       // });
     }
     getPatternHistory();
   }, []);
 
+  patternHistory.forEach((doc) => {
+    console.log('DOC ID HERE IT IS===', doc.id, ' => ', doc.data().drillPatternId);
+  });
+  console.log('HERE IS THE PATTERN HISTORY STATE VARIABLE', patternHistory);
+
+  const renderTable = (patternHistory) => {
+    if (patternHistory) {
+      return patternHistory.forEach((doc) => {
+        <DataTable.Row>
+          <DataTable.Cell>{patternIDToText(doc.data().drillPatternId)}</DataTable.Cell>
+          <DataTable.Cell numeric>92%</DataTable.Cell>
+          <DataTable.Cell numeric>Sep 28</DataTable.Cell>
+        </DataTable.Row>;
+      });
+    }
+  };
+
   return (
     <ScrollView
       style={{
         marginBottom: WIDTH * 0.01,
-        // borderColor: 'red',
-        // borderWidth: 3,
-        // height: HEIGHT * 0.9,
       }}>
       <DataTable
         style={{
-          // paddingTop: WIDTH * 0.05,
-          // borderColor: 'red',
-          // borderWidth: 3,
           paddingHorizontal: WIDTH * 0.005,
         }}>
         <DataTable.Header>
@@ -69,8 +68,8 @@ export const TableView = () => {
             Date
           </DataTable.Title>
         </DataTable.Header>
-
-        <DataTable.Row>
+        {renderTable(patternHistory)}
+        {/* <DataTable.Row>
           <DataTable.Cell>(5)Around the World</DataTable.Cell>
           <DataTable.Cell numeric>87%</DataTable.Cell>
           <DataTable.Cell numeric>Sep 21</DataTable.Cell>
@@ -129,54 +128,8 @@ export const TableView = () => {
           <DataTable.Cell>(11)Riding Pine</DataTable.Cell>
           <DataTable.Cell numeric>95%</DataTable.Cell>
           <DataTable.Cell numeric>Oct 5</DataTable.Cell>
-        </DataTable.Row>
+        </DataTable.Row> */}
       </DataTable>
     </ScrollView>
   );
 };
-
-// const styles = StyleSheet.create({});
-
-// const queryy = {
-//   "_firestore": {
-//     "app": [FirebaseAppImpl],
-//     "databaseId": [$t],
-//     "settings": [ga]
-//     },
-//   "_snapshot": {
-//       "docChanges": [],
-//       "docs": {
-//         "comparator": [Function anonymous],
-//         "keyedMap": [je],
-//         "sortedSet": [je]
-//       },
-//       "excludesMetadataChanges": false,
-//       "fromCache": false,
-//       "hasCachedResults": true,
-//       "mutatedKeys": {
-//         "comparator": [Function comparator],
-//         "data": [je]},
-//         "oldDocs": {
-//           "comparator": [Function anonymous],
-//           "keyedMap": [je],
-//           "sortedSet": [je]
-//         },
-//           "query": {
-//             "_t": [nn],
-//             "collectionGroup": null,
-//             "dt": [Array],
-//             "endAt": null,
-//             "explicitOrderBy": [Array],
-//             "filters": [Array],
-//             "limit": null,
-//             "limitType": "F",
-//             "path": [ot],
-//             "startAt": null
-//           },
-//           "syncStateChanged": true
-//         },
-//         "_userDataWriter": {
-//           "firestore": [Object]
-//         },
-//         "metadata": {
-//           "fromCache": false, "hasPendingWrites": false}, "query": {"_query": {"_t": [nn], "collectionGroup": null, "dt": [Array], "endAt": null, "explicitOrderBy": [Array], "filters": [Array], "limit": null, "limitType": "F", "path": [ot], "startAt": null}, "converter": null, "firestore": [Object], "type": "query"}}
