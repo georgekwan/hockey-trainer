@@ -18,12 +18,12 @@ const timeoutConverter = (timeout) => {
 
 const InDrillScreen = ({ route }) => {
   const navigation = useNavigation();
-  const { patternName, timeout, tutor } = route.params;
+  const { selectedName, timeout, tutor } = route.params;
 
   const [sound, setSound] = useState();
   const [currentStringIndex, setCurrentStringIndex] = useState(1);
   const [currentString, setCurrentString] = useState(
-    patternSelector(tutor, patternName).sequence[0]
+    patternSelector(tutor, selectedName).sequence[0]
   );
 
   //   patternSelector(tutor, patternName);
@@ -44,8 +44,8 @@ const InDrillScreen = ({ route }) => {
       async () => {
         console.log('Unloading Sound');
         setCurrentStringIndex((curVal) => {
-          let newVal = (curVal + 1) % patternSelector(tutor, patternName).sequence.length;
-          setCurrentString(patternSelector(tutor, patternName).sequence[newVal]);
+          let newVal = (curVal + 1) % patternSelector(tutor, selectedName).sequence.length;
+          setCurrentString(patternSelector(tutor, selectedName).sequence[newVal]);
           return newVal;
         });
         console.log(currentStringIndex);
@@ -63,7 +63,7 @@ const InDrillScreen = ({ route }) => {
     <>
       <View style={styles.drillInfo}>
         <View style={styles.row}>
-          <Text style={styles.drillTitle}>{patternName}</Text>
+          <Text style={styles.drillTitle}>{selectedName}</Text>
         </View>
         <View style={styles.drillSubtitle}>
           <Text>{tutor}</Text>

@@ -7,17 +7,33 @@ import { ResultInputScreen } from './ResultInputScreen';
 import * as patterns from '../../temp/drill_patterns.json';
 import FullLogo from '../components/FullLogo.js';
 import { theme } from '../core/theme';
+import { PatternButton } from '../components/selectDrillScreen/PatternButton.js';
+import { TimeoutButton } from '../components/selectDrillScreen/TimeoutButton.js';
+import { TutorButton } from '../components/selectDrillScreen/TutorButton.js';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
-const DrillSelectionScreen = () => {
+let patternNames = [
+  'Around the World',
+  "Pick'n Corners",
+  'Up Down',
+  'Downtown',
+  'Crash and Bang',
+  'Titanic',
+  "Mom's Cookies",
+  'Riding Pine',
+  'Dump and Chase',
+  'The Frustrating One',
+];
+
+const DrillSelectionScreen = ({ patternName }) => {
   const navigation = useNavigation();
-  const [patternName, setPatternName] = useState();
   const [timeout, setTimeout] = useState(0);
   const [tutor, setTutor] = useState();
-  const [selected, setSelected] = React.useState(false);
-
+  const [selectedName, setSelectedName] = useState();
+  const [selectedSeconds, setSelectedSeconds] = useState(0);
+  const [selectedTutor, setSelectedTutor] = useState();
   return (
     <View style={{ flex: 1, backgroundColor: 'white' }}>
       <View
@@ -64,221 +80,14 @@ const DrillSelectionScreen = () => {
               justifyContent: 'space-between',
               alignContent: 'center',
             }}>
-            <Button
-              mode="elevated"
-              buttonColor={theme.colors.primary}
-              onPress={() => {
-                setSelected(!selected);
-                setPatternName('Around the World');
-                console.log('selected Around the World pattern');
-              }}
-              style={{
-                width: WIDTH * 0.435,
-                height: WIDTH * 0.29,
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderRadius: 10,
-                padding: 0,
-                margin: 5,
-                alignContent: 'center',
-                backgroundColor: selected ? theme.colors.primary : '#696969',
-              }}>
-              <View>
-                <Text
-                  style={{
-                    textAlign: 'center',
-                    fontSize: 18,
-                    color: 'white',
-                  }}>
-                  {'Around the World'}
-                </Text>
-              </View>
-            </Button>
-            <Button
-              mode="elevated"
-              buttonColor={theme.colors.primary}
-              onPress={() => {
-                setPatternName("Pick'n Corners");
-                console.log('selected Pick n Corners pattern');
-              }}
-              style={styles.patternButton}>
-              <View>
-                <Text
-                  style={{
-                    fontWeights: 'bold',
-                    textAlign: 'center',
-                    fontSize: 18,
-                    color: 'white',
-                  }}>
-                  {"Pick'n Corners"}
-                </Text>
-              </View>
-            </Button>
-            <Button
-              mode="elevated"
-              buttonColor={theme.colors.primary}
-              onPress={() => {
-                setSelected(!selected);
-                setPatternName('Up Down');
-                console.log('selected Up Down pattern');
-              }}
-              style={[
-                { backgroundColor: selected ? theme.colors.primary : '#696969' },
-                styles.patternButton,
-              ]}>
-              <View>
-                <Text
-                  style={{
-                    fontWeights: 'bold',
-                    textAlign: 'center',
-                    fontSize: 18,
-                    color: 'white',
-                  }}>
-                  {'Up Down'}
-                </Text>
-              </View>
-            </Button>
-            <Button
-              mode="elevated"
-              buttonColor={theme.colors.primary}
-              onPress={() => {
-                setPatternName('Downtown');
-                console.log('selected Downtown pattern');
-              }}
-              style={styles.patternButton}>
-              <View>
-                <Text
-                  style={{
-                    fontWeights: 'bold',
-                    textAlign: 'center',
-                    fontSize: 18,
-                    color: 'white',
-                  }}>
-                  {'Downtown'}
-                </Text>
-              </View>
-            </Button>
-            <Button
-              mode="elevated"
-              buttonColor={theme.colors.primary}
-              onPress={() => {
-                setPatternName('Crash and Bang');
-                console.log('selected Crash and Bang pattern');
-              }}
-              style={styles.patternButton}>
-              <View>
-                <Text
-                  style={{
-                    fontWeights: 'bold',
-                    textAlign: 'center',
-                    fontSize: 18,
-                    color: 'white',
-                  }}>
-                  {'Crash and Bang'}
-                </Text>
-              </View>
-            </Button>
-            <Button
-              mode="elevated"
-              buttonColor={theme.colors.primary}
-              onPress={() => {
-                setPatternName('Titanic');
-                console.log('selected Titanic pattern');
-              }}
-              style={styles.patternButton}>
-              <View>
-                <Text
-                  style={{
-                    fontWeights: 'bold',
-                    textAlign: 'center',
-                    fontSize: 18,
-                    color: 'white',
-                  }}>
-                  {'Titanic'}
-                </Text>
-              </View>
-            </Button>
-            <Button
-              mode="elevated"
-              buttonColor={theme.colors.primary}
-              onPress={() => {
-                setPatternName("Mom's Cookies");
-                console.log("selected Mom's Cookies pattern");
-              }}
-              style={styles.patternButton}>
-              <View>
-                <Text
-                  style={{
-                    fontWeights: 'bold',
-                    textAlign: 'center',
-                    fontSize: 18,
-                    color: 'white',
-                  }}>
-                  {"Mom's Cookies"}
-                </Text>
-              </View>
-            </Button>
-            <Button
-              mode="elevated"
-              buttonColor={theme.colors.primary}
-              onPress={() => {
-                setPatternName('Riding Pine');
-                console.log('selected Riding Pine pattern');
-              }}
-              style={styles.patternButton}>
-              <View>
-                <Text
-                  style={{
-                    fontWeights: 'bold',
-                    textAlign: 'center',
-                    alignItems: 'center',
-                    fontSize: 18,
-                    color: 'white',
-                  }}>
-                  {'Riding Pine'}
-                </Text>
-              </View>
-            </Button>
-            <Button
-              mode="elevated"
-              buttonColor={theme.colors.primary}
-              onPress={() => {
-                setPatternName('Dump and Chase');
-                console.log('selected Dump and Chase pattern');
-              }}
-              style={styles.patternButton}>
-              <View>
-                <Text
-                  style={{
-                    fontWeights: 'bold',
-                    textAlign: 'center',
-                    fontSize: 18,
-                    color: 'white',
-                  }}>
-                  {'Dump and Chase'}
-                </Text>
-              </View>
-            </Button>
-            <Button
-              mode="elevated"
-              buttonColor={theme.colors.primary}
-              onPress={() => {
-                setPatternName('The Frustrating One');
-                console.log('selected The Frustrating One pattern');
-              }}
-              style={styles.patternButton}>
-              <View>
-                <Text
-                  style={{
-                    fontWeights: 'bold',
-                    textAlign: 'center',
-                    fontSize: 18,
-                    color: 'white',
-                  }}>
-                  {'The Frustrating One'}
-                </Text>
-              </View>
-            </Button>
+            {patternNames.map((name) => (
+              <PatternButton
+                key={name}
+                name={name}
+                selectedName={selectedName}
+                setSelectedName={setSelectedName}
+              />
+            ))}
           </View>
         </ScrollView>
       </View>
@@ -310,92 +119,14 @@ const DrillSelectionScreen = () => {
           alignItems: 'center',
           justifyContent: 'center',
         }}>
-        <Button
-          mode="elevated"
-          onPress={() => {
-            setTimeout(3000);
-            console.log('selected 3 sec timeout');
-          }}
-          buttonColor={theme.colors.primary}
-          style={{
-            width: WIDTH * 0.3,
-            height: HEIGHT * 0.05,
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderRadius: 5,
-            padding: 0,
-            margin: 5,
-          }}
-          labelStyle={{
-            fontSize: 15,
-            lineHeight: 15,
-          }}>
-          {' '}
-          <Text
-            style={{
-              textAlign: 'center',
-              color: 'white',
-            }}>
-            {'3 SEC'}
-          </Text>
-        </Button>
-        <Button
-          mode="elevated"
-          buttonColor={theme.colors.primary}
-          onPress={() => {
-            setTimeout(5000);
-            console.log('selected 5 sec timeout');
-          }}
-          style={{
-            width: WIDTH * 0.3,
-            height: HEIGHT * 0.05,
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderRadius: 5,
-            padding: 0,
-            margin: 5,
-          }}
-          labelStyle={{
-            fontSize: 15,
-            lineHeight: 15,
-          }}>
-          <Text
-            style={{
-              textAlign: 'center',
-              color: 'white',
-            }}>
-            {'5 SEC'}
-          </Text>
-        </Button>
-
-        <Button
-          mode="elevated"
-          buttonColor={theme.colors.primary}
-          onPress={() => {
-            setTimeout(7000);
-            console.log('selected 7 sec timeout');
-          }}
-          style={{
-            width: WIDTH * 0.3,
-            height: HEIGHT * 0.05,
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderRadius: 5,
-            padding: 0,
-            margin: 5,
-          }}
-          labelStyle={{
-            fontSize: 15,
-            lineHeight: 15,
-          }}>
-          <Text
-            style={{
-              textAlign: 'center',
-              color: 'white',
-            }}>
-            {'7 SEC'}
-          </Text>
-        </Button>
+        {[3, 5, 7].map((seconds) => (
+          <TimeoutButton
+            key={seconds}
+            seconds={seconds}
+            selectedSeconds={selectedSeconds}
+            setSelectedSeconds={setSelectedSeconds}
+          />
+        ))}
       </View>
       <View
         style={{
@@ -425,63 +156,14 @@ const DrillSelectionScreen = () => {
           alignItems: 'center',
           justifyContent: 'center',
         }}>
-        <Button
-          mode="elevated"
-          buttonColor={theme.colors.primary}
-          onPress={() => {
-            setTutor('5 hole');
-            console.log('selected 5 hole tutor');
-          }}
-          style={{
-            width: WIDTH * 0.45,
-            height: HEIGHT * 0.05,
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderRadius: 5,
-            padding: 0,
-            margin: 5,
-          }}
-          labelStyle={{
-            fontSize: 15,
-            lineHeight: 15,
-          }}>
-          <Text
-            style={{
-              textAlign: 'center',
-              color: 'white',
-            }}>
-            {'5 HOLE'}
-          </Text>
-        </Button>
-
-        <Button
-          mode="elevated"
-          buttonColor={theme.colors.primary}
-          onPress={() => {
-            setTutor('11 hole');
-            console.log('selected 11 hole tutor');
-          }}
-          style={{
-            width: WIDTH * 0.45,
-            height: HEIGHT * 0.05,
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderRadius: 5,
-            padding: 0,
-            margin: 5,
-          }}
-          labelStyle={{
-            fontSize: 15,
-            lineHeight: 15,
-          }}>
-          <Text
-            style={{
-              textAlign: 'center',
-              color: 'white',
-            }}>
-            {'11 HOLE'}
-          </Text>
-        </Button>
+        {[5, 11].map((tutorHoles) => (
+          <TutorButton
+            key={tutorHoles}
+            tutorHoles={tutorHoles}
+            selectedTutor={selectedTutor}
+            setSelectedTutor={setSelectedTutor}
+          />
+        ))}
       </View>
 
       <View style={{ margin: WIDTH * 0.025 }}>
@@ -495,7 +177,7 @@ const DrillSelectionScreen = () => {
           <Button
             mode="elevated"
             buttonColor={'#DCDCDC'}
-            onPress={() => navigation.navigate('InDrillScreen', { patternName, timeout, tutor })}
+            onPress={() => navigation.navigate('InDrillScreen', { selectedName, timeout, tutor })}
             style={{
               width: WIDTH * 0.8,
               height: HEIGHT * 0.07,
