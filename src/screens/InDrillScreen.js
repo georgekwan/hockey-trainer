@@ -19,46 +19,43 @@ const timeoutConverter = (selectedSeconds) => {
 const InDrillScreen = ({ route }) => {
   const navigation = useNavigation();
   const { selectedName, selectedSeconds, selectedTutor } = route.params;
-
-  const [sound, setSound] = useState();
   const [currentStringIndex, setCurrentStringIndex] = useState(1);
-  const [currentString, setCurrentString] = useState(
-    patternSelector(selectedTutor, selectedName).sequence[0]
-  );
-
-  //   patternSelector(selectedTutor, patternName);
-  //   console.log(patternSelector(selectedTutor, patternName));
+  const currentPattern = patternSelector(selectedTutor, selectedName);
+  const currentString = currentPattern.sequence[currentStringIndex];
 
   async function playSound() {
     console.log('Loading Sound');
     const { sound } = await Audio.Sound.createAsync(fileName(currentString));
-    setSound(sound);
-
     console.log('Playing Sound');
     await sound.playAsync();
   }
 
   useEffect(() => {
+    if (currentStringIndex === 0) {
+      Timer.clearInterval('soundTimer');
+      navigation.navigate('ResultInputScreen');
+      console.log('navigating away');
+    } else {
+      playSound();
+    }
+  }, [currentStringIndex]);
+
+  useEffect(() => {
     Timer.setInterval(
       'soundTimer',
       async () => {
-        console.log('Unloading Sound');
+        console.log('running interval');
         setCurrentStringIndex((curVal) => {
-          let newVal = (curVal + 1) % patternSelector(selectedTutor, selectedName).sequence.length;
-          setCurrentString(patternSelector(selectedTutor, selectedName).sequence[newVal]);
+          let newVal = (curVal + 1) % currentPattern.sequence.length;
+          console.log(newVal);
           return newVal;
         });
-        console.log(currentStringIndex);
-        sound.unloadAsync();
       },
       selectedSeconds * 1000
     );
     return () => Timer.clearInterval('soundTimer');
-  }, [sound]);
+  }, []);
 
-  useEffect(() => {
-    playSound();
-  }, [currentStringIndex]);
   return (
     <>
       <View style={styles.drillInfo}>
@@ -78,9 +75,7 @@ const InDrillScreen = ({ route }) => {
       </View>
       <View style={styles.row}>
         <Text style={styles.shotsLeft}>Shots left:</Text>
-        <Text style={styles.shotsLeft}>
-          {patterns.drillPatterns[0].sequence.length - currentStringIndex}
-        </Text>
+        <Text style={styles.shotsLeft}>{currentPattern.sequence.length - currentStringIndex}</Text>
       </View>
       <View style={styles.row}>
         <Button
