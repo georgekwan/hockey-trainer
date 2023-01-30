@@ -10,7 +10,6 @@ const HEIGHT = Dimensions.get('screen').height;
 const ResultInputScreen = () => {
   const totalShots = 15;
   const [numberOfShotsLeft, setNumberOfShotsLeft] = useState(totalShots);
-  // const [misses, setMisses] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
   const [misses, setMisses] = useState({
     'Top Left': 0,
     'Left Shoulder': 0,
@@ -279,8 +278,6 @@ const ResultInputScreen = () => {
             // borderColor: 'blue',
             // borderWidth: 5,
             zIndex: 0,
-            // position: 'absolute',
-            // top: 0,
           }}></View>
       </View>
 
