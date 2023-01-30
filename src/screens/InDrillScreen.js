@@ -12,22 +12,26 @@ import { patternSelector } from '../helpers/patternSelector.js';
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
-const timeoutConverter = (timeout) => {
-  return timeout === 3000 ? '3 seconds' : timeout === 5000 ? '5 seconds' : '7 seconds';
+const timeoutConverter = (selectedSeconds) => {
+  return selectedSeconds === 3000
+    ? '3 seconds'
+    : selectedSeconds === 5000
+    ? '5 seconds'
+    : '7 seconds';
 };
 
 const InDrillScreen = ({ route }) => {
   const navigation = useNavigation();
-  const { patternName, timeout, tutor } = route.params;
+  const { selectedName, selectedSeconds, selectedTutor } = route.params;
 
   const [sound, setSound] = useState();
   const [currentStringIndex, setCurrentStringIndex] = useState(1);
   const [currentString, setCurrentString] = useState(
-    patternSelector(tutor, patternName).sequence[0]
+    patternSelector(selectedTutor, selectedName).sequence[0]
   );
 
-  //   patternSelector(tutor, patternName);
-  //   console.log(patternSelector(tutor, patternName));
+  //   patternSelector(selectedTutor, patternName);
+  //   console.log(patternSelector(selectedTutor, patternName));
 
   async function playSound() {
     console.log('Loading Sound');
@@ -44,14 +48,14 @@ const InDrillScreen = ({ route }) => {
       async () => {
         console.log('Unloading Sound');
         setCurrentStringIndex((curVal) => {
-          let newVal = (curVal + 1) % patternSelector(tutor, patternName).sequence.length;
-          setCurrentString(patternSelector(tutor, patternName).sequence[newVal]);
+          let newVal = (curVal + 1) % patternSelector(selectedTutor, selectedName).sequence.length;
+          setCurrentString(patternSelector(selectedTutor, selectedName).sequence[newVal]);
           return newVal;
         });
         console.log(currentStringIndex);
         sound.unloadAsync();
       },
-      timeout
+      selectedSeconds * 1000
     );
     return () => Timer.clearInterval('soundTimer');
   }, [sound]);
@@ -63,11 +67,11 @@ const InDrillScreen = ({ route }) => {
     <>
       <View style={styles.drillInfo}>
         <View style={styles.row}>
-          <Text style={styles.drillTitle}>{patternName}</Text>
+          <Text style={styles.drillTitle}>{selectedName}</Text>
         </View>
         <View style={styles.drillSubtitle}>
-          <Text>{tutor}</Text>
-          <Text>{timeoutConverter(timeout)}</Text>
+          <Text>{selectedTutor + ' hole'}</Text>
+          <Text>{timeoutConverter(selectedSeconds)}</Text>
         </View>
       </View>
       <View style={styles.targetTextContainer}>
