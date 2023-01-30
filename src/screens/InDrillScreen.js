@@ -13,11 +13,7 @@ const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
 const timeoutConverter = (selectedSeconds) => {
-  return selectedSeconds === 3000
-    ? '3 seconds'
-    : selectedSeconds === 5000
-    ? '5 seconds'
-    : '7 seconds';
+  return selectedSeconds === 3 ? '3 seconds' : selectedSeconds === 5 ? '5 seconds' : '7 seconds';
 };
 
 const InDrillScreen = ({ route }) => {
