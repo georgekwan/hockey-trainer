@@ -30,9 +30,9 @@ export default function App() {
         <Provider theme={theme}>
           <NavigationContainer>
             <Stack.Navigator
-              initialRouteName="ResultInputScreen"
-              name="ResultInputScreen"
-              component={ResultInputScreen}
+              initialRouteName="NavBarContainer"
+              name="NavBarContainer"
+              component={NavBarContainer}
               screenOptions={{
                 headerShown: false,
               }}>
