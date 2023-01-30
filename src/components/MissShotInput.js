@@ -3,10 +3,11 @@ import { View } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 
 const MissShotInput = (props) => {
+  const { totalShots, numberOfShotsLeft, setNumberOfShotsLeft, positionStyle, setMisses } = props;
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(0);
+  const [myMisses, setMyMisses] = useState(0);
+
   const [items, setItems] = useState();
-  const { totalShots, numberOfShotsLeft, setNumberOfShotsLeft, positionStyle } = props;
   let style = props.style;
   style = style || {};
   useEffect(() => {
@@ -30,18 +31,17 @@ const MissShotInput = (props) => {
   return (
     <View style={[style, positionStyle]}>
       <DropDownPicker
-        onOpen={() => {
-          setValue(value);
-        }}
         onSelectItem={(item) => {
           console.log('item', item);
-          setNumberOfShotsLeft(numberOfShotsLeft - item.value + value);
+          console.log('misses', myMisses);
+          setMisses(item.value);
+          setNumberOfShotsLeft((currval) => currval - item.value + myMisses);
         }}
         open={open}
-        value={value}
+        value={myMisses}
         items={items}
         setOpen={setOpen}
-        setValue={setValue}
+        setValue={setMyMisses}
         setItems={setItems}
         theme="LIGHT"
         multiple={false}

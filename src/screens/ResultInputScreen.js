@@ -10,6 +10,21 @@ const HEIGHT = Dimensions.get('screen').height;
 const ResultInputScreen = () => {
   const totalShots = 15;
   const [numberOfShotsLeft, setNumberOfShotsLeft] = useState(totalShots);
+  // const [misses, setMisses] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+  const [misses, setMisses] = useState({
+    'Top Left': 0,
+    'Left Shoulder': 0,
+    'Right Shoulder': 0,
+    'Top Right': 0,
+    'Middle Left': 0,
+    'Under Blocker': 0,
+    'Under Glove': 0,
+    'Middle Right': 0,
+    'Bottom Left': 0,
+    'Five Hole': 0,
+    'Bottom Right': 0,
+  });
+  console.log('misses', misses);
 
   return (
     <View style={{ flex: 1, backgroundColor: 'white' }}>
@@ -99,25 +114,49 @@ const ResultInputScreen = () => {
                 totalShots={totalShots}
                 numberOfShotsLeft={numberOfShotsLeft}
                 setNumberOfShotsLeft={setNumberOfShotsLeft}
-                // positionStyle={{ position: 'absolute', left: 15, top: 30 }}
+                setMisses={(num) =>
+                  setMisses((currval) => {
+                    let newObj = { ...currval };
+                    newObj['Top Left'] = num;
+                    return newObj;
+                  })
+                }
               />
               <MissShotInput
                 totalShots={totalShots}
                 numberOfShotsLeft={numberOfShotsLeft}
                 setNumberOfShotsLeft={setNumberOfShotsLeft}
-                // positionStyle={{ position: 'absolute', left: 110, top: 30 }}
+                setMisses={(num) =>
+                  setMisses((currval) => {
+                    let newObj = { ...currval };
+                    newObj['Left Shoulder'] = num;
+                    return newObj;
+                  })
+                }
               />
               <MissShotInput
                 totalShots={totalShots}
                 numberOfShotsLeft={numberOfShotsLeft}
                 setNumberOfShotsLeft={setNumberOfShotsLeft}
-                // positionStyle={{ position: 'absolute', right: 110, top: 30 }}
+                setMisses={(num) =>
+                  setMisses((currval) => {
+                    let newObj = { ...currval };
+                    newObj['Right Shoulder'] = num;
+                    return newObj;
+                  })
+                }
               />
               <MissShotInput
                 totalShots={totalShots}
                 numberOfShotsLeft={numberOfShotsLeft}
                 setNumberOfShotsLeft={setNumberOfShotsLeft}
-                // positionStyle={{ position: 'absolute', right: 15, top: 30 }}
+                setMisses={(num) =>
+                  setMisses((currval) => {
+                    let newObj = { ...currval };
+                    newObj['Top Right'] = num;
+                    return newObj;
+                  })
+                }
               />
             </View>
             <View style={{ flex: 1 }}></View>
@@ -133,27 +172,51 @@ const ResultInputScreen = () => {
                 totalShots={totalShots}
                 numberOfShotsLeft={numberOfShotsLeft}
                 setNumberOfShotsLeft={setNumberOfShotsLeft}
-                // positionStyle={{ position: 'absolute', left: 10, bottom: 100 }}
+                setMisses={(num) =>
+                  setMisses((currval) => {
+                    let newObj = { ...currval };
+                    newObj['Middle Left'] = num;
+                    return newObj;
+                  })
+                }
               />
               <MissShotInput
                 totalShots={totalShots}
                 numberOfShotsLeft={numberOfShotsLeft}
                 setNumberOfShotsLeft={setNumberOfShotsLeft}
-                // positionStyle={{ position: 'absolute', right: 10, bottom: 100 }}
                 style={{ marginTop: 20 }}
+                setMisses={(num) =>
+                  setMisses((currval) => {
+                    let newObj = { ...currval };
+                    newObj['Under Blocker'] = num;
+                    return newObj;
+                  })
+                }
               />
               <MissShotInput
                 totalShots={totalShots}
                 numberOfShotsLeft={numberOfShotsLeft}
                 setNumberOfShotsLeft={setNumberOfShotsLeft}
-                // positionStyle={{ position: 'absolute', left: 100, bottom: 80 }}
                 style={{ marginTop: 20 }}
+                setMisses={(num) =>
+                  setMisses((currval) => {
+                    let newObj = { ...currval };
+                    newObj['Under Glove'] = num;
+                    return newObj;
+                  })
+                }
               />
               <MissShotInput
                 totalShots={totalShots}
                 numberOfShotsLeft={numberOfShotsLeft}
                 setNumberOfShotsLeft={setNumberOfShotsLeft}
-                // positionStyle={{ position: 'absolute', right: 100, bottom: 80 }}
+                setMisses={(num) =>
+                  setMisses((currval) => {
+                    let newObj = { ...currval };
+                    newObj['Middle Right'] = num;
+                    return newObj;
+                  })
+                }
               />
             </View>
 
@@ -170,22 +233,40 @@ const ResultInputScreen = () => {
                 totalShots={totalShots}
                 numberOfShotsLeft={numberOfShotsLeft}
                 setNumberOfShotsLeft={setNumberOfShotsLeft}
-                // positionStyle={{ position: 'absolute', left: 10, bottom: 5 }}
                 style={{ marginTop: 30 }}
+                setMisses={(num) =>
+                  setMisses((currval) => {
+                    let newObj = { ...currval };
+                    newObj['Bottom Left'] = num;
+                    return newObj;
+                  })
+                }
               />
 
               <MissShotInput
                 totalShots={totalShots}
                 numberOfShotsLeft={numberOfShotsLeft}
                 setNumberOfShotsLeft={setNumberOfShotsLeft}
-                // positionStyle={{ position: 'absolute', left: 160, bottom: 30 }}
+                setMisses={(num) =>
+                  setMisses((currval) => {
+                    let newObj = { ...currval };
+                    newObj['Five Hole'] = num;
+                    return newObj;
+                  })
+                }
               />
               <MissShotInput
                 totalShots={totalShots}
                 numberOfShotsLeft={numberOfShotsLeft}
                 setNumberOfShotsLeft={setNumberOfShotsLeft}
-                // positionStyle={{ position: 'absolute', right: 10, bottom: 5 }}
                 style={{ marginTop: 30 }}
+                setMisses={(num) =>
+                  setMisses((currval) => {
+                    let newObj = { ...currval };
+                    newObj['Bottom Right'] = num;
+                    return newObj;
+                  })
+                }
               />
             </View>
           </View>
@@ -200,17 +281,7 @@ const ResultInputScreen = () => {
             zIndex: 0,
             // position: 'absolute',
             // top: 0,
-          }}>
-          {/* <Image
-            source={require('../../assets/hockeynet/hockeynet-basic.png')}
-            style={{
-              width: '100%',
-              alignItems: 'center',
-              justifyContent: 'center',
-              resizeMode: 'contain',
-            }}
-          /> */}
-        </View>
+          }}></View>
       </View>
 
       <View style={{ margin: WIDTH * 0.1, paddingBottom: HEIGHT * 0.1 }}>
