@@ -16,7 +16,7 @@ export const TutorButton = (props) => {
     <Button
       mode="elevated"
       onPress={() => {
-        setTutor(tutorHoles, 'hole');
+        setTutor(tutorHoles);
         setSelectedTutor(tutorHoles);
         console.log('selected', tutor, 'tutor');
       }}

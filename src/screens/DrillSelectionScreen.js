@@ -177,7 +177,10 @@ const DrillSelectionScreen = ({ patternName }) => {
           <Button
             mode="elevated"
             buttonColor={'#DCDCDC'}
-            onPress={() => navigation.navigate('InDrillScreen', { selectedName, timeout, tutor })}
+            onPress={() =>
+              navigation.navigate('InDrillScreen', { selectedName, selectedSeconds, selectedTutor })
+            }
+            // onPress={() => console.log(selectedName, selectedSeconds * 1000, selectedTutor)}
             style={{
               width: WIDTH * 0.8,
               height: HEIGHT * 0.07,
