@@ -8,7 +8,7 @@ const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
 const ResultInputScreen = () => {
-  const totalShots = 11;
+  const totalShots = 15;
   const [numberOfShotsLeft, setNumberOfShotsLeft] = useState(totalShots);
 
   return (
@@ -67,11 +67,7 @@ const ResultInputScreen = () => {
         }}>
         <ImageBackground
           source={require('../../assets/hockeynet/hockeynet-basic.png')}
-          // source={{
-          //   uri: 'https://media-www.canadiantire.ca/product/playing/hockey/hockey-accessories/0835342/proform-hockey-net-72-with-1-5-posts-ed72068c-d993-49a6-8d96-cae351f07b52.png',
-          // }}
           style={{
-            // height: '100%',
             width: '100%',
             alignItems: 'center',
             justifyContent: 'center',
@@ -82,10 +78,8 @@ const ResultInputScreen = () => {
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              // justifyContent: 'center',
               position: 'relative',
               zIndex: 3,
-              // paddingHorizontal: 255,
               width: '100%',
               height: '100%',
               // borderColor: 'yellow',
