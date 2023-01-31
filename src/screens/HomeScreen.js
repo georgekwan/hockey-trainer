@@ -2,39 +2,17 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Dimensions, Image, StyleSheet, View } from 'react-native';
 import { Avatar, Card, Text, List } from 'react-native-paper';
 import FullLogo from '../components/FullLogo.js';
+import { AuthContext } from '../providers/AuthProvider.js';
 import { FirebaseContext } from '../providers/FirebaseProvider.js';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
 const HomeScreen = () => {
-  const { myAuth, myDb } = useContext(FirebaseContext);
-  const [user, setUser] = useState();
+  const { user, profile } = useContext(AuthContext);
 
-  useEffect(() => {
-    async function getUserProfile() {
-      const userRef = doc(myDb, 'users', myAuth.currentUser.uid);
+  // const [user, setUser] = useState();
 
-      const docSnap = await getDoc(userRef);
-      console.log('docSnap', docSnap);
-      if (!docSnap.exists) {
-        console.log('No such document!');
-      } else {
-        const userData = docSnap.data();
-        setUser({
-          displayName: userData.displayName,
-          email: userData.email,
-          age: userData.age,
-          uid: userData.uid,
-        });
-      }
-    }
-    if (myAuth.currentUser) {
-      getUserProfile();
-    }
-  }, [myAuth]);
-  console.log('user auth!!!', myAuth);
-  console.log('USER ID=>', myAuth.currentUser.uid);
   return (
     <>
       <View style={styles.logo}>
@@ -42,7 +20,7 @@ const HomeScreen = () => {
       </View>
 
       <View>
-        <Text style={styles.welcomeText}>{'Welcome, ' + user?.displayName}</Text>
+        <Text style={styles.welcomeText}>{'Welcome, ' + profile?.displayName}</Text>
       </View>
       <View style={{ flexDirection: 'row' }}>
         <Avatar.Icon size={100} icon="face-man-shimmer" />
