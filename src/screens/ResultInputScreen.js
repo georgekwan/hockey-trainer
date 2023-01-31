@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { ImageBackground, Dimensions, Image, StyleSheet, Text, View } from 'react-native';
 import { Button } from 'react-native-paper';
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 
+import { myDb } from '../providers/FirebaseProvider';
 import MissShotInput from '../components/MissShotInput';
 
 const WIDTH = Dimensions.get('screen').width;
@@ -11,19 +13,33 @@ const ResultInputScreen = () => {
   const totalShots = 15;
   const [numberOfShotsLeft, setNumberOfShotsLeft] = useState(totalShots);
   const [misses, setMisses] = useState({
-    'Top Left': 0,
-    'Left Shoulder': 0,
-    'Right Shoulder': 0,
-    'Top Right': 0,
-    'Middle Left': 0,
-    'Under Blocker': 0,
-    'Under Glove': 0,
-    'Middle Right': 0,
-    'Bottom Left': 0,
-    'Five Hole': 0,
-    'Bottom Right': 0,
+    topLeft: 0,
+    leftShoulder: 0,
+    rightShoulder: 0,
+    topRight: 0,
+    middleLeft: 0,
+    underBlocker: 0,
+    underGlove: 0,
+    middleRight: 0,
+    bottomLeft: 0,
+    fiveHole: 0,
+    bottomRight: 0,
   });
   console.log('misses', misses);
+
+  const {
+    topLeft,
+    leftShoulder,
+    rightShoulder,
+    topRight,
+    middleLeft,
+    underBlocker,
+    underGlove,
+    middleRight,
+    bottomLeft,
+    fiveHole,
+    bottomRight,
+  } = misses;
 
   return (
     <View style={{ flex: 1, backgroundColor: 'white' }}>
