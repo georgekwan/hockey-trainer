@@ -12,9 +12,11 @@ export const TableView = () => {
   const { myAuth, myDb } = useContext(FirebaseContext);
   const [patternHistory, setPatternHistory] = useState();
 
+  //
   useEffect(() => {
     async function getPatternHistory() {
       const userId = myAuth.currentUser.uid;
+      // ! drillResults needs to get data from Firestore
       const q = query(collection(myDb, 'drillResults'), where('userId', '==', userId));
       const querySnapshot = await getDocs(q);
       const theDocs = querySnapshot.docs.map((docSnap) => docSnap.data());
