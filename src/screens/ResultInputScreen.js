@@ -41,6 +41,8 @@ const ResultInputScreen = () => {
     bottomRight,
   } = misses;
 
+  const onSubmit = async () => {};
+
   return (
     <View style={{ flex: 1, backgroundColor: 'white' }}>
       <View
@@ -306,7 +308,7 @@ const ResultInputScreen = () => {
           }}>
           <Button
             mode="contained"
-            onPress={() => console.log('INPUT')}
+            onPress={onSubmit}
             style={{
               width: WIDTH * 0.8,
               height: HEIGHT * 0.06,
