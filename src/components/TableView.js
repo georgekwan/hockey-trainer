@@ -8,6 +8,7 @@ const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
 export const TableView = () => {
+
   const patternHistory = useContext(PatternHistoryContext);
 
   // console.log('HERE IS THE PATTERN HISTORY context VARIABLE', patternHistory);
