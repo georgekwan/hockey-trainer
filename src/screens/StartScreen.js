@@ -10,8 +10,8 @@ export default function StartScreen({ navigation }) {
   return (
     <Background>
       <FullLogo />
-      <Header>Sports Development Made Affordable</Header>
-      <Paragraph>Traditional Development, New Technology.</Paragraph>
+      <Header>Traditional Development, New Technology</Header>
+      <Paragraph>Hockey Development for the Next Generation</Paragraph>
       <Button mode="contained" onPress={() => navigation.navigate('LoginScreen')}>
         Login
       </Button>

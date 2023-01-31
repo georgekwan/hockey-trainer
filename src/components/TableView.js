@@ -1,30 +1,16 @@
-import { collection, getDocs, query, where } from 'firebase/firestore';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { Dimensions, ScrollView } from 'react-native';
 import { DataTable } from 'react-native-paper';
 import { patternIDToText } from '../helpers/patternIDToText.js';
-import { FirebaseContext } from '../providers/FirebaseProvider.js';
+import { PatternHistoryContext } from '../screens/UserProfileScreen.js';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
 export const TableView = () => {
-  const { myAuth, myDb } = useContext(FirebaseContext);
-  const [patternHistory, setPatternHistory] = useState();
+  const patternHistory = useContext(PatternHistoryContext);
 
-  useEffect(() => {
-    async function getPatternHistory() {
-      const userId = myAuth.currentUser.uid;
-      const q = query(collection(myDb, 'drillResults'), where('userId', '==', userId));
-      const querySnapshot = await getDocs(q);
-      const theDocs = querySnapshot.docs.map((docSnap) => docSnap.data());
-      setPatternHistory(theDocs);
-    }
-    getPatternHistory();
-  }, []);
-
-  console.log('HERE IS THE PATTERN HISTORY STATE VARIABLE', patternHistory);
-
+  // console.log('HERE IS THE PATTERN HISTORY context VARIABLE', patternHistory);
   function convertTimestamp(unixTimestamp) {
     if (patternHistory.length > 0) {
       const date = new Date(unixTimestamp * 1000);
@@ -59,13 +45,6 @@ export const TableView = () => {
             </DataTable.Row>
           );
         })}
-
-        {/* <DataTable.Row>
-          <DataTable.Cell>(5)Around the World</DataTable.Cell>
-          <DataTable.Cell numeric>87%</DataTable.Cell>
-          <DataTable.Cell numeric>Sep 21</DataTable.Cell>
-        </DataTable.Row>
-      */}
       </DataTable>
     </ScrollView>
   );
