@@ -41,7 +41,12 @@ const ResultInputScreen = () => {
     bottomRight,
   } = misses;
 
-  const onSubmit = async () => {};
+  const onSubmit = async () => {
+    const missesCopy = {
+      ...misses,
+      timestamp: serverTimestamp(),
+    };
+  };
 
   return (
     <View style={{ flex: 1, backgroundColor: 'white' }}>
