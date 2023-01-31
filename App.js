@@ -29,20 +29,20 @@ export default function App() {
       <AuthProvider>
         <Provider theme={theme}>
           <NavigationContainer>
-            <Stack.Navigator
+            {/* <Stack.Navigator
               initialRouteName="NavBarContainer"
               name="NavBarContainer"
               component={NavBarContainer}
               screenOptions={{
                 headerShown: false,
-              }}>
-              {/* <Stack.Navigator
+              }}> */}
+            <Stack.Navigator
               initialRouteName="StartScreen"
               name="StartScreen"
               component={StartScreen}
               screenOptions={{
                 headerShown: false,
-              }}> */}
+              }}>
               <Stack.Screen name="StartScreen" component={StartScreen} />
               <Stack.Screen name="LoginScreen" component={LoginScreen} />
               <Stack.Screen name="RegisterScreen" component={RegisterScreen} />

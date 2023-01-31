@@ -50,9 +50,9 @@ export const TableView = () => {
           </DataTable.Title>
         </DataTable.Header>
 
-        {patternHistory?.map((ph) => {
+        {patternHistory?.map((ph, key) => {
           return (
-            <DataTable.Row>
+            <DataTable.Row key={key}>
               <DataTable.Cell>{patternIDToText(ph.drillPatternId)}</DataTable.Cell>
               <DataTable.Cell numeric>92%</DataTable.Cell>
               <DataTable.Cell numeric>{convertTimestamp(ph.date.seconds)}</DataTable.Cell>
