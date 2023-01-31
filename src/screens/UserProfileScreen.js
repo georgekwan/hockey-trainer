@@ -10,43 +10,18 @@ import FullLogo from '../components/FullLogo.js';
 import { theme } from '../core/theme';
 import { TableView } from '../components/TableView.js';
 import { ChartView } from '../components/ChartView.js';
+import { AuthContext } from '../providers/AuthProvider.js';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
 export const UserProfileScreen = ({ displayName }) => {
-  const { myAuth, myDb } = useContext(FirebaseContext);
+  const { user, profile } = useContext(AuthContext);
 
-  const [user, setUser] = useState();
   const [tableView, setTableView] = useState(true);
 
-  // console.log('auth is', myAuth);
-
-  useEffect(() => {
-    async function getUserProfile() {
-      const userRef = doc(myDb, 'users', myAuth.currentUser.uid);
-
-      const docSnap = await getDoc(userRef);
-      console.log('docSnap', docSnap);
-      if (!docSnap.exists) {
-        console.log('No such document!');
-      } else {
-        const userData = docSnap.data();
-        // console.log('USER DATA:', userData);
-        setUser({
-          displayName: userData.displayName,
-          email: userData.email,
-          age: userData.age,
-          uid: userData.uid,
-        });
-      }
-    }
-    if (myAuth.currentUser) {
-      getUserProfile();
-    }
-  }, [myAuth]);
-  console.log('user auth!!!', myAuth);
-  console.log('USER ID=>', myAuth.currentUser.uid);
+  console.log('HERE IS THE USER', user);
+  console.log('HERE IS THE profile', profile);
 
   const visualizeData = (tableView) => {
     if (tableView) {
@@ -65,11 +40,11 @@ export const UserProfileScreen = ({ displayName }) => {
         <View style={styles.nameAge}>
           <View style={styles.spaceBetweenRow}>
             <Text style={styles.boldText}>NAME:</Text>
-            <Text style={styles.normalText}>{user?.displayName}</Text>
+            <Text style={styles.normalText}>{profile?.displayName}</Text>
           </View>
           <View style={styles.spaceBetweenRow}>
             <Text style={styles.boldText}>AGE:</Text>
-            <Text style={styles.normalText}>{user?.age}</Text>
+            <Text style={styles.normalText}>{profile?.age}</Text>
           </View>
           <View style={styles.spaceBetweenRow}>
             <Text style={styles.boldText}>CLAN:</Text>
