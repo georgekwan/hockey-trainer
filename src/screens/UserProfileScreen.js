@@ -1,52 +1,38 @@
-import { Dimensions, ScrollView, StyleSheet, Text, View } from 'react-native';
-import React, { useContext, useEffect, useState } from 'react';
-import { Avatar, DataTable, IconButton } from 'react-native-paper';
-
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import { Dimensions, StyleSheet, Text, View } from 'react-native';
+import { Avatar, IconButton } from 'react-native-paper';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 import Button from '../components/Button.js';
-import GetUserInfo from '../components/GetUserInfo.js';
-import { doc, getDoc } from 'firebase/firestore';
-import { FirebaseContext } from '../providers/FirebaseProvider.js';
-import FullLogo from '../components/FullLogo.js';
-import { theme } from '../core/theme';
-import { TableView } from '../components/TableView.js';
 import { ChartView } from '../components/ChartView.js';
+import FullLogo from '../components/FullLogo.js';
+import { TableView } from '../components/TableView.js';
+import { theme } from '../core/theme';
+import { AuthContext } from '../providers/AuthProvider.js';
+import { FirebaseContext } from '../providers/FirebaseProvider.js';
 
+export const PatternHistoryContext = createContext({});
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
 export const UserProfileScreen = ({ displayName }) => {
+  const { user, profile } = useContext(AuthContext);
   const { myAuth, myDb } = useContext(FirebaseContext);
-
-  const [user, setUser] = useState();
+  const [patternHistory, setPatternHistory] = useState();
   const [tableView, setTableView] = useState(true);
 
-  // console.log('auth is', myAuth);
-
+  // console.log('HERE IS THE USER', user);
+  // console.log('HERE IS THE profile', profile);
   useEffect(() => {
-    async function getUserProfile() {
-      const userRef = doc(myDb, 'users', myAuth.currentUser.uid);
-
-      const docSnap = await getDoc(userRef);
-      console.log('docSnap', docSnap);
-      if (!docSnap.exists) {
-        console.log('No such document!');
-      } else {
-        const userData = docSnap.data();
-        // console.log('USER DATA:', userData);
-        setUser({
-          displayName: userData.displayName,
-          email: userData.email,
-          age: userData.age,
-          uid: userData.uid,
-        });
-      }
+    async function getPatternHistory() {
+      const userId = myAuth.currentUser.uid;
+      const q = query(collection(myDb, 'drillResults'), where('userId', '==', userId));
+      const querySnapshot = await getDocs(q);
+      const theDocs = querySnapshot.docs.map((docSnap) => docSnap.data());
+      setPatternHistory(theDocs);
+      console.log('this is the pattern history', patternHistory);
     }
-    if (myAuth.currentUser) {
-      getUserProfile();
-    }
+    getPatternHistory();
   }, [myAuth]);
-  console.log('user auth!!!', myAuth);
-  console.log('USER ID=>', myAuth.currentUser.uid);
 
   const visualizeData = (tableView) => {
     if (tableView) {
@@ -65,11 +51,11 @@ export const UserProfileScreen = ({ displayName }) => {
         <View style={styles.nameAge}>
           <View style={styles.spaceBetweenRow}>
             <Text style={styles.boldText}>NAME:</Text>
-            <Text style={styles.normalText}>{user?.displayName}</Text>
+            <Text style={styles.normalText}>{profile?.displayName}</Text>
           </View>
           <View style={styles.spaceBetweenRow}>
             <Text style={styles.boldText}>AGE:</Text>
-            <Text style={styles.normalText}>{user?.age}</Text>
+            <Text style={styles.normalText}>{profile?.age}</Text>
           </View>
           <View style={styles.spaceBetweenRow}>
             <Text style={styles.boldText}>CLAN:</Text>
@@ -111,7 +97,9 @@ export const UserProfileScreen = ({ displayName }) => {
           />
         </View>
       </View>
-      {visualizeData(tableView)}
+      <PatternHistoryContext.Provider value={patternHistory}>
+        {visualizeData(tableView)}
+      </PatternHistoryContext.Provider>
     </>
   );
 };
