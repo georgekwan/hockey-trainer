@@ -1,10 +1,12 @@
 import { View, Text, StyleSheet, Dimensions } from 'react-native';
-import React from 'react';
-
+import React, { useContext } from 'react';
+import { PatternHistoryContext } from '../screens/UserProfileScreen.js';
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
 export const ChartView = () => {
+  const patternHistory = useContext(PatternHistoryContext);
+
   return (
     <View>
       <Text style={styles.container}>THIS IS A CHART</Text>
