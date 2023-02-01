@@ -46,6 +46,7 @@ const ResultInputScreen = () => {
       ...misses,
       timestamp: serverTimestamp(),
     };
+    const docRef = await addDoc(collection(db, 'drillResults'), missesCopy);
   };
 
   return (
