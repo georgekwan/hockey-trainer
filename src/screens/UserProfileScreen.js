@@ -9,7 +9,6 @@ import { theme } from '../core/theme';
 import { AuthContext } from '../providers/AuthProvider.js';
 import { PatternHistoryProvider } from '../providers/PatternHistoryProvider.js';
 
-export const PatternHistoryContext = createContext({});
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 

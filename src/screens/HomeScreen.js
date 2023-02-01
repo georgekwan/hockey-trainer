@@ -1,17 +1,19 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Dimensions, Image, StyleSheet, View } from 'react-native';
-import { Avatar, Card, Text, List } from 'react-native-paper';
+import React, { useContext } from 'react';
+import { Dimensions, StyleSheet, View } from 'react-native';
+import { Avatar, List, Text } from 'react-native-paper';
 import FullLogo from '../components/FullLogo.js';
 import { AuthContext } from '../providers/AuthProvider.js';
-import { FirebaseContext } from '../providers/FirebaseProvider.js';
+import { PatternHistoryContext } from '../providers/PatternHistoryProvider.js';
+import { patternIDToText } from '../helpers/patternIDToText.js';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
 const HomeScreen = () => {
-  const { user, profile } = useContext(AuthContext);
+  const { profile } = useContext(AuthContext);
+  const patternHistory = useContext(PatternHistoryContext);
 
-  // const [user, setUser] = useState();
+  console.log(patternHistory);
 
   return (
     <>
@@ -43,7 +45,7 @@ const HomeScreen = () => {
               paddingLeft: 5,
               paddingVertical: WIDTH * 0.02,
             }}>
-            Mom's cookies pattern
+            {patternIDToText(patternHistory[0]?.patternID)}
           </Text>
         </View>
       </View>
