@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Dimensions, ScrollView } from 'react-native';
 import { DataTable } from 'react-native-paper';
 import { patternIDToText } from '../helpers/patternIDToText.js';
-import { PatternHistoryContext } from '../screens/UserProfileScreen.js';
+import { PatternHistoryContext } from '../providers/PatternHistoryProvider.js';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;

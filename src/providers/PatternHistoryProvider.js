@@ -1,11 +1,12 @@
-import { View, Text } from 'react-native';
-import React, { createContext, useContext, useEffect } from 'react';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { FirebaseContext } from './FirebaseProvider.js';
-import { collection, getDocs, query } from 'firebase/firestore';
 
 export const PatternHistoryContext = createContext({});
 
-export const PatternHistoryProvider = () => {
+export const PatternHistoryProvider = (props) => {
+  const children = props.children;
+  const [patternHistory, setPatternHistory] = useState();
   const { myAuth, myDb } = useContext(FirebaseContext);
 
   useEffect(() => {
@@ -17,11 +18,11 @@ export const PatternHistoryProvider = () => {
       setPatternHistory(theDocs);
     }
     getPatternHistory();
-  }, []);
+  }, [myAuth]);
 
   return (
-    <View>
-      <Text>PatternHistoryProvider</Text>
-    </View>
+    <PatternHistoryContext.Provider value={patternHistory}>
+      {children}
+    </PatternHistoryContext.Provider>
   );
 };
