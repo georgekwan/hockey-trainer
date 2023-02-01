@@ -6,6 +6,8 @@ import { Button, List } from 'react-native-paper';
 import { ResultInputScreen } from './ResultInputScreen';
 import * as patterns from '../../temp/drill_patterns.json';
 import FullLogo from '../components/FullLogo.js';
+import { addDoc, serverTimestamp } from 'firebase/firestore';
+
 import { theme } from '../core/theme';
 import { PatternButton } from '../components/selectDrillScreen/PatternButton.js';
 import { TimeoutButton } from '../components/selectDrillScreen/TimeoutButton.js';
