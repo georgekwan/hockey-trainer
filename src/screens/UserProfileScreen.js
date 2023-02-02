@@ -1,38 +1,20 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import { Dimensions, StyleSheet, Text, View } from 'react-native';
 import { Avatar, IconButton } from 'react-native-paper';
-import { collection, getDocs, query, where } from 'firebase/firestore';
 import Button from '../components/Button.js';
 import { ChartView } from '../components/ChartView.js';
 import FullLogo from '../components/FullLogo.js';
 import { TableView } from '../components/TableView.js';
 import { theme } from '../core/theme';
 import { AuthContext } from '../providers/AuthProvider.js';
-import { FirebaseContext } from '../providers/FirebaseProvider.js';
+import { PatternHistoryProvider } from '../providers/PatternHistoryProvider.js';
 
-export const PatternHistoryContext = createContext({});
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
-export const UserProfileScreen = ({ displayName }) => {
-  const { user, profile } = useContext(AuthContext);
-  const { myAuth, myDb } = useContext(FirebaseContext);
-  const [patternHistory, setPatternHistory] = useState();
+export const UserProfileScreen = () => {
+  const { profile } = useContext(AuthContext);
   const [tableView, setTableView] = useState(true);
-
-  // console.log('HERE IS THE USER', user);
-  // console.log('HERE IS THE profile', profile);
-  useEffect(() => {
-    async function getPatternHistory() {
-      const userId = myAuth.currentUser.uid;
-      const q = query(collection(myDb, 'drillResults'), where('userId', '==', userId));
-      const querySnapshot = await getDocs(q);
-      const theDocs = querySnapshot.docs.map((docSnap) => docSnap.data());
-      setPatternHistory(theDocs);
-      console.log('this is the pattern history', patternHistory);
-    }
-    getPatternHistory();
-  }, [myAuth]);
 
   const visualizeData = (tableView) => {
     if (tableView) {
@@ -41,6 +23,7 @@ export const UserProfileScreen = ({ displayName }) => {
       return <ChartView />;
     }
   };
+
   return (
     <>
       <View style={styles.logo}>
@@ -97,9 +80,7 @@ export const UserProfileScreen = ({ displayName }) => {
           />
         </View>
       </View>
-      <PatternHistoryContext.Provider value={patternHistory}>
-        {visualizeData(tableView)}
-      </PatternHistoryContext.Provider>
+      <PatternHistoryProvider>{visualizeData(tableView)}</PatternHistoryProvider>
     </>
   );
 };
