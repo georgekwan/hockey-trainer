@@ -2,22 +2,23 @@ import React, { useContext, useState } from 'react';
 import { ImageBackground, Dimensions, Image, StyleSheet, Text, View } from 'react-native';
 import { Button } from 'react-native-paper';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
+import { useNavigation } from '@react-navigation/native';
 
 import MissShotInput from '../components/MissShotInput';
 import { FirebaseContext } from '../providers/FirebaseProvider';
-import * as pattern from '../../temp/drill_patterns.json';
 import { patternSelector } from '../helpers/patternSelector.js';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
 const ResultInputScreen = ({ route }) => {
+  const navigation = useNavigation();
+
   route = route || {};
   // route.selectedName = route.selectedName || 'Downtown';
   // route.selectedTutor = route.selectedTutor || 11;
   const { selectedName, selectedTutor } = route.params;
   const pattern = patternSelector(selectedTutor, selectedName);
-  console.log(pattern);
   const fbContext = useContext(FirebaseContext);
   const db = fbContext.myDb;
 
@@ -56,14 +57,12 @@ const ResultInputScreen = ({ route }) => {
   const onSubmit = async () => {
     setLoading(true);
 
-    const missesCopy = {
-      ...misses,
-      timestamp: serverTimestamp(),
-    };
+    const missesCopy = { selectedName, ...misses, timestamp: serverTimestamp() };
     console.log(missesCopy);
     const docRef = await addDoc(collection(db, 'drillResults'), missesCopy);
-    console.log(docRef);
     setLoading(false);
+
+    navigation.navigate('NavBarContainer', { docRef });
   };
 
   return (
