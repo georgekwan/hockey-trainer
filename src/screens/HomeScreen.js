@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
 import { Avatar, Button, List, Text } from 'react-native-paper';
 import FullLogo from '../components/FullLogo.js';
@@ -12,13 +12,15 @@ import { useNavigation } from '@react-navigation/native';
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
-const HomeScreen = ({ setIndex }) => {
-  const navigation = useNavigation();
+const HomeScreen = ({ setIndex, setSelectedName, selectedName }) => {
   const { profile } = useContext(AuthContext);
   const patternHistory = useContext(PatternHistoryContext);
 
-  // const recommendedPattern = '';
+  const recommendedPattern = 'Titanic';
+  setSelectedName(recommendedPattern);
+
   console.log(patternHistory);
+
   return (
     <>
       <View style={styles.logo}>
@@ -51,12 +53,12 @@ const HomeScreen = ({ setIndex }) => {
       </View>
       <View style={styles.recommendedPatternSection}>
         <Text style={styles.recommendedPatternTitle}>RECOMMENDED PATTERN:</Text>
-        <Text style={styles.recommendedPatternText}>Top-Left</Text>
+        <Text style={styles.recommendedPatternText}>{recommendedPattern}</Text>
         <TrainNowButton
-          onPress={() => setIndex(1)} //navigation.navigate('NavBarContainer')}
-          title="NavBarContainer"
+          onPress={() => {
+            setIndex(1);
+          }}
         />
-        {/* <TrainNowButton onPress={() => console.log(profile)} /> */}
       </View>
     </>
   );

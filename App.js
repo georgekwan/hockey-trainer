@@ -31,27 +31,26 @@ export default function App() {
         <PatternHistoryProvider>
           <Provider theme={theme}>
             <NavigationContainer>
-              {/* <Stack.Navigator
+              <Stack.Navigator
                 initialRouteName="NavBarContainer"
                 name="NavBarContainer"
                 component={NavBarContainer}
                 screenOptions={{
                   headerShown: false,
-                }}> */}
-              <Stack.Navigator
+                }}>
+                {/* <Stack.Navigator
                 initialRouteName="StartScreen"
                 name="StartScreen"
                 component={StartScreen}
                 screenOptions={{
                   headerShown: false,
-                }}>
-                <Stack.Screen name="StartScreen" component={StartScreen} />
+                }}> */}
+                {/* <Stack.Screen name="StartScreen" component={StartScreen} />
                 <Stack.Screen name="LoginScreen" component={LoginScreen} />
-                <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
+                <Stack.Screen name="RegisterScreen" component={RegisterScreen} /> */}
                 <Stack.Screen name="NavBarContainer" component={NavBarContainer} />
                 <Stack.Screen name="InDrillScreen" component={InDrillScreen} />
                 <Stack.Screen name="ResultInputScreen" component={ResultInputScreen} />
-                {/* <Stack.Screen name="DrillSelectionScreen" component={DrillSelectionScreen} /> */}
                 <Stack.Screen name="ResetPasswordScreen" component={ResetPasswordScreen} />
               </Stack.Navigator>
             </NavigationContainer>
