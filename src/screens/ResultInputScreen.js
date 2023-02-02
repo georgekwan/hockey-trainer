@@ -1,17 +1,21 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { ImageBackground, Dimensions, Image, StyleSheet, Text, View } from 'react-native';
 import { Button } from 'react-native-paper';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 
-import { myDb } from '../providers/FirebaseProvider';
 import MissShotInput from '../components/MissShotInput';
+import { FirebaseContext } from '../providers/FirebaseProvider';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
 const ResultInputScreen = () => {
+  const fbContext = useContext(FirebaseContext);
+  const db = fbContext.myDb;
+
   const totalShots = 15;
   const [numberOfShotsLeft, setNumberOfShotsLeft] = useState(totalShots);
+  const [loading, setLoading] = useState(false);
   const [misses, setMisses] = useState({
     topLeft: 0,
     leftShoulder: 0,
@@ -42,11 +46,17 @@ const ResultInputScreen = () => {
   } = misses;
 
   const onSubmit = async () => {
+    setLoading(true);
+
     const missesCopy = {
       ...misses,
       timestamp: serverTimestamp(),
     };
+    console.log(missesCopy);
+    // ! myDb is not being exported from getFirestore
     const docRef = await addDoc(collection(db, 'drillResults'), missesCopy);
+    console.log(docRef);
+    setLoading(false);
   };
 
   return (
