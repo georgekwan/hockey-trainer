@@ -18,8 +18,7 @@ const HomeScreen = () => {
   const patternHistory = useContext(PatternHistoryContext);
 
   const recommendedPattern = '';
-  // console.log(patternHistory);
-
+  console.log(patternHistory);
   return (
     <>
       <View style={styles.logo}>
@@ -33,8 +32,10 @@ const HomeScreen = () => {
         <Avatar.Icon size={100} icon="face-man-shimmer" />
         <View style={{ justifyContent: 'center', paddingHorizontal: WIDTH * 0.02 }}>
           <Text style={styles.title}>LAST TRAINING</Text>
-          <Text style={styles.normalText}>{patternIDToText(patternHistory[0]?.patternID)}</Text>
-          <Text style={styles.normalText}>92% accuracy</Text>
+          <Text style={styles.normalText}>{patternIDToText(patternHistory[2]?.patternID)}</Text>
+          <Text style={styles.normalText}>
+            {Math.round(((15 - patternHistory[2]?.misses.total) / 15) * 100)}% accuracy
+          </Text>
         </View>
       </View>
       <View style={styles.overallStatsSection}>
@@ -51,7 +52,8 @@ const HomeScreen = () => {
       <View style={styles.recommendedPatternSection}>
         <Text style={styles.recommendedPatternTitle}>RECOMMENDED PATTERN:</Text>
         <Text style={styles.recommendedPatternText}>Top-Left</Text>
-        <TrainNowButton onPress={() => navigation.navigate('Patterns')} title="Patterns" />
+        {/* <TrainNowButton onPress={() => navigation.navigate('Patterns')} title="Patterns" /> */}
+        <TrainNowButton onPress={() => console.log(profile)} />
       </View>
     </>
   );
