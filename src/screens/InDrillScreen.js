@@ -33,7 +33,8 @@ const InDrillScreen = ({ route }) => {
   useEffect(() => {
     if (currentStringIndex === 0) {
       Timer.clearInterval('soundTimer');
-      navigation.navigate('ResultInputScreen');
+      console.log({ selectedName, selectedTutor });
+      navigation.navigate('ResultInputScreen', { selectedName, selectedTutor });
       console.log('navigating away');
     } else {
       playSound();

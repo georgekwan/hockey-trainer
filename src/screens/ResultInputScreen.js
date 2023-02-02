@@ -5,11 +5,19 @@ import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 
 import MissShotInput from '../components/MissShotInput';
 import { FirebaseContext } from '../providers/FirebaseProvider';
+import * as pattern from '../../temp/drill_patterns.json';
+import { patternSelector } from '../helpers/patternSelector.js';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
-const ResultInputScreen = () => {
+const ResultInputScreen = ({ route }) => {
+  route = route || {};
+  // route.selectedName = route.selectedName || 'Downtown';
+  // route.selectedTutor = route.selectedTutor || 11;
+  const { selectedName, selectedTutor } = route.params;
+  const pattern = patternSelector(selectedTutor, selectedName);
+  console.log(pattern);
   const fbContext = useContext(FirebaseContext);
   const db = fbContext.myDb;
 
@@ -53,7 +61,6 @@ const ResultInputScreen = () => {
       timestamp: serverTimestamp(),
     };
     console.log(missesCopy);
-    // ! myDb is not being exported from getFirestore
     const docRef = await addDoc(collection(db, 'drillResults'), missesCopy);
     console.log(docRef);
     setLoading(false);
@@ -143,54 +150,70 @@ const ResultInputScreen = () => {
                 paddingTop: 25,
                 paddingHorizontal: 10,
               }}>
-              <MissShotInput
-                totalShots={totalShots}
-                numberOfShotsLeft={numberOfShotsLeft}
-                setNumberOfShotsLeft={setNumberOfShotsLeft}
-                setMisses={(num) =>
-                  setMisses((currval) => {
-                    let newObj = { ...currval };
-                    newObj['Top Left'] = num;
-                    return newObj;
-                  })
-                }
-              />
-              <MissShotInput
-                totalShots={totalShots}
-                numberOfShotsLeft={numberOfShotsLeft}
-                setNumberOfShotsLeft={setNumberOfShotsLeft}
-                setMisses={(num) =>
-                  setMisses((currval) => {
-                    let newObj = { ...currval };
-                    newObj['Left Shoulder'] = num;
-                    return newObj;
-                  })
-                }
-              />
-              <MissShotInput
-                totalShots={totalShots}
-                numberOfShotsLeft={numberOfShotsLeft}
-                setNumberOfShotsLeft={setNumberOfShotsLeft}
-                setMisses={(num) =>
-                  setMisses((currval) => {
-                    let newObj = { ...currval };
-                    newObj['Right Shoulder'] = num;
-                    return newObj;
-                  })
-                }
-              />
-              <MissShotInput
-                totalShots={totalShots}
-                numberOfShotsLeft={numberOfShotsLeft}
-                setNumberOfShotsLeft={setNumberOfShotsLeft}
-                setMisses={(num) =>
-                  setMisses((currval) => {
-                    let newObj = { ...currval };
-                    newObj['Top Right'] = num;
-                    return newObj;
-                  })
-                }
-              />
+              <View style={{ width: 70 }}>
+                {pattern.sequence.includes('TOP LEFT') && (
+                  <MissShotInput
+                    totalShots={totalShots}
+                    numberOfShotsLeft={numberOfShotsLeft}
+                    setNumberOfShotsLeft={setNumberOfShotsLeft}
+                    setMisses={(num) =>
+                      setMisses((currval) => {
+                        let newObj = { ...currval };
+                        newObj['topLeft'] = num;
+                        return newObj;
+                      })
+                    }
+                  />
+                )}
+              </View>
+              <View style={{ width: 70 }}>
+                {pattern.sequence.includes('LEFT SHOULDER') && (
+                  <MissShotInput
+                    totalShots={totalShots}
+                    numberOfShotsLeft={numberOfShotsLeft}
+                    setNumberOfShotsLeft={setNumberOfShotsLeft}
+                    setMisses={(num) =>
+                      setMisses((currval) => {
+                        let newObj = { ...currval };
+                        newObj['leftShoulder'] = num;
+                        return newObj;
+                      })
+                    }
+                  />
+                )}
+              </View>
+              <View style={{ width: 70 }}>
+                {pattern.sequence.includes('RIGHT SHOULDER') && (
+                  <MissShotInput
+                    totalShots={totalShots}
+                    numberOfShotsLeft={numberOfShotsLeft}
+                    setNumberOfShotsLeft={setNumberOfShotsLeft}
+                    setMisses={(num) =>
+                      setMisses((currval) => {
+                        let newObj = { ...currval };
+                        newObj['rightShoulder'] = num;
+                        return newObj;
+                      })
+                    }
+                  />
+                )}
+              </View>
+              <View style={{ width: 70 }}>
+                {pattern.sequence.includes('TOP RIGHT') && (
+                  <MissShotInput
+                    totalShots={totalShots}
+                    numberOfShotsLeft={numberOfShotsLeft}
+                    setNumberOfShotsLeft={setNumberOfShotsLeft}
+                    setMisses={(num) =>
+                      setMisses((currval) => {
+                        let newObj = { ...currval };
+                        newObj['Top Right'] = num;
+                        return newObj;
+                      })
+                    }
+                  />
+                )}
+              </View>
             </View>
             <View style={{ flex: 1 }}></View>
             <View
@@ -201,56 +224,72 @@ const ResultInputScreen = () => {
                 width: '100%',
                 paddingHorizontal: 10,
               }}>
-              <MissShotInput
-                totalShots={totalShots}
-                numberOfShotsLeft={numberOfShotsLeft}
-                setNumberOfShotsLeft={setNumberOfShotsLeft}
-                setMisses={(num) =>
-                  setMisses((currval) => {
-                    let newObj = { ...currval };
-                    newObj['Middle Left'] = num;
-                    return newObj;
-                  })
-                }
-              />
-              <MissShotInput
-                totalShots={totalShots}
-                numberOfShotsLeft={numberOfShotsLeft}
-                setNumberOfShotsLeft={setNumberOfShotsLeft}
-                style={{ marginTop: 20 }}
-                setMisses={(num) =>
-                  setMisses((currval) => {
-                    let newObj = { ...currval };
-                    newObj['Under Blocker'] = num;
-                    return newObj;
-                  })
-                }
-              />
-              <MissShotInput
-                totalShots={totalShots}
-                numberOfShotsLeft={numberOfShotsLeft}
-                setNumberOfShotsLeft={setNumberOfShotsLeft}
-                style={{ marginTop: 20 }}
-                setMisses={(num) =>
-                  setMisses((currval) => {
-                    let newObj = { ...currval };
-                    newObj['Under Glove'] = num;
-                    return newObj;
-                  })
-                }
-              />
-              <MissShotInput
-                totalShots={totalShots}
-                numberOfShotsLeft={numberOfShotsLeft}
-                setNumberOfShotsLeft={setNumberOfShotsLeft}
-                setMisses={(num) =>
-                  setMisses((currval) => {
-                    let newObj = { ...currval };
-                    newObj['Middle Right'] = num;
-                    return newObj;
-                  })
-                }
-              />
+              <View style={{ width: 70 }}>
+                {pattern.sequence.includes('MIDDLE LEFT') && (
+                  <MissShotInput
+                    totalShots={totalShots}
+                    numberOfShotsLeft={numberOfShotsLeft}
+                    setNumberOfShotsLeft={setNumberOfShotsLeft}
+                    setMisses={(num) =>
+                      setMisses((currval) => {
+                        let newObj = { ...currval };
+                        newObj['middleLeft'] = num;
+                        return newObj;
+                      })
+                    }
+                  />
+                )}
+              </View>
+              <View style={{ width: 70 }}>
+                {pattern.sequence.includes('UNDER BLOCKER') && (
+                  <MissShotInput
+                    totalShots={totalShots}
+                    numberOfShotsLeft={numberOfShotsLeft}
+                    setNumberOfShotsLeft={setNumberOfShotsLeft}
+                    style={{ marginTop: 20 }}
+                    setMisses={(num) =>
+                      setMisses((currval) => {
+                        let newObj = { ...currval };
+                        newObj['underBlocker'] = num;
+                        return newObj;
+                      })
+                    }
+                  />
+                )}
+              </View>
+              <View style={{ width: 70 }}>
+                {pattern.sequence.includes('UNDERGLOVE') && (
+                  <MissShotInput
+                    totalShots={totalShots}
+                    numberOfShotsLeft={numberOfShotsLeft}
+                    setNumberOfShotsLeft={setNumberOfShotsLeft}
+                    style={{ marginTop: 20 }}
+                    setMisses={(num) =>
+                      setMisses((currval) => {
+                        let newObj = { ...currval };
+                        newObj['underGlove'] = num;
+                        return newObj;
+                      })
+                    }
+                  />
+                )}
+              </View>
+              <View style={{ width: 70 }}>
+                {pattern.sequence.includes('MIDDLE RIGHT') && (
+                  <MissShotInput
+                    totalShots={totalShots}
+                    numberOfShotsLeft={numberOfShotsLeft}
+                    setNumberOfShotsLeft={setNumberOfShotsLeft}
+                    setMisses={(num) =>
+                      setMisses((currval) => {
+                        let newObj = { ...currval };
+                        newObj['middleRight'] = num;
+                        return newObj;
+                      })
+                    }
+                  />
+                )}
+              </View>
             </View>
 
             <View
@@ -262,45 +301,57 @@ const ResultInputScreen = () => {
                 paddingHorizontal: 10,
                 paddingBottom: 20,
               }}>
-              <MissShotInput
-                totalShots={totalShots}
-                numberOfShotsLeft={numberOfShotsLeft}
-                setNumberOfShotsLeft={setNumberOfShotsLeft}
-                style={{ marginTop: 30 }}
-                setMisses={(num) =>
-                  setMisses((currval) => {
-                    let newObj = { ...currval };
-                    newObj['Bottom Left'] = num;
-                    return newObj;
-                  })
-                }
-              />
+              <View style={{ width: 70 }}>
+                {pattern.sequence.includes('BOTTOM LEFT') && (
+                  <MissShotInput
+                    totalShots={totalShots}
+                    numberOfShotsLeft={numberOfShotsLeft}
+                    setNumberOfShotsLeft={setNumberOfShotsLeft}
+                    style={{ marginTop: 30 }}
+                    setMisses={(num) =>
+                      setMisses((currval) => {
+                        let newObj = { ...currval };
+                        newObj['bottomLeft'] = num;
+                        return newObj;
+                      })
+                    }
+                  />
+                )}
+              </View>
 
-              <MissShotInput
-                totalShots={totalShots}
-                numberOfShotsLeft={numberOfShotsLeft}
-                setNumberOfShotsLeft={setNumberOfShotsLeft}
-                setMisses={(num) =>
-                  setMisses((currval) => {
-                    let newObj = { ...currval };
-                    newObj['Five Hole'] = num;
-                    return newObj;
-                  })
-                }
-              />
-              <MissShotInput
-                totalShots={totalShots}
-                numberOfShotsLeft={numberOfShotsLeft}
-                setNumberOfShotsLeft={setNumberOfShotsLeft}
-                style={{ marginTop: 30 }}
-                setMisses={(num) =>
-                  setMisses((currval) => {
-                    let newObj = { ...currval };
-                    newObj['Bottom Right'] = num;
-                    return newObj;
-                  })
-                }
-              />
+              <View style={{ width: 70 }}>
+                {pattern.sequence.includes('FIVE HOLE') && (
+                  <MissShotInput
+                    totalShots={totalShots}
+                    numberOfShotsLeft={numberOfShotsLeft}
+                    setNumberOfShotsLeft={setNumberOfShotsLeft}
+                    setMisses={(num) =>
+                      setMisses((currval) => {
+                        let newObj = { ...currval };
+                        newObj['fiveHole'] = num;
+                        return newObj;
+                      })
+                    }
+                  />
+                )}
+              </View>
+              <View style={{ width: 70 }}>
+                {pattern.sequence.includes('BOTTOM RIGHT') && (
+                  <MissShotInput
+                    totalShots={totalShots}
+                    numberOfShotsLeft={numberOfShotsLeft}
+                    setNumberOfShotsLeft={setNumberOfShotsLeft}
+                    style={{ marginTop: 30 }}
+                    setMisses={(num) =>
+                      setMisses((currval) => {
+                        let newObj = { ...currval };
+                        newObj['bottomRight'] = num;
+                        return newObj;
+                      })
+                    }
+                  />
+                )}
+              </View>
             </View>
           </View>
         </ImageBackground>
