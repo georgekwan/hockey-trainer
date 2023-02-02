@@ -207,7 +207,7 @@ const ResultInputScreen = ({ route }) => {
                     setMisses={(num) =>
                       setMisses((currval) => {
                         let newObj = { ...currval };
-                        newObj['Top Right'] = num;
+                        newObj['topRight'] = num;
                         return newObj;
                       })
                     }
