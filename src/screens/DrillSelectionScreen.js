@@ -6,10 +6,13 @@ import { Button, List } from 'react-native-paper';
 import { ResultInputScreen } from './ResultInputScreen';
 import * as patterns from '../../temp/drill_patterns.json';
 import FullLogo from '../components/FullLogo.js';
+import { addDoc, serverTimestamp } from 'firebase/firestore';
+
 import { theme } from '../core/theme';
 import { PatternButton } from '../components/selectDrillScreen/PatternButton.js';
 import { TimeoutButton } from '../components/selectDrillScreen/TimeoutButton.js';
 import { TutorButton } from '../components/selectDrillScreen/TutorButton.js';
+import { TrainNowButton } from '../components/TrainNowButton.js';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
@@ -165,42 +168,11 @@ const DrillSelectionScreen = ({ patternName }) => {
           />
         ))}
       </View>
-
-      <View style={{ margin: WIDTH * 0.025 }}>
-        <View
-          style={{
-            marginTop: HEIGHT * 0.015,
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <Button
-            mode="elevated"
-            buttonColor={'#DCDCDC'}
-            onPress={() =>
-              navigation.navigate('InDrillScreen', { selectedName, selectedSeconds, selectedTutor })
-            }
-            // onPress={() => console.log(selectedName, selectedSeconds * 1000, selectedTutor)}
-            style={{
-              width: WIDTH * 0.8,
-              height: HEIGHT * 0.07,
-              borderRadius: 25,
-            }}
-            labelStyle={{
-              fontSize: 35,
-              lineHeight: 35,
-            }}>
-            <Text
-              style={{
-                textAlign: 'center',
-                color: 'black',
-                fontWeight: '800',
-              }}>
-              {'TRAIN NOW'}
-            </Text>
-          </Button>
-        </View>
-      </View>
+      <TrainNowButton
+        onPress={() =>
+          navigation.navigate('InDrillScreen', { selectedName, selectedSeconds, selectedTutor })
+        }
+      />
     </View>
   );
 };

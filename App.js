@@ -7,6 +7,7 @@ import { NavBarContainer } from './src/components/NavBarContainer.js';
 import { theme } from './src/core/theme';
 import { AuthProvider } from './src/providers/AuthProvider.js';
 import { FirebaseProvider } from './src/providers/FirebaseProvider.js';
+import { PatternHistoryProvider } from './src/providers/PatternHistoryProvider.js';
 import {
   StartScreen,
   LoginScreen,
@@ -29,23 +30,30 @@ export default function App() {
       <AuthProvider>
         <Provider theme={theme}>
           <NavigationContainer>
-            <Stack.Navigator
+            {/* <Stack.Navigator
               initialRouteName="ResultInputScreen"
               name="ResultInputScreen"
               component={ResultInputScreen}
               screenOptions={{
                 headerShown: false,
-              }}>
-              {/* <Stack.Navigator
+              }}> */}
+            {/* <Stack.Navigator
+                initialRouteName="NavBarContainer"
+                name="NavBarContainer"
+                component={NavBarContainer}
+                screenOptions={{
+                  headerShown: false,
+                }}> */}
+            <Stack.Navigator
               initialRouteName="StartScreen"
               name="StartScreen"
               component={StartScreen}
               screenOptions={{
                 headerShown: false,
-              }}> */}
-              {/* <Stack.Screen name="StartScreen" component={StartScreen} />
+              }}>
+              <Stack.Screen name="StartScreen" component={StartScreen} />
               <Stack.Screen name="LoginScreen" component={LoginScreen} />
-              <Stack.Screen name="RegisterScreen" component={RegisterScreen} /> */}
+              <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
               <Stack.Screen name="NavBarContainer" component={NavBarContainer} />
               <Stack.Screen name="InDrillScreen" component={InDrillScreen} />
               <Stack.Screen name="ResultInputScreen" component={ResultInputScreen} />
@@ -53,6 +61,7 @@ export default function App() {
             </Stack.Navigator>
           </NavigationContainer>
         </Provider>
+        {/* </PatternHistoryProvider> */}
       </AuthProvider>
     </FirebaseProvider>
   );
