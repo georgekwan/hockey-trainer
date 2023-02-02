@@ -51,6 +51,7 @@ export default function App() {
                 <Stack.Screen name="NavBarContainer" component={NavBarContainer} />
                 <Stack.Screen name="InDrillScreen" component={InDrillScreen} />
                 <Stack.Screen name="ResultInputScreen" component={ResultInputScreen} />
+                {/* <Stack.Screen name="DrillSelectionScreen" component={DrillSelectionScreen} /> */}
                 <Stack.Screen name="ResetPasswordScreen" component={ResetPasswordScreen} />
               </Stack.Navigator>
             </NavigationContainer>

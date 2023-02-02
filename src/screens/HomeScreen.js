@@ -12,12 +12,12 @@ import { useNavigation } from '@react-navigation/native';
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
-const HomeScreen = () => {
+const HomeScreen = ({ setIndex }) => {
   const navigation = useNavigation();
   const { profile } = useContext(AuthContext);
   const patternHistory = useContext(PatternHistoryContext);
 
-  const recommendedPattern = '';
+  // const recommendedPattern = '';
   console.log(patternHistory);
   return (
     <>
@@ -52,8 +52,11 @@ const HomeScreen = () => {
       <View style={styles.recommendedPatternSection}>
         <Text style={styles.recommendedPatternTitle}>RECOMMENDED PATTERN:</Text>
         <Text style={styles.recommendedPatternText}>Top-Left</Text>
-        {/* <TrainNowButton onPress={() => navigation.navigate('Patterns')} title="Patterns" /> */}
-        <TrainNowButton onPress={() => console.log(profile)} />
+        <TrainNowButton
+          onPress={() => setIndex(1)} //navigation.navigate('NavBarContainer')}
+          title="NavBarContainer"
+        />
+        {/* <TrainNowButton onPress={() => console.log(profile)} /> */}
       </View>
     </>
   );

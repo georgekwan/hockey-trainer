@@ -7,7 +7,9 @@ import MissShotInput from '../components/MissShotInput';
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
-const ResultInputScreen = () => {
+const ResultInputScreen = (props) => {
+  const currentPattern = props.currentPattern;
+  console.log(currentPattern);
   const totalShots = 15;
   const [numberOfShotsLeft, setNumberOfShotsLeft] = useState(totalShots);
   const [misses, setMisses] = useState({

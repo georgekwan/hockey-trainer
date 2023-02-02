@@ -37,7 +37,7 @@ export function NavBarContainer() {
     },
   ]);
   const renderScene = BottomNavigation.SceneMap({
-    home: HomeScreen,
+    home: () => <HomeScreen setIndex={setIndex} />,
     patternScreen: DrillSelectionScreen,
     user: UserProfileScreen,
   });

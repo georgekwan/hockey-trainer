@@ -22,6 +22,7 @@ const InDrillScreen = ({ route }) => {
   const [currentStringIndex, setCurrentStringIndex] = useState(1);
   const currentPattern = patternSelector(selectedTutor, selectedName);
   const currentString = currentPattern.sequence[currentStringIndex];
+  console.log(currentPattern);
 
   async function playSound() {
     console.log('Loading Sound');
@@ -33,7 +34,7 @@ const InDrillScreen = ({ route }) => {
   useEffect(() => {
     if (currentStringIndex === 0) {
       Timer.clearInterval('soundTimer');
-      navigation.navigate('ResultInputScreen');
+      navigation.navigate('ResultInputScreen', { currentPattern });
       console.log('navigating away');
     } else {
       playSound();
@@ -51,7 +52,8 @@ const InDrillScreen = ({ route }) => {
           return newVal;
         });
       },
-      selectedSeconds * 1000
+      // selectedSeconds * 1000
+      1000
     );
     return () => Timer.clearInterval('soundTimer');
   }, []);
