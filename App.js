@@ -30,20 +30,20 @@ export default function App() {
       <AuthProvider>
         <Provider theme={theme}>
           <NavigationContainer>
-            <Stack.Navigator
+            {/* <Stack.Navigator
               initialRouteName="ResultInputScreen"
               name="ResultInputScreen"
               component={ResultInputScreen}
               screenOptions={{
                 headerShown: false,
+              }}> */}
+            <Stack.Navigator
+              initialRouteName="NavBarContainer"
+              name="NavBarContainer"
+              component={NavBarContainer}
+              screenOptions={{
+                headerShown: false,
               }}>
-              {/* <Stack.Navigator
-                initialRouteName="NavBarContainer"
-                name="NavBarContainer"
-                component={NavBarContainer}
-                screenOptions={{
-                  headerShown: false,
-                }}> */}
               {/* <Stack.Navigator
               initialRouteName="StartScreen"
               name="StartScreen"

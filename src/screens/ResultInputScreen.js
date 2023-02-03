@@ -13,8 +13,8 @@ const HEIGHT = Dimensions.get('screen').height;
 
 const ResultInputScreen = ({ route }) => {
   route = route || {};
-  // route.selectedName = route.selectedName || 'Downtown';
-  // route.selectedTutor = route.selectedTutor || 11;
+  route.selectedName = route.selectedName || 'Downtown';
+  route.selectedTutor = route.selectedTutor || 11;
   const { selectedName, selectedTutor } = route.params;
   const pattern = patternSelector(selectedTutor, selectedName);
   console.log(pattern);
