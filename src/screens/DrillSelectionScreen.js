@@ -180,7 +180,7 @@ const DrillSelectionScreen = ({ route }) => {
   );
 };
 
-export default DrillSelectionScreen;
+export default React.memo(DrillSelectionScreen);
 
 const styles = StyleSheet.create({
   md3FontStyles: {

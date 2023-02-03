@@ -64,7 +64,7 @@ const HomeScreen = ({ setIndex, setSelectedName, selectedName }) => {
   );
 };
 
-export default HomeScreen;
+export default React.memo(HomeScreen);
 
 const styles = StyleSheet.create({
   normalText: {

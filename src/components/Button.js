@@ -4,7 +4,7 @@ import { Button as PaperButton } from 'react-native-paper';
 
 import { theme } from '../core/theme';
 
-export default function Button({ mode, style, ...props }) {
+function Button({ mode, style, ...props }) {
   return (
     <PaperButton
       style={[
@@ -18,6 +18,8 @@ export default function Button({ mode, style, ...props }) {
     />
   );
 }
+
+export default React.memo(Button);
 
 const styles = StyleSheet.create({
   button: {

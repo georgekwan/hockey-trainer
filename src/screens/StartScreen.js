@@ -6,7 +6,7 @@ import FullLogo from '../components/FullLogo.js';
 import Header from '../components/Header';
 import Paragraph from '../components/Paragraph';
 
-export default function StartScreen({ navigation }) {
+function StartScreen({ navigation }) {
   return (
     <Background>
       <FullLogo />
@@ -21,3 +21,5 @@ export default function StartScreen({ navigation }) {
     </Background>
   );
 }
+
+export default React.memo(StartScreen);
