@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
   },
   overallStatsSection: {
     alignItems: 'center',
-    marginVertical: HEIGHT * 0.065,
+    marginVertical: HEIGHT * 0.039,
   },
   iconTextRow: {
     margin: WIDTH * 0.01,
