@@ -13,7 +13,7 @@ import { emailValidator } from '../helpers/emailValidator';
 import { passwordValidator } from '../helpers/passwordValidator';
 import { AuthContext } from '../providers/AuthProvider.js';
 
-export default function LoginScreen({ navigation }) {
+function LoginScreen({ navigation }) {
   // const [email, setEmail] = useState({ value: '', error: '' })
   // const [password, setPassword] = useState({ value: '', error: '' })
 
@@ -105,6 +105,8 @@ export default function LoginScreen({ navigation }) {
     </Background>
   );
 }
+
+export default React.memo(LoginScreen);
 
 const styles = StyleSheet.create({
   forgotPassword: {

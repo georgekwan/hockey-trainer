@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { ImageBackground, Dimensions, Image, StyleSheet, Text, View } from 'react-native';
 import { Button } from 'react-native-paper';
+// import { Button as PaperButton } from 'react-native-paper';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
 

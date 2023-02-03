@@ -38,4 +38,4 @@ const GetUserInfo = () => {
   );
 };
 
-export default GetUserInfo;
+export default React.memo(GetUserInfo);
