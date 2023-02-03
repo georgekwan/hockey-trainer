@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
 import { Avatar, Button, List, Text } from 'react-native-paper';
 import FullLogo from '../components/FullLogo.js';
@@ -12,13 +12,15 @@ import { useNavigation } from '@react-navigation/native';
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
-const HomeScreen = () => {
-  const navigation = useNavigation();
+const HomeScreen = ({ setIndex, setSelectedName, selectedName }) => {
   const { profile } = useContext(AuthContext);
   const patternHistory = useContext(PatternHistoryContext);
 
-  const recommendedPattern = '';
+  const recommendedPattern = 'Titanic';
+  setSelectedName(recommendedPattern);
+
   console.log(patternHistory);
+
   return (
     <>
       <View style={styles.logo}>
@@ -51,9 +53,12 @@ const HomeScreen = () => {
       </View>
       <View style={styles.recommendedPatternSection}>
         <Text style={styles.recommendedPatternTitle}>RECOMMENDED PATTERN:</Text>
-        <Text style={styles.recommendedPatternText}>Top-Left</Text>
-        {/* <TrainNowButton onPress={() => navigation.navigate('Patterns')} title="Patterns" /> */}
-        <TrainNowButton onPress={() => console.log(profile)} />
+        <Text style={styles.recommendedPatternText}>{recommendedPattern}</Text>
+        <TrainNowButton
+          onPress={() => {
+            setIndex(1);
+          }}
+        />
       </View>
     </>
   );
@@ -93,7 +98,7 @@ const styles = StyleSheet.create({
   },
   overallStatsSection: {
     alignItems: 'center',
-    marginVertical: HEIGHT * 0.065,
+    marginVertical: HEIGHT * 0.039,
   },
   iconTextRow: {
     margin: WIDTH * 0.01,
