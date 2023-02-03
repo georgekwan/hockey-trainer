@@ -393,7 +393,7 @@ const ResultInputScreen = ({ route }) => {
   );
 };
 
-export default ResultInputScreen;
+export default React.memo(ResultInputScreen);
 
 const styles = StyleSheet.create({
   md3FontStyles: {

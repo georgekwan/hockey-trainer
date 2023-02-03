@@ -97,7 +97,7 @@ const InDrillScreen = ({ route }) => {
   );
 };
 
-export default InDrillScreen;
+export default React.memo(InDrillScreen);
 
 const styles = StyleSheet.create({
   row: {
