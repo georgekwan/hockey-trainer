@@ -21,6 +21,17 @@ const HomeScreen = ({ setIndex, setSelectedName, selectedName }) => {
 
   console.log(patternHistory);
 
+  let worstIdIndex = 0;
+  let highestMiss = 0;
+
+  patternHistory.forEach((pattern, index) => {
+    if (pattern.misses.total / pattern.totalShots > highestMiss) {
+      worstIdIndex = index;
+      highestMiss = pattern.misses.total / pattern.totalShots;
+    }
+  });
+  // console.log(patternIDToText(patternHistory[worstIdIndex].drillPatternId));
+
   return (
     <>
       <View style={styles.logo}>
@@ -36,7 +47,7 @@ const HomeScreen = ({ setIndex, setSelectedName, selectedName }) => {
           <Text style={styles.title}>LAST TRAINING</Text>
           {/* <Text style={styles.normalText}>{patternIDToText(patternHistory[2]?.patternID)}</Text> */}
           <Text style={styles.normalText}>
-            {Math.round(((15 - patternHistory[2]?.misses.total) / 15) * 100)}% accuracy
+            {/* {Math.round(((15 - patternHistory[2]?.misses.total) / 15) * 100)}% accuracy */}
           </Text>
         </View>
       </View>
@@ -53,7 +64,9 @@ const HomeScreen = ({ setIndex, setSelectedName, selectedName }) => {
       </View>
       <View style={styles.recommendedPatternSection}>
         <Text style={styles.recommendedPatternTitle}>RECOMMENDED PATTERN:</Text>
-        <Text style={styles.recommendedPatternText}>{recommendedPattern}</Text>
+        <Text style={styles.recommendedPatternText}>
+          {patternIDToText(patternHistory[worstIdIndex].drillPatternId)}
+        </Text>
         <TrainNowButton
           onPress={() => {
             setIndex(1);

@@ -32,20 +32,20 @@ export default function App() {
         <PatternHistoryProvider>
           <Provider theme={theme}>
             <NavigationContainer>
-              <Stack.Navigator
+              {/* <Stack.Navigator
                 initialRouteName="recommendPatternAlgorithm"
                 name="recommendPatternAlgorithm"
                 component={recommendPatternAlgorithm}
                 screenOptions={{
                   headerShown: false,
-                }}>
-                {/* <Stack.Navigator
+                }}> */}
+              <Stack.Navigator
                 initialRouteName="NavBarContainer"
                 name="NavBarContainer"
                 component={NavBarContainer}
                 screenOptions={{
                   headerShown: false,
-                }}> */}
+                }}>
                 {/* <Stack.Navigator
               initialRouteName="StartScreen"
               name="StartScreen"
@@ -56,10 +56,10 @@ export default function App() {
                 {/* <Stack.Screen name="StartScreen" component={StartScreen} />
               <Stack.Screen name="LoginScreen" component={LoginScreen} />
               <Stack.Screen name="RegisterScreen" component={RegisterScreen} /> */}
-                {/* <Stack.Screen name="NavBarContainer" component={NavBarContainer} />
+                <Stack.Screen name="NavBarContainer" component={NavBarContainer} />
                 <Stack.Screen name="InDrillScreen" component={InDrillScreen} />
                 <Stack.Screen name="ResultInputScreen" component={ResultInputScreen} />
-                <Stack.Screen name="ResetPasswordScreen" component={ResetPasswordScreen} /> */}
+                <Stack.Screen name="ResetPasswordScreen" component={ResetPasswordScreen} />
                 <Stack.Screen
                   name="recommendPatternAlgorithm"
                   component={recommendPatternAlgorithm}
