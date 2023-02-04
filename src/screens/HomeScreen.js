@@ -34,7 +34,7 @@ const HomeScreen = ({ setIndex, setSelectedName, selectedName }) => {
         <Avatar.Icon size={100} icon="face-man-shimmer" />
         <View style={{ justifyContent: 'center', paddingHorizontal: WIDTH * 0.02 }}>
           <Text style={styles.title}>LAST TRAINING</Text>
-          <Text style={styles.normalText}>{patternIDToText(patternHistory[2]?.patternID)}</Text>
+          {/* <Text style={styles.normalText}>{patternIDToText(patternHistory[2]?.patternID)}</Text> */}
           <Text style={styles.normalText}>
             {Math.round(((15 - patternHistory[2]?.misses.total) / 15) * 100)}% accuracy
           </Text>
