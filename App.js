@@ -8,20 +8,10 @@ import { theme } from './src/core/theme';
 import { AuthProvider } from './src/providers/AuthProvider.js';
 import { FirebaseProvider } from './src/providers/FirebaseProvider.js';
 import { PatternHistoryProvider } from './src/providers/PatternHistoryProvider.js';
-import {
-  StartScreen,
-  LoginScreen,
-  RegisterScreen,
-  ResetPasswordScreen,
-  HomeScreen,
-  DrillSelectionScreen,
-  UserProfileScreen,
-  InDrillScreen,
-} from './src/screens';
+import { InDrillScreen, ResetPasswordScreen } from './src/screens';
 
 // import InDrillScreen from './src/screens/InDrillScreen.js';
 import ResultInputScreen from './src/screens/ResultInputScreen.js';
-import { recommendPatternAlgorithm } from './tester/recommendPatternAlgorithm.js';
 
 const Stack = createStackNavigator();
 
@@ -32,13 +22,6 @@ export default function App() {
         <PatternHistoryProvider>
           <Provider theme={theme}>
             <NavigationContainer>
-              {/* <Stack.Navigator
-                initialRouteName="recommendPatternAlgorithm"
-                name="recommendPatternAlgorithm"
-                component={recommendPatternAlgorithm}
-                screenOptions={{
-                  headerShown: false,
-                }}> */}
               <Stack.Navigator
                 initialRouteName="NavBarContainer"
                 name="NavBarContainer"
@@ -60,10 +43,6 @@ export default function App() {
                 <Stack.Screen name="InDrillScreen" component={InDrillScreen} />
                 <Stack.Screen name="ResultInputScreen" component={ResultInputScreen} />
                 <Stack.Screen name="ResetPasswordScreen" component={ResetPasswordScreen} />
-                <Stack.Screen
-                  name="recommendPatternAlgorithm"
-                  component={recommendPatternAlgorithm}
-                />
               </Stack.Navigator>
             </NavigationContainer>
           </Provider>

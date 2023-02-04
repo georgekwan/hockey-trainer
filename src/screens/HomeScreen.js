@@ -1,13 +1,12 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
-import { Avatar, Button, List, Text } from 'react-native-paper';
+import { Avatar, List, Text } from 'react-native-paper';
 import FullLogo from '../components/FullLogo.js';
+import { TrainNowButton } from '../components/TrainNowButton.js';
+import { theme } from '../core/theme.js';
+import { patternIDToText } from '../helpers/patternIDToText.js';
 import { AuthContext } from '../providers/AuthProvider.js';
 import { PatternHistoryContext } from '../providers/PatternHistoryProvider.js';
-import { patternIDToText } from '../helpers/patternIDToText.js';
-import { theme } from '../core/theme.js';
-import { TrainNowButton } from '../components/TrainNowButton.js';
-import { useNavigation } from '@react-navigation/native';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
@@ -24,13 +23,14 @@ const HomeScreen = ({ setIndex, setSelectedName, selectedName }) => {
   let worstIdIndex = 0;
   let highestMiss = 0;
 
-  patternHistory.forEach((pattern, index) => {
-    if (pattern.misses.total / pattern.totalShots > highestMiss) {
-      worstIdIndex = index;
-      highestMiss = pattern.misses.total / pattern.totalShots;
-    }
-  });
-  // console.log(patternIDToText(patternHistory[worstIdIndex].drillPatternId));
+  if (patternHistory) {
+    patternHistory.forEach((pattern, index) => {
+      if (pattern.misses.total / pattern.totalShots > highestMiss) {
+        worstIdIndex = index;
+        highestMiss = pattern.misses.total / pattern.totalShots;
+      }
+    });
+  }
 
   return (
     <>
@@ -45,9 +45,16 @@ const HomeScreen = ({ setIndex, setSelectedName, selectedName }) => {
         <Avatar.Icon size={100} icon="face-man-shimmer" />
         <View style={{ justifyContent: 'center', paddingHorizontal: WIDTH * 0.02 }}>
           <Text style={styles.title}>LAST TRAINING</Text>
-          {/* <Text style={styles.normalText}>{patternIDToText(patternHistory[2]?.patternID)}</Text> */}
+          <Text style={styles.normalText}>{patternIDToText(patternHistory?.[0]?.patternID)}</Text>
           <Text style={styles.normalText}>
-            {/* {Math.round(((15 - patternHistory[2]?.misses.total) / 15) * 100)}% accuracy */}
+            {patternHistory?.length > 0
+              ? Math.round(
+                  ((patternHistory?.[0]?.totalShots - patternHistory?.[0]?.misses.total) /
+                    patternHistory?.[0]?.totalShots) *
+                    100
+                )
+              : 0}
+            % accuracy
           </Text>
         </View>
       </View>
@@ -65,7 +72,7 @@ const HomeScreen = ({ setIndex, setSelectedName, selectedName }) => {
       <View style={styles.recommendedPatternSection}>
         <Text style={styles.recommendedPatternTitle}>RECOMMENDED PATTERN:</Text>
         <Text style={styles.recommendedPatternText}>
-          {patternIDToText(patternHistory[worstIdIndex].drillPatternId)}
+          {patternIDToText(patternHistory?.[worstIdIndex].drillPatternId)}
         </Text>
         <TrainNowButton
           onPress={() => {
