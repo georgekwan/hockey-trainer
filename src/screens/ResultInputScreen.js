@@ -1,7 +1,8 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useRef } from 'react';
 import { ImageBackground, Dimensions, Image, StyleSheet, Text, View } from 'react-native';
 import { Button } from 'react-native-paper';
 // import { Button as PaperButton } from 'react-native-paper';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
 
@@ -16,8 +17,6 @@ const ResultInputScreen = ({ route }) => {
   const navigation = useNavigation();
 
   route = route || {};
-  // route.selectedName = route.selectedName || 'Downtown';
-  // route.selectedTutor = route.selectedTutor || 11;
   const { selectedName, selectedTutor } = route.params;
   const pattern = patternSelector(selectedTutor, selectedName);
   const fbContext = useContext(FirebaseContext);
@@ -54,6 +53,24 @@ const ResultInputScreen = ({ route }) => {
     fiveHole,
     bottomRight,
   } = misses;
+
+  //TODO: Need to check if it works in React Native
+  const auth = getAuth();
+  const isMounted = useRef(true);
+  useEffect(() => {
+    // Check authentication state of the user
+    if (isMounted) {
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          setMisses({ ...misses, userRef: user.uid });
+        }
+      });
+    }
+
+    return () => {
+      isMounted.current = false;
+    };
+  }, [isMounted]);
 
   const onSubmit = async () => {
     setLoading(true);
