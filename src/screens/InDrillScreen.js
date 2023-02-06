@@ -53,8 +53,8 @@ const InDrillScreen = ({ route }) => {
           return newVal;
         });
       },
-      // selectedSeconds * 1000
-      1000
+      selectedSeconds * 1000
+      // 1000
     );
     return () => Timer.clearInterval('soundTimer');
   }, []);
