@@ -69,7 +69,9 @@ const ResultInputScreen = ({ route }) => {
     const docRef = await addDoc(collection(myDb, 'drillResults'), missesCopy);
     setLoading(false);
 
-    navigation.navigate('NavBarContainer', { docRef });
+    // navigation.navigate('UserProfileScreen', { docRef });
+
+    navigation.navigate('NavBarContainer', { initialIndex: 2 });
   };
 
   return (
