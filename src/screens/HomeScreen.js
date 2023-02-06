@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
 import { Avatar, List, Text } from 'react-native-paper';
 import FullLogo from '../components/FullLogo.js';
@@ -11,26 +11,31 @@ import { PatternHistoryContext } from '../providers/PatternHistoryProvider.js';
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
-const HomeScreen = ({ setIndex, setSelectedName, selectedName }) => {
+const HomeScreen = ({ setIndex, setSelectedPatternName, selectedPatternName }) => {
   const { profile } = useContext(AuthContext);
   const patternHistory = useContext(PatternHistoryContext);
 
-  const recommendedPattern = 'Titanic';
-  setSelectedName(recommendedPattern);
+  useEffect(() => {
+    // console.log(recommendedPattern);
 
-  console.log(patternHistory);
+    let worstIdIndex = 0;
+    let highestMiss = 0;
 
-  let worstIdIndex = 0;
-  let highestMiss = 0;
-
-  if (patternHistory) {
-    patternHistory.forEach((pattern, index) => {
-      if (pattern.misses.total / pattern.totalShots > highestMiss) {
-        worstIdIndex = index;
-        highestMiss = pattern.misses.total / pattern.totalShots;
-      }
-    });
-  }
+    if (patternHistory) {
+      console.log('FOO');
+      patternHistory.forEach((pattern, index) => {
+        if (pattern.misses.total / pattern.totalShots > highestMiss) {
+          worstIdIndex = index;
+          highestMiss = pattern.misses.total / pattern.totalShots;
+        }
+      });
+      const recommendedPattern = patternIDToText(patternHistory?.[worstIdIndex]?.drillPatternId);
+      setSelectedPatternName(recommendedPattern.split(')')[1]);
+    }
+    return () => {
+      console.log('something');
+    };
+  }, []);
 
   return (
     <>
@@ -71,11 +76,10 @@ const HomeScreen = ({ setIndex, setSelectedName, selectedName }) => {
       </View>
       <View style={styles.recommendedPatternSection}>
         <Text style={styles.recommendedPatternTitle}>RECOMMENDED PATTERN:</Text>
-        <Text style={styles.recommendedPatternText}>
-          {patternIDToText(patternHistory?.[worstIdIndex].drillPatternId)}
-        </Text>
+        <Text style={styles.recommendedPatternText}>{selectedPatternName}</Text>
         <TrainNowButton
           onPress={() => {
+            // setSelectedPatternName(patternIDToText(patternHistory?.[worstIdIndex].drillPatternId));
             setIndex(1);
           }}
         />

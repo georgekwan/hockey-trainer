@@ -30,16 +30,16 @@ let patternNames = [
   'The Frustrating One',
 ];
 
-const DrillSelectionScreen = ({ route }) => {
+const DrillSelectionScreen = ({ route, selectedPatternName, setSelectedPatternName }) => {
   // route.selectedName = route.selectedName || 'Around the World';
   const navigation = useNavigation();
   const [timeout, setTimeout] = useState(0);
   const [tutor, setTutor] = useState();
-  const [selectedPatternName, setSelectedPatternName] = useState();
+  // const [selectedPatternName, setSelectedPatternName] = useState();
   const [selectedSeconds, setSelectedSeconds] = useState(0);
   const [selectedTutor, setSelectedTutor] = useState();
 
-  console.log(selectedName);
+  console.log('selected pattern is', selectedPatternName);
   return (
     <View style={{ flex: 1, backgroundColor: 'white' }}>
       <View
