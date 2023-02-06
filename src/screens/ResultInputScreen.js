@@ -8,6 +8,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import MissShotInput from '../components/MissShotInput';
 import { FirebaseContext } from '../providers/FirebaseProvider';
+import { AuthContext } from '../providers/AuthProvider';
 import { patternSelector } from '../helpers/patternSelector.js';
 
 const WIDTH = Dimensions.get('screen').width;
@@ -17,10 +18,10 @@ const ResultInputScreen = ({ route }) => {
   const navigation = useNavigation();
 
   route = route || {};
-  const { selectedName, selectedTutor } = route.params;
-  const pattern = patternSelector(selectedTutor, selectedName);
-  const fbContext = useContext(FirebaseContext);
-  const db = fbContext.myDb;
+  const { selectedPatternName, selectedTutor } = route.params;
+  const pattern = patternSelector(selectedTutor, selectedPatternName);
+  const { profile } = useContext(AuthContext);
+  const { myDb } = useContext(FirebaseContext);
 
   const totalShots = 15;
   const [numberOfShotsLeft, setNumberOfShotsLeft] = useState(totalShots);
@@ -54,30 +55,18 @@ const ResultInputScreen = ({ route }) => {
     bottomRight,
   } = misses;
 
-  //TODO: Need to check if it works in React Native
-  const auth = getAuth();
-  const isMounted = useRef(true);
-  useEffect(() => {
-    // Check authentication state of the user
-    if (isMounted) {
-      onAuthStateChanged(auth, (user) => {
-        if (user) {
-          setMisses({ ...misses, userRef: user.uid });
-        }
-      });
-    }
-
-    return () => {
-      isMounted.current = false;
-    };
-  }, [isMounted]);
-
   const onSubmit = async () => {
     setLoading(true);
 
-    const missesCopy = { selectedName, ...misses, timestamp: serverTimestamp() };
+    const missesCopy = {
+      drillId: selectedPatternName,
+      misses: { ...misses },
+      date: serverTimestamp(),
+      shooter: { ...profile },
+    };
     console.log(missesCopy);
-    const docRef = await addDoc(collection(db, 'drillResults'), missesCopy);
+
+    const docRef = await addDoc(collection(myDb, 'drillResults'), missesCopy);
     setLoading(false);
 
     navigation.navigate('NavBarContainer', { docRef });
