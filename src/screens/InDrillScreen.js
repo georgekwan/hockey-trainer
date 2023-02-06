@@ -18,9 +18,9 @@ const timeoutConverter = (selectedSeconds) => {
 
 const InDrillScreen = ({ route }) => {
   const navigation = useNavigation();
-  const { selectedName, selectedSeconds, selectedTutor } = route.params;
+  const { selectedPatternName, selectedSeconds, selectedTutor } = route.params;
   const [currentStringIndex, setCurrentStringIndex] = useState(1);
-  const currentPattern = patternSelector(selectedTutor, selectedName);
+  const currentPattern = patternSelector(selectedTutor, selectedPatternName);
   const currentString = currentPattern.sequence[currentStringIndex];
 
   async function playSound() {
@@ -33,8 +33,8 @@ const InDrillScreen = ({ route }) => {
   useEffect(() => {
     if (currentStringIndex === 0) {
       Timer.clearInterval('soundTimer');
-      console.log({ selectedName, selectedTutor });
-      navigation.navigate('ResultInputScreen', { selectedName, selectedTutor });
+      console.log({ selectedPatternName, selectedTutor });
+      navigation.navigate('ResultInputScreen', { selectedPatternName, selectedTutor });
       console.log('navigating away');
     } else {
       playSound();
@@ -61,7 +61,7 @@ const InDrillScreen = ({ route }) => {
     <>
       <View style={styles.drillInfo}>
         <View style={styles.row}>
-          <Text style={styles.drillTitle}>{selectedName}</Text>
+          <Text style={styles.drillTitle}>{selectedPatternName}</Text>
         </View>
         <View style={styles.drillSubtitle}>
           <Text>{selectedTutor + ' hole'}</Text>
