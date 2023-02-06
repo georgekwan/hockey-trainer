@@ -8,7 +8,13 @@ import { theme } from './src/core/theme';
 import { AuthProvider } from './src/providers/AuthProvider.js';
 import { FirebaseProvider } from './src/providers/FirebaseProvider.js';
 import { PatternHistoryProvider } from './src/providers/PatternHistoryProvider.js';
-import { InDrillScreen, ResetPasswordScreen } from './src/screens';
+import {
+  InDrillScreen,
+  LoginScreen,
+  RegisterScreen,
+  ResetPasswordScreen,
+  StartScreen,
+} from './src/screens';
 
 // import InDrillScreen from './src/screens/InDrillScreen.js';
 import ResultInputScreen from './src/screens/ResultInputScreen.js';
@@ -30,15 +36,15 @@ export default function App() {
                   headerShown: false,
                 }}>
                 {/* <Stack.Navigator
-              initialRouteName="StartScreen"
-              name="StartScreen"
-              component={StartScreen}
-              screenOptions={{
-                headerShown: false,
-              }}> */}
+                initialRouteName="StartScreen"
+                name="StartScreen"
+                component={StartScreen}
+                screenOptions={{
+                  headerShown: false,
+                }}> */}
                 {/* <Stack.Screen name="StartScreen" component={StartScreen} />
-              <Stack.Screen name="LoginScreen" component={LoginScreen} />
-              <Stack.Screen name="RegisterScreen" component={RegisterScreen} /> */}
+                <Stack.Screen name="LoginScreen" component={LoginScreen} />
+                <Stack.Screen name="RegisterScreen" component={RegisterScreen} /> */}
                 <Stack.Screen name="NavBarContainer" component={NavBarContainer} />
                 <Stack.Screen name="InDrillScreen" component={InDrillScreen} />
                 <Stack.Screen name="ResultInputScreen" component={ResultInputScreen} />

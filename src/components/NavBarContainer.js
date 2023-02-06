@@ -55,8 +55,12 @@ export function NavBarContainer({ route }) {
         selectedPatternName={selectedPatternName}
       />
     ),
-    patternScreen: () => <DrillSelectionScreen />,
-    // patternScreen: DrillSelectionScreen,
+    patternScreen: () => (
+      <DrillSelectionScreen
+        selectedPatternName={selectedPatternName}
+        setSelectedPatternName={setSelectedPatternName}
+      />
+    ),
     user: UserProfileScreen,
   });
   return (
