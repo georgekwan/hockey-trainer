@@ -7,10 +7,13 @@ export const PatternHistoryContext = createContext({});
 export const PatternHistoryProvider = (props) => {
   const children = props.children;
   const [patternHistory, setPatternHistory] = useState();
+
+  //TODO - get the user's id from the auth context
   const { myAuth, myDb } = useContext(FirebaseContext);
 
   useEffect(() => {
     async function getPatternHistory() {
+      //TODO - get the user's id from the auth context
       const userId = myAuth.currentUser.uid;
       const q = query(collection(myDb, 'drillResults'), where('userId', '==', userId));
       const querySnapshot = await getDocs(q);

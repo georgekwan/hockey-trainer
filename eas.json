@@ -17,6 +17,13 @@
         "resourceClass": "m1-medium"
       }
     },
+    "preview2": {
+      "distribution": "internal",
+      "ios": {
+        "simulator": true,
+        "resourceClass": "m1-medium"
+      }
+    },
     "production": {
       "ios": {
         "resourceClass": "m1-medium"
