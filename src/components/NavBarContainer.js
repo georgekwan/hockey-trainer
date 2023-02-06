@@ -12,7 +12,7 @@ import {
 import { UserProfileScreen } from '../screens/UserProfileScreen';
 
 export function NavBarContainer() {
-  const [selectedName, setSelectedName] = useState();
+  const [selectedPatternName, setSelectedPatternName] = useState();
   const [index, setIndex] = useState(0);
   const handleIndexChange = (newIndex) => setIndex(newIndex);
 
@@ -41,8 +41,8 @@ export function NavBarContainer() {
     home: () => (
       <HomeScreen
         setIndex={setIndex}
-        setSelectedName={setSelectedName}
-        selectedName={selectedName}
+        setSelectedPatternName={setSelectedPatternName}
+        selectedPatternName={selectedPatternName}
       />
     ),
     patternScreen: () => <DrillSelectionScreen />,

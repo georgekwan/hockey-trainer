@@ -11,12 +11,12 @@ import { PatternHistoryContext } from '../providers/PatternHistoryProvider.js';
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
-const HomeScreen = ({ setIndex, setSelectedName, selectedName }) => {
+const HomeScreen = ({ setIndex, setSelectedPatternName, selectedPatternName }) => {
   const { profile } = useContext(AuthContext);
   const patternHistory = useContext(PatternHistoryContext);
 
   const recommendedPattern = 'Titanic';
-  setSelectedName(recommendedPattern);
+  setSelectedPatternName(recommendedPattern);
 
   console.log(patternHistory);
 

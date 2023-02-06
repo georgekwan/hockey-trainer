@@ -31,7 +31,7 @@ let patternNames = [
 ];
 
 const DrillSelectionScreen = ({ route }) => {
-  // route.selectedName = route.selectedName || 'Around the World';
+  // route.selectedPatternName = route.selectedPatternName || 'Around the World';
   const navigation = useNavigation();
   const [timeout, setTimeout] = useState(0);
   const [tutor, setTutor] = useState();
@@ -39,7 +39,7 @@ const DrillSelectionScreen = ({ route }) => {
   const [selectedSeconds, setSelectedSeconds] = useState(0);
   const [selectedTutor, setSelectedTutor] = useState();
 
-  console.log(selectedName);
+  console.log(selectedPatternName);
   return (
     <View style={{ flex: 1, backgroundColor: 'white' }}>
       <View
