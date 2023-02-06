@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { BottomNavigation, BottomNavigationAction } from 'react-native-paper';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -11,10 +11,20 @@ import {
 } from '../screens';
 import { UserProfileScreen } from '../screens/UserProfileScreen';
 
-export function NavBarContainer() {
+export function NavBarContainer({ route }) {
+  console.log({ route });
+  const { initialIndex } = route.params ?? {};
+
+  console.log({ initialIndex });
   const [selectedPatternName, setSelectedPatternName] = useState();
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(initialIndex ?? 0);
   const handleIndexChange = (newIndex) => setIndex(newIndex);
+
+  useEffect(() => {
+    if (initialIndex) {
+      setIndex(initialIndex);
+    }
+  }, [initialIndex]);
 
   const [routes] = useState([
     {
