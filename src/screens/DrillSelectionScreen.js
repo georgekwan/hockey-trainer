@@ -35,7 +35,7 @@ const DrillSelectionScreen = ({ route }) => {
   const navigation = useNavigation();
   const [timeout, setTimeout] = useState(0);
   const [tutor, setTutor] = useState();
-  const [selectedName, setSelectedName] = useState();
+  const [selectedPatternName, setSelectedPatternName] = useState();
   const [selectedSeconds, setSelectedSeconds] = useState(0);
   const [selectedTutor, setSelectedTutor] = useState();
 
@@ -90,8 +90,8 @@ const DrillSelectionScreen = ({ route }) => {
               <PatternButton
                 key={name}
                 name={name}
-                selectedName={selectedName}
-                setSelectedName={setSelectedName}
+                selectedPatternName={selectedPatternName}
+                setSelectedPatternName={setSelectedPatternName}
               />
             ))}
           </View>
@@ -173,7 +173,11 @@ const DrillSelectionScreen = ({ route }) => {
       </View>
       <TrainNowButton
         onPress={() =>
-          navigation.navigate('InDrillScreen', { selectedName, selectedSeconds, selectedTutor })
+          navigation.navigate('InDrillScreen', {
+            selectedPatternName,
+            selectedSeconds,
+            selectedTutor,
+          })
         }
       />
     </View>

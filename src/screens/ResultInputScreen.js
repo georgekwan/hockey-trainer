@@ -1,12 +1,14 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useRef } from 'react';
 import { ImageBackground, Dimensions, Image, StyleSheet, Text, View } from 'react-native';
 import { Button } from 'react-native-paper';
 // import { Button as PaperButton } from 'react-native-paper';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
 
 import MissShotInput from '../components/MissShotInput';
 import { FirebaseContext } from '../providers/FirebaseProvider';
+import { AuthContext } from '../providers/AuthProvider';
 import { patternSelector } from '../helpers/patternSelector.js';
 
 const WIDTH = Dimensions.get('screen').width;
@@ -16,12 +18,10 @@ const ResultInputScreen = ({ route }) => {
   const navigation = useNavigation();
 
   route = route || {};
-  // route.selectedName = route.selectedName || 'Downtown';
-  // route.selectedTutor = route.selectedTutor || 11;
-  const { selectedName, selectedTutor } = route.params;
-  const pattern = patternSelector(selectedTutor, selectedName);
-  const fbContext = useContext(FirebaseContext);
-  const db = fbContext.myDb;
+  const { selectedPatternName, selectedTutor } = route.params;
+  const pattern = patternSelector(selectedTutor, selectedPatternName);
+  const { profile } = useContext(AuthContext);
+  const { myDb } = useContext(FirebaseContext);
 
   const totalShots = 15;
   const [numberOfShotsLeft, setNumberOfShotsLeft] = useState(totalShots);
@@ -58,9 +58,15 @@ const ResultInputScreen = ({ route }) => {
   const onSubmit = async () => {
     setLoading(true);
 
-    const missesCopy = { selectedName, ...misses, timestamp: serverTimestamp() };
+    const missesCopy = {
+      drillId: selectedPatternName,
+      misses: { ...misses },
+      date: serverTimestamp(),
+      shooter: { ...profile },
+    };
     console.log(missesCopy);
-    const docRef = await addDoc(collection(db, 'drillResults'), missesCopy);
+
+    const docRef = await addDoc(collection(myDb, 'drillResults'), missesCopy);
     setLoading(false);
 
     navigation.navigate('NavBarContainer', { docRef });
