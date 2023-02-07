@@ -7,7 +7,7 @@ import { NavBarContainer } from './src/components/NavBarContainer.js';
 import { theme } from './src/core/theme';
 import { AuthProvider } from './src/providers/AuthProvider.js';
 import { FirebaseProvider } from './src/providers/FirebaseProvider.js';
-import { PatternHistoryProvider } from './src/providers/PatternHistoryProvider.js';
+import { PatternProvider } from './src/providers/PatternProvider.js';
 import {
   InDrillScreen,
   LoginScreen,
@@ -25,7 +25,7 @@ export default function App() {
   return (
     <FirebaseProvider>
       <AuthProvider>
-        <PatternHistoryProvider>
+        <PatternProvider>
           <Provider theme={theme}>
             <NavigationContainer>
               <Stack.Navigator
@@ -52,7 +52,7 @@ export default function App() {
               </Stack.Navigator>
             </NavigationContainer>
           </Provider>
-        </PatternHistoryProvider>
+        </PatternProvider>
       </AuthProvider>
     </FirebaseProvider>
   );

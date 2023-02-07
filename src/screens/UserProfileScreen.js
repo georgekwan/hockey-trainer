@@ -7,7 +7,7 @@ import FullLogo from '../components/FullLogo.js';
 import { TableView } from '../components/TableView.js';
 import { theme } from '../core/theme';
 import { AuthContext } from '../providers/AuthProvider.js';
-import { PatternHistoryProvider } from '../providers/PatternHistoryProvider.js';
+import { PatternProvider } from '../providers/PatternProvider.js';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
@@ -80,7 +80,7 @@ export const UserProfileScreen = () => {
           />
         </View>
       </View>
-      <PatternHistoryProvider>{visualizeData(tableView)}</PatternHistoryProvider>
+      <PatternProvider>{visualizeData(tableView)}</PatternProvider>
     </>
   );
 };

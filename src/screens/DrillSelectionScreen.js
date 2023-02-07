@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Dimensions, Image, Pressable, StyleSheet, ScrollView, Text, View } from 'react-native';
 import { Button, List } from 'react-native-paper';
 
@@ -13,6 +13,7 @@ import { PatternButton } from '../components/selectDrillScreen/PatternButton.js'
 import { TimeoutButton } from '../components/selectDrillScreen/TimeoutButton.js';
 import { TutorButton } from '../components/selectDrillScreen/TutorButton.js';
 import { TrainNowButton } from '../components/TrainNowButton.js';
+import { PatternContext } from '../providers/PatternProvider.js';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
@@ -30,7 +31,9 @@ let patternNames = [
   'The Frustrating One',
 ];
 
-const DrillSelectionScreen = ({ route, selectedPatternName, setSelectedPatternName }) => {
+const DrillSelectionScreen = () => {
+  const { selectedPatternName, setSelectedPatternName } = useContext(PatternContext);
+
   // route.selectedName = route.selectedName || 'Around the World';
   const navigation = useNavigation();
   const [timeout, setTimeout] = useState(0);

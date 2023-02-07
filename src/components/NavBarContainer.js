@@ -16,7 +16,7 @@ export function NavBarContainer({ route }) {
   const { initialIndex } = route.params ?? {};
 
   console.log({ initialIndex });
-  const [selectedPatternName, setSelectedPatternName] = useState();
+  // const [selectedPatternName, setSelectedPatternName] = useState();
   const [index, setIndex] = useState(initialIndex ?? 0);
   const handleIndexChange = (newIndex) => setIndex(newIndex);
 
@@ -48,19 +48,8 @@ export function NavBarContainer({ route }) {
     },
   ]);
   const renderScene = BottomNavigation.SceneMap({
-    home: () => (
-      <HomeScreen
-        setIndex={setIndex}
-        setSelectedPatternName={setSelectedPatternName}
-        selectedPatternName={selectedPatternName}
-      />
-    ),
-    patternScreen: () => (
-      <DrillSelectionScreen
-        selectedPatternName={selectedPatternName}
-        setSelectedPatternName={setSelectedPatternName}
-      />
-    ),
+    home: () => <HomeScreen setIndex={setIndex} />,
+    patternScreen: DrillSelectionScreen,
     user: UserProfileScreen,
   });
   return (
