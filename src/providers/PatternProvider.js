@@ -11,6 +11,7 @@ export const PatternProvider = (props) => {
   const [selectedPatternName, setSelectedPatternName] = useState();
   const { myAuth, myDb } = useContext(FirebaseContext);
 
+  // ! User accuracy needs to be fix
   useEffect(() => {
     async function getPatternHistory() {
       const userId = myAuth.currentUser.uid;

@@ -41,7 +41,7 @@ const ResultInputScreen = ({ route }) => {
     fiveHole: 0,
     bottomRight: 0,
   });
-  console.log('misses', misses);
+  // console.log('misses', misses);
 
   const {
     topLeft,
@@ -66,7 +66,7 @@ const ResultInputScreen = ({ route }) => {
       date: serverTimestamp(),
       shooter: { ...profile },
     };
-    console.log(missesCopy);
+    // console.log(missesCopy);
 
     const docRef = await addDoc(collection(myDb, 'drillResults'), missesCopy);
     setLoading(false);
@@ -150,7 +150,7 @@ const ResultInputScreen = ({ route }) => {
               // borderColor: 'yellow',
               // borderWidth: 5,
             }}>
-            {console.log(`shots left is ${numberOfShotsLeft}`)}
+            {/* {console.log(`shots left is ${numberOfShotsLeft}`)} */}
             <View
               style={{
                 display: 'flex',
