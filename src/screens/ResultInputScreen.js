@@ -10,15 +10,17 @@ import MissShotInput from '../components/MissShotInput';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import { AuthContext } from '../providers/AuthProvider';
 import { patternSelector } from '../helpers/patternSelector.js';
+import { PatternContext } from '../providers/PatternProvider.js';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
 const ResultInputScreen = ({ route }) => {
   const navigation = useNavigation();
+  const { selectedPatternName } = useContext(PatternContext);
 
   route = route || {};
-  const { selectedPatternName, selectedTutor } = route.params;
+  const { selectedTutor } = route.params;
   const pattern = patternSelector(selectedTutor, selectedPatternName);
   const { profile } = useContext(AuthContext);
   const { myDb } = useContext(FirebaseContext);
@@ -39,7 +41,7 @@ const ResultInputScreen = ({ route }) => {
     fiveHole: 0,
     bottomRight: 0,
   });
-  console.log('misses', misses);
+  // console.log('misses', misses);
 
   const {
     topLeft,
@@ -64,7 +66,7 @@ const ResultInputScreen = ({ route }) => {
       date: serverTimestamp(),
       shooter: { ...profile },
     };
-    console.log(missesCopy);
+    // console.log(missesCopy);
 
     const docRef = await addDoc(collection(myDb, 'drillResults'), missesCopy);
     setLoading(false);
@@ -148,7 +150,7 @@ const ResultInputScreen = ({ route }) => {
               // borderColor: 'yellow',
               // borderWidth: 5,
             }}>
-            {console.log(`shots left is ${numberOfShotsLeft}`)}
+            {/* {console.log(`shots left is ${numberOfShotsLeft}`)} */}
             <View
               style={{
                 display: 'flex',

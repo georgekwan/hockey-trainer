@@ -2,14 +2,13 @@ import React, { useContext } from 'react';
 import { Dimensions, ScrollView } from 'react-native';
 import { DataTable } from 'react-native-paper';
 import { patternIDToText } from '../helpers/patternIDToText.js';
-import { PatternHistoryContext } from '../providers/PatternHistoryProvider.js';
+import { PatternContext } from '../providers/PatternProvider.js';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
 export const TableView = () => {
-
-  const patternHistory = useContext(PatternHistoryContext);
+  const { patternHistory } = useContext(PatternContext);
 
   // console.log('HERE IS THE PATTERN HISTORY context VARIABLE', patternHistory);
   function convertTimestamp(unixTimestamp) {

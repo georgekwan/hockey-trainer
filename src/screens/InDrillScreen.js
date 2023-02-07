@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import { Audio } from 'expo-av';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
 import Timer from 'react-native-timer';
 import * as patterns from '../../temp/drill_patterns.json';
@@ -8,6 +8,7 @@ import Button from '../components/Button.js';
 import { fileName } from '../helpers/MP3fileName.js';
 import { imageFileName } from '../helpers/imageFileName.js';
 import { patternSelector } from '../helpers/patternSelector.js';
+import { PatternContext } from '../providers/PatternProvider.js';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
@@ -18,7 +19,9 @@ const timeoutConverter = (selectedSeconds) => {
 
 const InDrillScreen = ({ route }) => {
   const navigation = useNavigation();
-  const { selectedPatternName, selectedSeconds, selectedTutor } = route.params;
+  const { selectedPatternName, setSelectedPatternName } = useContext(PatternContext);
+
+  const { selectedSeconds, selectedTutor } = route.params;
   const [currentStringIndex, setCurrentStringIndex] = useState(1);
   const currentPattern = patternSelector(selectedTutor, selectedPatternName);
   const currentString = currentPattern.sequence[currentStringIndex];
