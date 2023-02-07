@@ -12,10 +12,10 @@ import {
 import { UserProfileScreen } from '../screens/UserProfileScreen';
 
 export function NavBarContainer({ route }) {
-  console.log({ route });
+  // console.log({ route });
   const { initialIndex } = route.params ?? {};
 
-  console.log({ initialIndex });
+  // console.log({ initialIndex });
   // const [selectedPatternName, setSelectedPatternName] = useState();
   const [index, setIndex] = useState(initialIndex ?? 0);
   const handleIndexChange = (newIndex) => setIndex(newIndex);

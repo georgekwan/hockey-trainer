@@ -25,21 +25,21 @@ const InDrillScreen = ({ route }) => {
   const [currentStringIndex, setCurrentStringIndex] = useState(1);
   const currentPattern = patternSelector(selectedTutor, selectedPatternName);
   const currentString = currentPattern.sequence[currentStringIndex];
-  console.log(currentPattern);
+  // console.log(currentPattern);
 
   async function playSound() {
-    console.log('Loading Sound');
+    // console.log('Loading Sound');
     const { sound } = await Audio.Sound.createAsync(fileName(currentString));
-    console.log('Playing Sound');
+    // console.log('Playing Sound');
     await sound.playAsync();
   }
 
   useEffect(() => {
     if (currentStringIndex === 0) {
       Timer.clearInterval('soundTimer');
-      console.log({ selectedPatternName, selectedTutor });
+      // console.log({ selectedPatternName, selectedTutor });
       navigation.navigate('ResultInputScreen', { selectedPatternName, selectedTutor });
-      console.log('navigating away');
+      // console.log('navigating away');
     } else {
       playSound();
     }
@@ -49,10 +49,10 @@ const InDrillScreen = ({ route }) => {
     Timer.setInterval(
       'soundTimer',
       async () => {
-        console.log('running interval');
+        // console.log('running interval');
         setCurrentStringIndex((curVal) => {
           let newVal = (curVal + 1) % currentPattern.sequence.length;
-          console.log(newVal);
+          // console.log(newVal);
           return newVal;
         });
       },

@@ -21,7 +21,7 @@ export const PatternButton = (props) => {
         onPress={() => {
           // setPatternName(name);
           setSelectedPatternName(name);
-          console.log('selected ', name, 'pattern');
+          // console.log('selected ', name, 'pattern');
         }}
         style={[styles.button, { backgroundColor: backgroundColor }]}>
         <View>
