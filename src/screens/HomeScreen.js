@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
 import { Avatar, List, Text } from 'react-native-paper';
 import FullLogo from '../components/FullLogo.js';
@@ -16,14 +16,20 @@ const HomeScreen = ({ setIndex }) => {
     useContext(PatternContext);
   const { profile } = useContext(AuthContext);
 
-  useEffect(() => {
-    // console.log(recommendedPattern);
+  const [latestDrillPercent, setLatestDrillPercent] = useState();
 
+  useEffect(() => {
     let worstIdIndex = 0;
     let highestMiss = 0;
-
     if (patternHistory) {
-      console.log('FOO');
+      const totalDrillShots = 15;
+      let x = patternHistory.sort((a, b) => b.date.seconds - a.date.seconds);
+      const latestTest = x[0];
+      const latestMisses = Object.values(latestTest.misses);
+      let totalMisses = 0;
+      latestMisses.forEach((m) => (totalMisses = totalMisses + m));
+      setLatestDrillPercent((((totalDrillShots - totalMisses) / totalDrillShots) * 100).toFixed(1));
+
       patternHistory.forEach((pattern, index) => {
         if (pattern.misses.total / pattern.totalShots > highestMiss) {
           worstIdIndex = index;
@@ -33,16 +39,13 @@ const HomeScreen = ({ setIndex }) => {
       const recommendedPattern = patternIDToText(patternHistory?.[worstIdIndex]?.drillPatternId);
       setSelectedPatternName(recommendedPattern.split(')')[1]);
     }
-    return () => {
-      console.log('something');
-    };
+    return () => {};
   }, [patternHistory]);
 
   useEffect(() => {
-    console.log('home screen mounted');
     return () => console.log('home screen unmounted');
   }, []);
-
+  console.log(latestDrillPercent);
   return (
     <>
       <View style={styles.logo}>
@@ -57,16 +60,8 @@ const HomeScreen = ({ setIndex }) => {
         <View style={{ justifyContent: 'center', paddingHorizontal: WIDTH * 0.02 }}>
           <Text style={styles.title}>LAST TRAINING</Text>
           <Text style={styles.normalText}>{patternIDToText(patternHistory?.[0]?.patternID)}</Text>
-          <Text style={styles.normalText}>
-            {patternHistory?.length > 0
-              ? Math.round(
-                  ((patternHistory?.[0]?.totalShots - patternHistory?.[0]?.misses.total) /
-                    patternHistory?.[0]?.totalShots) *
-                    100
-                )
-              : 0}
-            % accuracy
-          </Text>
+
+          <Text style={styles.normalText}>{latestDrillPercent}% accuracy</Text>
         </View>
       </View>
       <View style={styles.overallStatsSection}>
