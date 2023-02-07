@@ -6,14 +6,15 @@ import { TrainNowButton } from '../components/TrainNowButton.js';
 import { theme } from '../core/theme.js';
 import { patternIDToText } from '../helpers/patternIDToText.js';
 import { AuthContext } from '../providers/AuthProvider.js';
-import { PatternHistoryContext } from '../providers/PatternHistoryProvider.js';
+import { PatternContext } from '../providers/PatternProvider.js';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
-const HomeScreen = ({ setIndex, setSelectedPatternName, selectedPatternName }) => {
+const HomeScreen = ({ setIndex }) => {
+  const { selectedPatternName, setSelectedPatternName, patternHistory } =
+    useContext(PatternContext);
   const { profile } = useContext(AuthContext);
-  const patternHistory = useContext(PatternHistoryContext);
 
   useEffect(() => {
     // console.log(recommendedPattern);
@@ -35,6 +36,11 @@ const HomeScreen = ({ setIndex, setSelectedPatternName, selectedPatternName }) =
     return () => {
       console.log('something');
     };
+  }, [patternHistory]);
+
+  useEffect(() => {
+    console.log('home screen mounted');
+    return () => console.log('home screen unmounted');
   }, []);
 
   return (

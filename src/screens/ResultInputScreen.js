@@ -10,15 +10,17 @@ import MissShotInput from '../components/MissShotInput';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import { AuthContext } from '../providers/AuthProvider';
 import { patternSelector } from '../helpers/patternSelector.js';
+import { PatternContext } from '../providers/PatternProvider.js';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
 const ResultInputScreen = ({ route }) => {
   const navigation = useNavigation();
+  const { selectedPatternName } = useContext(PatternContext);
 
   route = route || {};
-  const { selectedPatternName, selectedTutor } = route.params;
+  const { selectedTutor } = route.params;
   const pattern = patternSelector(selectedTutor, selectedPatternName);
   const { profile } = useContext(AuthContext);
   const { myDb } = useContext(FirebaseContext);
