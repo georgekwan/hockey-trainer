@@ -1,5 +1,6 @@
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import * as C from '../helpers/constants.js';
 import { FirebaseContext } from './FirebaseProvider.js';
 
 export const PatternContext = createContext({});
@@ -13,7 +14,7 @@ export const PatternProvider = (props) => {
   useEffect(() => {
     async function getPatternHistory() {
       const userId = myAuth.currentUser.uid;
-      const q = query(collection(myDb, 'drillResults'), where('shooter.uid', '==', userId));
+      const q = query(collection(myDb, C.COLL_DRILL_RESULTS), where(C.FLD_USER_ID, '==', userId));
       const querySnapshot = await getDocs(q);
       const theDocs = querySnapshot.docs.map((docSnap) => docSnap.data());
       // console.log(theDocs);
@@ -23,9 +24,9 @@ export const PatternProvider = (props) => {
   }, [myAuth]);
 
   const theValues = {
-    patternHistory,
-    setSelectedPatternName,
-    selectedPatternName,
+    patternHistory: patternHistory,
+    setSelectedPatternName: setSelectedPatternName,
+    selectedPatternName: selectedPatternName,
   };
 
   return <PatternContext.Provider value={theValues}>{children}</PatternContext.Provider>;
