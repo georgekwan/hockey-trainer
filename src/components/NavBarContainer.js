@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { BottomNavigation, BottomNavigationAction } from 'react-native-paper';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -11,11 +11,22 @@ import {
 } from '../screens';
 import { UserProfileScreen } from '../screens/UserProfileScreen';
 
-export function NavBarContainer() {
-  const [index, setIndex] = React.useState(0);
+export function NavBarContainer({ route }) {
+  // console.log({ route });
+  const { initialIndex } = route.params ?? {};
+
+  // console.log({ initialIndex });
+  // const [selectedPatternName, setSelectedPatternName] = useState();
+  const [index, setIndex] = useState(initialIndex ?? 0);
   const handleIndexChange = (newIndex) => setIndex(newIndex);
 
-  const [routes] = React.useState([
+  useEffect(() => {
+    if (initialIndex) {
+      setIndex(initialIndex);
+    }
+  }, [initialIndex]);
+
+  const [routes] = useState([
     {
       key: 'home',
       title: 'Home',
@@ -37,7 +48,7 @@ export function NavBarContainer() {
     },
   ]);
   const renderScene = BottomNavigation.SceneMap({
-    home: HomeScreen,
+    home: () => <HomeScreen setIndex={setIndex} />,
     patternScreen: DrillSelectionScreen,
     user: UserProfileScreen,
   });

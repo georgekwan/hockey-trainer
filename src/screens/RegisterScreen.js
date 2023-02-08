@@ -14,7 +14,7 @@ import { nameValidator } from '../helpers/nameValidator';
 import { passwordValidator } from '../helpers/passwordValidator';
 import { AuthContext } from '../providers/AuthProvider.js';
 
-export default function RegisterScreen({ navigation }) {
+function RegisterScreen({ navigation }) {
   // const [name, setName] = useState({ value: '', error: '' })
   // const [email, setEmail] = useState({ value: '', error: '' })
   // const [password, setPassword] = useState({ value: '', error: '' })
@@ -123,6 +123,8 @@ export default function RegisterScreen({ navigation }) {
     </Background>
   );
 }
+
+export default React.memo(RegisterScreen);
 
 const styles = StyleSheet.create({
   row: {

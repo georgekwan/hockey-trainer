@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import { Audio } from 'expo-av';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
 import Timer from 'react-native-timer';
 import * as patterns from '../../temp/drill_patterns.json';
@@ -8,6 +8,7 @@ import Button from '../components/Button.js';
 import { fileName } from '../helpers/MP3fileName.js';
 import { imageFileName } from '../helpers/imageFileName.js';
 import { patternSelector } from '../helpers/patternSelector.js';
+import { PatternContext } from '../providers/PatternProvider.js';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
@@ -18,24 +19,27 @@ const timeoutConverter = (selectedSeconds) => {
 
 const InDrillScreen = ({ route }) => {
   const navigation = useNavigation();
-  const { selectedName, selectedSeconds, selectedTutor } = route.params;
+  const { selectedPatternName, setSelectedPatternName } = useContext(PatternContext);
+
+  const { selectedSeconds, selectedTutor } = route.params;
   const [currentStringIndex, setCurrentStringIndex] = useState(1);
-  const currentPattern = patternSelector(selectedTutor, selectedName);
+  const currentPattern = patternSelector(selectedTutor, selectedPatternName);
   const currentString = currentPattern.sequence[currentStringIndex];
+  // console.log(currentPattern);
 
   async function playSound() {
-    console.log('Loading Sound');
+    // console.log('Loading Sound');
     const { sound } = await Audio.Sound.createAsync(fileName(currentString));
-    console.log('Playing Sound');
+    // console.log('Playing Sound');
     await sound.playAsync();
   }
 
   useEffect(() => {
     if (currentStringIndex === 0) {
       Timer.clearInterval('soundTimer');
-      console.log({ selectedName, selectedTutor });
-      navigation.navigate('ResultInputScreen', { selectedName, selectedTutor });
-      console.log('navigating away');
+      // console.log({ selectedPatternName, selectedTutor });
+      navigation.navigate('ResultInputScreen', { selectedPatternName, selectedTutor });
+      // console.log('navigating away');
     } else {
       playSound();
     }
@@ -45,14 +49,15 @@ const InDrillScreen = ({ route }) => {
     Timer.setInterval(
       'soundTimer',
       async () => {
-        console.log('running interval');
+        // console.log('running interval');
         setCurrentStringIndex((curVal) => {
           let newVal = (curVal + 1) % currentPattern.sequence.length;
-          console.log(newVal);
+          // console.log(newVal);
           return newVal;
         });
       },
       selectedSeconds * 1000
+      // 1000
     );
     return () => Timer.clearInterval('soundTimer');
   }, []);
@@ -61,7 +66,7 @@ const InDrillScreen = ({ route }) => {
     <>
       <View style={styles.drillInfo}>
         <View style={styles.row}>
-          <Text style={styles.drillTitle}>{selectedName}</Text>
+          <Text style={styles.drillTitle}>{selectedPatternName}</Text>
         </View>
         <View style={styles.drillSubtitle}>
           <Text>{selectedTutor + ' hole'}</Text>
@@ -97,7 +102,7 @@ const InDrillScreen = ({ route }) => {
   );
 };
 
-export default InDrillScreen;
+export default React.memo(InDrillScreen);
 
 const styles = StyleSheet.create({
   row: {

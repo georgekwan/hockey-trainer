@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 
@@ -59,4 +59,4 @@ const MissShotInput = (props) => {
   );
 };
 
-export default MissShotInput;
+export default React.memo(MissShotInput);

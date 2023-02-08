@@ -1,25 +1,29 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useRef } from 'react';
 import { ImageBackground, Dimensions, Image, StyleSheet, Text, View } from 'react-native';
 import { Button } from 'react-native-paper';
+// import { Button as PaperButton } from 'react-native-paper';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
+import { useNavigation } from '@react-navigation/native';
 
 import MissShotInput from '../components/MissShotInput';
 import { FirebaseContext } from '../providers/FirebaseProvider';
-import * as pattern from '../../temp/drill_patterns.json';
+import { AuthContext } from '../providers/AuthProvider';
 import { patternSelector } from '../helpers/patternSelector.js';
+import { PatternContext } from '../providers/PatternProvider.js';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
 const ResultInputScreen = ({ route }) => {
+  const navigation = useNavigation();
+  const { selectedPatternName } = useContext(PatternContext);
+
   route = route || {};
-  route.selectedName = route.selectedName || 'Downtown';
-  route.selectedTutor = route.selectedTutor || 11;
-  const { selectedName, selectedTutor } = route.params;
-  const pattern = patternSelector(selectedTutor, selectedName);
-  console.log(pattern);
-  const fbContext = useContext(FirebaseContext);
-  const db = fbContext.myDb;
+  const { selectedTutor } = route.params;
+  const pattern = patternSelector(selectedTutor, selectedPatternName);
+  const { profile } = useContext(AuthContext);
+  const { myDb } = useContext(FirebaseContext);
 
   const totalShots = 15;
   const [numberOfShotsLeft, setNumberOfShotsLeft] = useState(totalShots);
@@ -37,7 +41,7 @@ const ResultInputScreen = ({ route }) => {
     fiveHole: 0,
     bottomRight: 0,
   });
-  console.log('misses', misses);
+  // console.log('misses', misses);
 
   const {
     topLeft,
@@ -57,13 +61,20 @@ const ResultInputScreen = ({ route }) => {
     setLoading(true);
 
     const missesCopy = {
-      ...misses,
-      timestamp: serverTimestamp(),
+      drillId: selectedPatternName,
+      misses: { ...misses },
+      totalMisses: totalShots - numberOfShotsLeft,
+      date: serverTimestamp(),
+      shooter: { ...profile },
     };
-    console.log(missesCopy);
-    const docRef = await addDoc(collection(db, 'drillResults'), missesCopy);
-    console.log(docRef);
+    // console.log(missesCopy);
+
+    const docRef = await addDoc(collection(myDb, 'drillResults'), missesCopy);
     setLoading(false);
+
+    // navigation.navigate('UserProfileScreen', { docRef });
+
+    navigation.navigate('NavBarContainer', { initialIndex: 2 });
   };
 
   return (
@@ -109,7 +120,7 @@ const ResultInputScreen = ({ route }) => {
             textAlign: 'center',
             paddingVertical: WIDTH * 0.02,
           }}>
-          Tap the dropdown button to select number of shots made
+          Tap the dropdown button to select number of shots missed
         </Text>
       </View>
 
@@ -140,7 +151,7 @@ const ResultInputScreen = ({ route }) => {
               // borderColor: 'yellow',
               // borderWidth: 5,
             }}>
-            {console.log(`shots left is ${numberOfShotsLeft}`)}
+            {/* {console.log(`shots left is ${numberOfShotsLeft}`)} */}
             <View
               style={{
                 display: 'flex',
@@ -394,7 +405,7 @@ const ResultInputScreen = ({ route }) => {
   );
 };
 
-export default ResultInputScreen;
+export default React.memo(ResultInputScreen);
 
 const styles = StyleSheet.create({
   md3FontStyles: {

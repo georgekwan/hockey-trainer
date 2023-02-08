@@ -1,25 +1,27 @@
 import { View, Text, Dimensions, StyleSheet } from 'react-native';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button } from 'react-native-paper';
 import { theme } from '../../core/theme.js';
+import { PatternContext } from '../../providers/PatternProvider.js';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
 export const PatternButton = (props) => {
-  const { name, selectedName, setSelectedName } = props;
+  const { name } = props;
+  const { selectedPatternName, setSelectedPatternName } = useContext(PatternContext);
 
-  const [patternName, setPatternName] = useState();
+  // const [patternName, setPatternName] = useState();
 
-  const backgroundColor = selectedName === name ? '#404040' : theme.colors.primary;
+  const backgroundColor = selectedPatternName === name ? '#404040' : theme.colors.primary;
   return (
     <>
       <Button
         mode="elevated"
         onPress={() => {
-          setPatternName(name);
-          setSelectedName(name);
-          console.log('selected ', name, 'pattern');
+          // setPatternName(name);
+          setSelectedPatternName(name);
+          // console.log('selected ', name, 'pattern');
         }}
         style={[styles.button, { backgroundColor: backgroundColor }]}>
         <View>

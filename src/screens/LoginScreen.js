@@ -13,7 +13,7 @@ import { emailValidator } from '../helpers/emailValidator';
 import { passwordValidator } from '../helpers/passwordValidator';
 import { AuthContext } from '../providers/AuthProvider.js';
 
-export default function LoginScreen({ navigation }) {
+function LoginScreen({ navigation }) {
   // const [email, setEmail] = useState({ value: '', error: '' })
   // const [password, setPassword] = useState({ value: '', error: '' })
 
@@ -33,8 +33,9 @@ export default function LoginScreen({ navigation }) {
 
   const { login, authErrorMessages } = useContext(AuthContext);
 
-  const [email, setEmail] = useState(''); // input field value cannot be null
-  const [password, setPassword] = useState(''); // input field value cannot be null
+  //TODO change email and password back to blank when deploy
+  const [email, setEmail] = useState('george@gmail.com'); // input field value cannot be null
+  const [password, setPassword] = useState('123456'); // input field value cannot be null
 
   const [loginRunning, setLoginRunning] = useState(false);
   const [errorMessage, setErrorMessage] = useState();
@@ -105,6 +106,8 @@ export default function LoginScreen({ navigation }) {
     </Background>
   );
 }
+
+export default React.memo(LoginScreen);
 
 const styles = StyleSheet.create({
   forgotPassword: {

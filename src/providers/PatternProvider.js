@@ -1,31 +1,33 @@
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import * as C from '../helpers/constants.js';
 import { FirebaseContext } from './FirebaseProvider.js';
 
-export const PatternHistoryContext = createContext({});
+export const PatternContext = createContext({});
 
-export const PatternHistoryProvider = (props) => {
+export const PatternProvider = (props) => {
   const children = props.children;
   const [patternHistory, setPatternHistory] = useState();
-
-  //TODO - get the user's id from the auth context
+  const [selectedPatternName, setSelectedPatternName] = useState();
   const { myAuth, myDb } = useContext(FirebaseContext);
 
   useEffect(() => {
     async function getPatternHistory() {
-      //TODO - get the user's id from the auth context
       const userId = myAuth.currentUser.uid;
-      const q = query(collection(myDb, 'drillResults'), where('userId', '==', userId));
+      const q = query(collection(myDb, C.COLL_DRILL_RESULTS), where(C.FLD_USER_ID, '==', userId));
       const querySnapshot = await getDocs(q);
       const theDocs = querySnapshot.docs.map((docSnap) => docSnap.data());
+      // console.log(theDocs);
       setPatternHistory(theDocs);
     }
     getPatternHistory();
   }, [myAuth]);
 
-  return (
-    <PatternHistoryContext.Provider value={patternHistory}>
-      {children}
-    </PatternHistoryContext.Provider>
-  );
+  const theValues = {
+    patternHistory: patternHistory,
+    setSelectedPatternName: setSelectedPatternName,
+    selectedPatternName: selectedPatternName,
+  };
+
+  return <PatternContext.Provider value={theValues}>{children}</PatternContext.Provider>;
 };

@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Dimensions, Image, Pressable, StyleSheet, ScrollView, Text, View } from 'react-native';
 import { Button, List } from 'react-native-paper';
 
@@ -13,6 +13,7 @@ import { PatternButton } from '../components/selectDrillScreen/PatternButton.js'
 import { TimeoutButton } from '../components/selectDrillScreen/TimeoutButton.js';
 import { TutorButton } from '../components/selectDrillScreen/TutorButton.js';
 import { TrainNowButton } from '../components/TrainNowButton.js';
+import { PatternContext } from '../providers/PatternProvider.js';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
@@ -30,13 +31,18 @@ let patternNames = [
   'The Frustrating One',
 ];
 
-const DrillSelectionScreen = ({ patternName }) => {
+const DrillSelectionScreen = () => {
+  const { selectedPatternName, setSelectedPatternName } = useContext(PatternContext);
+
+  // route.selectedName = route.selectedName || 'Around the World';
   const navigation = useNavigation();
   const [timeout, setTimeout] = useState(0);
   const [tutor, setTutor] = useState();
-  const [selectedName, setSelectedName] = useState();
+  // const [selectedPatternName, setSelectedPatternName] = useState();
   const [selectedSeconds, setSelectedSeconds] = useState(0);
   const [selectedTutor, setSelectedTutor] = useState();
+
+  // console.log('selected pattern is', selectedPatternName);
   return (
     <View style={{ flex: 1, backgroundColor: 'white' }}>
       <View
@@ -87,8 +93,8 @@ const DrillSelectionScreen = ({ patternName }) => {
               <PatternButton
                 key={name}
                 name={name}
-                selectedName={selectedName}
-                setSelectedName={setSelectedName}
+                selectedPatternName={selectedPatternName}
+                setSelectedPatternName={setSelectedPatternName}
               />
             ))}
           </View>
@@ -122,7 +128,8 @@ const DrillSelectionScreen = ({ patternName }) => {
           alignItems: 'center',
           justifyContent: 'center',
         }}>
-        {[3, 5, 7].map((seconds) => (
+        {/*TODO change timeout back 3, 6, 7*/}
+        {[0.3, 5, 7].map((seconds) => (
           <TimeoutButton
             key={seconds}
             seconds={seconds}
@@ -170,14 +177,18 @@ const DrillSelectionScreen = ({ patternName }) => {
       </View>
       <TrainNowButton
         onPress={() =>
-          navigation.navigate('InDrillScreen', { selectedName, selectedSeconds, selectedTutor })
+          navigation.navigate('InDrillScreen', {
+            selectedPatternName,
+            selectedSeconds,
+            selectedTutor,
+          })
         }
       />
     </View>
   );
 };
 
-export default DrillSelectionScreen;
+export default React.memo(DrillSelectionScreen);
 
 const styles = StyleSheet.create({
   md3FontStyles: {
