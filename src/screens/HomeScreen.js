@@ -7,6 +7,7 @@ import { theme } from '../core/theme.js';
 import { patternIDToText } from '../helpers/patternIDToText.js';
 import { AuthContext } from '../providers/AuthProvider.js';
 import { PatternContext } from '../providers/PatternProvider.js';
+import * as C from '../helpers/constants.js';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
@@ -24,15 +25,12 @@ const HomeScreen = ({ setIndex }) => {
     if (patternHistory) {
       // TODO add last training
       // Last Training Accuracy Calculation
-      const totalDrillShots = 15;
       let x = patternHistory.sort((a, b) => b.date.seconds - a.date.seconds);
       const latestTest = x[0];
       const latestMisses = Object.values(latestTest.misses);
       let totalMisses = 0;
       latestMisses.forEach((m) => (totalMisses = totalMisses + m));
-      setLastTrainingPercent(
-        (((totalDrillShots - totalMisses) / totalDrillShots) * 100).toFixed(1)
-      );
+      setLastTrainingPercent((((C.totalShots - totalMisses) / C.totalShots) * 100).toFixed(1));
 
       // TODO overall stats
 
