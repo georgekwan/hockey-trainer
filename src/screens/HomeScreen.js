@@ -16,19 +16,22 @@ const HomeScreen = ({ setIndex }) => {
     useContext(PatternContext);
   const { profile } = useContext(AuthContext);
 
-  const [latestDrillPercent, setLatestDrillPercent] = useState();
+  const [lastTrainingPercent, setLastTrainingPercent] = useState();
 
   useEffect(() => {
     let worstIdIndex = 0;
     let highestMiss = 0;
     if (patternHistory) {
+      // Last Training Accuracy Calculation
       const totalDrillShots = 15;
       let x = patternHistory.sort((a, b) => b.date.seconds - a.date.seconds);
       const latestTest = x[0];
       const latestMisses = Object.values(latestTest.misses);
       let totalMisses = 0;
       latestMisses.forEach((m) => (totalMisses = totalMisses + m));
-      setLatestDrillPercent((((totalDrillShots - totalMisses) / totalDrillShots) * 100).toFixed(1));
+      setLastTrainingPercent(
+        (((totalDrillShots - totalMisses) / totalDrillShots) * 100).toFixed(1)
+      );
 
       patternHistory.forEach((pattern, index) => {
         if (pattern.misses.total / pattern.totalShots > highestMiss) {
@@ -45,7 +48,7 @@ const HomeScreen = ({ setIndex }) => {
   useEffect(() => {
     return () => console.log('home screen unmounted');
   }, []);
-  console.log(latestDrillPercent);
+  console.log(lastTrainingPercent);
   return (
     <>
       <View style={styles.logo}>
@@ -61,7 +64,7 @@ const HomeScreen = ({ setIndex }) => {
           <Text style={styles.title}>LAST TRAINING</Text>
           <Text style={styles.normalText}>{patternIDToText(patternHistory?.[0]?.patternID)}</Text>
 
-          <Text style={styles.normalText}>{latestDrillPercent}% accuracy</Text>
+          <Text style={styles.normalText}>{lastTrainingPercent}% accuracy</Text>
         </View>
       </View>
       <View style={styles.overallStatsSection}>
