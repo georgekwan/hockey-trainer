@@ -63,6 +63,7 @@ const ResultInputScreen = ({ route }) => {
     const missesCopy = {
       drillId: selectedPatternName,
       misses: { ...misses },
+      totalMisses: totalShots - numberOfShotsLeft,
       date: serverTimestamp(),
       shooter: { ...profile },
     };

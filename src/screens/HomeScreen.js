@@ -33,10 +33,11 @@ const HomeScreen = ({ setIndex }) => {
         (((totalDrillShots - totalMisses) / totalDrillShots) * 100).toFixed(1)
       );
 
+      // Recommended Pattern Calculation
       patternHistory.forEach((pattern, index) => {
-        if (pattern.misses.total / pattern.totalShots > highestMiss) {
+        if (pattern.totalMisses / pattern.totalShots > highestMiss) {
           worstIdIndex = index;
-          highestMiss = pattern.misses.total / pattern.totalShots;
+          highestMiss = pattern.totalMisses / pattern.totalShots;
         }
       });
       const recommendedPattern = patternIDToText(patternHistory?.[worstIdIndex]?.drillPatternId);
