@@ -1,2 +1,4 @@
 export const COLL_DRILL_RESULTS = 'drillResults';
-export const FLD_USER_ID = 'userId';
+// userId has changed to shooter.uid in Firestore
+// export const FLD_USER_ID = 'userId';
+export const FLD_USER_ID = 'shooter.uid';
