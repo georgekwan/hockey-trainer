@@ -119,7 +119,7 @@ const ResultInputScreen = ({ route }) => {
             textAlign: 'center',
             paddingVertical: WIDTH * 0.02,
           }}>
-          Tap the dropdown button to select number of shots made
+          Tap the dropdown button to select number of shots missed
         </Text>
       </View>
 
