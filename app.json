@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "harpia-hockey",
+    "name": "Harpia Hockey",
     "slug": "harpia-hockey",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/harpia1SymbolFinal.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
@@ -14,9 +14,7 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.gabrieldalmoro.harpiahockey"
