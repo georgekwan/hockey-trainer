@@ -22,6 +22,7 @@ const HomeScreen = ({ setIndex }) => {
     let worstIdIndex = 0;
     let highestMiss = 0;
     if (patternHistory) {
+      // TODO add last training
       // Last Training Accuracy Calculation
       const totalDrillShots = 15;
       let x = patternHistory.sort((a, b) => b.date.seconds - a.date.seconds);
@@ -32,6 +33,8 @@ const HomeScreen = ({ setIndex }) => {
       setLastTrainingPercent(
         (((totalDrillShots - totalMisses) / totalDrillShots) * 100).toFixed(1)
       );
+
+      // TODO overall stats
 
       // Recommended Pattern Calculation
       patternHistory.forEach((pattern, index) => {
