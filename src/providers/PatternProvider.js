@@ -1,6 +1,7 @@
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import { collection, getDocs, onSnapshot, query, where } from 'firebase/firestore';
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import * as C from '../helpers/constants.js';
+import { AuthContext } from './AuthProvider.js';
 import { FirebaseContext } from './FirebaseProvider.js';
 
 export const PatternContext = createContext({});
@@ -9,19 +10,19 @@ export const PatternProvider = (props) => {
   const children = props.children;
   const [patternHistory, setPatternHistory] = useState();
   const [selectedPatternName, setSelectedPatternName] = useState();
-  const { myAuth, myDb } = useContext(FirebaseContext);
+  const { myDb } = useContext(FirebaseContext);
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    async function getPatternHistory() {
-      const userId = myAuth.currentUser.uid;
-      const q = query(collection(myDb, C.COLL_DRILL_RESULTS), where(C.FLD_USER_ID, '==', userId));
-      const querySnapshot = await getDocs(q);
+    console.log('PROFILE HERE IUD', user.uid);
+    const q = query(collection(myDb, C.COLL_DRILL_RESULTS), where(C.FLD_USER_ID, '==', user.uid));
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const theDocs = querySnapshot.docs.map((docSnap) => docSnap.data());
-      // console.log(theDocs);
+      console.log('got docs: ', querySnapshot.size);
       setPatternHistory(theDocs);
-    }
-    getPatternHistory();
-  }, [myAuth]);
+    });
+    return unsubscribe;
+  }, []);
 
   const theValues = {
     patternHistory: patternHistory,
