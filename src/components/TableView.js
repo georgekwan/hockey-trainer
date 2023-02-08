@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Dimensions, ScrollView } from 'react-native';
 import { DataTable } from 'react-native-paper';
+import * as C from '../helpers/constants.js';
 import { patternIDToText } from '../helpers/patternIDToText.js';
 import { PatternContext } from '../providers/PatternProvider.js';
 
@@ -10,7 +11,7 @@ const HEIGHT = Dimensions.get('screen').height;
 export const TableView = () => {
   const { patternHistory } = useContext(PatternContext);
 
-  // console.log('HERE IS THE PATTERN HISTORY context VARIABLE', patternHistory);
+  console.log('HERE IS THE PATTERN HISTORY context VARIABLE', patternHistory);
   function convertTimestamp(unixTimestamp) {
     if (patternHistory.length > 0) {
       const date = new Date(unixTimestamp * 1000);
@@ -39,8 +40,10 @@ export const TableView = () => {
         {patternHistory?.map((ph, key) => {
           return (
             <DataTable.Row key={key}>
-              <DataTable.Cell>{patternIDToText(ph.drillPatternId)}</DataTable.Cell>
-              <DataTable.Cell numeric>92%</DataTable.Cell>
+              <DataTable.Cell>{ph.drillId}</DataTable.Cell>
+              <DataTable.Cell numeric>
+                {Math.round(((C.totalShots - ph?.totalMisses) / C.totalShots) * 100)}
+              </DataTable.Cell>
               <DataTable.Cell numeric>{convertTimestamp(ph.date.seconds)}</DataTable.Cell>
             </DataTable.Row>
           );
