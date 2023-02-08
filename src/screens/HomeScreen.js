@@ -17,18 +17,32 @@ const HomeScreen = ({ setIndex }) => {
     useContext(PatternContext);
   const { profile } = useContext(AuthContext);
 
+  const [lastTrainingName, setLastTrainingName] = useState();
   const [lastTrainingPercent, setLastTrainingPercent] = useState();
+
+  useEffect(() => {
+    console.log('!!!', lastTrainingName);
+  }, [lastTrainingName]);
 
   useEffect(() => {
     let worstIdIndex = 0;
     let highestMiss = 0;
     if (patternHistory) {
       // TODO add last training
+
       // Last Training Accuracy Calculation
-      let x = patternHistory.sort((a, b) => b.date.seconds - a.date.seconds);
+      // ! TypeError: null is not an object (evaluating 'a.date.seconds')
+      let x = patternHistory.sort((a, b) => {
+        const bTime = b.date?.seconds || 0;
+        const aTime = a.date?.seconds || 0;
+        return bTime - aTime;
+      });
       const latestTest = x[0];
       const latestMisses = Object.values(latestTest.misses);
       let totalMisses = 0;
+
+      setLastTrainingName(latestTest.drillId);
+
       latestMisses.forEach((m) => (totalMisses = totalMisses + m));
       setLastTrainingPercent((((C.totalShots - totalMisses) / C.totalShots) * 100).toFixed(1));
 
@@ -50,7 +64,7 @@ const HomeScreen = ({ setIndex }) => {
   useEffect(() => {
     return () => console.log('home screen unmounted');
   }, []);
-  console.log(lastTrainingPercent);
+  // console.log(lastTrainingPercent);
   return (
     <>
       <View style={styles.logo}>
@@ -64,8 +78,8 @@ const HomeScreen = ({ setIndex }) => {
         <Avatar.Icon size={100} icon="face-man-shimmer" />
         <View style={{ justifyContent: 'center', paddingHorizontal: WIDTH * 0.02 }}>
           <Text style={styles.title}>LAST TRAINING</Text>
+          {/* TODO Grab Last training drill name from Firestore */}
           <Text style={styles.normalText}>{patternIDToText(patternHistory?.[0]?.patternID)}</Text>
-
           <Text style={styles.normalText}>{lastTrainingPercent}% accuracy</Text>
         </View>
       </View>
