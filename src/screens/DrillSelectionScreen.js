@@ -128,8 +128,7 @@ const DrillSelectionScreen = () => {
           alignItems: 'center',
           justifyContent: 'center',
         }}>
-        {/*TODO change timeout back 3, 6, 7*/}
-        {[0.3, 5, 7].map((seconds) => (
+        {[3, 5, 7].map((seconds) => (
           <TimeoutButton
             key={seconds}
             seconds={seconds}
