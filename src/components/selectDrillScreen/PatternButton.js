@@ -15,20 +15,16 @@ export const PatternButton = (props) => {
 
   const backgroundColor = selectedPatternName === name ? '#404040' : theme.colors.primary;
   return (
-    <>
-      <Button
-        mode="elevated"
-        onPress={() => {
-          // setPatternName(name);
-          setSelectedPatternName(name);
-          // console.log('selected ', name, 'pattern');
-        }}
-        style={[styles.button, { backgroundColor: backgroundColor }]}>
-        <View>
-          <Text style={styles.text}>{name}</Text>
-        </View>
-      </Button>
-    </>
+    <Button
+      mode="elevated"
+      onPress={() => {
+        // setPatternName(name);
+        setSelectedPatternName(name);
+        // console.log('selected ', name, 'pattern');
+      }}
+      style={[styles.button, { backgroundColor: backgroundColor }]}>
+      <Text style={styles.text}>{name}</Text>
+    </Button>
   );
 };
 
