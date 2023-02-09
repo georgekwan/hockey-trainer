@@ -14,7 +14,7 @@ export const PatternProvider = (props) => {
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    console.log('PROFILE HERE IUD', user.uid);
+    console.log('PROFILE HERE UID', user.uid);
     const q = query(collection(myDb, C.COLL_DRILL_RESULTS), where(C.FLD_USER_ID, '==', user.uid));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const theDocs = querySnapshot.docs.map((docSnap) => docSnap.data());

@@ -36,8 +36,6 @@ const DrillSelectionScreen = () => {
 
   // route.selectedName = route.selectedName || 'Around the World';
   const navigation = useNavigation();
-  const [timeout, setTimeout] = useState(0);
-  const [tutor, setTutor] = useState();
   // const [selectedPatternName, setSelectedPatternName] = useState();
   const [selectedSeconds, setSelectedSeconds] = useState(0);
   const [selectedTutor, setSelectedTutor] = useState();
