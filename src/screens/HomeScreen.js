@@ -20,9 +20,7 @@ const HomeScreen = ({ setIndex }) => {
   const [lastTrainingName, setLastTrainingName] = useState();
   const [lastTrainingPercent, setLastTrainingPercent] = useState();
 
-  useEffect(() => {
-    console.log('!!!', lastTrainingName);
-  }, [lastTrainingName]);
+  useEffect(() => {}, [lastTrainingName]);
 
   useEffect(() => {
     let worstIdIndex = 0;
