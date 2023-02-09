@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
 import { Avatar, List, Text } from 'react-native-paper';
 import FullLogo from '../components/FullLogo.js';
 import { TrainNowButton } from '../components/TrainNowButton.js';
 import { theme } from '../core/theme.js';
-import { patternIDToText } from '../helpers/patternIDToText.js';
+import * as C from '../helpers/constants.js';
 import { AuthContext } from '../providers/AuthProvider.js';
 import { PatternContext } from '../providers/PatternProvider.js';
 
@@ -12,44 +12,36 @@ const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
 const HomeScreen = ({ setIndex }) => {
-  const { selectedPatternName, setSelectedPatternName, patternHistory } =
+  const { selectedPatternName, setSelectedPatternName, patternHistory, sortedPatternHistory } =
     useContext(PatternContext);
   const { profile } = useContext(AuthContext);
 
-  const [lastTrainingPercent, setLastTrainingPercent] = useState();
-
+  // Recommended Pattern Calculation
   useEffect(() => {
     let worstIdIndex = 0;
     let highestMiss = 0;
     if (patternHistory) {
-      // Last Training Accuracy Calculation
-      const totalDrillShots = 15;
-      let x = patternHistory.sort((a, b) => b.date.seconds - a.date.seconds);
-      const latestTest = x[0];
-      const latestMisses = Object.values(latestTest.misses);
-      let totalMisses = 0;
-      latestMisses.forEach((m) => (totalMisses = totalMisses + m));
-      setLastTrainingPercent(
-        (((totalDrillShots - totalMisses) / totalDrillShots) * 100).toFixed(1)
-      );
-
-      // Recommended Pattern Calculation
       patternHistory.forEach((pattern, index) => {
-        if (pattern.totalMisses / pattern.totalShots > highestMiss) {
+        if (pattern.totalMisses / C.totalShots > highestMiss) {
           worstIdIndex = index;
-          highestMiss = pattern.totalMisses / pattern.totalShots;
+          highestMiss = pattern.totalMisses / C.totalShots;
         }
       });
-      const recommendedPattern = patternIDToText(patternHistory?.[worstIdIndex]?.drillPatternId);
-      setSelectedPatternName(recommendedPattern.split(')')[1]);
+      const recommendedPattern = patternHistory?.[worstIdIndex]?.drillId;
+      setSelectedPatternName(recommendedPattern);
     }
     return () => {};
   }, [patternHistory]);
 
-  useEffect(() => {
-    return () => console.log('home screen unmounted');
-  }, []);
-  console.log(lastTrainingPercent);
+  //Average accuracy calculation
+  let totalAccuracy = 0;
+  if (patternHistory) {
+    patternHistory.forEach((pattern) => {
+      totalAccuracy += (C.totalShots - pattern.totalMisses) / C.totalShots;
+    });
+  }
+  const averageAccuracy = Math.round((totalAccuracy / patternHistory?.length) * 100);
+
   return (
     <>
       <View style={styles.logo}>
@@ -63,20 +55,27 @@ const HomeScreen = ({ setIndex }) => {
         <Avatar.Icon size={100} icon="face-man-shimmer" />
         <View style={{ justifyContent: 'center', paddingHorizontal: WIDTH * 0.02 }}>
           <Text style={styles.title}>LAST TRAINING</Text>
-          <Text style={styles.normalText}>{patternIDToText(patternHistory?.[0]?.patternID)}</Text>
+          <Text style={styles.normalText}>{sortedPatternHistory?.[0]?.drillId}</Text>
 
-          <Text style={styles.normalText}>{lastTrainingPercent}% accuracy</Text>
+          <Text style={styles.normalText}>
+            {Math.round(
+              ((C.totalShots - sortedPatternHistory?.[0]?.totalMisses) / C.totalShots) * 100
+            )}
+            % accuracy
+          </Text>
         </View>
       </View>
       <View style={styles.overallStatsSection}>
         <Text style={styles.title}>OVERALL STATS</Text>
         <View style={styles.iconTextRow}>
           <List.Icon icon="bullseye-arrow" color={theme.colors.primary} />
-          <Text style={styles.normalText}>Average accuracy: 88%</Text>
+          <Text style={styles.normalText}>Average accuracy: {averageAccuracy}%</Text>
         </View>
         <View style={styles.iconTextRow}>
           <List.Icon icon="target" size={40} color={theme.colors.primary} />
-          <Text style={styles.normalText}>Total shots taken: 165</Text>
+          <Text style={styles.normalText}>
+            Total shots taken: {C.totalShots * patternHistory.length}
+          </Text>
         </View>
       </View>
       <View style={styles.recommendedPatternSection}>
@@ -84,7 +83,6 @@ const HomeScreen = ({ setIndex }) => {
         <Text style={styles.recommendedPatternText}>{selectedPatternName}</Text>
         <TrainNowButton
           onPress={() => {
-            // setSelectedPatternName(patternIDToText(patternHistory?.[worstIdIndex].drillPatternId));
             setIndex(1);
           }}
         />
@@ -117,8 +115,6 @@ const styles = StyleSheet.create({
     marginTop: HEIGHT * 0.02,
     marginHorizontal: WIDTH * 0.02,
     flexDirection: 'row',
-    // borderColor: 'red',
-    // borderWidth: 5,
   },
   title: {
     fontSize: WIDTH * 0.08,
@@ -132,8 +128,6 @@ const styles = StyleSheet.create({
   iconTextRow: {
     margin: WIDTH * 0.01,
     width: WIDTH * 0.65,
-    // borderColor: 'red',
-    // borderWidth: 5,
     flexDirection: 'row',
     alignContent: 'flex-start',
     marginVertical: WIDTH * 0.01,

@@ -24,7 +24,10 @@ export const PatternProvider = (props) => {
     return unsubscribe;
   }, []);
 
+  let sortedPatternHistory = patternHistory?.sort((a, b) => b?.date?.seconds - a?.date?.seconds);
+
   const theValues = {
+    sortedPatternHistory: sortedPatternHistory,
     patternHistory: patternHistory,
     setSelectedPatternName: setSelectedPatternName,
     selectedPatternName: selectedPatternName,
