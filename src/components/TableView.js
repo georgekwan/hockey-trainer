@@ -43,7 +43,7 @@ export const TableView = () => {
             <DataTable.Row key={key}>
               <DataTable.Cell>{ph.drillId}</DataTable.Cell>
               <DataTable.Cell numeric>
-                {Math.round(((C.totalShots - ph?.totalMisses) / C.totalShots) * 100)}
+                {Math.round(((C.totalShots - ph?.totalMisses) / C.totalShots) * 100)}%
               </DataTable.Cell>
               <DataTable.Cell numeric>{convertTimestamp(ph.date?.seconds || 0)}</DataTable.Cell>
             </DataTable.Row>
