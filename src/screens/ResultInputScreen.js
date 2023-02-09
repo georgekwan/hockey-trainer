@@ -41,7 +41,6 @@ const ResultInputScreen = ({ route }) => {
     fiveHole: 0,
     bottomRight: 0,
   });
-  // console.log('misses', misses);
 
   const {
     topLeft,
@@ -71,8 +70,6 @@ const ResultInputScreen = ({ route }) => {
 
     const docRef = await addDoc(collection(myDb, 'drillResults'), missesCopy);
     setLoading(false);
-
-    // navigation.navigate('UserProfileScreen', { docRef });
 
     navigation.navigate('NavBarContainer', { initialIndex: 2 });
   };

@@ -7,6 +7,7 @@ import { theme } from '../core/theme.js';
 import * as C from '../helpers/constants.js';
 import { AuthContext } from '../providers/AuthProvider.js';
 import { PatternContext } from '../providers/PatternProvider.js';
+import * as C from '../helpers/constants.js';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
@@ -32,6 +33,7 @@ const HomeScreen = ({ setIndex }) => {
     }
     return () => {};
   }, [patternHistory]);
+
 
   //Average accuracy calculation
   let totalAccuracy = 0;
