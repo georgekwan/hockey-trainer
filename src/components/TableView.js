@@ -9,9 +9,10 @@ const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
 export const TableView = () => {
-  const { patternHistory } = useContext(PatternContext);
+  const { patternHistory, sortedPatternHistory } = useContext(PatternContext);
+  // console.log('HERE IS THE SORTED PATTERN HISTORY context VARIABLE', sortedPatternHistory);
 
-  console.log('HERE IS THE PATTERN HISTORY context VARIABLE', patternHistory);
+  // Convert timestamp to date
   function convertTimestamp(unixTimestamp) {
     if (patternHistory.length > 0) {
       const date = new Date(unixTimestamp * 1000);
@@ -37,7 +38,7 @@ export const TableView = () => {
           </DataTable.Title>
         </DataTable.Header>
 
-        {patternHistory?.map((ph, key) => {
+        {sortedPatternHistory?.map((ph, key) => {
           return (
             <DataTable.Row key={key}>
               <DataTable.Cell>{ph.drillId}</DataTable.Cell>
