@@ -17,7 +17,7 @@ import {
 } from 'react-native-svg';
 import * as shape from 'd3-shape';
 
-export const ChartView = () => {
+#DC3535export const ChartView = () => {
   const { patternHistory } = useContext(PatternContext);
 
   const apx = (size = 0) => {
@@ -115,7 +115,7 @@ export const ChartView = () => {
   );
 
   const CustomLine = ({ line }) => (
-    <Path key="line" d={line} stroke="#FEBE18" strokeWidth={apx(6)} fill="none" />
+    <Path key="line" d={line} stroke="#DC3535" strokeWidth={apx(6)} fill="none" />
   );
 
   const CustomGradient = () => (
@@ -124,8 +124,8 @@ export const ChartView = () => {
         {/* <Stop offset="0%" stopColor="rgb(134, 65, 244)" /> */}
         {/* <Stop offset="100%" stopColor="rgb(66, 194, 244)" /> */}
 
-        <Stop offset="0%" stopColor="#FEBE18" stopOpacity={0.25} />
-        <Stop offset="100%" stopColor="#FEBE18" stopOpacity={0} />
+        <Stop offset="0%" stopColor="#DC3535" stopOpacity={0.5} />
+        <Stop offset="100%" stopColor="#DC3535" stopOpacity={0} />
       </LinearGradient>
     </Defs>
   );
