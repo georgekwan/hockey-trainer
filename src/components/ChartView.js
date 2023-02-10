@@ -25,7 +25,7 @@ export const ChartView = () => {
     return (width / 750) * size;
   };
 
-  const [dateList, setDateList] = useState([
+  const [drillTime, setDrillTime] = useState([
     '08-31 15:09',
     '08-31 15:10',
     '08-31 15:11',
@@ -36,10 +36,10 @@ export const ChartView = () => {
     '08-31 15:11',
     '08-31 15:12',
   ]);
-  const [priceList, setPriceList] = useState([
+  const [shotAccuracy, setShotAccuracy] = useState([
     80.5, 60.63, 50.6, 40.6, 90.1, 85.4, 70.5, 95.1, 30.5, 75.8,
   ]);
-  const size = useRef(dateList.length);
+  const size = useRef(drillTime.length);
 
   const [positionX, setPositionX] = useState(-1); // The currently selected X coordinate position
 
@@ -100,7 +100,7 @@ export const ChartView = () => {
       }
       {
         // Vertical grid
-        priceList.map((_, index) => (
+        shotAccuracy.map((_, index) => (
           <Line
             key={index.toString()}
             y1="0%"
@@ -135,7 +135,7 @@ export const ChartView = () => {
       return null;
     }
 
-    const date = dateList[positionX];
+    const date = drillTime[positionX];
 
     return (
       <View
@@ -153,7 +153,7 @@ export const ChartView = () => {
           <View style={{ flex: 1 }} {...panResponder.current.panHandlers}>
             <AreaChart
               style={{ flex: 1 }}
-              data={priceList}
+              data={shotAccuracy}
               // curve={shape.curveNatural}
               curve={shape.curveMonotoneX}
               contentInset={{ ...verticalContentInset }}
@@ -167,7 +167,7 @@ export const ChartView = () => {
 
           <YAxis
             style={{ width: apx(130) }}
-            data={priceList}
+            data={shotAccuracy}
             contentInset={verticalContentInset}
             svg={{ fontSize: apx(20), fill: '#617485' }}
           />
@@ -180,8 +180,8 @@ export const ChartView = () => {
             height: apx(60),
           }}
           numberOfTicks={7}
-          data={priceList}
-          formatLabel={(value, index) => dateList[value]}
+          data={shotAccuracy}
+          formatLabel={(value, index) => drillTime[value]}
           contentInset={{
             left: apx(36),
             right: apx(130),
