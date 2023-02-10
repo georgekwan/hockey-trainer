@@ -17,7 +17,7 @@ import {
 } from 'react-native-svg';
 import * as shape from 'd3-shape';
 
-#DC3535export const ChartView = () => {
+export const ChartView = () => {
   const { patternHistory } = useContext(PatternContext);
 
   const apx = (size = 0) => {
