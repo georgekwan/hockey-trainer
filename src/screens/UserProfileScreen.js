@@ -3,6 +3,7 @@ import { Dimensions, StyleSheet, Text, View } from 'react-native';
 import { Avatar, IconButton } from 'react-native-paper';
 import Button from '../components/Button.js';
 import { ChartView } from '../components/ChartView.js';
+import InteractiveChart from '../components/InteractiveChart.js';
 import FullLogo from '../components/FullLogo.js';
 import { TableView } from '../components/TableView.js';
 import { theme } from '../core/theme';
@@ -20,7 +21,7 @@ export const UserProfileScreen = () => {
     if (tableView) {
       return <TableView />;
     } else {
-      return <ChartView />;
+      return <InteractiveChart />;
     }
   };
 
