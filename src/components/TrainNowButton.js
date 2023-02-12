@@ -12,7 +12,7 @@ export const TrainNowButton = (props) => {
     <View style={{ margin: WIDTH * 0.025 }}>
       <View
         style={{
-          marginTop: HEIGHT * 0.015,
+          // marginTop: HEIGHT * 0.015,
           flexDirection: 'row',
           alignItems: 'center',
           justifyContent: 'center',
