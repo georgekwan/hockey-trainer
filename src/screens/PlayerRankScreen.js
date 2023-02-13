@@ -16,7 +16,7 @@ export default function PlayerRankScreen() {
       <View style={styles.logo}>
         <FullLogo />
       </View>
-      <ScrollView>
+      <ScrollView style={{ padding: 24 }}>
         <DataTable>
           <DataTable.Header>
             <DataTable.Title>Player</DataTable.Title>
