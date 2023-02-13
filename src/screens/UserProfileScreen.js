@@ -2,7 +2,6 @@ import React, { createContext, useContext, useState } from 'react';
 import { Dimensions, StyleSheet, Text, View } from 'react-native';
 import { Avatar, IconButton } from 'react-native-paper';
 import Button from '../components/Button.js';
-import { ChartView } from '../components/ChartView.js';
 import InteractiveChart from '../components/InteractiveChart.js';
 import FullLogo from '../components/FullLogo.js';
 import { TableView } from '../components/TableView.js';
