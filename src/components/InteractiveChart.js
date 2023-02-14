@@ -33,23 +33,25 @@ function InteractiveChart() {
     let width = Dimensions.get('window').width;
     return (width / 750) * size;
   };
+  const [newDrillName, setNewDrillName] = useState([]);
   const [drillTime, setDrillTime] = useState([]);
   const [shotAccuracy, setShotAccuracy] = useState([]);
   const size = useRef(drillTime.length);
   useEffect(() => {
     if (!patternHistory) return;
-    console.log('hello World', patternHistory);
+    // console.log('hello World', patternHistory);
 
     const sortedData = patternHistory?.sort((a, b) => {
-      console.log('***', a.date.seconds);
-      let result = a.drillId.localeCompare(b.drillId);
-      if (result === 0) {
-        result = a?.date.seconds - b.date.seconds;
-      }
+      // console.log('***', a.date.seconds);
+      // let result = a.drillId.localeCompare(b.drillId);
+      // if (result === 0) {
+      let result = a?.date.seconds - b.date.seconds;
+      // }
       return result;
     });
     const newDrillTime = [];
     const newShotAccuracy = [];
+    const newDrillName = [];
     for (let drill of sortedData) {
       let date = new Date(
         drill.date.seconds * 1000 + drill.date.nanoseconds / 1000000
@@ -66,7 +68,10 @@ function InteractiveChart() {
       accuracy = Math.round(accuracy * 100) / 100;
       newDrillTime.push(date);
       newShotAccuracy.push(accuracy);
+
+      newDrillName.push(drill.drillId);
     }
+    setNewDrillName(newDrillName);
     setDrillTime(newDrillTime);
     setShotAccuracy(newShotAccuracy);
     size.current = newDrillTime.length;
@@ -85,7 +90,7 @@ function InteractiveChart() {
   // }
 
   const [positionX, setPositionX] = useState(-1); // The currently selected X coordinate position
-
+  console.log('!!!***', positionX);
   const panResponder = useRef(
     PanResponder.create({
       onStartShouldSetPanResponder: (evt, gestureState) => true,
@@ -179,7 +184,7 @@ function InteractiveChart() {
     }
 
     const date = drillTime[positionX];
-
+    // TODO add drill name to gray touch box
     return (
       <G x={x(positionX)} key="tooltip">
         <G
@@ -189,16 +194,23 @@ function InteractiveChart() {
             y={-apx(24 + 24 + 20) / 2}
             rx={apx(12)} // borderRadius
             ry={apx(12)} // borderRadius
-            width={apx(300)}
-            height={apx(96)}
+            width={apx(350)}
+            height={apx(150)}
             stroke="rgba(255, 255, 255, 0.8)"
-            fill="rgba(99,102,106, 0.5)"
+            fill="rgba(99,102,106, .8)"
           />
-
           <SvgText x={apx(20)} fill="rgba(255, 255, 255, 255)" opacity={0.85} fontSize={apx(30)}>
+            {newDrillName[positionX]}
+          </SvgText>
+          <SvgText
+            x={apx(20)}
+            y={apx(24 + 20)}
+            fill="rgba(255, 255, 255, 255)"
+            opacity={0.85}
+            fontSize={apx(30)}>
             {date}
           </SvgText>
-          <SvgText x={apx(20)} y={apx(24 + 20)} fontSize={apx(45)} fontWeight="bold" fill="#285EA3">
+          <SvgText x={apx(20)} y={apx(24 + 80)} fontSize={apx(45)} fontWeight="bold" fill="#285EA3">
             {shotAccuracy[positionX]}%
           </SvgText>
         </G>
@@ -225,8 +237,8 @@ function InteractiveChart() {
   };
 
   const verticalContentInset = { top: apx(40), bottom: apx(40) };
-  console.log('shotAccuracy', shotAccuracy);
-  console.log('drillTime', drillTime);
+  // console.log('shotAccuracy', shotAccuracy);
+  // console.log('drillTime', drillTime);
 
   return (
     <View>
