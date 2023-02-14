@@ -44,7 +44,7 @@ function InteractiveChart() {
       console.log('***', a.date.seconds);
       let result = a.drillId.localeCompare(b.drillId);
       if (result === 0) {
-        result = a.date.seconds - b.date.seconds;
+        result = a?.date.seconds - b.date.seconds;
       }
       return result;
     });
