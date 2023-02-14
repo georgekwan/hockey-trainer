@@ -283,9 +283,10 @@ function InteractiveChart() {
           data={shotAccuracy}
           formatLabel={(value, index) => {
             const date = new Date(drillTime[value]);
-            const month = date.toLocaleString('default', { month: 'short' });
+            const month = date.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
             const day = date.getDate();
-            return `${month} ${day}`;
+            console.log('value is', month);
+            return month;
           }}
           contentInset={{
             left: apx(25),
