@@ -58,8 +58,10 @@ function InteractiveChart() {
         hour: '2-digit',
         minute: '2-digit',
       });
+
       let misses = drill.totalMisses;
       let accuracy = ((15 - misses) / 15) * 100;
+      accuracy = Math.round(accuracy * 100) / 100;
       newDrillTime.push(date);
       newShotAccuracy.push(accuracy);
     }
@@ -227,7 +229,7 @@ function InteractiveChart() {
   return (
     <View>
       <View style={{ alignItems: 'center' }}>
-        <Text style={{ fontSize: 24, fontWeight: 'bold' }}>Drill Accuracy Over Time</Text>
+        <Text style={{ fontSize: 24, fontWeight: 'bold' }}>Drill Accuracy % Over Time</Text>
       </View>
       {/*
       {drillTime.map((time, index) => (
@@ -277,12 +279,17 @@ function InteractiveChart() {
             width: apx(750),
             height: apx(60),
           }}
-          numberOfTicks={7}
+          numberOfTicks={5}
           data={shotAccuracy}
-          formatLabel={(value, index) => drillTime[value]}
+          formatLabel={(value, index) => {
+            const date = new Date(drillTime[value]);
+            const month = date.toLocaleString('default', { month: 'short' });
+            const day = date.getDate();
+            return `${month} ${day}`;
+          }}
           contentInset={{
-            left: apx(36),
-            right: apx(130),
+            left: apx(25),
+            right: apx(25),
           }}
           svg={{
             fontSize: apx(20),
