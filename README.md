@@ -29,3 +29,7 @@ The app will now be running on your phone.
 - [**React Native**](https://reactnative.dev/) - The mobile framework used
 - [**Expo**](https://expo.io/) - The toolchain used to develop and build the app
 - [**NPM**](https://www.npmjs.com/) - Dependency management
+- [**Firebase**](https://firebase.google.com/) - A cloud-based backend service for storing data
+- [**React Navigation**](https://reactnavigation.org/) - A library for navigation in React Native applications
+- [**React Native Paper**](https://reactnativepaper.com/) - A library for implementing Material Design in React Native
+- [**React Native Dropdown Picker**](https://hossein-zare.github.io/react-native-dropdown-picker-website/) - Used for dropdown pickers in the application
