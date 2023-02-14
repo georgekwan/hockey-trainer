@@ -47,13 +47,19 @@ const HomeScreen = ({ setIndex }) => {
       <View style={styles.logo}>
         <FullLogo />
       </View>
-
       <View>
         <Text style={styles.welcomeText}>{'Welcome, ' + profile?.displayName}</Text>
       </View>
+
       <View style={styles.lastTrainingSection}>
         <Avatar.Image size={100} source={require('../../assets/avatar.jpeg')} />
-        <View style={{ justifyContent: 'center', paddingHorizontal: WIDTH * 0.02 }}>
+        <View
+          style={{
+            flexDirection: 'column',
+            justifyContent: 'flex-start',
+            paddingHorizontal: WIDTH * 0.02,
+            paddingLeft: 15,
+          }}>
           <Text style={styles.title}>LAST TRAINING</Text>
           <Text style={styles.normalText}>{sortedPatternHistory?.[0]?.drillId}</Text>
 
@@ -112,6 +118,7 @@ const styles = StyleSheet.create({
     marginTop: HEIGHT * 0.03,
   },
   lastTrainingSection: {
+    display: 'flex',
     marginTop: HEIGHT * 0.02,
     marginHorizontal: WIDTH * 0.02,
     flexDirection: 'row',
@@ -120,7 +127,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: WIDTH * 0.08,
     fontWeight: '800',
-    paddingLeft: 5,
   },
   overallStatsSection: {
     alignItems: 'center',
