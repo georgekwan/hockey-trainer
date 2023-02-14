@@ -1,6 +1,6 @@
 import { View, SafeAreaView, Text } from 'react-native';
 import React from 'react';
-import { ChartView } from '../components/ChartView';
+
 import InteractiveChart from '../components/InteractiveChart';
 
 const DevGraphScreen = () => {
