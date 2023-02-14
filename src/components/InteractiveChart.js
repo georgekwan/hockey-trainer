@@ -16,6 +16,15 @@ import {
 } from 'react-native-svg';
 import * as shape from 'd3-shape';
 
+// Convert timestamp to date
+function convertTimestamp(unixTimestamp) {
+  if (patternHistory.length > 0) {
+    const date = new Date(unixTimestamp * 1000);
+    const options = { month: 'short', day: 'numeric' };
+    return date.toLocaleDateString('en-US', options);
+  }
+}
+
 export default InteractiveChart;
 
 function InteractiveChart() {
@@ -24,23 +33,54 @@ function InteractiveChart() {
     let width = Dimensions.get('window').width;
     return (width / 750) * size;
   };
-
-  const [drillTime, setDrillTime] = useState([
-    '08-01 15:09',
-    '08-05 15:10',
-    '08-06 15:11',
-    '08-09 15:12',
-    '08-15 15:13',
-    '08-18 15:09',
-    '08-20 15:10',
-    '08-22 15:11',
-    '08-25 15:12',
-    '08-31 15:08',
-  ]);
-  const [shotAccuracy, setShotAccuracy] = useState([
-    80.5, 60.63, 50.6, 40.6, 90.1, 85.4, 70.5, 95.1, 30.5, 75.8,
-  ]);
+  const [drillTime, setDrillTime] = useState([]);
+  const [shotAccuracy, setShotAccuracy] = useState([]);
   const size = useRef(drillTime.length);
+  useEffect(() => {
+    if (!patternHistory) return;
+    console.log('hello World', patternHistory);
+
+    const sortedData = patternHistory.sort((a, b) => {
+      let result = a.drillId.localeCompare(b.drillId);
+      if (result === 0) {
+        result = a.date.seconds - b.date.seconds;
+      }
+      return result;
+    });
+    const newDrillTime = [];
+    const newShotAccuracy = [];
+    for (let drill of sortedData) {
+      let date = new Date(
+        drill.date.seconds * 1000 + drill.date.nanoseconds / 1000000
+      ).toLocaleString('en-GB', {
+        day: '2-digit',
+        month: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+      });
+
+      let misses = drill.totalMisses;
+      let accuracy = ((15 - misses) / 15) * 100;
+      accuracy = Math.round(accuracy * 100) / 100;
+      newDrillTime.push(date);
+      newShotAccuracy.push(accuracy);
+    }
+    setDrillTime(newDrillTime);
+    setShotAccuracy(newShotAccuracy);
+    size.current = newDrillTime.length;
+  }, [patternHistory]);
+
+  // function snapshotToArray(snapshot) {
+  //   let returnArr = [];
+
+  //   snapshot.forEach((childSnapshot.) => {
+  //     let item = childSnapshot.val();
+  //     item.key = childSnapshot.key;
+  //     returnArr.push(item);
+  //   });
+
+  //   return returnArr;
+  // }
 
   const [positionX, setPositionX] = useState(-1); // The currently selected X coordinate position
 
@@ -183,63 +223,82 @@ function InteractiveChart() {
   };
 
   const verticalContentInset = { top: apx(40), bottom: apx(40) };
+  console.log('shotAccuracy', shotAccuracy);
+  console.log('drillTime', drillTime);
 
   return (
-    <View
-      style={{
-        backgroundColor: '#fff',
-        alignItems: 'stretch',
-      }}>
+    <View>
+      <View style={{ alignItems: 'center' }}>
+        <Text style={{ fontSize: 24, fontWeight: 'bold' }}>Drill Accuracy % Over Time</Text>
+      </View>
+      {/*
+      {drillTime.map((time, index) => (
+        <View key={index} style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+          <Text>{time}</Text>
+          <Text>{shotAccuracy[index]}%</Text>
+        </View>
+      ))}*/}
       <View
         style={{
-          flexDirection: 'row',
-          width: apx(750),
-          height: apx(570),
-          alignSelf: 'stretch',
+          backgroundColor: '#fff',
+          alignItems: 'stretch',
         }}>
-        <View style={{ flex: 1 }} {...panResponder.current.panHandlers}>
-          <AreaChart
-            style={{ flex: 1 }}
-            data={shotAccuracy}
-            // curve={shape.curveNatural}
-            curve={shape.curveMonotoneX}
-            contentInset={{ ...verticalContentInset }}
-            svg={{ fill: 'url(#gradient)' }}>
-            <CustomLine />
-            <CustomGrid />
-            <CustomGradient />
-            <Tooltip />
-          </AreaChart>
-        </View>
+        <View
+          style={{
+            flexDirection: 'row',
+            width: apx(750),
+            height: apx(570),
+            alignSelf: 'stretch',
+          }}>
+          <View style={{ flex: 1 }} {...panResponder.current.panHandlers}>
+            <AreaChart
+              style={{ flex: 1 }}
+              data={shotAccuracy}
+              // curve={shape.curveNatural}
+              curve={shape.curveMonotoneX}
+              contentInset={{ ...verticalContentInset }}
+              svg={{ fill: 'url(#gradient)' }}>
+              <CustomLine />
+              <CustomGrid />
+              <CustomGradient />
+              <Tooltip />
+            </AreaChart>
+          </View>
 
-        <YAxis
-          style={{ width: apx(130) }}
+          <YAxis
+            style={{ width: apx(130) }}
+            data={shotAccuracy}
+            contentInset={verticalContentInset}
+            svg={{ fontSize: apx(30), fill: '#617485' }}
+          />
+        </View>
+        <XAxis
+          style={{
+            alignSelf: 'stretch',
+            // marginTop: apx(57),
+            width: apx(750),
+            height: apx(60),
+          }}
+          numberOfTicks={5}
           data={shotAccuracy}
-          contentInset={verticalContentInset}
-          svg={{ fontSize: apx(30), fill: '#617485' }}
+          formatLabel={(value, index) => {
+            const date = new Date(drillTime[value]);
+            const month = date.toLocaleString('default', { month: 'short' });
+            const day = date.getDate();
+            return `${month} ${day}`;
+          }}
+          contentInset={{
+            left: apx(25),
+            right: apx(25),
+          }}
+          svg={{
+            fontSize: apx(20),
+            fill: '#617485',
+            y: apx(20),
+            // originY: 30,
+          }}
         />
       </View>
-      <XAxis
-        style={{
-          alignSelf: 'stretch',
-          // marginTop: apx(57),
-          width: apx(750),
-          height: apx(60),
-        }}
-        numberOfTicks={7}
-        data={shotAccuracy}
-        formatLabel={(value, index) => drillTime[value]}
-        contentInset={{
-          left: apx(36),
-          right: apx(130),
-        }}
-        svg={{
-          fontSize: apx(20),
-          fill: '#617485',
-          y: apx(20),
-          // originY: 30,
-        }}
-      />
     </View>
   );
 }

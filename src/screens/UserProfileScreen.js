@@ -2,9 +2,9 @@ import React, { createContext, useContext, useState } from 'react';
 import { Dimensions, StyleSheet, Text, View } from 'react-native';
 import { Avatar, IconButton } from 'react-native-paper';
 import Button from '../components/Button.js';
-import { ChartView } from '../components/ChartView.js';
-import InteractiveChart from '../components/InteractiveChart.js';
+
 import FullLogo from '../components/FullLogo.js';
+import InteractiveChart from '../components/InteractiveChart.js';
 import { TableView } from '../components/TableView.js';
 import { theme } from '../core/theme';
 import { AuthContext } from '../providers/AuthProvider.js';
@@ -21,10 +21,12 @@ export const UserProfileScreen = () => {
     if (tableView) {
       return <TableView />;
     } else {
+      console.log('interactive chart', InteractiveChart);
       return <InteractiveChart />;
     }
   };
 
+  console.log('table view =', tableView);
   return (
     <>
       <View style={styles.logo}>
@@ -67,7 +69,6 @@ export const UserProfileScreen = () => {
             size={40}
             onPress={() => {
               setTableView(true);
-              console.log('table view =', tableView);
             }}
           />
           <IconButton
@@ -76,7 +77,6 @@ export const UserProfileScreen = () => {
             size={40}
             onPress={() => {
               setTableView(false);
-              console.log('table view =', tableView);
             }}
           />
         </View>

@@ -11,7 +11,7 @@ import {
   DevGraphScreen,
 } from '../screens';
 import { UserProfileScreen } from '../screens/UserProfileScreen';
-import { ChartView } from './ChartView';
+
 import InteractiveChart from './InteractiveChart';
 
 export function NavBarContainer({ route }) {
