@@ -33,7 +33,7 @@ export const UserProfileScreen = () => {
         <FullLogo />
       </View>
       <View style={styles.userInfo}>
-        <Avatar.Icon size={90} icon="face-man-shimmer" />
+        <Avatar.Image size={100} source={require('../../assets/avatar.jpeg')} />
         <View style={styles.nameAge}>
           <View style={styles.spaceBetweenRow}>
             <Text style={styles.boldText}>NAME:</Text>
