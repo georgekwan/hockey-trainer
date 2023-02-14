@@ -41,7 +41,6 @@ function InteractiveChart() {
     console.log('hello World', patternHistory);
 
     const sortedData = patternHistory?.sort((a, b) => {
-      console.log('***', a.date.seconds);
       let result = a.drillId.localeCompare(b.drillId);
       if (result === 0) {
         result = a?.date.seconds - b.date.seconds;
@@ -52,7 +51,7 @@ function InteractiveChart() {
     const newShotAccuracy = [];
     for (let drill of sortedData) {
       let date = new Date(
-        drill.date.seconds * 1000 + drill.date.nanoseconds / 1000000
+        drill?.date.seconds * 1000 + drill.date.nanoseconds / 1000000
       ).toLocaleString('en-GB', {
         day: '2-digit',
         month: '2-digit',
