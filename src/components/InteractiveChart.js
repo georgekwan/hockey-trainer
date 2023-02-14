@@ -40,7 +40,8 @@ function InteractiveChart() {
     if (!patternHistory) return;
     console.log('hello World', patternHistory);
 
-    const sortedData = patternHistory.sort((a, b) => {
+    const sortedData = patternHistory?.sort((a, b) => {
+      console.log('***', a.date.seconds);
       let result = a.drillId.localeCompare(b.drillId);
       if (result === 0) {
         result = a.date.seconds - b.date.seconds;
