@@ -54,6 +54,7 @@ function InteractiveChart() {
       let date = new Date(
         drill.date.seconds * 1000 + drill.date.nanoseconds / 1000000
       ).toLocaleString('en-GB', {
+        year: 'numeric',
         day: '2-digit',
         month: '2-digit',
         hour: '2-digit',
