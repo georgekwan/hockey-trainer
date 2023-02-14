@@ -4,7 +4,7 @@ This is a React Native application that assists hockey players in improving thei
 
 ## Screenshots
 
-![App Screenshot](https://i.imgur.com/Q0oXdQe.gifv)
+![App Screenshot](https://i.imgur.com/Q0oXdQe.gif)
 
 ## Prerequisites
 
