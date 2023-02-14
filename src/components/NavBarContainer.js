@@ -8,7 +8,7 @@ import {
   DrillSelectionScreen,
   HomeScreen,
   // UserProfileScreen,
-  DevGraphScreen,
+  PlayerRankScreen,
 } from '../screens';
 import { UserProfileScreen } from '../screens/UserProfileScreen';
 
@@ -43,25 +43,25 @@ export function NavBarContainer({ route }) {
       unfocusedIcon: 'hockey-puck',
     },
     {
+      key: 'playerRankScreen',
+      title: 'User Ranking',
+      focusedIcon: 'trophy',
+      unfocusedIcon: 'trophy-outline',
+      color: theme.colors.primary,
+    },
+    {
       key: 'user',
       title: 'User Details',
       focusedIcon: 'account-circle',
       unfocusedIcon: 'account-circle-outline',
       color: theme.colors.primary,
     },
-    // {
-    //   key: 'graph',
-    //   title: 'Graph Details',
-    //   focusedIcon: 'account-circle',
-    //   unfocusedIcon: 'account-circle-outline',
-    //   color: theme.colors.primary,
-    // },
   ]);
   const renderScene = BottomNavigation.SceneMap({
     home: () => <HomeScreen setIndex={setIndex} />,
     patternScreen: DrillSelectionScreen,
+    playerRankScreen: PlayerRankScreen,
     user: UserProfileScreen,
-    // graph: InteractiveChart,
   });
   return (
     <SafeAreaProvider>
