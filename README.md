@@ -2,6 +2,10 @@
 
 This is a React Native application that assists hockey players in improving their shot accuracy through the use of various drills. The app was built with [Expo](https://expo.io/).
 
+## Screenshots
+
+![App Screenshot]([](https://i.imgur.com/Q0oXdQe.gifv)
+
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/)
