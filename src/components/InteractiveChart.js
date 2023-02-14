@@ -37,6 +37,7 @@ function InteractiveChart() {
   const [drillTime, setDrillTime] = useState([]);
   const [shotAccuracy, setShotAccuracy] = useState([]);
   const size = useRef(drillTime.length);
+
   useEffect(() => {
     if (!patternHistory) return;
 
@@ -86,7 +87,6 @@ function InteractiveChart() {
   // }
 
   const [positionX, setPositionX] = useState(-1); // The currently selected X coordinate position
-  console.log('!!!***', positionX);
   const panResponder = useRef(
     PanResponder.create({
       onStartShouldSetPanResponder: (evt, gestureState) => true,
@@ -168,8 +168,8 @@ function InteractiveChart() {
         {/* <Stop offset="0%" stopColor="rgb(134, 65, 244)" /> */}
         {/* <Stop offset="100%" stopColor="rgb(66, 194, 244)" /> */}
 
-        <Stop offset="0%" stopColor="#DC3535" stopOpacity={0.5} />
-        <Stop offset="100%" stopColor="#DC3535" stopOpacity={0} />
+        <Stop offset="0%" stopColor="#DC3535" stopOpacity={1} />
+        <Stop offset="55%" stopColor="#DC3535" stopOpacity={0} />
       </LinearGradient>
     </Defs>
   );
@@ -180,7 +180,8 @@ function InteractiveChart() {
     }
 
     const date = drillTime[positionX];
-    // TODO add drill name to gray touch box
+    // console.log(date);
+
     return (
       <G x={x(positionX)} key="tooltip">
         <G
@@ -195,7 +196,12 @@ function InteractiveChart() {
             stroke="rgba(255, 255, 255, 0.8)"
             fill="rgba(99,102,106, .8)"
           />
-          <SvgText x={apx(20)} fill="rgba(255, 255, 255, 255)" opacity={0.85} fontSize={apx(30)}>
+          <SvgText
+            x={apx(20)}
+            fill="rgba(255, 255, 255, 255)"
+            opacity={0.85}
+            fontSize={apx(30)}
+            fontWeight="bold">
             {newDrillName[positionX]}
           </SvgText>
           <SvgText
@@ -206,7 +212,12 @@ function InteractiveChart() {
             fontSize={apx(30)}>
             {date}
           </SvgText>
-          <SvgText x={apx(20)} y={apx(24 + 80)} fontSize={apx(45)} fontWeight="bold" fill="#285EA3">
+          <SvgText
+            x={apx(20)}
+            y={apx(24 + 80)}
+            fontSize={apx(45)}
+            fontWeight="bold"
+            fill="rgba(255, 255, 255, 255)">
             {shotAccuracy[positionX]}%
           </SvgText>
         </G>
