@@ -285,10 +285,10 @@ function InteractiveChart() {
           </View>
 
           <YAxis
-            style={{ width: apx(130) }}
+            style={{ width: apx(80) }}
             data={shotAccuracy}
             contentInset={verticalContentInset}
-            svg={{ fontSize: apx(30), fill: '#617485' }}
+            svg={{ fontSize: apx(35), fill: '#617485' }}
           />
         </View>
         <XAxis
