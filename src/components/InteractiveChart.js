@@ -33,26 +33,27 @@ function InteractiveChart() {
     let width = Dimensions.get('window').width;
     return (width / 750) * size;
   };
+  const [newDrillName, setNewDrillName] = useState([]);
   const [drillTime, setDrillTime] = useState([]);
   const [shotAccuracy, setShotAccuracy] = useState([]);
   const size = useRef(drillTime.length);
+
   useEffect(() => {
     if (!patternHistory) return;
-    console.log('hello World', patternHistory);
 
     const sortedData = patternHistory?.sort((a, b) => {
-      let result = a.drillId.localeCompare(b.drillId);
-      if (result === 0) {
-        result = a?.date.seconds - b.date.seconds;
-      }
+      let result = a?.date.seconds - b.date.seconds;
+
       return result;
     });
     const newDrillTime = [];
     const newShotAccuracy = [];
+    const newDrillName = [];
     for (let drill of sortedData) {
       let date = new Date(
         drill?.date.seconds * 1000 + drill.date.nanoseconds / 1000000
       ).toLocaleString('en-GB', {
+        year: 'numeric',
         day: '2-digit',
         month: '2-digit',
         hour: '2-digit',
@@ -64,7 +65,10 @@ function InteractiveChart() {
       accuracy = Math.round(accuracy * 100) / 100;
       newDrillTime.push(date);
       newShotAccuracy.push(accuracy);
+
+      newDrillName.push(drill.drillId);
     }
+    setNewDrillName(newDrillName);
     setDrillTime(newDrillTime);
     setShotAccuracy(newShotAccuracy);
     size.current = newDrillTime.length;
@@ -83,7 +87,6 @@ function InteractiveChart() {
   // }
 
   const [positionX, setPositionX] = useState(-1); // The currently selected X coordinate position
-
   const panResponder = useRef(
     PanResponder.create({
       onStartShouldSetPanResponder: (evt, gestureState) => true,
@@ -165,8 +168,8 @@ function InteractiveChart() {
         {/* <Stop offset="0%" stopColor="rgb(134, 65, 244)" /> */}
         {/* <Stop offset="100%" stopColor="rgb(66, 194, 244)" /> */}
 
-        <Stop offset="0%" stopColor="#DC3535" stopOpacity={0.5} />
-        <Stop offset="100%" stopColor="#DC3535" stopOpacity={0} />
+        <Stop offset="0%" stopColor="#DC3535" stopOpacity={1} />
+        <Stop offset="55%" stopColor="#DC3535" stopOpacity={0} />
       </LinearGradient>
     </Defs>
   );
@@ -177,6 +180,7 @@ function InteractiveChart() {
     }
 
     const date = drillTime[positionX];
+    // console.log(date);
 
     return (
       <G x={x(positionX)} key="tooltip">
@@ -187,16 +191,33 @@ function InteractiveChart() {
             y={-apx(24 + 24 + 20) / 2}
             rx={apx(12)} // borderRadius
             ry={apx(12)} // borderRadius
-            width={apx(300)}
-            height={apx(96)}
+            width={apx(350)}
+            height={apx(150)}
             stroke="rgba(255, 255, 255, 0.8)"
-            fill="rgba(99,102,106, 0.5)"
+            fill="rgba(99,102,106, .8)"
           />
-
-          <SvgText x={apx(20)} fill="rgba(255, 255, 255, 255)" opacity={0.85} fontSize={apx(30)}>
+          <SvgText
+            x={apx(20)}
+            fill="rgba(255, 255, 255, 255)"
+            opacity={0.85}
+            fontSize={apx(30)}
+            fontWeight="bold">
+            {newDrillName[positionX]}
+          </SvgText>
+          <SvgText
+            x={apx(20)}
+            y={apx(24 + 20)}
+            fill="rgba(255, 255, 255, 255)"
+            opacity={0.85}
+            fontSize={apx(30)}>
             {date}
           </SvgText>
-          <SvgText x={apx(20)} y={apx(24 + 20)} fontSize={apx(45)} fontWeight="bold" fill="#285EA3">
+          <SvgText
+            x={apx(20)}
+            y={apx(24 + 80)}
+            fontSize={apx(45)}
+            fontWeight="bold"
+            fill="rgba(255, 255, 255, 255)">
             {shotAccuracy[positionX]}%
           </SvgText>
         </G>
@@ -223,8 +244,6 @@ function InteractiveChart() {
   };
 
   const verticalContentInset = { top: apx(40), bottom: apx(40) };
-  console.log('shotAccuracy', shotAccuracy);
-  console.log('drillTime', drillTime);
 
   return (
     <View>
@@ -266,10 +285,10 @@ function InteractiveChart() {
           </View>
 
           <YAxis
-            style={{ width: apx(130) }}
+            style={{ width: apx(80) }}
             data={shotAccuracy}
             contentInset={verticalContentInset}
-            svg={{ fontSize: apx(30), fill: '#617485' }}
+            svg={{ fontSize: apx(35), fill: '#617485' }}
           />
         </View>
         <XAxis
