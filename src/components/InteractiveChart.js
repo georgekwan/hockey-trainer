@@ -39,14 +39,10 @@ function InteractiveChart() {
   const size = useRef(drillTime.length);
   useEffect(() => {
     if (!patternHistory) return;
-    // console.log('hello World', patternHistory);
 
     const sortedData = patternHistory?.sort((a, b) => {
-      // console.log('***', a.date.seconds);
-      // let result = a.drillId.localeCompare(b.drillId);
-      // if (result === 0) {
       let result = a?.date.seconds - b.date.seconds;
-      // }
+
       return result;
     });
     const newDrillTime = [];
@@ -237,8 +233,6 @@ function InteractiveChart() {
   };
 
   const verticalContentInset = { top: apx(40), bottom: apx(40) };
-  // console.log('shotAccuracy', shotAccuracy);
-  // console.log('drillTime', drillTime);
 
   return (
     <View>
