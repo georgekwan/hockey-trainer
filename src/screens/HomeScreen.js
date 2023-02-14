@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
   welcomeText: {
     fontSize: WIDTH * 0.08,
     fontWeight: 'bold',
-    paddingLeft: 5,
+    padding: 6,
     paddingVertical: WIDTH * 0.02,
     marginLeft: WIDTH * 0.03,
     marginTop: HEIGHT * 0.03,
@@ -115,6 +115,7 @@ const styles = StyleSheet.create({
     marginTop: HEIGHT * 0.02,
     marginHorizontal: WIDTH * 0.02,
     flexDirection: 'row',
+    justifyContent: 'center',
   },
   title: {
     fontSize: WIDTH * 0.08,
@@ -126,10 +127,13 @@ const styles = StyleSheet.create({
     marginVertical: HEIGHT * 0.039,
   },
   iconTextRow: {
+    display: 'flex',
     margin: WIDTH * 0.01,
     width: WIDTH * 0.65,
+    justifyContent: 'center',
+    alignItems: 'center',
     flexDirection: 'row',
-    alignContent: 'flex-start',
+    alignContent: 'center',
     marginVertical: WIDTH * 0.01,
   },
   recommendedPatternSection: {
