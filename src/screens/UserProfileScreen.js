@@ -30,56 +30,58 @@ export const UserProfileScreen = () => {
       <View style={styles.logo}>
         <FullLogo />
       </View>
-      <View style={styles.userInfo}>
-        <Avatar.Image size={100} source={require('../../assets/avatar.jpeg')} />
-        <View style={styles.nameAge}>
-          <View style={styles.spaceBetweenRow}>
-            <Text style={styles.boldText}>NAME:</Text>
-            <Text style={styles.normalText}>{profile?.displayName}</Text>
-          </View>
-          <View style={styles.spaceBetweenRow}>
-            <Text style={styles.boldText}>AGE:</Text>
-            <Text style={styles.normalText}>{profile?.age}</Text>
-          </View>
-          <View style={styles.spaceBetweenRow}>
-            <Text style={styles.boldText}>CLAN:</Text>
-            <Text style={styles.normalText}>The Fire Pucks</Text>
+      <View style={{ padding: 10 }}>
+        <View style={styles.userInfo}>
+          <Avatar.Image size={100} source={require('../../assets/avatar.jpeg')} />
+          <View style={styles.nameAge}>
+            <View style={styles.spaceBetweenRow}>
+              <Text style={styles.boldText}>NAME:</Text>
+              <Text style={styles.normalText}>{profile?.displayName}</Text>
+            </View>
+            <View style={styles.spaceBetweenRow}>
+              <Text style={styles.boldText}>AGE:</Text>
+              <Text style={styles.normalText}>{profile?.age}</Text>
+            </View>
+            <View style={styles.spaceBetweenRow}>
+              <Text style={styles.boldText}>CLAN:</Text>
+              <Text style={styles.normalText}>The Fire Pucks</Text>
+            </View>
           </View>
         </View>
-      </View>
-      <View style={styles.button}>
-        <Button
-          style={{ width: WIDTH * 0.8 }}
-          icon="pencil"
-          mode="contained"
-          onPress={() => console.log('EDIT PROFILE / HISTORY')}>
-          EDIT PROFILE / HISTORY
-        </Button>
-      </View>
-      <View style={styles.historyParent}>
-        <Text style={styles.historyText}>HISTORY</Text>
-        <View style={styles.viewButtonsParent}>
-          <IconButton
-            default
-            type="contained"
-            icon="table"
-            iconColor="black"
-            size={40}
-            onPress={() => {
-              setTableView(true);
-            }}
-          />
-          <IconButton
-            icon="chart-line"
-            iconColor="black"
-            size={40}
-            onPress={() => {
-              setTableView(false);
-            }}
-          />
+        <View style={styles.button}>
+          <Button
+            style={{ width: WIDTH * 0.8 }}
+            icon="pencil"
+            mode="contained"
+            onPress={() => console.log('EDIT PROFILE / HISTORY')}>
+            EDIT PROFILE / HISTORY
+          </Button>
         </View>
+        <View style={styles.historyParent}>
+          <Text style={styles.historyText}>HISTORY</Text>
+          <View style={styles.viewButtonsParent}>
+            <IconButton
+              default
+              type="contained"
+              icon="table"
+              iconColor="black"
+              size={40}
+              onPress={() => {
+                setTableView(true);
+              }}
+            />
+            <IconButton
+              icon="chart-line"
+              iconColor="black"
+              size={40}
+              onPress={() => {
+                setTableView(false);
+              }}
+            />
+          </View>
+        </View>
+        <PatternProvider>{visualizeData(tableView)}</PatternProvider>
       </View>
-      <PatternProvider>{visualizeData(tableView)}</PatternProvider>
     </>
   );
 };
@@ -130,6 +132,7 @@ const styles = StyleSheet.create({
     color: theme.colors.primary,
   },
   viewButtonsParent: {
+    display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
   },

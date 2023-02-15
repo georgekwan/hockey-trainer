@@ -51,139 +51,140 @@ const DrillSelectionScreen = () => {
         }}>
         <FullLogo />
       </View>
-
-      <View
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          marginHorizontal: 50,
-          marginTop: HEIGHT * 0.02,
-        }}>
-        <List.Icon icon="hockey-puck" color={theme.colors.primary} />
-        <Text
+      <View style={{ padding: 10 }}>
+        <View
           style={{
-            fontSize: WIDTH * 0.08,
-            fontWeight: '800',
-            textAlign: 'center',
-            paddingVertical: WIDTH * 0.02,
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            marginHorizontal: 50,
+            marginTop: HEIGHT * 0.02,
           }}>
-          SELECT PATTERN
-        </Text>
-      </View>
-
-      <View style={{ height: HEIGHT * 0.2 }}>
-        <ScrollView
-          persistentScrollbar={false}
-          style={{
-            marginHorizontal: 5,
-            height: HEIGHT * 0.2,
-          }}>
-          <View
+          <List.Icon icon="hockey-puck" color={theme.colors.primary} />
+          <Text
             style={{
-              flexDirection: 'row',
-              flexWrap: 'wrap',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              alignContent: 'center',
+              fontSize: WIDTH * 0.08,
+              fontWeight: '800',
+              textAlign: 'center',
+              paddingVertical: WIDTH * 0.02,
             }}>
-            {patternNames.map((name) => (
-              <PatternButton
-                key={name}
-                name={name}
-                selectedPatternName={selectedPatternName}
-                setSelectedPatternName={setSelectedPatternName}
-              />
-            ))}
-          </View>
-        </ScrollView>
-      </View>
+            SELECT PATTERN
+          </Text>
+        </View>
 
-      <View
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-around',
-          marginHorizontal: 50,
-          marginTop: HEIGHT * 0.01,
-          alignContent: 'center',
-        }}>
-        <List.Icon icon="timer" color={theme.colors.primary} />
-        <Text
+        <View style={{ height: HEIGHT * 0.2 }}>
+          <ScrollView
+            persistentScrollbar={false}
+            style={{
+              marginHorizontal: 5,
+              height: HEIGHT * 0.2,
+            }}>
+            <View
+              style={{
+                flexDirection: 'row',
+                flexWrap: 'wrap',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                alignContent: 'center',
+              }}>
+              {patternNames.map((name) => (
+                <PatternButton
+                  key={name}
+                  name={name}
+                  selectedPatternName={selectedPatternName}
+                  setSelectedPatternName={setSelectedPatternName}
+                />
+              ))}
+            </View>
+          </ScrollView>
+        </View>
+
+        <View
           style={{
-            fontSize: WIDTH * 0.08,
-            fontWeight: '800',
-            textAlign: 'center',
-            paddingVertical: WIDTH * 0.02,
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-around',
+            marginHorizontal: 50,
+            marginTop: HEIGHT * 0.01,
+            alignContent: 'center',
           }}>
-          SELECT TIMEOUT
-        </Text>
-      </View>
+          <List.Icon icon="timer" color={theme.colors.primary} />
+          <Text
+            style={{
+              fontSize: WIDTH * 0.08,
+              fontWeight: '800',
+              textAlign: 'center',
+              paddingVertical: WIDTH * 0.02,
+            }}>
+            SELECT TIMEOUT
+          </Text>
+        </View>
 
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}>
-        {[3, 5, 7].map((seconds) => (
-          <TimeoutButton
-            key={seconds}
-            seconds={seconds}
-            selectedSeconds={selectedSeconds}
-            setSelectedSeconds={setSelectedSeconds}
-          />
-        ))}
-      </View>
-      <View
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-around',
-          marginHorizontal: 50,
-          marginTop: HEIGHT * 0.01,
-          alignContent: 'center',
-          paddingTop: HEIGHT * 0.015,
-        }}>
-        <List.Icon icon="hockey-sticks" color={theme.colors.primary} />
-        <Text
+        <View
           style={{
-            fontSize: WIDTH * 0.08,
-            fontWeight: '800',
-            textAlign: 'center',
-            paddingVertical: WIDTH * 0.02,
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
           }}>
-          SELECT TUTOR
-        </Text>
-      </View>
+          {[3, 5, 7].map((seconds) => (
+            <TimeoutButton
+              key={seconds}
+              seconds={seconds}
+              selectedSeconds={selectedSeconds}
+              setSelectedSeconds={setSelectedSeconds}
+            />
+          ))}
+        </View>
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-around',
+            marginHorizontal: 50,
+            marginTop: HEIGHT * 0.01,
+            alignContent: 'center',
+            paddingTop: HEIGHT * 0.015,
+          }}>
+          <List.Icon icon="hockey-sticks" color={theme.colors.primary} />
+          <Text
+            style={{
+              fontSize: WIDTH * 0.08,
+              fontWeight: '800',
+              textAlign: 'center',
+              paddingVertical: WIDTH * 0.02,
+            }}>
+            SELECT TUTOR
+          </Text>
+        </View>
 
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}>
-        {[5, 11].map((tutorHoles) => (
-          <TutorButton
-            key={tutorHoles}
-            tutorHoles={tutorHoles}
-            selectedTutor={selectedTutor}
-            setSelectedTutor={setSelectedTutor}
-          />
-        ))}
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          {[5, 11].map((tutorHoles) => (
+            <TutorButton
+              key={tutorHoles}
+              tutorHoles={tutorHoles}
+              selectedTutor={selectedTutor}
+              setSelectedTutor={setSelectedTutor}
+            />
+          ))}
+        </View>
+        <TrainNowButton
+          onPress={() =>
+            navigation.navigate('InDrillScreen', {
+              selectedPatternName,
+              selectedSeconds,
+              selectedTutor,
+            })
+          }
+        />
       </View>
-      <TrainNowButton
-        onPress={() =>
-          navigation.navigate('InDrillScreen', {
-            selectedPatternName,
-            selectedSeconds,
-            selectedTutor,
-          })
-        }
-      />
     </View>
   );
 };
