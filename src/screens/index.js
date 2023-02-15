@@ -6,5 +6,4 @@ export { default as HomeScreen } from './HomeScreen';
 export { default as DrillSelectionScreen } from './DrillSelectionScreen';
 export { default as InDrillScreen } from './InDrillScreen';
 export { default as UserProfileScreen } from './UserProfileScreen';
-export { default as DevGraphScreen } from './DevGraphScreen';
 export { default as PlayerRankScreen } from './PlayerRankScreen';
