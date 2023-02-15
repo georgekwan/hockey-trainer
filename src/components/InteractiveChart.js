@@ -159,7 +159,7 @@ function InteractiveChart() {
   );
 
   const CustomLine = ({ line }) => (
-    <Path key="line" d={line} stroke="#DC3535" strokeWidth={apx(6)} fill="none" />
+    <Path key="line" d={line} stroke="#DC3535" strokeWidth={apx(8)} fill="none" />
   );
 
   const CustomGradient = () => (
@@ -232,7 +232,7 @@ function InteractiveChart() {
 
           <Circle
             cy={y(shotAccuracy[positionX])}
-            r={apx(20 / 2)}
+            r={apx(25 / 2)}
             stroke="#fff"
             strokeWidth={apx(2)}
             fill="#DC3535"
