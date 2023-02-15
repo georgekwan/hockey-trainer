@@ -14,7 +14,7 @@ import { UserProfileScreen } from '../screens/UserProfileScreen';
 
 import InteractiveChart from './InteractiveChart';
 
-export function NavBarContainer({ route }) {
+const NavBarContainer = ({ route }) => {
   // console.log({ route });
   const { initialIndex } = route.params ?? {};
 
@@ -75,4 +75,6 @@ export function NavBarContainer({ route }) {
       />
     </SafeAreaProvider>
   );
-}
+};
+
+export default React.memo(NavBarContainer);
