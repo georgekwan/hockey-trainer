@@ -269,7 +269,7 @@ function InteractiveChart() {
             alignSelf: 'stretch',
           }}>
           <YAxis
-            style={{ width: apx(80) }}
+            style={{ width: apx(85) }}
             data={shotAccuracy}
             contentInset={verticalContentInset}
             svg={{ fontSize: apx(35), fill: '#617485' }}
@@ -304,7 +304,7 @@ function InteractiveChart() {
             const date = new Date(drillTime[value]);
             const month = date.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
             const day = date.getDate();
-            console.log('value is', month);
+            // console.log('value is', month);
             return month;
           }}
           contentInset={{
@@ -312,7 +312,7 @@ function InteractiveChart() {
             right: apx(25),
           }}
           svg={{
-            fontSize: apx(20),
+            fontSize: apx(25),
             fill: '#617485',
             y: apx(20),
             // originY: 30,
