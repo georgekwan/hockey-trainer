@@ -51,7 +51,7 @@ function InteractiveChart() {
     const newDrillName = [];
     for (let drill of sortedData) {
       let date = new Date(
-        drill.date.seconds * 1000 + drill.date.nanoseconds / 1000000
+        drill?.date.seconds * 1000 + drill.date.nanoseconds / 1000000
       ).toLocaleString('en-GB', {
         year: 'numeric',
         day: '2-digit',
@@ -268,6 +268,14 @@ function InteractiveChart() {
             height: apx(570),
             alignSelf: 'stretch',
           }}>
+          <YAxis
+            style={{ width: apx(80) }}
+            data={shotAccuracy}
+            contentInset={verticalContentInset}
+            svg={{ fontSize: apx(35), fill: '#617485' }}
+            formatLabel={(value) => `${value}%`}
+          />
+
           <View style={{ flex: 1 }} {...panResponder.current.panHandlers}>
             <AreaChart
               style={{ flex: 1 }}
@@ -282,13 +290,6 @@ function InteractiveChart() {
               <Tooltip />
             </AreaChart>
           </View>
-
-          <YAxis
-            style={{ width: apx(80) }}
-            data={shotAccuracy}
-            contentInset={verticalContentInset}
-            svg={{ fontSize: apx(35), fill: '#617485' }}
-          />
         </View>
         <XAxis
           style={{
@@ -301,12 +302,13 @@ function InteractiveChart() {
           data={shotAccuracy}
           formatLabel={(value, index) => {
             const date = new Date(drillTime[value]);
-            const month = date.toLocaleString('default', { month: 'short' });
+            const month = date.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
             const day = date.getDate();
-            return `${month} ${day}`;
+            console.log('value is', month);
+            return month;
           }}
           contentInset={{
-            left: apx(25),
+            left: apx(125),
             right: apx(25),
           }}
           svg={{
