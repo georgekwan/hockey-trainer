@@ -14,15 +14,17 @@ export const PatternProvider = (props) => {
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    console.log('PROFILE HERE IUD', user.uid);
-    const q = query(collection(myDb, C.COLL_DRILL_RESULTS), where(C.FLD_USER_ID, '==', user.uid));
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      const theDocs = querySnapshot.docs.map((docSnap) => docSnap.data());
-      console.log('got docs: ', querySnapshot.size);
-      setPatternHistory(theDocs);
-    });
-    return unsubscribe;
-  }, []);
+    if (user) {
+      console.log('PROFILE HERE IUD', user.uid);
+      const q = query(collection(myDb, C.COLL_DRILL_RESULTS), where(C.FLD_USER_ID, '==', user.uid));
+      const unsubscribe = onSnapshot(q, (querySnapshot) => {
+        const theDocs = querySnapshot.docs.map((docSnap) => docSnap.data());
+        console.log('got docs: ', querySnapshot.size);
+        setPatternHistory(theDocs);
+      });
+      return unsubscribe;
+    }
+  }, [user]);
 
   let sortedPatternHistory = patternHistory?.sort((a, b) => b?.date?.seconds - a?.date?.seconds);
 
