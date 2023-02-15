@@ -190,7 +190,7 @@ function InteractiveChart() {
             y={-apx(24 + 24 + 20) / 2}
             rx={apx(12)} // borderRadius
             ry={apx(12)} // borderRadius
-            width={apx(350)}
+            width={apx(400)}
             height={apx(150)}
             stroke="rgba(255, 255, 255, 0.8)"
             fill="rgba(99,102,106, .8)"
