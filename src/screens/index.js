@@ -7,3 +7,4 @@ export { default as DrillSelectionScreen } from './DrillSelectionScreen';
 export { default as InDrillScreen } from './InDrillScreen';
 export { default as UserProfileScreen } from './UserProfileScreen';
 export { default as PlayerRankScreen } from './PlayerRankScreen';
+export { default as ResultInputScreen } from './ResultInputScreen';
