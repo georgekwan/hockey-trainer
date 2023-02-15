@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
 import { Avatar, List, Text } from 'react-native-paper';
 import FullLogo from '../components/FullLogo.js';
-import { TrainNowButton } from '../components/TrainNowButton.js';
+import TrainNowButton from '../components/TrainNowButton.js';
 import { theme } from '../core/theme.js';
 import * as C from '../helpers/constants.js';
 import { AuthContext } from '../providers/AuthProvider.js';

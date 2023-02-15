@@ -12,7 +12,7 @@ import { theme } from '../core/theme';
 import { PatternButton } from '../components/selectDrillScreen/PatternButton.js';
 import { TimeoutButton } from '../components/selectDrillScreen/TimeoutButton.js';
 import { TutorButton } from '../components/selectDrillScreen/TutorButton.js';
-import { TrainNowButton } from '../components/TrainNowButton.js';
+import TrainNowButton from '../components/TrainNowButton.js';
 import { PatternContext } from '../providers/PatternProvider.js';
 
 const WIDTH = Dimensions.get('screen').width;

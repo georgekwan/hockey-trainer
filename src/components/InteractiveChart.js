@@ -25,7 +25,7 @@ function convertTimestamp(unixTimestamp) {
   }
 }
 
-export default InteractiveChart;
+export default React.memo(InteractiveChart);
 
 function InteractiveChart() {
   const { patternHistory } = useContext(PatternContext);
