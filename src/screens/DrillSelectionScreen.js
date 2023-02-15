@@ -12,7 +12,7 @@ import { theme } from '../core/theme';
 import { PatternButton } from '../components/selectDrillScreen/PatternButton.js';
 import { TimeoutButton } from '../components/selectDrillScreen/TimeoutButton.js';
 import { TutorButton } from '../components/selectDrillScreen/TutorButton.js';
-import { TrainNowButton } from '../components/TrainNowButton.js';
+import TrainNowButton from '../components/TrainNowButton.js';
 import { PatternContext } from '../providers/PatternProvider.js';
 
 const WIDTH = Dimensions.get('screen').width;
@@ -54,10 +54,11 @@ const DrillSelectionScreen = () => {
 
       <View
         style={{
+          display: 'flex',
           flexDirection: 'row',
           alignItems: 'center',
-          justifyContent: 'space-around',
-          marginHorizontal: WIDTH * 0.05,
+          justifyContent: 'space-between',
+          marginHorizontal: 50,
           marginTop: HEIGHT * 0.02,
         }}>
         <List.Icon icon="hockey-puck" color={theme.colors.primary} />
@@ -101,10 +102,11 @@ const DrillSelectionScreen = () => {
 
       <View
         style={{
+          display: 'flex',
           flexDirection: 'row',
           alignItems: 'center',
           justifyContent: 'space-around',
-          marginHorizontal: WIDTH * 0.05,
+          marginHorizontal: 50,
           marginTop: HEIGHT * 0.01,
           alignContent: 'center',
         }}>
@@ -137,10 +139,11 @@ const DrillSelectionScreen = () => {
       </View>
       <View
         style={{
+          display: 'flex',
           flexDirection: 'row',
           alignItems: 'center',
           justifyContent: 'space-around',
-          marginHorizontal: WIDTH * 0.05,
+          marginHorizontal: 50,
           marginTop: HEIGHT * 0.01,
           alignContent: 'center',
           paddingTop: HEIGHT * 0.015,

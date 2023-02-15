@@ -5,7 +5,7 @@ import Button from '../components/Button.js';
 
 import FullLogo from '../components/FullLogo.js';
 import InteractiveChart from '../components/InteractiveChart.js';
-import { TableView } from '../components/TableView.js';
+import TableView from '../components/TableView.js';
 import { theme } from '../core/theme';
 import { AuthContext } from '../providers/AuthProvider.js';
 import { PatternProvider } from '../providers/PatternProvider.js';
@@ -21,12 +21,10 @@ export const UserProfileScreen = () => {
     if (tableView) {
       return <TableView />;
     } else {
-      console.log('interactive chart', InteractiveChart);
       return <InteractiveChart />;
     }
   };
 
-  console.log('table view =', tableView);
   return (
     <>
       <View style={styles.logo}>
@@ -54,7 +52,7 @@ export const UserProfileScreen = () => {
           style={{ width: WIDTH * 0.8 }}
           icon="pencil"
           mode="contained"
-          onPress={() => console.log('Pressed')}>
+          onPress={() => console.log('EDIT PROFILE / HISTORY')}>
           EDIT PROFILE / HISTORY
         </Button>
       </View>

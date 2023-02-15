@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import { Provider } from 'react-native-paper';
 
-import { NavBarContainer } from './src/components/NavBarContainer.js';
+import NavBarContainer from './src/components/NavBarContainer.js';
 import { theme } from './src/core/theme';
 import { AuthProvider } from './src/providers/AuthProvider.js';
 import { FirebaseProvider } from './src/providers/FirebaseProvider.js';
@@ -15,10 +15,8 @@ import {
   RegisterScreen,
   ResetPasswordScreen,
   StartScreen,
+  ResultInputScreen,
 } from './src/screens';
-
-// import InDrillScreen from './src/screens/InDrillScreen.js';
-import ResultInputScreen from './src/screens/ResultInputScreen.js';
 
 const Stack = createStackNavigator();
 

@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
 import { Avatar, List, Text } from 'react-native-paper';
 import FullLogo from '../components/FullLogo.js';
-import { TrainNowButton } from '../components/TrainNowButton.js';
+import TrainNowButton from '../components/TrainNowButton.js';
 import { theme } from '../core/theme.js';
 import * as C from '../helpers/constants.js';
 import { AuthContext } from '../providers/AuthProvider.js';
@@ -47,13 +47,19 @@ const HomeScreen = ({ setIndex }) => {
       <View style={styles.logo}>
         <FullLogo />
       </View>
-
       <View>
         <Text style={styles.welcomeText}>{'Welcome, ' + profile?.displayName}</Text>
       </View>
+
       <View style={styles.lastTrainingSection}>
         <Avatar.Image size={100} source={require('../../assets/avatar.jpeg')} />
-        <View style={{ justifyContent: 'center', paddingHorizontal: WIDTH * 0.02 }}>
+        <View
+          style={{
+            flexDirection: 'column',
+            justifyContent: 'flex-start',
+            paddingHorizontal: WIDTH * 0.02,
+            paddingLeft: 15,
+          }}>
           <Text style={styles.title}>LAST TRAINING</Text>
           <Text style={styles.normalText}>{sortedPatternHistory?.[0]?.drillId}</Text>
 
@@ -106,30 +112,34 @@ const styles = StyleSheet.create({
   welcomeText: {
     fontSize: WIDTH * 0.08,
     fontWeight: 'bold',
-    paddingLeft: 5,
+    padding: 6,
     paddingVertical: WIDTH * 0.02,
     marginLeft: WIDTH * 0.03,
     marginTop: HEIGHT * 0.03,
   },
   lastTrainingSection: {
+    display: 'flex',
     marginTop: HEIGHT * 0.02,
     marginHorizontal: WIDTH * 0.02,
     flexDirection: 'row',
+    justifyContent: 'center',
   },
   title: {
     fontSize: WIDTH * 0.08,
     fontWeight: '800',
-    paddingLeft: 5,
   },
   overallStatsSection: {
     alignItems: 'center',
     marginVertical: HEIGHT * 0.039,
   },
   iconTextRow: {
+    display: 'flex',
     margin: WIDTH * 0.01,
     width: WIDTH * 0.65,
+    justifyContent: 'center',
+    alignItems: 'center',
     flexDirection: 'row',
-    alignContent: 'flex-start',
+    alignContent: 'center',
     marginVertical: WIDTH * 0.01,
   },
   recommendedPatternSection: {

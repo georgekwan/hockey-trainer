@@ -6,7 +6,7 @@ import { theme } from '../core/theme';
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
-export const TrainNowButton = (props) => {
+const TrainNowButton = (props) => {
   const onPress = props.onPress;
   return (
     <View style={{ margin: WIDTH * 0.025 }}>
@@ -49,4 +49,5 @@ export const TrainNowButton = (props) => {
   );
 };
 
+export default React.memo(TrainNowButton);
 const styles = StyleSheet.create({});

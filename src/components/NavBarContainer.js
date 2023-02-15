@@ -14,12 +14,9 @@ import { UserProfileScreen } from '../screens/UserProfileScreen';
 
 import InteractiveChart from './InteractiveChart';
 
-export function NavBarContainer({ route }) {
-  // console.log({ route });
+const NavBarContainer = ({ route }) => {
   const { initialIndex } = route.params ?? {};
 
-  // console.log({ initialIndex });
-  // const [selectedPatternName, setSelectedPatternName] = useState();
   const [index, setIndex] = useState(initialIndex ?? 0);
   const handleIndexChange = (newIndex) => setIndex(newIndex);
 
@@ -75,4 +72,6 @@ export function NavBarContainer({ route }) {
       />
     </SafeAreaProvider>
   );
-}
+};
+
+export default React.memo(NavBarContainer);
