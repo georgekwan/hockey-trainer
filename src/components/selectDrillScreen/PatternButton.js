@@ -10,17 +10,13 @@ const HEIGHT = Dimensions.get('screen').height;
 export const PatternButton = (props) => {
   const { name } = props;
   const { selectedPatternName, setSelectedPatternName } = useContext(PatternContext);
-
-  // const [patternName, setPatternName] = useState();
-
   const backgroundColor = selectedPatternName === name ? '#404040' : theme.colors.primary;
+  console.log(selectedPatternName);
   return (
     <Button
       mode="elevated"
       onPress={() => {
-        // setPatternName(name);
         setSelectedPatternName(name);
-        // console.log('selected ', name, 'pattern');
       }}
       style={[styles.button, { backgroundColor: backgroundColor }]}>
       <Text style={styles.text}>{name}</Text>

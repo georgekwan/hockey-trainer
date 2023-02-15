@@ -69,7 +69,6 @@ function LoginScreen({ navigation }) {
         value={email}
         // onChangeText={(text) => setEmail({ value: text, error: '' })}
         onChangeText={(e) => {
-          // console.log('e is', e);
           setEmail(e);
         }}
         // error={!!email.error}

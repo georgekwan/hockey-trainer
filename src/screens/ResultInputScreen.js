@@ -66,7 +66,6 @@ const ResultInputScreen = ({ route }) => {
       date: serverTimestamp(),
       shooter: { ...profile },
     };
-    // console.log(missesCopy);
 
     const docRef = await addDoc(collection(myDb, 'drillResults'), missesCopy);
     setLoading(false);
@@ -124,8 +123,6 @@ const ResultInputScreen = ({ route }) => {
       <View
         style={{
           position: 'relative',
-          // borderColor: 'red',
-          // borderWidth: 5,
           height: HEIGHT * 0.35,
         }}>
         <ImageBackground
@@ -145,10 +142,7 @@ const ResultInputScreen = ({ route }) => {
               zIndex: 3,
               width: '100%',
               height: '100%',
-              // borderColor: 'yellow',
-              // borderWidth: 5,
             }}>
-            {/* {console.log(`shots left is ${numberOfShotsLeft}`)} */}
             <View
               style={{
                 display: 'flex',

@@ -12,13 +12,13 @@ export const TutorButton = (props) => {
 
   const [tutor, setTutor] = useState();
 
+  console.log('selected', tutor, 'tutor');
   return (
     <Button
       mode="elevated"
       onPress={() => {
         setTutor(tutorHoles);
         setSelectedTutor(tutorHoles);
-        console.log('selected', tutor, 'tutor');
       }}
       style={[styles.button, { backgroundColor: backgroundColor }]}
       labelStyle={{

@@ -122,7 +122,7 @@ function InteractiveChart() {
       x = xN;
     }
 
-    // console.log((x - x0) )
+    // console.log('Selected coordinate x', x - x0);
 
     // The selected coordinate x :
     // (x - x0)/ xDistance = value
@@ -180,7 +180,6 @@ function InteractiveChart() {
     }
 
     const date = drillTime[positionX];
-    // console.log(date);
 
     return (
       <G x={x(positionX)} key="tooltip">
