@@ -47,51 +47,52 @@ const HomeScreen = ({ setIndex }) => {
       <View style={styles.logo}>
         <FullLogo />
       </View>
-      <View>
-        <Text style={styles.welcomeText}>{'Welcome, ' + profile?.displayName}</Text>
-      </View>
+      <View style={{ padding: 10 }}>
+        <View>
+          <Text style={styles.welcomeText}>{'Welcome, ' + profile?.displayName}</Text>
+        </View>
+        <View style={styles.lastTrainingSection}>
+          <Avatar.Image size={100} source={require('../../assets/avatar.jpeg')} />
+          <View
+            style={{
+              flexDirection: 'column',
+              justifyContent: 'flex-start',
+              paddingHorizontal: WIDTH * 0.02,
+              paddingLeft: 15,
+            }}>
+            <Text style={styles.title}>LAST TRAINING</Text>
+            <Text style={styles.normalText}>{sortedPatternHistory?.[0]?.drillId}</Text>
 
-      <View style={styles.lastTrainingSection}>
-        <Avatar.Image size={100} source={require('../../assets/avatar.jpeg')} />
-        <View
-          style={{
-            flexDirection: 'column',
-            justifyContent: 'flex-start',
-            paddingHorizontal: WIDTH * 0.02,
-            paddingLeft: 15,
-          }}>
-          <Text style={styles.title}>LAST TRAINING</Text>
-          <Text style={styles.normalText}>{sortedPatternHistory?.[0]?.drillId}</Text>
-
-          <Text style={styles.normalText}>
-            {Math.round(
-              ((C.totalShots - sortedPatternHistory?.[0]?.totalMisses) / C.totalShots) * 100
-            )}
-            % accuracy
-          </Text>
+            <Text style={styles.normalText}>
+              {Math.round(
+                ((C.totalShots - sortedPatternHistory?.[0]?.totalMisses) / C.totalShots) * 100
+              )}
+              % accuracy
+            </Text>
+          </View>
         </View>
-      </View>
-      <View style={styles.overallStatsSection}>
-        <Text style={styles.title}>OVERALL STATS</Text>
-        <View style={styles.iconTextRow}>
-          <List.Icon icon="bullseye-arrow" color={theme.colors.primary} />
-          <Text style={styles.normalText}>Average accuracy: {averageAccuracy}%</Text>
+        <View style={styles.overallStatsSection}>
+          <Text style={styles.title}>OVERALL STATS</Text>
+          <View style={styles.iconTextRow}>
+            <List.Icon icon="bullseye-arrow" color={theme.colors.primary} />
+            <Text style={styles.normalText}>Average accuracy: {averageAccuracy}%</Text>
+          </View>
+          <View style={styles.iconTextRow}>
+            <List.Icon icon="target" size={40} color={theme.colors.primary} />
+            <Text style={styles.normalText}>
+              Total shots taken: {C.totalShots * patternHistory.length}
+            </Text>
+          </View>
         </View>
-        <View style={styles.iconTextRow}>
-          <List.Icon icon="target" size={40} color={theme.colors.primary} />
-          <Text style={styles.normalText}>
-            Total shots taken: {C.totalShots * patternHistory.length}
-          </Text>
+        <View style={styles.recommendedPatternSection}>
+          <Text style={styles.recommendedPatternTitle}>RECOMMENDED PATTERN:</Text>
+          <Text style={styles.recommendedPatternText}>{selectedPatternName}</Text>
+          <TrainNowButton
+            onPress={() => {
+              setIndex(1);
+            }}
+          />
         </View>
-      </View>
-      <View style={styles.recommendedPatternSection}>
-        <Text style={styles.recommendedPatternTitle}>RECOMMENDED PATTERN:</Text>
-        <Text style={styles.recommendedPatternText}>{selectedPatternName}</Text>
-        <TrainNowButton
-          onPress={() => {
-            setIndex(1);
-          }}
-        />
       </View>
     </>
   );
@@ -112,7 +113,7 @@ const styles = StyleSheet.create({
   welcomeText: {
     fontSize: WIDTH * 0.08,
     fontWeight: 'bold',
-    padding: 6,
+
     paddingVertical: WIDTH * 0.02,
     marginLeft: WIDTH * 0.03,
     marginTop: HEIGHT * 0.03,
