@@ -191,7 +191,7 @@ function InteractiveChart() {
             y={-apx(24 + 24 + 20) / 2}
             rx={apx(12)} // borderRadius
             ry={apx(12)} // borderRadius
-            width={apx(350)}
+            width={apx(400)}
             height={apx(150)}
             stroke="rgba(255, 255, 255, 0.8)"
             fill="rgba(99,102,106, .8)"
@@ -269,6 +269,14 @@ function InteractiveChart() {
             height: apx(570),
             alignSelf: 'stretch',
           }}>
+          <YAxis
+            style={{ width: apx(80) }}
+            data={shotAccuracy}
+            contentInset={verticalContentInset}
+            svg={{ fontSize: apx(35), fill: '#617485' }}
+            formatLabel={(value) => `${value}%`}
+          />
+
           <View style={{ flex: 1 }} {...panResponder.current.panHandlers}>
             <AreaChart
               style={{ flex: 1 }}
@@ -283,13 +291,6 @@ function InteractiveChart() {
               <Tooltip />
             </AreaChart>
           </View>
-
-          <YAxis
-            style={{ width: apx(80) }}
-            data={shotAccuracy}
-            contentInset={verticalContentInset}
-            svg={{ fontSize: apx(35), fill: '#617485' }}
-          />
         </View>
         <XAxis
           style={{
@@ -308,7 +309,7 @@ function InteractiveChart() {
             return month;
           }}
           contentInset={{
-            left: apx(25),
+            left: apx(125),
             right: apx(25),
           }}
           svg={{
