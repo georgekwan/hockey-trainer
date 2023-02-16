@@ -47,8 +47,13 @@ const HomeScreen = ({ setIndex }) => {
       <View style={styles.logo}>
         <FullLogo />
       </View>
-      <View style={{ padding: 10 }}>
-        <View>
+      <View style={{ padding: 5 }}>
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'center',
+          }}>
           <Text style={styles.welcomeText}>{'Welcome, ' + profile?.displayName}</Text>
         </View>
         <View style={styles.lastTrainingSection}>
