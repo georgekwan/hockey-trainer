@@ -51,29 +51,13 @@ const DrillSelectionScreen = () => {
         }}>
         <FullLogo />
       </View>
-      <View style={{ padding: 10 }}>
-        <View
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            marginHorizontal: 50,
-            marginTop: HEIGHT * 0.02,
-          }}>
+      <View style={{ padding: 5, margin: 5 }}>
+        <View style={styles.iconRow}>
           <List.Icon icon="hockey-puck" color={theme.colors.primary} />
-          <Text
-            style={{
-              fontSize: WIDTH * 0.08,
-              fontWeight: '800',
-              textAlign: 'center',
-              paddingVertical: WIDTH * 0.02,
-            }}>
-            SELECT PATTERN
-          </Text>
+          <Text style={styles.drillSelectText}>SELECT PATTERN</Text>
         </View>
 
-        <View style={{ height: HEIGHT * 0.2 }}>
+        <View style={{ height: HEIGHT * 0.3 }}>
           <ScrollView
             persistentScrollbar={false}
             style={{
@@ -82,6 +66,7 @@ const DrillSelectionScreen = () => {
             }}>
             <View
               style={{
+                display: 'flex',
                 flexDirection: 'row',
                 flexWrap: 'wrap',
                 alignItems: 'center',
@@ -100,68 +85,37 @@ const DrillSelectionScreen = () => {
           </ScrollView>
         </View>
 
-        <View
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-around',
-            marginHorizontal: 50,
-            marginTop: HEIGHT * 0.01,
-            alignContent: 'center',
-          }}>
-          <List.Icon icon="timer" color={theme.colors.primary} />
-          <Text
+        <View style={{ margin: 0 }}>
+          <View style={styles.iconRow}>
+            <List.Icon icon="timer" color={theme.colors.primary} />
+            <Text style={styles.drillSelectText}>SELECT TIMEOUT</Text>
+          </View>
+          <View
             style={{
-              fontSize: WIDTH * 0.08,
-              fontWeight: '800',
-              textAlign: 'center',
-              paddingVertical: WIDTH * 0.02,
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}>
-            SELECT TIMEOUT
-          </Text>
+            {[3, 5, 7].map((seconds) => (
+              <TimeoutButton
+                key={seconds}
+                seconds={seconds}
+                selectedSeconds={selectedSeconds}
+                setSelectedSeconds={setSelectedSeconds}
+              />
+            ))}
+          </View>
         </View>
 
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          {[3, 5, 7].map((seconds) => (
-            <TimeoutButton
-              key={seconds}
-              seconds={seconds}
-              selectedSeconds={selectedSeconds}
-              setSelectedSeconds={setSelectedSeconds}
-            />
-          ))}
-        </View>
-        <View
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-around',
-            marginHorizontal: 50,
-            marginTop: HEIGHT * 0.01,
-            alignContent: 'center',
-            paddingTop: HEIGHT * 0.015,
-          }}>
+        <View style={styles.iconRow}>
           <List.Icon icon="hockey-sticks" color={theme.colors.primary} />
-          <Text
-            style={{
-              fontSize: WIDTH * 0.08,
-              fontWeight: '800',
-              textAlign: 'center',
-              paddingVertical: WIDTH * 0.02,
-            }}>
-            SELECT TUTOR
-          </Text>
+          <Text style={styles.drillSelectText}>SELECT TUTOR</Text>
         </View>
 
         <View
           style={{
+            display: 'flex',
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'center',
@@ -199,14 +153,19 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     fontSize: 24,
   },
-  patternButton: {
-    width: WIDTH * 0.435,
-    height: WIDTH * 0.29,
+  drillSelectText: {
+    fontSize: 30,
+    fontWeight: '800',
+    textAlign: 'center',
+    // paddingVertical: WIDTH * 0.02,
+    padding: 5,
+  },
+  iconRow: {
+    display: 'flex',
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 10,
-    padding: 0,
-    margin: 5,
-    alignContent: 'center',
+    // marginHorizontal: 50,
+    // marginTop: HEIGHT * 0.02,
   },
 });
