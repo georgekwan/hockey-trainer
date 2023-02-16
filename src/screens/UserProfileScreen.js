@@ -30,7 +30,7 @@ export const UserProfileScreen = () => {
       <View style={styles.logo}>
         <FullLogo />
       </View>
-      <View style={{ padding: 10 }}>
+      <View style={{ padding: 5 }}>
         <View style={styles.userInfo}>
           <Avatar.Image size={100} source={require('../../assets/avatar.jpeg')} />
           <View style={styles.nameAge}>
