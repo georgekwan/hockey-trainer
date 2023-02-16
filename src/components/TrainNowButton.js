@@ -9,7 +9,7 @@ const HEIGHT = Dimensions.get('screen').height;
 const TrainNowButton = (props) => {
   const onPress = props.onPress;
   return (
-    <View style={{ margin: WIDTH * 0.025 }}>
+    <View style={{ margin: 15 }}>
       <View
         style={{
           // marginTop: HEIGHT * 0.015,
@@ -26,14 +26,14 @@ const TrainNowButton = (props) => {
             // width: WIDTH * 0.8,
             // height: HEIGHT * 0.07,
             width: 300,
-            height: 55,
+            height: 60,
             borderRadius: 25,
             alignItems: 'center',
             justifyContent: 'center',
           }}
           labelStyle={{
             fontSize: 35,
-            lineHeight: 35,
+            lineHeight: 40,
           }}>
           <Text
             style={{
