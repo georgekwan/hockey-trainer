@@ -38,7 +38,7 @@ export const TutorButton = (props) => {
 
 const styles = StyleSheet.create({
   button: {
-    width: WIDTH * 0.45,
+    width: WIDTH * 0.44,
     height: HEIGHT * 0.05,
     alignItems: 'center',
     justifyContent: 'center',

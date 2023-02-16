@@ -38,7 +38,7 @@ export const TimeoutButton = (props) => {
 
 const styles = StyleSheet.create({
   button: {
-    width: WIDTH * 0.3,
+    width: WIDTH * 0.285,
     height: HEIGHT * 0.05,
     alignItems: 'center',
     justifyContent: 'center',
