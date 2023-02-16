@@ -49,15 +49,12 @@ const InDrillScreen = ({ route }) => {
     Timer.setInterval(
       'soundTimer',
       async () => {
-        // console.log('running interval');
         setCurrentStringIndex((curVal) => {
           let newVal = (curVal + 1) % currentPattern.sequence.length;
-          // console.log(newVal);
           return newVal;
         });
       },
-      selectedSeconds * 10
-      // TODO change back to 1000 for final version
+      selectedSeconds * 1000
     );
     return () => Timer.clearInterval('soundTimer');
   }, []);
