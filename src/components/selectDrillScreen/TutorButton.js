@@ -38,12 +38,13 @@ export const TutorButton = (props) => {
 
 const styles = StyleSheet.create({
   button: {
-    width: WIDTH * 0.44,
+    width: WIDTH * 0.45,
     height: HEIGHT * 0.05,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 15,
     padding: 0,
     margin: 5,
+    flex: 1,
   },
 });

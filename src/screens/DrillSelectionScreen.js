@@ -61,7 +61,7 @@ const DrillSelectionScreen = () => {
           <ScrollView
             persistentScrollbar={false}
             style={{
-              marginHorizontal: 5,
+              // marginHorizontal: 5,
               height: HEIGHT * 0.2,
             }}>
             <View
