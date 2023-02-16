@@ -81,6 +81,7 @@ const DrillSelectionScreen = () => {
           }}>
           <View
             style={{
+              display: 'flex',
               flexDirection: 'row',
               flexWrap: 'wrap',
               alignItems: 'center',
