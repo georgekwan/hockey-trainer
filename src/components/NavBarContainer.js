@@ -41,7 +41,7 @@ export function NavBarContainer({ route }) {
     },
     {
       key: 'user',
-      title: 'User Details',
+      title: 'User',
       focusedIcon: 'account-circle',
       unfocusedIcon: 'account-circle-outline',
       color: theme.colors.primary,
