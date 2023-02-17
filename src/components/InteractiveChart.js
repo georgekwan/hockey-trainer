@@ -49,15 +49,7 @@ function InteractiveChart() {
     const newShotAccuracy = [];
     const newDrillName = [];
     for (let drill of sortedData) {
-      let date = new Date(
-        drill?.date.seconds * 1000 + drill.date.nanoseconds / 1000000
-      ).toLocaleString('en-GB', {
-        year: 'numeric',
-        day: '2-digit',
-        month: '2-digit',
-        hour: '2-digit',
-        minute: '2-digit',
-      });
+      let date = new Date(drill?.date.seconds * 1000 + drill.date.nanoseconds / 1000000);
 
       let misses = drill.totalMisses;
       let accuracy = ((15 - misses) / 15) * 100;
@@ -178,7 +170,13 @@ function InteractiveChart() {
       return null;
     }
 
-    const date = drillTime[positionX];
+    const date = drillTime[positionX].toLocaleString('en-GB', {
+      year: 'numeric',
+      day: '2-digit',
+      month: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+    });
 
     return (
       <G x={x(positionX)} key="tooltip">
@@ -300,10 +298,15 @@ function InteractiveChart() {
           numberOfTicks={4}
           data={shotAccuracy}
           formatLabel={(value, index) => {
-            const date = new Date(drillTime[value]);
-            const month = date.toLocaleDateString('en-GB', { year: 'numeric', month: 'short' });
+            const date = drillTime[value];
+            console.log('date is', date);
+            const month = date.toLocaleDateString('en-GB', {
+              year: 'numeric',
+              month: 'short',
+              day: '2-digit',
+            });
             const day = date.getDate();
-            // console.log('value is', month);
+            console.log('month is', month);
             return month;
           }}
           contentInset={{

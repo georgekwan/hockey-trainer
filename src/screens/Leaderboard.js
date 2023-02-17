@@ -3,12 +3,16 @@ import { Dimensions, ScrollView, StyleSheet, View } from 'react-native';
 import { DataTable } from 'react-native-paper';
 
 import FullLogo from '../components/FullLogo.js';
+import { RankingsContext } from '../providers/RankingsProvider.js';
 
 const HEIGHT = Dimensions.get('screen').height;
 
 //TODO - make array of data and map through it
 
 export const Leaderboard = () => {
+  const { leaderboard } = React.useContext(RankingsContext);
+  console.log(leaderboard);
+
   return (
     <>
       <View style={styles.logo}>
