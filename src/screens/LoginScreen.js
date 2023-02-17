@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { TouchableOpacity, StyleSheet, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Text } from 'react-native-paper';
 
 import BackButton from '../components/BackButton';
@@ -9,33 +9,14 @@ import Header from '../components/Header';
 import Logo from '../components/Logo';
 import TextInput from '../components/TextInput';
 import { theme } from '../core/theme';
-import { emailValidator } from '../helpers/emailValidator';
-import { passwordValidator } from '../helpers/passwordValidator';
 import { AuthContext } from '../providers/AuthProvider.js';
 
 function LoginScreen({ navigation }) {
-  // const [email, setEmail] = useState({ value: '', error: '' })
-  // const [password, setPassword] = useState({ value: '', error: '' })
-
-  // const onLoginPressed = () => {
-  //   const emailError = emailValidator(email.value)
-  //   const passwordError = passwordValidator(password.value)
-  //   if (emailError || passwordError) {
-  //     setEmail({ ...email, error: emailError })
-  //     setPassword({ ...password, error: passwordError })
-  //     return
-  //   }
-  // navigation.reset({
-  //   index: 0,
-  //   routes: [{ name: 'Dashboard' }],
-  // })
-  // }
-
   const { login, authErrorMessages } = useContext(AuthContext);
 
   //TODO change email and password back to blank when deploy
-  const [email, setEmail] = useState('george@gmail.com'); // input field value cannot be null
-  const [password, setPassword] = useState('123456'); // input field value cannot be null
+  const [email, setEmail] = useState(''); // input field value cannot be null
+  const [password, setPassword] = useState(''); // input field value cannot be null
 
   const [loginRunning, setLoginRunning] = useState(false);
   const [errorMessage, setErrorMessage] = useState();
@@ -52,7 +33,6 @@ function LoginScreen({ navigation }) {
     } else {
       navigation.reset({
         index: 0,
-        // routes: [{ name: 'Dashboard' }],
         routes: [{ name: 'NavBarContainer' }],
       });
     }
