@@ -1,22 +1,15 @@
 import React, { useEffect, useState } from 'react';
-
-import { BottomNavigation, BottomNavigationAction } from 'react-native-paper';
+import { BottomNavigation } from 'react-native-paper';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { theme } from '../core/theme.js';
 
-import {
-  DrillSelectionScreen,
-  HomeScreen,
-  // UserProfileScreen,
-} from '../screens';
+import { DrillSelectionScreen, HomeScreen } from '../screens';
+import { Leaderboard } from '../screens/Leaderboard';
 import { UserProfileScreen } from '../screens/UserProfileScreen';
 
-export function NavBarContainer({ route }) {
-  // console.log({ route });
+export const NavBarContainer = ({ route }) => {
   const { initialIndex } = route.params ?? {};
 
-  // console.log({ initialIndex });
-  // const [selectedPatternName, setSelectedPatternName] = useState();
   const [index, setIndex] = useState(initialIndex ?? 0);
   const handleIndexChange = (newIndex) => setIndex(newIndex);
 
@@ -40,6 +33,13 @@ export function NavBarContainer({ route }) {
       unfocusedIcon: 'hockey-puck',
     },
     {
+      key: 'leaderboard',
+      title: 'Leaderboard',
+      focusedIcon: 'trophy',
+      unfocusedIcon: 'trophy-outline',
+      color: theme.colors.primary,
+    },
+    {
       key: 'user',
       title: 'User',
       focusedIcon: 'account-circle',
@@ -50,6 +50,7 @@ export function NavBarContainer({ route }) {
   const renderScene = BottomNavigation.SceneMap({
     home: () => <HomeScreen setIndex={setIndex} />,
     patternScreen: DrillSelectionScreen,
+    leaderboard: Leaderboard,
     user: UserProfileScreen,
   });
   return (
@@ -64,4 +65,6 @@ export function NavBarContainer({ route }) {
       />
     </SafeAreaProvider>
   );
-}
+};
+
+// export default NavBarContainer;
