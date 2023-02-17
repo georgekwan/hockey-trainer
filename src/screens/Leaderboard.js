@@ -6,6 +6,8 @@ import FullLogo from '../components/FullLogo.js';
 
 const HEIGHT = Dimensions.get('screen').height;
 
+//TODO - make array of data and map through it
+
 export const Leaderboard = () => {
   return (
     <>
