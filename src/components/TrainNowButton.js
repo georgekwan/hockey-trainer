@@ -15,6 +15,7 @@ export const TrainNowButton = (props) => {
           flexDirection: 'row',
           alignItems: 'center',
           justifyContent: 'center',
+          alignContent: 'center',
         }}>
         <Button
           mode="elevated"
@@ -27,13 +28,15 @@ export const TrainNowButton = (props) => {
           }}
           labelStyle={{
             fontSize: 35,
-            lineHeight: 35,
+            lineHeight: 45,
+            alignItems: 'center',
           }}>
           <Text
             style={{
               textAlign: 'center',
               color: 'black',
               fontWeight: '800',
+              // alignItems: 'center',
             }}>
             {'TRAIN NOW'}
           </Text>

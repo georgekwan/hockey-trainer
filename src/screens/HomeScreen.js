@@ -104,10 +104,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   welcomeText: {
+    textAlign: 'center',
     fontSize: WIDTH * 0.08,
     fontWeight: 'bold',
     paddingLeft: 5,
-    paddingVertical: WIDTH * 0.02,
+    paddingTop: WIDTH * 0.035,
     marginLeft: WIDTH * 0.03,
     marginTop: HEIGHT * 0.03,
   },
@@ -115,15 +116,16 @@ const styles = StyleSheet.create({
     marginTop: HEIGHT * 0.02,
     marginHorizontal: WIDTH * 0.02,
     flexDirection: 'row',
+    marginBottom: WIDTH * 0.03,
   },
   title: {
     fontSize: WIDTH * 0.08,
     fontWeight: '800',
-    paddingLeft: 5,
   },
   overallStatsSection: {
     alignItems: 'center',
-    marginVertical: HEIGHT * 0.039,
+    marginTop: HEIGHT * 0.06,
+    marginBottom: HEIGHT * 0.02,
   },
   iconTextRow: {
     margin: WIDTH * 0.01,
