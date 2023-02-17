@@ -33,7 +33,6 @@ const HomeScreen = ({ setIndex }) => {
     return () => {};
   }, [patternHistory]);
 
-
   //Average accuracy calculation
   let totalAccuracy = 0;
   if (patternHistory) {
@@ -75,7 +74,7 @@ const HomeScreen = ({ setIndex }) => {
         <View style={styles.iconTextRow}>
           <List.Icon icon="target" size={40} color={theme.colors.primary} />
           <Text style={styles.normalText}>
-            Total shots taken: {C.totalShots * patternHistory.length}
+            Total shots taken: {C.totalShots * patternHistory?.length}
           </Text>
         </View>
       </View>
