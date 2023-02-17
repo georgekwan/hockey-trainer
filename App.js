@@ -19,7 +19,7 @@ import {
 
 // import InDrillScreen from './src/screens/InDrillScreen.js';
 import ResultInputScreen from './src/screens/ResultInputScreen.js';
-import { RankingsProvider } from './src/providers/RankingsProvider.js';
+import { LeaderboardProvider } from './src/providers/RankingsProvider.js';
 
 const Stack = createStackNavigator();
 
@@ -29,7 +29,7 @@ export default function App() {
       <AuthProvider>
         <PatternProvider>
           <Provider theme={theme}>
-            <RankingsProvider>
+            <LeaderboardProvider>
               <NavigationContainer>
                 {/* <Stack.Navigator
                 initialRouteName="NavBarContainer"
@@ -54,7 +54,7 @@ export default function App() {
                   <Stack.Screen name="ResetPasswordScreen" component={ResetPasswordScreen} />
                 </Stack.Navigator>
               </NavigationContainer>
-            </RankingsProvider>
+            </LeaderboardProvider>
           </Provider>
         </PatternProvider>
       </AuthProvider>

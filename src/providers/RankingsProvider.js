@@ -3,9 +3,9 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import * as C from '../helpers/constants.js';
 import { FirebaseContext } from './FirebaseProvider.js';
 
-export const RankingsContext = createContext({});
+export const LeaderboardContext = createContext({});
 
-export const RankingsProvider = (props) => {
+export const LeaderboardProvider = (props) => {
   const children = props.children;
   const { myDb } = useContext(FirebaseContext);
   const [usersCollection, setUsersCollection] = useState();
@@ -56,5 +56,5 @@ export const RankingsProvider = (props) => {
     leaderboard: leaderboard,
   };
 
-  return <RankingsContext.Provider value={theValues}>{children}</RankingsContext.Provider>;
+  return <LeaderboardContext.Provider value={theValues}>{children}</LeaderboardContext.Provider>;
 };
