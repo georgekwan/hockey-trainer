@@ -57,7 +57,7 @@ const DrillSelectionScreen = () => {
           <Text style={styles.drillSelectText}>SELECT PATTERN</Text>
         </View>
 
-        <View style={{ height: HEIGHT * 0.2 }}>
+        <View style={{ height: HEIGHT * 0.3 }}>
           <ScrollView
             persistentScrollbar={false}
             style={{
