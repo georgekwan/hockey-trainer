@@ -7,7 +7,7 @@ import { DrillSelectionScreen, HomeScreen } from '../screens';
 import { Leaderboard } from '../screens/Leaderboard';
 import { UserProfileScreen } from '../screens/UserProfileScreen';
 
-export const NavBarContainer = ({ route }) => {
+const NavBarContainer = ({ route }) => {
   const { initialIndex } = route.params ?? {};
 
   const [index, setIndex] = useState(initialIndex ?? 0);
@@ -67,4 +67,4 @@ export const NavBarContainer = ({ route }) => {
   );
 };
 
-// export default NavBarContainer;
+export default React.memo(NavBarContainer);

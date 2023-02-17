@@ -6,7 +6,7 @@ import FullLogo from '../components/FullLogo.js';
 
 const HEIGHT = Dimensions.get('screen').height;
 
-export const PlayerRankScreen = () => {
+export const Leaderboard = () => {
   return (
     <>
       <View style={styles.logo}>

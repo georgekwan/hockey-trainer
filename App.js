@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import { Provider } from 'react-native-paper';
 
-import { NavBarContainer } from './src/components/NavBarContainer.js';
+import NavBarContainer from './src/components/NavBarContainer.js';
 import { theme } from './src/core/theme';
 import { AuthProvider } from './src/providers/AuthProvider.js';
 import { FirebaseProvider } from './src/providers/FirebaseProvider.js';

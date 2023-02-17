@@ -297,11 +297,11 @@ function InteractiveChart() {
             width: apx(750),
             height: apx(60),
           }}
-          numberOfTicks={5}
+          numberOfTicks={4}
           data={shotAccuracy}
           formatLabel={(value, index) => {
             const date = new Date(drillTime[value]);
-            const month = date.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
+            const month = date.toLocaleDateString('en-GB', { year: 'numeric', month: 'short' });
             const day = date.getDate();
             // console.log('value is', month);
             return month;
