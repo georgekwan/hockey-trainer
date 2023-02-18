@@ -39,7 +39,7 @@ The app will now be running on your phone.
 - [**Expo-av**](https://docs.expo.dev/versions/latest/sdk/av/) - An Expo library for playing and controlling audio and video.
 - [**React-native-timer**](https://www.npmjs.com/package/react-native-timer) - A timer component for React Native.
 - [**React Native Dropdown Picker**](https://hossein-zare.github.io/react-native-dropdown-picker-website/) - Used for dropdown pickers in the application
-- [**react-native-svg-charts**](https://www.npmjs.com/package/react-native-svg-charts) - A library for creating SVG charts in React Native.
+- [**React-native-svg-charts**](https://www.npmjs.com/package/react-native-svg-charts) - A library for creating SVG charts in React Native.
 
 ## Contributors
 Thank you to everyone who contributed to making this project a success.:
