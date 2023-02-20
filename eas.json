@@ -11,13 +11,13 @@
         "resourceClass": "m1-medium"
       }
     },
-    "preview": {
+    "preview-device": {
       "distribution": "internal",
       "ios": {
         "resourceClass": "m1-medium"
       }
     },
-    "preview2": {
+    "preview-simulator": {
       "distribution": "internal",
       "ios": {
         "simulator": true,
