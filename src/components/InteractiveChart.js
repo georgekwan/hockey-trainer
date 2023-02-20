@@ -300,12 +300,12 @@ function InteractiveChart() {
           formatLabel={(value, index) => {
             const date = drillTime[value];
             console.log('date is', date);
-            const month = date.toLocaleDateString('en-GB', {
+            const month = date?.toLocaleDateString('en-GB', {
               year: 'numeric',
               month: 'short',
               day: '2-digit',
             });
-            const day = date.getDate();
+            const day = date?.getDate();
             console.log('month is', month);
             return month;
           }}
