@@ -14,6 +14,7 @@ export const PatternButton = (props) => {
   // const [patternName, setPatternName] = useState();
 
   const backgroundColor = selectedPatternName === name ? '#404040' : theme.colors.primary;
+  // ! Removed View wrap on Text within pattern button for Android
   return (
     <>
       <Button
@@ -24,9 +25,7 @@ export const PatternButton = (props) => {
           // console.log('selected ', name, 'pattern');
         }}
         style={[styles.button, { backgroundColor: backgroundColor }]}>
-        <View>
-          <Text style={styles.text}>{name}</Text>
-        </View>
+        <Text style={styles.text}>{name}</Text>
       </Button>
     </>
   );
