@@ -42,7 +42,7 @@ function InteractiveChart() {
     if (!patternHistory) return;
 
     const sortedData = patternHistory?.sort((a, b) => {
-      let result = a?.date.seconds - b.date.seconds;
+      let result = a?.date.seconds - b?.date.seconds;
 
       return result;
     });
