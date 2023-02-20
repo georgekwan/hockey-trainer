@@ -36,4 +36,14 @@ The app will now be running on your phone.
 - [**Firebase**](https://firebase.google.com/) - A cloud-based backend service for storing data
 - [**React Navigation**](https://reactnavigation.org/) - A library for navigation in React Native applications
 - [**React Native Paper**](https://reactnativepaper.com/) - A library for implementing Material Design in React Native
+- [**Expo-av**](https://docs.expo.dev/versions/latest/sdk/av/) - An Expo library for playing and controlling audio and video.
+- [**React-native-timer**](https://www.npmjs.com/package/react-native-timer) - A timer component for React Native.
 - [**React Native Dropdown Picker**](https://hossein-zare.github.io/react-native-dropdown-picker-website/) - Used for dropdown pickers in the application
+- [**React-native-svg-charts**](https://www.npmjs.com/package/react-native-svg-charts) - A library for creating SVG charts in React Native.
+
+## Contributors
+Thank you to everyone who contributed to making this project a success.:
+
+- [**Gabriel H. Dalmoro**](https://www.linkedin.com/in/gabrieldalmoro/)
+- [**George Kwan**](https://www.linkedin.com/in/george-kwan/)
+- [**Emmanuel Anokye**](https://www.linkedin.com/in/emmanuelanokye/)
