@@ -20,7 +20,7 @@ function convertTimestamp(unixTimestamp) {
   if (patternHistory.length > 0) {
     const date = new Date(unixTimestamp * 1000);
     const options = { month: 'short', day: 'numeric' };
-    return date.toLocaleDateString('en-US', options);
+    return date?.toLocaleDateString('en-US', options);
   }
 }
 
@@ -41,7 +41,7 @@ function InteractiveChart() {
     if (!patternHistory) return;
 
     const sortedData = patternHistory?.sort((a, b) => {
-      let result = a?.date.seconds - b.date.seconds;
+      let result = a?.date.seconds - b?.date.seconds;
 
       return result;
     });
@@ -300,7 +300,7 @@ function InteractiveChart() {
           formatLabel={(value, index) => {
             const date = drillTime[value];
             console.log('date is', date);
-            const month = date.toLocaleDateString('en-GB', {
+            const month = date?.toLocaleDateString('en-GB', {
               year: 'numeric',
               month: 'short',
               day: '2-digit',
