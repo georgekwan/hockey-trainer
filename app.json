@@ -15,7 +15,9 @@
       "fallbackToCacheTimeout": 0,
       "url": "https://u.expo.dev/39134834-93a0-4513-8fee-f7711d8fbcbc"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.gabrieldalmoro.harpiahockey"
@@ -33,6 +35,7 @@
       "eas": {
         "projectId": "39134834-93a0-4513-8fee-f7711d8fbcbc"
       }
-    }
+    },
+    "owner": "gabrieldalmoro"
   }
 }
