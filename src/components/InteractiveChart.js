@@ -305,7 +305,7 @@ function InteractiveChart() {
               month: 'short',
               day: '2-digit',
             });
-            const day = date.getDate();
+            const day = date?.getDate();
             console.log('month is', month);
             return month;
           }}
