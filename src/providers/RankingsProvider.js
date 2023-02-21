@@ -1,6 +1,7 @@
 import { collection, getDocs, onSnapshot, query, where } from 'firebase/firestore';
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import * as C from '../helpers/constants.js';
+import { AuthContext } from './AuthProvider.js';
 import { FirebaseContext } from './FirebaseProvider.js';
 
 export const LeaderboardContext = createContext({});
@@ -8,18 +9,23 @@ export const LeaderboardContext = createContext({});
 export const LeaderboardProvider = (props) => {
   const children = props.children;
   const { myDb } = useContext(FirebaseContext);
+  const { user } = useContext(AuthContext);
   const [usersCollection, setUsersCollection] = useState();
   const [leaderboard, setLeaderboard] = useState([]);
 
   //Get array of all users
   useEffect(() => {
+    if (!user) {
+      // not logged in yet
+      return;
+    }
     const q = query(collection(myDb, C.COLL_USERS));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const theDocs = querySnapshot.docs.map((docSnap) => docSnap.data());
       setUsersCollection(theDocs);
     });
     return unsubscribe;
-  }, []);
+  }, [user]);
 
   //for each user, calculate their accuracy and number of drills
   useEffect(() => {
