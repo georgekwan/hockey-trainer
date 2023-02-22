@@ -41,14 +41,14 @@ const NavBarContainer = ({ route }) => {
     },
     {
       key: 'playerRankScreen',
-      title: 'User Ranking',
+      title: 'Leaderboard',
       focusedIcon: 'trophy',
       unfocusedIcon: 'trophy-outline',
       color: theme.colors.primary,
     },
     {
       key: 'user',
-      title: 'User Details',
+      title: 'Profile',
       focusedIcon: 'account-circle',
       unfocusedIcon: 'account-circle-outline',
       color: theme.colors.primary,
