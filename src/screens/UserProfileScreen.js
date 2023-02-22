@@ -2,7 +2,6 @@ import React, { createContext, useContext, useState } from 'react';
 import { Dimensions, StyleSheet, Text, View } from 'react-native';
 import { Avatar, IconButton } from 'react-native-paper';
 import Button from '../components/Button.js';
-import { ChartView } from '../components/ChartView.js';
 import FullLogo from '../components/FullLogo.js';
 import InteractiveChart from '../components/InteractiveChart.js';
 import { TableView } from '../components/TableView.js';
@@ -31,7 +30,7 @@ export const UserProfileScreen = () => {
         <FullLogo />
       </View>
       <View style={styles.userInfo}>
-        <Avatar.Icon size={90} icon="face-man-shimmer" />
+        <Avatar.Image size={100} source={require('../../assets/avatar.jpeg')} />
         <View style={styles.nameAge}>
           <View style={styles.spaceBetweenRow}>
             <Text style={styles.boldText}>NAME:</Text>

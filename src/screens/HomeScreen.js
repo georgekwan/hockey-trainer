@@ -52,7 +52,7 @@ const HomeScreen = ({ setIndex }) => {
         <Text style={styles.welcomeText}>{'Welcome, ' + profile?.displayName}</Text>
       </View>
       <View style={styles.lastTrainingSection}>
-        <Avatar.Icon size={100} icon="face-man-shimmer" />
+        <Avatar.Image size={100} source={require('../../assets/avatar.jpeg')} />
         <View style={{ justifyContent: 'center', paddingHorizontal: WIDTH * 0.02 }}>
           <Text style={styles.title}>LAST TRAINING</Text>
           <Text style={styles.normalText}>{sortedPatternHistory?.[0]?.drillId}</Text>

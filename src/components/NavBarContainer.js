@@ -41,7 +41,7 @@ const NavBarContainer = ({ route }) => {
     },
     {
       key: 'user',
-      title: 'User',
+      title: 'Profile',
       focusedIcon: 'account-circle',
       unfocusedIcon: 'account-circle-outline',
       color: theme.colors.primary,
