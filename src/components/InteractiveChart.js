@@ -41,7 +41,7 @@ function InteractiveChart() {
     if (!patternHistory) return;
 
     const sortedData = patternHistory?.sort((a, b) => {
-      let result = a?.date.seconds - b?.date.seconds;
+      let result = a?.date.seconds - b?.date?.seconds;
 
       return result;
     });
@@ -49,7 +49,7 @@ function InteractiveChart() {
     const newShotAccuracy = [];
     const newDrillName = [];
     for (let drill of sortedData) {
-      let date = new Date(drill?.date.seconds * 1000 + drill.date.nanoseconds / 1000000);
+      let date = new Date(drill?.date?.seconds * 1000 + drill.date.nanoseconds / 1000000);
 
       let misses = drill.totalMisses;
       let accuracy = ((15 - misses) / 15) * 100;
