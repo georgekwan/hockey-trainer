@@ -56,7 +56,7 @@ const InDrillScreen = ({ route }) => {
           return newVal;
         });
       },
-      selectedSeconds * 1000
+      selectedSeconds * 10
       // TODO change back to 1000 for final version
     );
     return () => Timer.clearInterval('soundTimer');
