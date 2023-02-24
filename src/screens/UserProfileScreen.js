@@ -30,7 +30,7 @@ export const UserProfileScreen = () => {
         <FullLogo />
       </View>
       <View style={styles.userInfo}>
-        <Avatar.Image size={100} source={require('../../assets/avatar.jpeg')} />
+        <Avatar.Image size={100} source={require('../../assets/avatar2.jpg')} />
         <View style={styles.nameAge}>
           <View style={styles.spaceBetweenRow}>
             <Text style={styles.boldText}>NAME:</Text>
