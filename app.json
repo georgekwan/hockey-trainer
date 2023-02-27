@@ -23,6 +23,7 @@
       "bundleIdentifier": "com.gabrieldalmoro.harpiahockey"
     },
     "android": {
+      "package": "com.gabrieldalmoro.harpiahockey",
       "adaptiveIcon": {
         "foregroundImage": "./assets/harpia1SymbolFinal.png",
         "backgroundColor": "#FFFFFF"

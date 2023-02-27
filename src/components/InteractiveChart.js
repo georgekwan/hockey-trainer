@@ -1,19 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { PanResponder, Dimensions, Text, TouchableOpacity, View } from 'react-native';
+import { Dimensions, View } from 'react-native';
+import { LineChart } from 'react-native-gifted-charts';
 import { PatternContext } from '../providers/PatternProvider.js';
-import { AreaChart, XAxis, YAxis } from 'react-native-svg-charts';
-import {
-  Circle,
-  Defs,
-  G,
-  Line,
-  LinearGradient,
-  Path,
-  Rect,
-  Stop,
-  Text as SvgText,
-} from 'react-native-svg';
-import * as shape from 'd3-shape';
 
 // Convert timestamp to date
 function convertTimestamp(unixTimestamp) {
@@ -35,6 +23,7 @@ function InteractiveChart() {
   const [newDrillName, setNewDrillName] = useState([]);
   const [drillTime, setDrillTime] = useState([]);
   const [shotAccuracy, setShotAccuracy] = useState([]);
+  const [giftedValues, setGiftedValues] = useState([]);
   const size = useRef(drillTime.length);
 
   useEffect(() => {
@@ -48,6 +37,7 @@ function InteractiveChart() {
     const newDrillTime = [];
     const newShotAccuracy = [];
     const newDrillName = [];
+    const giftedArray = [];
     for (let drill of sortedData) {
       let date = new Date(drill?.date.seconds * 1000 + drill.date.nanoseconds / 1000000);
 
@@ -58,269 +48,33 @@ function InteractiveChart() {
       newShotAccuracy.push(accuracy);
 
       newDrillName.push(drill.drillId);
+      giftedArray.push({ value: accuracy, dataPointText: String(accuracy) });
     }
+    setGiftedValues(giftedArray);
     setNewDrillName(newDrillName);
     setDrillTime(newDrillTime);
     setShotAccuracy(newShotAccuracy);
     size.current = newDrillTime.length;
   }, [patternHistory]);
 
-  // function snapshotToArray(snapshot) {
-  //   let returnArr = [];
-
-  //   snapshot.forEach((childSnapshot.) => {
-  //     let item = childSnapshot.val();
-  //     item.key = childSnapshot.key;
-  //     returnArr.push(item);
-  //   });
-
-  //   return returnArr;
-  // }
-
-  const [positionX, setPositionX] = useState(-1); // The currently selected X coordinate position
-  const panResponder = useRef(
-    PanResponder.create({
-      onStartShouldSetPanResponder: (evt, gestureState) => true,
-      onStartShouldSetPanResponderCapture: (evt, gestureState) => true,
-      onMoveShouldSetPanResponder: (evt, gestureState) => true,
-      onMoveShouldSetPanResponderCapture: (evt, gestureState) => true,
-      onPanResponderTerminationRequest: (evt, gestureState) => true,
-
-      onPanResponderGrant: (evt, gestureState) => {
-        updatePosition(evt.nativeEvent.locationX);
-        return true;
-      },
-      onPanResponderMove: (evt, gestureState) => {
-        updatePosition(evt.nativeEvent.locationX);
-        return true;
-      },
-      onPanResponderRelease: () => {
-        setPositionX(-1);
-      },
-    })
-  );
-
-  const updatePosition = (x) => {
-    const YAxisWidth = apx(130);
-    const x0 = apx(0); // x0 position
-    const chartWidth = apx(750) - YAxisWidth - x0;
-    const xN = x0 + chartWidth; //xN position
-    const xDistance = chartWidth / size.current; // The width of each coordinate point
-    if (x <= x0) {
-      x = x0;
-    }
-    if (x >= xN) {
-      x = xN;
-    }
-
-    // console.log('Selected coordinate x', x - x0);
-
-    // The selected coordinate x :
-    // (x - x0)/ xDistance = value
-    let value = ((x - x0) / xDistance).toFixed(0);
-    if (value >= size.current - 1) {
-      value = size.current - 1; // Out of chart range, automatic correction
-    }
-
-    setPositionX(Number(value));
-  };
-
-  const CustomGrid = ({ x, y, ticks }) => (
-    <G>
-      {
-        // Horizontal grid
-        ticks.map((tick) => (
-          <Line key={tick} x1="0%" x2="100%" y1={y(tick)} y2={y(tick)} stroke="#EEF3F6" />
-        ))
-      }
-      {
-        // Vertical grid
-        shotAccuracy.map((_, index) => (
-          <Line
-            key={index.toString()}
-            y1="0%"
-            y2="100%"
-            x1={x(index)}
-            x2={x(index)}
-            stroke="#EEF3F6"
-          />
-        ))
-      }
-    </G>
-  );
-
-  const CustomLine = ({ line }) => (
-    <Path key="line" d={line} stroke="#DC3535" strokeWidth={apx(8)} fill="none" />
-  );
-
-  const CustomGradient = () => (
-    <Defs key="gradient">
-      <LinearGradient id="gradient" x1="0" y="0%" x2="0%" y2="100%">
-        {/* <Stop offset="0%" stopColor="rgb(134, 65, 244)" /> */}
-        {/* <Stop offset="100%" stopColor="rgb(66, 194, 244)" /> */}
-
-        <Stop offset="0%" stopColor="#DC3535" stopOpacity={1} />
-        <Stop offset="55%" stopColor="#DC3535" stopOpacity={0} />
-      </LinearGradient>
-    </Defs>
-  );
-
-  const Tooltip = ({ x, y, ticks }) => {
-    if (positionX < 0) {
-      return null;
-    }
-
-    const date = drillTime[positionX].toLocaleString('en-GB', {
-      year: 'numeric',
-      day: '2-digit',
-      month: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit',
-    });
-
-    return (
-      <G x={x(positionX)} key="tooltip">
-        <G
-          x={positionX > size.current / 2 ? -apx(300 + 10) : apx(10)}
-          y={y(shotAccuracy[positionX]) - apx(10)}>
-          <Rect
-            y={-apx(24 + 24 + 20) / 2}
-            rx={apx(12)} // borderRadius
-            ry={apx(12)} // borderRadius
-            width={apx(400)}
-            height={apx(150)}
-            stroke="rgba(255, 255, 255, 0.8)"
-            fill="rgba(99,102,106, .8)"
-          />
-          <SvgText
-            x={apx(20)}
-            fill="rgba(255, 255, 255, 255)"
-            opacity={0.85}
-            fontSize={apx(30)}
-            fontWeight="bold">
-            {newDrillName[positionX]}
-          </SvgText>
-          <SvgText
-            x={apx(20)}
-            y={apx(24 + 20)}
-            fill="rgba(255, 255, 255, 255)"
-            opacity={0.85}
-            fontSize={apx(30)}>
-            {date}
-          </SvgText>
-          <SvgText
-            x={apx(20)}
-            y={apx(24 + 80)}
-            fontSize={apx(45)}
-            fontWeight="bold"
-            fill="rgba(255, 255, 255, 255)">
-            {shotAccuracy[positionX]}%
-          </SvgText>
-        </G>
-
-        <G x={x}>
-          <Line
-            y1={ticks[0]}
-            y2={ticks[Number(ticks.length)]}
-            stroke="#DC3535"
-            strokeWidth={apx(4)}
-            strokeDasharray={[6, 3]}
-          />
-
-          <Circle
-            cy={y(shotAccuracy[positionX])}
-            r={apx(25 / 2)}
-            stroke="#fff"
-            strokeWidth={apx(2)}
-            fill="#DC3535"
-          />
-        </G>
-      </G>
-    );
-  };
-
-  const verticalContentInset = { top: apx(40), bottom: apx(40) };
-
+  console.log('giftedValues is:', giftedValues);
   return (
     <View>
-      <View style={{ alignItems: 'center' }}>
-        <Text style={{ fontSize: 24, fontWeight: 'bold' }}>Drill Accuracy % Over Time</Text>
-      </View>
-      {/*
-      {drillTime.map((time, index) => (
-        <View key={index} style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-          <Text>{time}</Text>
-          <Text>{shotAccuracy[index]}%</Text>
-        </View>
-      ))}*/}
-      <View
-        style={{
-          backgroundColor: '#fff',
-          alignItems: 'stretch',
-        }}>
-        <View
-          style={{
-            flexDirection: 'row',
-            width: apx(750),
-            height: apx(570),
-            alignSelf: 'stretch',
-          }}>
-          <YAxis
-            style={{ width: apx(85) }}
-            data={shotAccuracy}
-            contentInset={verticalContentInset}
-            svg={{ fontSize: apx(35), fill: '#617485' }}
-            formatLabel={(value) => `${value}%`}
-          />
-
-          <View style={{ flex: 1 }} {...panResponder.current.panHandlers}>
-            <AreaChart
-              style={{ flex: 1 }}
-              data={shotAccuracy}
-              // curve={shape.curveNatural}
-              curve={shape.curveMonotoneX}
-              contentInset={{ ...verticalContentInset }}
-              svg={{ fill: 'url(#gradient)' }}>
-              <CustomLine />
-              <CustomGrid />
-              <CustomGradient />
-              <Tooltip />
-            </AreaChart>
-          </View>
-        </View>
-        <XAxis
-          style={{
-            alignSelf: 'stretch',
-            // marginTop: apx(57),
-            width: apx(750),
-            height: apx(60),
-          }}
-          numberOfTicks={4}
-          data={shotAccuracy}
-          formatLabel={(value, index) => {
-            const date = drillTime[value];
-            console.log('date is', date);
-            const month = date?.toLocaleDateString('en-GB', {
-              year: 'numeric',
-              month: 'short',
-              day: '2-digit',
-            });
-            const day = date?.getDate();
-            console.log('month is', month);
-            return month;
-          }}
-          contentInset={{
-            left: apx(125),
-            right: apx(25),
-          }}
-          svg={{
-            fontSize: apx(25),
-            fill: '#617485',
-            y: apx(20),
-            // originY: 30,
-          }}
-        />
-      </View>
+      <LineChart
+        data={giftedValues}
+        height={250}
+        showVerticalLines
+        spacing={44}
+        initialSpacing={0}
+        color1="skyblue"
+        textColor1="green"
+        dataPointsHeight={6}
+        dataPointsWidth={6}
+        dataPointsColor1="blue"
+        textShiftY={-2}
+        textShiftX={-5}
+        textFontSize={13}
+      />
     </View>
   );
 }
