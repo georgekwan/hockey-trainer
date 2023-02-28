@@ -57,23 +57,12 @@ function InteractiveChart() {
     size.current = newDrillTime.length;
   }, [patternHistory]);
 
-  console.log('giftedValues is:', giftedValues);
+//  console.log('giftedValues is:', giftedValues);
   return (
     <View>
       <LineChart
         data={giftedValues}
         height={250}
-        showVerticalLines
-        spacing={44}
-        initialSpacing={0}
-        color1="skyblue"
-        textColor1="green"
-        dataPointsHeight={6}
-        dataPointsWidth={6}
-        dataPointsColor1="blue"
-        textShiftY={-2}
-        textShiftX={-5}
-        textFontSize={13}
       />
     </View>
   );
