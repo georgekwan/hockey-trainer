@@ -24,9 +24,7 @@ export const PatternButton = (props) => {
           // console.log('selected ', name, 'pattern');
         }}
         style={[styles.button, { backgroundColor: backgroundColor }]}>
-        <View>
-          <Text style={styles.text}>{name}</Text>
-        </View>
+        <Text style={styles.text}>{name}</Text>
       </Button>
     </>
   );
