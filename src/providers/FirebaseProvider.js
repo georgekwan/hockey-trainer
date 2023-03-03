@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, connectAuthEmulator } from 'firebase/auth';
-import { getFirestore, connectFirestoreEmulator } from 'firebase/firestore';
+import { initializeFirestore, getFirestore, connectFirestoreEmulator } from 'firebase/firestore';
 import { getStorage, connectStorageEmulator } from 'firebase/storage';
 import React, { createContext, useEffect, useState } from 'react';
 import { Text } from 'react-native';
@@ -25,7 +25,8 @@ export const FirebaseProvider = (props) => {
 
   const myApp = initializeApp(firebaseConfig);
   const myAuth = getAuth(myApp);
-  const myDb = getFirestore(myApp);
+  // const myDb = getFirestore(myApp);
+  const myDb = initializeFirestore(myApp, { experimentalAutoDetectLongPolling: true });
   const myStorage = getStorage(myApp);
 
   useEffect(() => {
