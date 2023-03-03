@@ -149,7 +149,9 @@ function InteractiveChartV2() {
         rulesType="solid"
         rulesColor="lightgray"
         yAxisTextStyle={{ color: 'grey' }}
+        xAxisTextStyle={{ color: 'black' }}
         yAxisSide="left"
+        yAxisLabelSuffix="%"
         xAxisColor="black"
         xAxisThickness={2}
         pointerConfig={{
@@ -169,8 +171,8 @@ function InteractiveChartV2() {
                   height: 110,
                   width: 110,
                   justifyContent: 'center',
-                  marginTop: -30,
-                  marginLeft: -40,
+                  // marginTop: -30,
+                  // marginLeft: -40,
                   borderRadius: 5,
                   backgroundColor: '#2E3033',
                   opacity: 0.8,
