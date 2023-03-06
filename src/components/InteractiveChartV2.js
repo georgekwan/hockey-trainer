@@ -63,65 +63,6 @@ function InteractiveChartV2() {
     size.current = newDrillTime.length;
   }, [patternHistory]);
 
-  const giftedValuesMock = [
-    { name: 'Drill One', value: 90, date: '1 Apr 2022' },
-    { name: 'Drill Three', value: 70, date: '2 Apr 2022' },
-    { name: 'Drill Five', value: 45, date: '3 Apr 2022' },
-    { name: 'Drill Two', value: 88, date: '4 Apr 2022' },
-    { name: 'Drill One', value: 65, date: '5 Apr 2022' },
-    { name: 'Drill Six', value: 55, date: '6 Apr 2022' },
-    { name: 'Drill Eight', value: 76, date: '7 Apr 2022' },
-    { name: 'Drill Two  One One', value: 89, date: '8 Apr 2022' },
-
-    { name: 'Drill Seven', value: 65, date: '9 Apr 2022' },
-    {
-      name: 'Drill One',
-      value: 84,
-      date: '10 Apr 2022',
-      label: '10 Apr',
-      labelTextStyle: { color: 'lightgray', width: 60 },
-    },
-    { name: 'Drill Two', value: 68, date: '11 Apr 2022' },
-    { name: 'Drill Four', value: 46, date: '12 Apr 2022' },
-    { name: 'Drill Three', value: 34, date: '13 Apr 2022' },
-    { name: 'Drill Six', value: 85, date: '14 Apr 2022' },
-    { name: 'Drill One', value: 80, date: '15 Apr 2022' },
-    { name: 'Drill Nine', value: 95, date: '16 Apr 2022' },
-
-    { name: 'Drill Ten', value: 70, date: '17 Apr 2022' },
-    { name: 'Drill Four', value: 85, date: '18 Apr 2022' },
-    { name: 'Drill One', value: 95, date: '19 Apr 2022' },
-    {
-      name: 'Drill Three',
-      value: 35,
-      date: '20 Apr 2022',
-      label: '20 Apr',
-      labelTextStyle: { color: 'lightgray', width: 60 },
-    },
-    { name: 'Drill One', value: 48, date: '21 Apr 2022' },
-    { name: 'Drill Ten', value: 95, date: '22 Apr 2022' },
-    { name: 'Drill Three', value: 26, date: '23 Apr 2022' },
-    { name: 'Drill Six', value: 55, date: '24 Apr 2022' },
-
-    { name: 'Drill Eight', value: 89, date: '25 Apr 2022' },
-    { name: 'Drill One', value: 62, date: '26 Apr 2022' },
-    { name: 'Drill Four', value: 70, date: '27 Apr 2022' },
-    { name: 'Drill Two', value: 53, date: '28 Apr 2022' },
-    { name: 'Drill One', value: 61, date: '29 Apr 2022' },
-    {
-      name: 'Drill Three',
-      value: 70,
-      date: '30 Apr 2022',
-      label: '30 Apr',
-      labelTextStyle: { color: 'lightgray', width: 60 },
-    },
-    { name: 'Drill Ten', value: 84, date: '1 May 2022' },
-    { name: 'Drill Seven', value: 95, date: '2 May 2022' },
-    { name: 'Drill Five', value: 78, date: '3 May 2022' },
-    { name: 'Drill Six', value: 65, date: '4 May 2022' },
-    { name: 'Drill Three', value: 91, date: '5 May 2022' },
-  ];
-
   return (
     <View>
       <LineChart
