@@ -39,7 +39,7 @@ function InteractiveChartV2() {
     const newDrillName = []; // This was for the old chart
     const giftedArray = [];
     for (let drill of sortedData) {
-      let date = new Date(drill?.date.seconds * 1000 + drill.date.nanoseconds / 1000000);
+      let date = new Date(drill?.date?.seconds * 1000 + drill.date.nanoseconds / 1000000);
 
       let misses = drill.totalMisses;
       let accuracy = ((15 - misses) / 15) * 100;
