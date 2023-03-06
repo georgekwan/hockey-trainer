@@ -70,7 +70,7 @@ function InteractiveChartV2() {
         data={giftedValues}
         rotateLabel
         height={255}
-        width={330}
+        width={335}
         hideDataPoints
         spacing={10}
         color="#DC3535"
