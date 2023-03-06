@@ -68,7 +68,7 @@ function InteractiveChartV2() {
   }, [patternHistory]);
 
   return (
-    <View>
+    <View style={{ marginTop: 10 }}>
       <LineChart
         areaChart
         data={giftedValues}
@@ -113,8 +113,9 @@ function InteractiveChartV2() {
                   height: 110,
                   width: 150,
                   justifyContent: 'center',
-                  // marginTop: -30,
-                  // marginLeft: -40,
+                  marginTop: -20,
+                  marginLeft: -20,
+                  marginRight: -20,
                   borderRadius: 5,
                   backgroundColor: '#2E3033',
                   opacity: 0.8,
