@@ -15,17 +15,17 @@ function LoginScreen({ navigation }) {
   const { login, authErrorMessages } = useContext(AuthContext);
 
   //TODO change email and password back to blank when deploy
-  const [email, setEmail] = useState('steve@steve.com'); // input field value cannot be null
-  const [password, setPassword] = useState('stevesteve'); // input field value cannot be null
-
+  const [email, setEmail] = useState('steve@steve.com');
+  const [password, setPassword] = useState('stevesteve');
   const [loginRunning, setLoginRunning] = useState(false);
   const [errorMessage, setErrorMessage] = useState();
   const [showRegisterForm, setShowRegisterForm] = useState(false);
 
   const handleButtonClick = async () => {
     setLoginRunning(true);
-    console.log('email is ', email);
+
     const success = await login(email, password);
+    console.log('🚀 ~ file: LoginScreen.js:28 ~ handleButtonClick ~ email:', email);
 
     setLoginRunning(false);
     if (!success) {
@@ -47,13 +47,9 @@ function LoginScreen({ navigation }) {
         label="Email"
         returnKeyType="next"
         value={email}
-        // onChangeText={(text) => setEmail({ value: text, error: '' })}
         onChangeText={(e) => {
-          // console.log('e is', e);
           setEmail(e);
         }}
-        // error={!!email.error}
-        // errorText={email.error}
         autoCapitalize="none"
         autoCompleteType="email"
         textContentType="emailAddress"
@@ -63,10 +59,7 @@ function LoginScreen({ navigation }) {
         label="Password"
         returnKeyType="done"
         value={password}
-        // onChangeText={(text) => setPassword({ value: text, error: '' })}
         onChangeText={(e) => setPassword(e)}
-        // error={!!password.error}
-        // errorText={password.error}
         secureTextEntry
       />
       <View style={styles.forgotPassword}>
