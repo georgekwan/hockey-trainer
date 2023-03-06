@@ -11,6 +11,10 @@ function convertTimestamp(unixTimestamp) {
     return date.toLocaleDateString('en-US', options);
   }
 }
+console.log(
+  '🚀 ~ file: InteractiveChartV2.js:8 ~ convertTimestamp ~ convertTimestamp:',
+  convertTimestamp
+);
 
 export default React.memo(InteractiveChartV2);
 
@@ -20,7 +24,7 @@ function InteractiveChartV2() {
     let width = Dimensions.get('window').width;
     return (width / 750) * size;
   };
-  const [newDrillName, setNewDrillName] = useState([]);
+  const [newDrillName, setNewDrillName] = useState([]); // This was for the old chart
   const [drillTime, setDrillTime] = useState([]); // This was for the old chart
   const [shotAccuracy, setShotAccuracy] = useState([]); // This was for the old chart
   const [giftedValues, setGiftedValues] = useState([]);
@@ -39,7 +43,7 @@ function InteractiveChartV2() {
     const newDrillName = []; // This was for the old chart
     const giftedArray = [];
     for (let drill of sortedData) {
-      let date = new Date(drill?.date?.seconds * 1000 + drill.date.nanoseconds / 1000000);
+      let date = new Date(drill?.date?.seconds * 1000 + drill.date?.nanoseconds / 1000000);
 
       let misses = drill.totalMisses;
       let accuracy = ((15 - misses) / 15) * 100;
