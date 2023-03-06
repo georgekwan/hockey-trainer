@@ -11,10 +11,6 @@ function convertTimestamp(unixTimestamp) {
     return date.toLocaleDateString('en-US', options);
   }
 }
-console.log(
-  '🚀 ~ file: InteractiveChartV2.js:8 ~ convertTimestamp ~ convertTimestamp:',
-  convertTimestamp
-);
 
 export default React.memo(InteractiveChartV2);
 
@@ -50,7 +46,6 @@ function InteractiveChartV2() {
       accuracy = Math.round(accuracy * 100) / 100;
       newDrillTime.push(date); // This was for the old chart
       newShotAccuracy.push(accuracy); // This was for the old chart
-
       newDrillName.push(drill.drillId); // This was for the old chart
       giftedArray.push({
         value: Math.round(accuracy),
@@ -68,7 +63,7 @@ function InteractiveChartV2() {
   }, [patternHistory]);
 
   return (
-    <View style={{ marginTop: 10 }}>
+    <View style={{ marginTop: 30 }}>
       <LineChart
         areaChart
         data={giftedValues}
