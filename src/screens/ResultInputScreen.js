@@ -124,8 +124,6 @@ const ResultInputScreen = ({ route }) => {
       <View
         style={{
           position: 'relative',
-          // borderColor: 'red',
-          // borderWidth: 5,
           height: HEIGHT * 0.35,
         }}>
         <ImageBackground
@@ -145,10 +143,7 @@ const ResultInputScreen = ({ route }) => {
               zIndex: 3,
               width: '100%',
               height: '100%',
-              // borderColor: 'yellow',
-              // borderWidth: 5,
             }}>
-            {/* {console.log(`shots left is ${numberOfShotsLeft}`)} */}
             <View
               style={{
                 display: 'flex',
@@ -368,8 +363,6 @@ const ResultInputScreen = ({ route }) => {
             flex: 1,
             flexDirection: 'row',
             alignItems: 'center',
-            // borderColor: 'blue',
-            // borderWidth: 5,
             zIndex: 0,
           }}></View>
       </View>
