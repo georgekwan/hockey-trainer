@@ -21,10 +21,10 @@ function InteractiveChartV2() {
     return (width / 750) * size;
   };
   const [newDrillName, setNewDrillName] = useState([]);
-  const [drillTime, setDrillTime] = useState([]);
-  const [shotAccuracy, setShotAccuracy] = useState([]);
+  const [drillTime, setDrillTime] = useState([]); // This was for the old chart
+  const [shotAccuracy, setShotAccuracy] = useState([]); // This was for the old chart
   const [giftedValues, setGiftedValues] = useState([]);
-  const size = useRef(drillTime.length);
+  const size = useRef(drillTime.length); // This was for the old chart
 
   useEffect(() => {
     if (!patternHistory) return;
@@ -34,9 +34,9 @@ function InteractiveChartV2() {
 
       return result;
     });
-    const newDrillTime = [];
-    const newShotAccuracy = [];
-    const newDrillName = [];
+    const newDrillTime = []; // This was for the old chart
+    const newShotAccuracy = []; // This was for the old chart
+    const newDrillName = []; // This was for the old chart
     const giftedArray = [];
     for (let drill of sortedData) {
       let date = new Date(drill?.date.seconds * 1000 + drill.date.nanoseconds / 1000000);
@@ -44,20 +44,24 @@ function InteractiveChartV2() {
       let misses = drill.totalMisses;
       let accuracy = ((15 - misses) / 15) * 100;
       accuracy = Math.round(accuracy * 100) / 100;
-      newDrillTime.push(date);
-      newShotAccuracy.push(accuracy);
+      newDrillTime.push(date); // This was for the old chart
+      newShotAccuracy.push(accuracy); // This was for the old chart
 
-      newDrillName.push(drill.drillId);
-      giftedArray.push({ value: accuracy, dataPointText: String(accuracy) });
+      newDrillName.push(drill.drillId); // This was for the old chart
+      giftedArray.push({
+        value: Math.round(accuracy),
+        dataPointText: String(accuracy),
+        name: drill.drillId,
+        date: String(date),
+      }); // need to include Drill name and Drill date
+      console.log('🚀 ~ file: InteractiveChartV2.js:60 ~ useEffect ~ giftedArray:', giftedArray);
     }
     setGiftedValues(giftedArray);
-    setNewDrillName(newDrillName);
-    setDrillTime(newDrillTime);
-    setShotAccuracy(newShotAccuracy);
+    setNewDrillName(newDrillName); // This was for the old chart
+    setDrillTime(newDrillTime); // This was for the old chart
+    setShotAccuracy(newShotAccuracy); // This was for the old chart
     size.current = newDrillTime.length;
   }, [patternHistory]);
-
-  //  console.log('giftedValues is:', giftedValues);
 
   const giftedValuesMock = [
     { name: 'Drill One', value: 90, date: '1 Apr 2022' },
@@ -119,17 +123,10 @@ function InteractiveChartV2() {
   ];
 
   return (
-    <View
-      style={
-        {
-          // paddingVertical: 5,
-          // paddingLeft: 5,
-          // backgroundColor: 'black',
-        }
-      }>
+    <View>
       <LineChart
         areaChart
-        data={giftedValuesMock}
+        data={giftedValues}
         rotateLabel
         height={255}
         width={330}
@@ -169,7 +166,7 @@ function InteractiveChartV2() {
               <View
                 style={{
                   height: 110,
-                  width: 110,
+                  width: 150,
                   justifyContent: 'center',
                   // marginTop: -30,
                   // marginLeft: -40,
