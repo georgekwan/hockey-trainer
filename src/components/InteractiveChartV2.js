@@ -6,15 +6,6 @@ import { PatternContext } from '../providers/PatternProvider.js';
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
-// Convert timestamp to date
-function convertTimestamp(unixTimestamp) {
-  if (patternHistory.length > 0) {
-    const date = new Date(unixTimestamp * 1000);
-    const options = { month: 'short', day: 'numeric' };
-    return date.toLocaleDateString('en-US', options);
-  }
-}
-
 export default React.memo(InteractiveChartV2);
 
 function InteractiveChartV2() {
@@ -37,9 +28,9 @@ function InteractiveChartV2() {
 
       return result;
     });
-    const newDrillTime = []; // This was for the old chart
-    const newShotAccuracy = []; // This was for the old chart
-    const newDrillName = []; // This was for the old chart
+    // const newDrillTime = []; // This was for the old chart
+    // const newShotAccuracy = []; // This was for the old chart
+    // const newDrillName = []; // This was for the old chart
     const giftedArray = [];
     for (let drill of sortedData) {
       let date = new Date(drill?.date?.seconds * 1000 + drill.date?.nanoseconds / 1000000);
@@ -47,24 +38,25 @@ function InteractiveChartV2() {
       let misses = drill.totalMisses;
       let accuracy = ((15 - misses) / 15) * 100;
       accuracy = Math.round(accuracy * 100) / 100;
-      newDrillTime.push(date); // This was for the old chart
-      newShotAccuracy.push(accuracy); // This was for the old chart
-      newDrillName.push(drill.drillId); // This was for the old chart
+      // newDrillTime.push(date); // This was for the old chart
+      // newShotAccuracy.push(accuracy); // This was for the old chart
+      // newDrillName.push(drill.drillId); // This was for the old chart
+      const dateOptions = { month: 'short', day: '2-digit' };
+      const timeOptions = { hour12: false, hour: '2-digit', minute: '2-digit' };
       giftedArray.push({
         value: Math.round(accuracy),
         // dataPointText: String(accuracy),
         name: drill.drillId,
-        date: String(date),
-        label: String(date),
-        labelTextStyle: { color: 'lightgray', width: 60 },
+        date: String(date.toLocaleDateString('en-US', timeOptions)),
+        label: String(date.toLocaleDateString('en-US', dateOptions)),
+        labelTextStyle: { color: 'black', width: 60 },
       });
-      // console.log('🚀 ~ file: InteractiveChartV2.js:60 ~ useEffect ~ giftedArray:', giftedArray);
     }
     setGiftedValues(giftedArray);
-    setNewDrillName(newDrillName); // This was for the old chart
-    setDrillTime(newDrillTime); // This was for the old chart
-    setShotAccuracy(newShotAccuracy); // This was for the old chart
-    size.current = newDrillTime.length;
+    // setNewDrillName(newDrillName); // This was for the old chart
+    // setDrillTime(newDrillTime); // This was for the old chart
+    // setShotAccuracy(newShotAccuracy); // This was for the old chart
+    // size.current = newDrillTime.length;
   }, [patternHistory]);
 
   return (
@@ -76,22 +68,22 @@ function InteractiveChartV2() {
         height={HEIGHT * 0.285}
         width={WIDTH * 0.85}
         hideDataPoints
-        spacing={20}
+        spacing={25}
         color="#DC3535"
         thickness={5}
         startFillColor="#DC3535"
         endFillColor="#DC3535"
         startOpacity={0.8}
         endOpacity={0}
-        initialSpacing={0}
-        noOfSections={10}
+        initialSpacing={5}
+        noOfSections={5}
         maxValue={100}
         yAxisColor="black"
         yAxisThickness={2}
         rulesType="solid"
         rulesColor="#F2F0EB"
-        yAxisTextStyle={{ color: 'grey' }}
-        xAxisTextStyle={{ color: 'black' }}
+        yAxisTextStyle={{ color: '#2E3033' }}
+        xAxisTextStyle={{ color: '#2E3033' }}
         yAxisSide="left"
         yAxisLabelSuffix="%"
         xAxisColor="black"
@@ -110,8 +102,8 @@ function InteractiveChartV2() {
             return (
               <View
                 style={{
-                  height: 110,
-                  width: 150,
+                  height: 95,
+                  width: 140,
                   justifyContent: 'center',
                   marginTop: -20,
                   marginLeft: -20,
@@ -144,7 +136,7 @@ function InteractiveChartV2() {
                 <Text
                   style={{
                     color: 'white',
-                    fontSize: 16,
+                    fontSize: 20,
                     fontWeight: 'bold',
                     textAlign: 'center',
                   }}>
