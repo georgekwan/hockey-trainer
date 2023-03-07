@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { BottomNavigation } from 'react-native-paper';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { theme } from '../core/theme.js';
-
 import { DrillSelectionScreen, HomeScreen } from '../screens';
 import { Leaderboard } from '../screens/Leaderboard';
 import { UserProfileScreen } from '../screens/UserProfileScreen';
