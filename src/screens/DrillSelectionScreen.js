@@ -42,7 +42,6 @@ const DrillSelectionScreen = () => {
   const [selectedSeconds, setSelectedSeconds] = useState(0);
   const [selectedTutor, setSelectedTutor] = useState();
 
-  // console.log('selected pattern is', selectedPatternName);
   return (
     <View style={{ flex: 1, backgroundColor: 'white' }}>
       <View

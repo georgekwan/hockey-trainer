@@ -23,17 +23,10 @@ const MissShotInput = (props) => {
     setItems(newItems);
   }, [numberOfShotsLeft]);
 
-  // console.log('Position at: ', positionStyle);
-  // console.log('value: ', value);
-  // console.log('items: ', items);
-  // console.log('numberOfShotsLeft: ', numberOfShotsLeft);
-
   return (
     <View style={[style, positionStyle]}>
       <DropDownPicker
         onSelectItem={(item) => {
-          console.log('item', item);
-          console.log('misses', myMisses);
           setMisses(item.value);
           setNumberOfShotsLeft((currval) => currval - item.value + myMisses);
         }}

@@ -19,9 +19,7 @@ export const PatternButton = (props) => {
       <Button
         mode="elevated"
         onPress={() => {
-          // setPatternName(name);
           setSelectedPatternName(name);
-          // console.log('selected ', name, 'pattern');
         }}
         style={[styles.button, { backgroundColor: backgroundColor }]}>
         <Text style={styles.text}>{name}</Text>

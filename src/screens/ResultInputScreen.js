@@ -66,7 +66,6 @@ const ResultInputScreen = ({ route }) => {
       date: serverTimestamp(),
       shooter: { ...profile },
     };
-    // console.log(missesCopy);
 
     const docRef = await addDoc(collection(myDb, 'drillResults'), missesCopy);
     setLoading(false);

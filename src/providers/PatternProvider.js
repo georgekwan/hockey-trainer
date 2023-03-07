@@ -15,11 +15,11 @@ export const PatternProvider = (props) => {
 
   useEffect(() => {
     if (user) {
-      console.log('PROFILE HERE UID', user.uid);
+      console.log('🚀 ~ file: PatternProvider.js:20 ~ useEffect ~ user.uid:', user.uid);
       const q = query(collection(myDb, C.COLL_DRILL_RESULTS), where(C.FLD_USER_ID, '==', user.uid));
       const unsubscribe = onSnapshot(q, (querySnapshot) => {
         const theDocs = querySnapshot.docs.map((docSnap) => docSnap.data());
-        console.log('got docs: ', querySnapshot.size);
+        // console.log('got docs: ', querySnapshot.size);
         setPatternHistory(theDocs);
       });
       return unsubscribe;

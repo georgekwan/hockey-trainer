@@ -52,7 +52,7 @@ export const UserProfileScreen = () => {
           style={{ width: WIDTH * 0.8 }}
           icon="pencil"
           mode="contained"
-          onPress={() => console.log('Pressed')}>
+          onPress={() => console.log('EDIT PROFILE / HISTORY')}>
           EDIT PROFILE / HISTORY
         </Button>
       </View>
@@ -67,7 +67,6 @@ export const UserProfileScreen = () => {
             size={40}
             onPress={() => {
               setTableView(true);
-              console.log('table view =', tableView);
             }}
           />
           <IconButton
@@ -76,7 +75,6 @@ export const UserProfileScreen = () => {
             size={40}
             onPress={() => {
               setTableView(false);
-              console.log('table view =', tableView);
             }}
           />
         </View>

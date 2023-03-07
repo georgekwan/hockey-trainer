@@ -18,7 +18,6 @@ export const TimeoutButton = (props) => {
       onPress={() => {
         setTimeout(seconds * 1000);
         setSelectedSeconds(seconds);
-        console.log('selected', seconds, 'sec timeout');
       }}
       style={[styles.button, { backgroundColor: backgroundColor }]}
       labelStyle={{

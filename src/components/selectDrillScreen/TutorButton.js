@@ -18,7 +18,6 @@ export const TutorButton = (props) => {
       onPress={() => {
         setTutor(tutorHoles);
         setSelectedTutor(tutorHoles);
-        console.log('selected', tutor, 'tutor');
       }}
       style={[styles.button, { backgroundColor: backgroundColor }]}
       labelStyle={{

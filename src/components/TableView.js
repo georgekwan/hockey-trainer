@@ -10,7 +10,6 @@ const HEIGHT = Dimensions.get('screen').height;
 
 export const TableView = () => {
   const { patternHistory, sortedPatternHistory } = useContext(PatternContext);
-  // console.log('HERE IS THE SORTED PATTERN HISTORY context VARIABLE', sortedPatternHistory);
 
   // Convert timestamp to date
   function convertTimestamp(unixTimestamp) {

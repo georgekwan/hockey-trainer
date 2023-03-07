@@ -12,11 +12,11 @@ export default function InDrillScreenTEST() {
   const [currentString, setCurrentString] = useState(patterns.drillPatterns[0].sequence[0]);
 
   async function playSound() {
-    console.log('Loading Sound');
+    // console.log('Loading Sound');
     const { sound } = await Audio.Sound.createAsync(fileName(currentString));
     setSound(sound);
 
-    console.log('Playing Sound');
+    // console.log('Playing Sound');
     await sound.playAsync();
   }
 
@@ -24,13 +24,13 @@ export default function InDrillScreenTEST() {
     Timer.setInterval(
       'soundTimer',
       async () => {
-        console.log('Unloading Sound');
+        // console.log('Unloading Sound');
         setCurrentStringIndex((curVal) => {
           const newVal = (curVal + 1) % patterns.drillPatterns[0].sequence.length;
           setCurrentString(patterns.drillPatterns[0].sequence[newVal]);
           return newVal;
         });
-        console.log(currentStringIndex);
+        // console.log(currentStringIndex);
         sound.unloadAsync();
       },
       3000

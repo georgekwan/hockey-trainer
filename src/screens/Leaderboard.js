@@ -11,8 +11,9 @@ const WIDTH = Dimensions.get('screen').width;
 export const Leaderboard = () => {
   const { leaderboard } = React.useContext(LeaderboardContext);
 
-  leaderboard.sort((a, b) => b.accuracy - a.accuracy);
-  console.log(leaderboard);
+  leaderboard.sort((a, b) => {
+    return b.accuracy - a.accuracy;
+  });
 
   return (
     <>
