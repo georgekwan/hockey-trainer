@@ -1,12 +1,9 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useContext, useEffect, useState } from 'react';
-import { Dimensions, Image, Pressable, StyleSheet, ScrollView, Text, View } from 'react-native';
-import { Button, List } from 'react-native-paper';
+import React, { useContext, useState } from 'react';
+import { Dimensions, StyleSheet, ScrollView, Text, View } from 'react-native';
+import { List } from 'react-native-paper';
 
-import { ResultInputScreen } from './ResultInputScreen';
-import * as patterns from '../../temp/drill_patterns.json';
 import FullLogo from '../components/FullLogo.js';
-import { addDoc, serverTimestamp } from 'firebase/firestore';
 
 import { theme } from '../core/theme';
 import { PatternButton } from '../components/selectDrillScreen/PatternButton.js';
@@ -36,8 +33,6 @@ const DrillSelectionScreen = () => {
 
   // route.selectedName = route.selectedName || 'Around the World';
   const navigation = useNavigation();
-  const [timeout, setTimeout] = useState(0);
-  const [tutor, setTutor] = useState();
   // const [selectedPatternName, setSelectedPatternName] = useState();
   const [selectedSeconds, setSelectedSeconds] = useState(0);
   const [selectedTutor, setSelectedTutor] = useState();

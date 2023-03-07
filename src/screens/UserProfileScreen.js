@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Dimensions, StyleSheet, Text, View } from 'react-native';
 import { Avatar, IconButton } from 'react-native-paper';
 import Button from '../components/Button.js';

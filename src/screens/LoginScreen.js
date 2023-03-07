@@ -19,7 +19,6 @@ function LoginScreen({ navigation }) {
   const [password, setPassword] = useState('stevesteve');
   const [loginRunning, setLoginRunning] = useState(false);
   const [errorMessage, setErrorMessage] = useState();
-  const [showRegisterForm, setShowRegisterForm] = useState(false);
 
   const handleButtonClick = async () => {
     setLoginRunning(true);
