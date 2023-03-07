@@ -4,7 +4,6 @@ import { Avatar, IconButton } from 'react-native-paper';
 import Button from '../components/Button.js';
 import FullLogo from '../components/FullLogo.js';
 import InteractiveChart from '../components/InteractiveChart.js';
-import InteractiveChartV2 from '../components/InteractiveChartV2.js';
 import { TableView } from '../components/TableView.js';
 import { theme } from '../core/theme';
 import { AuthContext } from '../providers/AuthProvider.js';
@@ -21,7 +20,7 @@ export const UserProfileScreen = () => {
     if (tableView) {
       return <TableView />;
     } else {
-      return <InteractiveChartV2 />;
+      return <InteractiveChart />;
     }
   };
 

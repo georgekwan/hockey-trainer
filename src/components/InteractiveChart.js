@@ -1,16 +1,10 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { Dimensions, View } from 'react-native';
+import { Dimensions, View, Text } from 'react-native';
 import { LineChart } from 'react-native-gifted-charts';
 import { PatternContext } from '../providers/PatternProvider.js';
 
-// Convert timestamp to date
-function convertTimestamp(unixTimestamp) {
-  if (patternHistory.length > 0) {
-    const date = new Date(unixTimestamp * 1000);
-    const options = { month: 'short', day: 'numeric' };
-    return date.toLocaleDateString('en-US', options);
-  }
-}
+const WIDTH = Dimensions.get('screen').width;
+const HEIGHT = Dimensions.get('screen').height;
 
 export default React.memo(InteractiveChart);
 
@@ -20,60 +14,139 @@ function InteractiveChart() {
     let width = Dimensions.get('window').width;
     return (width / 750) * size;
   };
-  const [newDrillName, setNewDrillName] = useState([]);
-  const [drillTime, setDrillTime] = useState([]);
-  const [shotAccuracy, setShotAccuracy] = useState([]);
+  const [newDrillName, setNewDrillName] = useState([]); // This was for the old chart
+  const [drillTime, setDrillTime] = useState([]); // This was for the old chart
+  const [shotAccuracy, setShotAccuracy] = useState([]); // This was for the old chart
   const [giftedValues, setGiftedValues] = useState([]);
-  const size = useRef(drillTime.length);
+  const size = useRef(drillTime.length); // This was for the old chart
 
   useEffect(() => {
     if (!patternHistory) return;
 
     const sortedData = patternHistory?.sort((a, b) => {
-      let result = a?.date.seconds - b.date.seconds;
+      let result = a?.date?.seconds - b?.date?.seconds;
 
       return result;
     });
-    const newDrillTime = [];
-    const newShotAccuracy = [];
-    const newDrillName = [];
+    // const newDrillTime = []; // This was for the old chart
+    // const newShotAccuracy = []; // This was for the old chart
+    // const newDrillName = []; // This was for the old chart
     const giftedArray = [];
     for (let drill of sortedData) {
-      let date = new Date(drill?.date.seconds * 1000 + drill.date.nanoseconds / 1000000);
+      let date = new Date(drill?.date?.seconds * 1000 + drill.date?.nanoseconds / 1000000);
 
       let misses = drill.totalMisses;
       let accuracy = ((15 - misses) / 15) * 100;
       accuracy = Math.round(accuracy * 100) / 100;
-      newDrillTime.push(date);
-      newShotAccuracy.push(accuracy);
-
-      newDrillName.push(drill.drillId);
-      giftedArray.push({ value: accuracy, dataPointText: String(accuracy) });
+      // newDrillTime.push(date); // This was for the old chart
+      // newShotAccuracy.push(accuracy); // This was for the old chart
+      // newDrillName.push(drill.drillId); // This was for the old chart
+      const dateOptions = { month: 'short', day: '2-digit' };
+      const timeOptions = { hour12: false, hour: '2-digit', minute: '2-digit' };
+      giftedArray.push({
+        value: Math.round(accuracy),
+        // dataPointText: String(accuracy),
+        name: drill.drillId,
+        date: String(date.toLocaleDateString('en-US', timeOptions)),
+        label: String(date.toLocaleDateString('en-US', dateOptions)),
+        labelTextStyle: { color: '#2E3033', width: 60 },
+      });
     }
     setGiftedValues(giftedArray);
-    setNewDrillName(newDrillName);
-    setDrillTime(newDrillTime);
-    setShotAccuracy(newShotAccuracy);
-    size.current = newDrillTime.length;
+    // setNewDrillName(newDrillName); // This was for the old chart
+    // setDrillTime(newDrillTime); // This was for the old chart
+    // setShotAccuracy(newShotAccuracy); // This was for the old chart
+    // size.current = newDrillTime.length;
   }, [patternHistory]);
 
-//  console.log('giftedValues is:', giftedValues);
   return (
-    <View>
+    <View style={{ paddingHorizontal: WIDTH * 0.01, marginTop: 30 }}>
       <LineChart
+        areaChart
+        curved
         data={giftedValues}
-        height={250}
-        showVerticalLines
-        spacing={44}
-        initialSpacing={0}
-        color1="skyblue"
-        textColor1="green"
-        dataPointsHeight={6}
-        dataPointsWidth={6}
-        dataPointsColor1="blue"
-        textShiftY={-2}
-        textShiftX={-5}
-        textFontSize={13}
+        rotateLabel
+        height={HEIGHT * 0.285}
+        width={WIDTH * 0.85}
+        hideDataPoints
+        spacing={25}
+        color="#DC3535"
+        thickness={5}
+        startFillColor="#DC3535"
+        endFillColor="#DC3535"
+        startOpacity={0.8}
+        endOpacity={0}
+        initialSpacing={2.5}
+        noOfSections={5}
+        maxValue={100}
+        yAxisColor="#2E3033"
+        yAxisThickness={2}
+        rulesType="solid"
+        rulesColor="#F2F0EB"
+        yAxisTextStyle={{ color: '#2E3033' }}
+        xAxisTextStyle={{ color: '#2E3033' }}
+        yAxisSide="left"
+        yAxisLabelSuffix="%"
+        xAxisColor="#2E3033"
+        xAxisThickness={2}
+        pointerConfig={{
+          pointerStripHeight: 160,
+          pointerStripColor: 'white',
+          pointerStripWidth: 2,
+          pointerColor: '#DC3535',
+          radius: 5,
+          pointerLabelWidth: 100,
+          pointerLabelHeight: 100,
+          activatePointersOnLongPress: true,
+          autoAdjustPointerLabelPosition: false,
+          pointerLabelComponent: (items) => {
+            return (
+              <View
+                style={{
+                  height: 95,
+                  width: 140,
+                  justifyContent: 'center',
+                  marginTop: -20,
+                  marginLeft: -20,
+                  marginRight: -20,
+                  borderRadius: 5,
+                  backgroundColor: '#2E3033',
+                  opacity: 0.8,
+                }}>
+                <Text
+                  style={{
+                    color: 'white',
+                    fontSize: 16,
+                    fontWeight: 'bold',
+                    marginBottom: 6,
+                    textAlign: 'center',
+                  }}>
+                  {items[0].name}
+                </Text>
+
+                <Text
+                  style={{
+                    color: 'white',
+                    fontSize: 16,
+                    marginBottom: 6,
+                    textAlign: 'center',
+                  }}>
+                  {items[0].date}
+                </Text>
+
+                <Text
+                  style={{
+                    color: 'white',
+                    fontSize: 20,
+                    fontWeight: 'bold',
+                    textAlign: 'center',
+                  }}>
+                  {items[0].value + '%'}
+                </Text>
+              </View>
+            );
+          },
+        }}
       />
     </View>
   );
