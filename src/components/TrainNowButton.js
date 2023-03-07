@@ -1,6 +1,7 @@
 import { Dimensions, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { Button } from 'react-native-paper';
+import { theme } from '../core/theme';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
@@ -19,7 +20,7 @@ export const TrainNowButton = (props) => {
         }}>
         <Button
           mode="elevated"
-          buttonColor={'#DCDCDC'}
+          buttonColor={theme.colors.primary}
           onPress={onPress}
           style={{
             width: WIDTH * 0.8,
@@ -34,7 +35,7 @@ export const TrainNowButton = (props) => {
           <Text
             style={{
               textAlign: 'center',
-              color: 'black',
+              color: 'white',
               fontWeight: '800',
               // alignItems: 'center',
             }}>
