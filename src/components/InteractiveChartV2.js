@@ -76,7 +76,7 @@ function InteractiveChartV2() {
         height={HEIGHT * 0.285}
         width={WIDTH * 0.85}
         hideDataPoints
-        spacing={10}
+        spacing={20}
         color="#DC3535"
         thickness={5}
         startFillColor="#DC3535"
