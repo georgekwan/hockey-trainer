@@ -1,8 +1,6 @@
 import React, { useContext, useState, useRef } from 'react';
 import { ImageBackground, Dimensions, Image, StyleSheet, Text, View } from 'react-native';
 import { Button } from 'react-native-paper';
-// import { Button as PaperButton } from 'react-native-paper';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
 
@@ -70,7 +68,7 @@ const ResultInputScreen = ({ route }) => {
     const docRef = await addDoc(collection(myDb, 'drillResults'), missesCopy);
     setLoading(false);
 
-    navigation.navigate('NavBarContainer', { initialIndex: 2 });
+    navigation.navigate('NavBarContainer', { initialIndex: 3 });
   };
 
   return (
