@@ -17,7 +17,6 @@ import {
   StartScreen,
 } from './src/screens';
 
-// import InDrillScreen from './src/screens/InDrillScreen.js';
 import ResultInputScreen from './src/screens/ResultInputScreen.js';
 import { LeaderboardProvider } from './src/providers/RankingsProvider.js';
 
@@ -31,13 +30,6 @@ export default function App() {
           <Provider theme={theme}>
             <LeaderboardProvider>
               <NavigationContainer>
-                {/* <Stack.Navigator
-                initialRouteName="NavBarContainer"
-                name="NavBarContainer"
-                component={NavBarContainer}
-                screenOptions={{
-                  headerShown: false,
-                }}> */}
                 <Stack.Navigator
                   initialRouteName="StartScreen"
                   name="StartScreen"
