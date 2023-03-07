@@ -15,8 +15,8 @@ function LoginScreen({ navigation }) {
   const { login, authErrorMessages } = useContext(AuthContext);
 
   //TODO change email and password back to blank when deploy
-  const [email, setEmail] = useState('steve@steve.com');
-  const [password, setPassword] = useState('stevesteve');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [loginRunning, setLoginRunning] = useState(false);
   const [errorMessage, setErrorMessage] = useState();
 
