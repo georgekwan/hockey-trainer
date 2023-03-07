@@ -49,7 +49,7 @@ function InteractiveChartV2() {
         name: drill.drillId,
         date: String(date.toLocaleDateString('en-US', timeOptions)),
         label: String(date.toLocaleDateString('en-US', dateOptions)),
-        labelTextStyle: { color: 'black', width: 60 },
+        labelTextStyle: { color: '#2E3033', width: 60 },
       });
     }
     setGiftedValues(giftedArray);
@@ -63,6 +63,7 @@ function InteractiveChartV2() {
     <View style={{ paddingHorizontal: WIDTH * 0.01, marginTop: 30 }}>
       <LineChart
         areaChart
+        curved
         data={giftedValues}
         rotateLabel
         height={HEIGHT * 0.285}
@@ -75,10 +76,10 @@ function InteractiveChartV2() {
         endFillColor="#DC3535"
         startOpacity={0.8}
         endOpacity={0}
-        initialSpacing={5}
+        initialSpacing={2.5}
         noOfSections={5}
         maxValue={100}
-        yAxisColor="black"
+        yAxisColor="#2E3033"
         yAxisThickness={2}
         rulesType="solid"
         rulesColor="#F2F0EB"
@@ -86,7 +87,7 @@ function InteractiveChartV2() {
         xAxisTextStyle={{ color: '#2E3033' }}
         yAxisSide="left"
         yAxisLabelSuffix="%"
-        xAxisColor="black"
+        xAxisColor="#2E3033"
         xAxisThickness={2}
         pointerConfig={{
           pointerStripHeight: 160,
