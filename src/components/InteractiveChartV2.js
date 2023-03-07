@@ -49,10 +49,12 @@ function InteractiveChartV2() {
       newDrillName.push(drill.drillId); // This was for the old chart
       giftedArray.push({
         value: Math.round(accuracy),
-        dataPointText: String(accuracy),
+        // dataPointText: String(accuracy),
         name: drill.drillId,
         date: String(date),
-      }); // need to include Drill name and Drill date
+        label: String(date),
+        labelTextStyle: { color: 'lightgray', width: 60 },
+      }); // need to include Drill name and Drill datec
       console.log('🚀 ~ file: InteractiveChartV2.js:60 ~ useEffect ~ giftedArray:', giftedArray);
     }
     setGiftedValues(giftedArray);
@@ -77,14 +79,14 @@ function InteractiveChartV2() {
         startFillColor="#DC3535"
         endFillColor="#DC3535"
         startOpacity={0.8}
-        endOpacity={0.2}
+        endOpacity={0}
         initialSpacing={0}
         noOfSections={10}
         maxValue={100}
         yAxisColor="black"
         yAxisThickness={2}
         rulesType="solid"
-        rulesColor="lightgray"
+        rulesColor="#F2F0EB"
         yAxisTextStyle={{ color: 'grey' }}
         xAxisTextStyle={{ color: 'black' }}
         yAxisSide="left"
