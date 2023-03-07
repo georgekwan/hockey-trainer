@@ -3,6 +3,9 @@ import { Dimensions, View, Text } from 'react-native';
 import { LineChart } from 'react-native-gifted-charts';
 import { PatternContext } from '../providers/PatternProvider.js';
 
+const WIDTH = Dimensions.get('screen').width;
+const HEIGHT = Dimensions.get('screen').height;
+
 // Convert timestamp to date
 function convertTimestamp(unixTimestamp) {
   if (patternHistory.length > 0) {
@@ -65,13 +68,13 @@ function InteractiveChartV2() {
   }, [patternHistory]);
 
   return (
-    <View style={{ marginTop: 30 }}>
+    <View style={{ paddingHorizontal: WIDTH * 0.01, marginTop: 30 }}>
       <LineChart
         areaChart
         data={giftedValues}
         rotateLabel
-        height={255}
-        width={335}
+        height={HEIGHT * 0.285}
+        width={WIDTH * 0.85}
         hideDataPoints
         spacing={10}
         color="#DC3535"
