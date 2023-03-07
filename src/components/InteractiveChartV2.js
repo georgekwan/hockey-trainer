@@ -55,7 +55,7 @@ function InteractiveChartV2() {
         label: String(date),
         labelTextStyle: { color: 'lightgray', width: 60 },
       }); // need to include Drill name and Drill datec
-      console.log('🚀 ~ file: InteractiveChartV2.js:60 ~ useEffect ~ giftedArray:', giftedArray);
+      // console.log('🚀 ~ file: InteractiveChartV2.js:60 ~ useEffect ~ giftedArray:', giftedArray);
     }
     setGiftedValues(giftedArray);
     setNewDrillName(newDrillName); // This was for the old chart
