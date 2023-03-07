@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Dimensions, View, Text } from 'react-native';
 import { LineChart } from 'react-native-gifted-charts';
 import { PatternContext } from '../providers/PatternProvider.js';
@@ -10,15 +10,7 @@ export default React.memo(InteractiveChart);
 
 function InteractiveChart() {
   const { patternHistory } = useContext(PatternContext);
-  const apx = (size = 0) => {
-    let width = Dimensions.get('window').width;
-    return (width / 750) * size;
-  };
-  const [newDrillName, setNewDrillName] = useState([]); // This was for the old chart
-  const [drillTime, setDrillTime] = useState([]); // This was for the old chart
-  const [shotAccuracy, setShotAccuracy] = useState([]); // This was for the old chart
   const [giftedValues, setGiftedValues] = useState([]);
-  const size = useRef(drillTime.length); // This was for the old chart
 
   useEffect(() => {
     if (!patternHistory) return;
@@ -28,9 +20,6 @@ function InteractiveChart() {
 
       return result;
     });
-    // const newDrillTime = []; // This was for the old chart
-    // const newShotAccuracy = []; // This was for the old chart
-    // const newDrillName = []; // This was for the old chart
     const giftedArray = [];
     for (let drill of sortedData) {
       let date = new Date(drill?.date?.seconds * 1000 + drill.date?.nanoseconds / 1000000);
@@ -38,14 +27,10 @@ function InteractiveChart() {
       let misses = drill.totalMisses;
       let accuracy = ((15 - misses) / 15) * 100;
       accuracy = Math.round(accuracy * 100) / 100;
-      // newDrillTime.push(date); // This was for the old chart
-      // newShotAccuracy.push(accuracy); // This was for the old chart
-      // newDrillName.push(drill.drillId); // This was for the old chart
       const dateOptions = { month: 'short', day: '2-digit' };
       const timeOptions = { hour12: false, hour: '2-digit', minute: '2-digit' };
       giftedArray.push({
         value: Math.round(accuracy),
-        // dataPointText: String(accuracy),
         name: drill.drillId,
         date: String(date.toLocaleDateString('en-US', timeOptions)),
         label: String(date.toLocaleDateString('en-US', dateOptions)),
@@ -53,10 +38,6 @@ function InteractiveChart() {
       });
     }
     setGiftedValues(giftedArray);
-    // setNewDrillName(newDrillName); // This was for the old chart
-    // setDrillTime(newDrillTime); // This was for the old chart
-    // setShotAccuracy(newShotAccuracy); // This was for the old chart
-    // size.current = newDrillTime.length;
   }, [patternHistory]);
 
   return (
