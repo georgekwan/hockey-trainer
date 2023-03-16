@@ -3,7 +3,7 @@ import { BottomNavigation } from 'react-native-paper';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { theme } from '../core/theme.js';
 import { DrillSelectionScreen, HomeScreen } from '../screens';
-import { Leaderboard } from '../screens/Leaderboard';
+import Leaderboard from '../screens/Leaderboard';
 import { UserProfileScreen } from '../screens/UserProfileScreen';
 
 const NavBarContainer = ({ route }) => {

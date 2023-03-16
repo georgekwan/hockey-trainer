@@ -8,7 +8,7 @@ import { LeaderboardContext } from '../providers/RankingsProvider.js';
 const HEIGHT = Dimensions.get('screen').height;
 const WIDTH = Dimensions.get('screen').width;
 
-export const Leaderboard = () => {
+const Leaderboard = () => {
   const { leaderboard } = React.useContext(LeaderboardContext);
 
   leaderboard.sort((a, b) => {
@@ -54,6 +54,8 @@ export const Leaderboard = () => {
     </>
   );
 };
+
+export default Leaderboard;
 
 const styles = StyleSheet.create({
   logo: {
