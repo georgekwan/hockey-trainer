@@ -8,7 +8,7 @@ import { PatternContext } from '../providers/PatternProvider.js';
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
 
-export const TableView = () => {
+const TableView = () => {
   const { patternHistory, sortedPatternHistory } = useContext(PatternContext);
 
   // Convert timestamp to date
@@ -52,3 +52,4 @@ export const TableView = () => {
     </ScrollView>
   );
 };
+export default React.memo(TableView);
