@@ -55,7 +55,7 @@ const Leaderboard = () => {
   );
 };
 
-export default Leaderboard;
+export default React.memo(Leaderboard);
 
 const styles = StyleSheet.create({
   logo: {
