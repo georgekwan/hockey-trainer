@@ -20,7 +20,7 @@
     "expo-dev-client": "^2.0.1",
     "expo-status-bar": "~1.4.2",
     "expo-updates": "~0.17.1",
-    "react-native": "0.71.8",
+    "react-native": "0.73.0",
     "firebase": "^9.22.0",
     "react": "18.2.0",
     "react-native-dropdown-picker": "^5.4.4",
